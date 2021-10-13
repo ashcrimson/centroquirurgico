@@ -15,10 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+
+        $this->call(OptionsTableSeeder::class);
+        $this->call(ConfigurationsTableSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(RoleSeeder::class);
-        $this->call(ConfigurationsTableSeeder::class);
-        $this->call(OptionsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+
+        if (app()->environment()=='local'){
+        }
     }
 }

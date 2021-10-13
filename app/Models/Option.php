@@ -25,7 +25,6 @@ use Illuminate\Support\Facades\Auth;
  */
 class Option extends Model
 {
-
     use SoftDeletes;
 
     public $table = 'options';
@@ -168,7 +167,7 @@ class Option extends Model
     public function scopePadresDe($query,$chidres)
     {
         return $query->whereHas('children',function ($q)use ($chidres){
-            $q->whereIn('id',$chidres);
+                $q->whereIn('id',$chidres);
         });
     }
 
