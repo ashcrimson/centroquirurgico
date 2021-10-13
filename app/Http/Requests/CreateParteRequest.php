@@ -25,6 +25,7 @@ class CreateParteRequest extends FormRequest
      */
     public function rules()
     {
+
         return Parte::$rules;
     }
 }

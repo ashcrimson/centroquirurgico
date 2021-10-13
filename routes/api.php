@@ -20,7 +20,7 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
 
         Route::resource('cirugia_tipos', 'CirugiaTipoAPIController');
 
-        Route::resource('especialidades', 'EspecialidaAPIController');
+        Route::resource('especialidades', 'EspecialidadAPIController');
 
         Route::resource('preoperatorios', 'PreoperatorioAPIController');
 

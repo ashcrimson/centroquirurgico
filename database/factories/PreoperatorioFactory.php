@@ -12,7 +12,7 @@ $factory->define(Preoperatorio::class, function (Faker $faker)  use ($autoIncrem
     $autoIncrement->next();
 
     return [
-        'nombre' => "Preoperatorio -".$autoIncrement->next(),
+        'nombre' => "Preoperatorio -".$autoIncrement->current(),
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s'),
 

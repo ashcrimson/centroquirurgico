@@ -14,7 +14,7 @@ class CreatePartesTable extends Migration
     public function up()
     {
         Schema::create('partes', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->unsignedBigInteger('paciente_id')->index('fk_partes_pacientes1_idx');
             $table->unsignedBigInteger('cirugia_tipo_id')->index('fk_partes_cirugia_tipos_idx');
             $table->unsignedBigInteger('especialidad_id')->index('fk_partes_especialidades1_idx');

@@ -229,6 +229,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Especialida' => \App\Models\Especialida::class,
+        'CirugiaTipo' => \App\Models\CirugiaTipo::class,
+        'Preoperatorio' => \App\Models\Preoperatorio::class,
+        'Clasificacion' => \App\Models\Clasificacion::class,
+
     ],
 
 ];

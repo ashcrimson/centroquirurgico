@@ -26,10 +26,12 @@ class DatabaseSeeder extends Seeder
         $this->call(CirugiaTiposTableSeeder::class);
         $this->call(PabellonesTableSeeder::class);
         $this->call(ParteEstadosTableSeeder::class);
+        $this->call(PreoperatoriosTableSeeder::class);
+
 
         if (app()->environment()=='local'){
             $this->call(PacientesTableSeeder::class);
 
-    }
+        }
     }
 }

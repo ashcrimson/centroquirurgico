@@ -17,9 +17,15 @@ class ParteEstado extends Model
     use SoftDeletes;
 
     public $table = 'parte_estados';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
+
+
+    const INGRESADA =           1;
+    const ENVIADA_ADMICION =    2;
+    const AMITIDAD =            3;
+    const FINALIZADA =          4;
 
 
     protected $dates = ['deleted_at'];

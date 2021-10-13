@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('cirugiaTipos', 'CirugiaTipoController');
 
-    Route::resource('especialidades', 'EspecialidaController');
+    Route::resource('especialidades', 'EspecialidadController');
 
     Route::resource('preoperatorios', 'PreoperatorioController');
 

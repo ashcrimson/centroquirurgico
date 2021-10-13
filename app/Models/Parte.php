@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @version October 13, 2021, 12:35 am CST
  *
  * @property \App\Models\CirugiaTipo $cirugiaTipo
- * @property \App\Models\Clasificacione $clasificacion
- * @property \App\Models\Especialidade $especialidad
- * @property \App\Models\Pabellone $pabellon
+ * @property \App\Models\Clasificacion $clasificacion
+ * @property \App\Models\Especialidad $especialidad
+ * @property \App\Models\Pabellon $pabellon
  * @property \App\Models\Paciente $paciente
  * @property \App\Models\ParteEstado $estado
  * @property \App\Models\Preoperatorio $preoperatorio
@@ -53,7 +53,7 @@ class Parte extends Model
     use SoftDeletes;
 
     public $table = 'partes';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -140,7 +140,6 @@ class Parte extends Model
      * @var array
      */
     public static $rules = [
-        'paciente_id' => 'required',
         'cirugia_tipo_id' => 'required',
         'especialidad_id' => 'required',
         'diagnostico' => 'nullable|string',
@@ -163,8 +162,7 @@ class Parte extends Model
         'insumos_especificos' => 'nullable|boolean',
         'preoperatorio_id' => 'required',
         'biopsia' => 'nullable|boolean',
-        'user_ingresa' => 'required',
-        'estado_id' => 'required',
+
         'pabellon_id' => 'nullable|integer',
         'fecha_pabellon' => 'nullable',
         'fecha_digitacion' => 'nullable',
@@ -188,7 +186,7 @@ class Parte extends Model
      **/
     public function clasificacion()
     {
-        return $this->belongsTo(\App\Models\Clasificacione::class, 'clasificacion_id');
+        return $this->belongsTo(\App\Models\Clasificacion::class, 'clasificacion_id');
     }
 
     /**
@@ -196,7 +194,7 @@ class Parte extends Model
      **/
     public function especialidad()
     {
-        return $this->belongsTo(\App\Models\Especialidade::class, 'especialidad_id');
+        return $this->belongsTo(\App\Models\Especialidad::class, 'especialidad_id');
     }
 
     /**
@@ -204,7 +202,7 @@ class Parte extends Model
      **/
     public function pabellon()
     {
-        return $this->belongsTo(\App\Models\Pabellone::class, 'pabellon_id');
+        return $this->belongsTo(\App\Models\Pabellon::class, 'pabellon_id');
     }
 
     /**

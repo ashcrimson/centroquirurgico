@@ -60,6 +60,7 @@ export default {
     created() {
         this.item = this.value;
         this.getItems();
+
     },
     props:{
         value: {
@@ -84,7 +85,7 @@ export default {
         },
         id:{
             type: String,
-            default: 'modalSelectClasificacion'
+            default: 'modalSelectPreoperatorio'
         }
     },
 
@@ -129,7 +130,7 @@ export default {
 
             try {
 
-                var res = await axios.get(route('api.preoperatorioes.index'));
+                var res = await axios.get(route('api.preoperatorios.index'));
 
                 this.items_api  = res.data.data;
 
@@ -149,11 +150,11 @@ export default {
 
                 if(this.editedItem.id === 0){
 
-                    var res = await axios.post(route('api.preoperatorioes.store'),data);
+                    var res = await axios.post(route('api.preoperatorios.store'),data);
 
                 }else {
 
-                    var res = await axios.patch(route('api.preoperatorioes.update',this.editedItem.id),data);
+                    var res = await axios.patch(route('api.preoperatorios.update',this.editedItem.id),data);
 
                 }
 

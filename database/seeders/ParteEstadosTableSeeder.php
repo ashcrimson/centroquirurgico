@@ -20,15 +20,11 @@ class ParteEstadosTableSeeder extends Seeder
         \DB::table('parte_estados')->delete();
 
 
-        factory(ParteEstado::class,1)->create(['nombre' => 'Temporal']);
         factory(ParteEstado::class,1)->create(['nombre' => 'Ingresada']);
-        factory(ParteEstado::class,1)->create(['nombre' => 'Solicitada']);
-        factory(ParteEstado::class,1)->create(['nombre' => 'Aprobada']);
-        factory(ParteEstado::class,1)->create(['nombre' => 'Despachada']);
-        factory(ParteEstado::class,1)->create(['nombre' => 'Rechazada']);
+        factory(ParteEstado::class,1)->create(['nombre' => 'Enviada Admicion']);
+        factory(ParteEstado::class,1)->create(['nombre' => 'Amitidad']);
+        factory(ParteEstado::class,1)->create(['nombre' => 'Finalizada']);
         factory(ParteEstado::class,1)->create(['nombre' => 'Anulada']);
-        factory(ParteEstado::class,1)->create(['nombre' => 'Vencida']);
-        factory(ParteEstado::class,1)->create(['nombre' => 'EN CORRECCIÓN']);
 
 
     }

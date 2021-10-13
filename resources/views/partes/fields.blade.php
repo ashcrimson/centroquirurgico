@@ -2,9 +2,9 @@
 
 
 <div class="col-12">
-    <div class="card card-outline card-info">
-        <div class="card-header">
-            <h3 class="card-title">Datos Paciente</h3>
+    <div class="card card-secondary ">
+        <div class="card-header py-1 px-3">
+            <h3 class="card-title">Información Paciente</h3>
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
@@ -27,9 +27,9 @@
 
 
 <div class="col-sm-12 mb-3">
-    <div class="card card-outline card-info ">
-        <div class="card-header">
-            <h3 class="card-title">Datos Registro</h3>
+    <div class="card card-secondary ">
+        <div class="card-header py-1 px-3">
+            <h3 class="card-title">Información de la Cirugía</h3>
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
@@ -43,7 +43,7 @@
 
 
                 <!-- Cirugia Tipo Id Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     <select-cirugia-tipo
                         label="Tipo Cirugía"
                         v-model="cirugia_tipo" >
@@ -52,7 +52,7 @@
                 </div>
 
                 <!-- Especialidad Id Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     <select-especialidad
                         label="Especialidad"
                         v-model="especialidad" >
@@ -61,25 +61,25 @@
                 </div>
 
                 <!-- Diagnostico Field -->
-                <div class="form-group col-sm-12 col-lg-12">
+                <div class="form-group col-sm-4 col-lg-4">
                     {!! Form::label('diagnostico', 'Diagnostico:') !!}
-                    {!! Form::textarea('diagnostico', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('diagnostico', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <!-- Otros Diagnosticos Field -->
                 <div class="form-group col-sm-12 col-lg-12">
                     {!! Form::label('otros_diagnosticos', 'Otros Diagnosticos:') !!}
-                    {!! Form::textarea('otros_diagnosticos', null, ['class' => 'form-control']) !!}
+                    {!! Form::textarea('otros_diagnosticos', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
                 <!-- Intervencion Field -->
-                <div class="form-group col-sm-12 col-lg-12">
+                <div class="form-group col-sm-8 col-lg-8">
                     {!! Form::label('intervencion', 'Intervencion:') !!}
-                    {!! Form::textarea('intervencion', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('intervencion', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
                 <!-- Lateralidad Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     {!! Form::label('lateralidad', 'Lateralidad:') !!}
                     <label class="checkbox-inline">
                         {!! Form::hidden('lateralidad', 0) !!}
@@ -91,11 +91,11 @@
                 <!-- Otras Intervenciones Field -->
                 <div class="form-group col-sm-12 col-lg-12">
                     {!! Form::label('otras_intervenciones', 'Otras Intervenciones:') !!}
-                    {!! Form::textarea('otras_intervenciones', null, ['class' => 'form-control']) !!}
+                    {!! Form::textarea('otras_intervenciones', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
                 <!-- Cma Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     {!! Form::label('cma', 'Cma:') !!}
                     <label class="checkbox-inline">
                         {!! Form::hidden('cma', 0) !!}
@@ -105,25 +105,28 @@
 
 
                 <!-- Clasificacion Id Field -->
-                <div class="form-group col-sm-6">
-                    {!! Form::label('clasificacion_id', 'Clasificacion Id:') !!}
-                    {!! Form::number('clasificacion_id', null, ['class' => 'form-control']) !!}
+                <div class="form-group col-sm-4">
+                    <select-clasificacion
+                        label="Clasificación"
+                        v-model="clasificacion" >
+
+                    </select-clasificacion>
                 </div>
 
                 <!-- Tiempo Quirurgico Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     {!! Form::label('tiempo_quirurgico', 'Tiempo Quirurgico:') !!}
                     {!! Form::number('tiempo_quirurgico', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <!-- Anestesia Sugerida Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-12">
                     {!! Form::label('anestesia_sugerida', 'Anestesia Sugerida:') !!}
                     {!! Form::text('anestesia_sugerida', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
                 </div>
 
                 <!-- Aislamiento Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     {!! Form::label('aislamiento', 'Aislamiento:') !!}
                     <label class="checkbox-inline">
                         {!! Form::hidden('aislamiento', 0) !!}
@@ -133,7 +136,7 @@
 
 
                 <!-- Alergia Latex Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     {!! Form::label('alergia_latex', 'Alergia Latex:') !!}
                     <label class="checkbox-inline">
                         {!! Form::hidden('alergia_latex', 0) !!}
@@ -143,7 +146,7 @@
 
 
                 <!-- Usuario Taco Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     {!! Form::label('usuario_taco', 'Usuario Taco:') !!}
                     <label class="checkbox-inline">
                         {!! Form::hidden('usuario_taco', 0) !!}
@@ -153,7 +156,7 @@
 
 
                 <!-- Nececidad Cama Upc Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     {!! Form::label('nececidad_cama_upc', 'Nececidad Cama Upc:') !!}
                     <label class="checkbox-inline">
                         {!! Form::hidden('nececidad_cama_upc', 0) !!}
@@ -163,7 +166,7 @@
 
 
                 <!-- Prioridad Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     {!! Form::label('prioridad', 'Prioridad:') !!}
                     <label class="checkbox-inline">
                         {!! Form::hidden('prioridad', 0) !!}
@@ -173,7 +176,7 @@
 
 
                 <!-- Necesita Donante Sangre Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     {!! Form::label('necesita_donante_sangre', 'Necesita Donante Sangre:') !!}
                     <label class="checkbox-inline">
                         {!! Form::hidden('necesita_donante_sangre', 0) !!}
@@ -183,7 +186,7 @@
 
 
                 <!-- Evaluacion Preanestesica Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     {!! Form::label('evaluacion_preanestesica', 'Evaluacion Preanestesica:') !!}
                     <label class="checkbox-inline">
                         {!! Form::hidden('evaluacion_preanestesica', 0) !!}
@@ -193,7 +196,7 @@
 
 
                 <!-- Equipo Rayos Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     {!! Form::label('equipo_rayos', 'Equipo Rayos:') !!}
                     <label class="checkbox-inline">
                         {!! Form::hidden('equipo_rayos', 0) !!}
@@ -203,7 +206,7 @@
 
 
                 <!-- Insumos Especificos Field -->
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     {!! Form::label('insumos_especificos', 'Insumos Especificos:') !!}
                     <label class="checkbox-inline">
                         {!! Form::hidden('insumos_especificos', 0) !!}
@@ -211,11 +214,15 @@
                     </label>
                 </div>
 
+                <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
 
                 <!-- Preoperatorio Id Field -->
                 <div class="form-group col-sm-6">
-                    {!! Form::label('preoperatorio_id', 'Preoperatorio Id:') !!}
-                    {!! Form::number('preoperatorio_id', null, ['class' => 'form-control']) !!}
+                    <select-preoperatorio
+                        label="Ex Preoperatorios"
+                        v-model="preoperatorio" >
+
+                    </select-preoperatorio>
                 </div>
 
                 <!-- Biopsia Field -->
@@ -228,47 +235,18 @@
                 </div>
 
 
-                <!-- User Ingresa Field -->
-                <div class="form-group col-sm-6">
-                    {!! Form::label('user_ingresa', 'User Ingresa:') !!}
-                    {!! Form::number('user_ingresa', null, ['class' => 'form-control']) !!}
-                </div>
-
-                <!-- Estado Id Field -->
-                <div class="form-group col-sm-6">
-                    {!! Form::label('estado_id', 'Estado Id:') !!}
-                    {!! Form::number('estado_id', null, ['class' => 'form-control']) !!}
-                </div>
-
-                <!-- Pabellon Id Field -->
-                <div class="form-group col-sm-6">
-                    {!! Form::label('pabellon_id', 'Pabellon Id:') !!}
-                    {!! Form::number('pabellon_id', null, ['class' => 'form-control']) !!}
-                </div>
-
-                <!-- Fecha Pabellon Field -->
-                <div class="form-group col-sm-6">
-                    {!! Form::label('fecha_pabellon', 'Fecha Pabellon:') !!}
-                    {!! Form::date('fecha_pabellon', null, ['class' => 'form-control','id'=>'fecha_pabellon']) !!}
-                </div>
-
-            <!-- Fecha Digitacion Field -->
-                <div class="form-group col-sm-6">
-                    {!! Form::label('fecha_digitacion', 'Fecha Digitacion:') !!}
-                    {!! Form::date('fecha_digitacion', null, ['class' => 'form-control','id'=>'fecha_digitacion']) !!}
-                </div>
 
 
             <!-- Instrumental Field -->
                 <div class="form-group col-sm-12 col-lg-12">
                     {!! Form::label('instrumental', 'Instrumental:') !!}
-                    {!! Form::textarea('instrumental', null, ['class' => 'form-control']) !!}
+                    {!! Form::textarea('instrumental', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
                 <!-- Observaciones Field -->
                 <div class="form-group col-sm-12 col-lg-12">
                     {!! Form::label('observaciones', 'Observaciones:') !!}
-                    {!! Form::textarea('observaciones', null, ['class' => 'form-control']) !!}
+                    {!! Form::textarea('observaciones', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
 
@@ -288,8 +266,10 @@
 
         },
         data: {
-            cirugia_tipo: null,
-            especialidad: null,
+            cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
+            especialidad: @json($parte->especialidad ?? Especialida::find(old('especialidad_id')) ?? null),
+            clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
+            preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
         },
         methods: {
 

@@ -6,9 +6,12 @@ use App\DataTables\ParteDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateParteRequest;
 use App\Http\Requests\UpdateParteRequest;
+use App\Models\Paciente;
 use App\Models\Parte;
-use Flash;
+use App\Models\ParteEstado;
 use App\Http\Controllers\AppBaseController;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Response;
 
 class ParteController extends AppBaseController
@@ -52,12 +55,32 @@ class ParteController extends AppBaseController
      */
     public function store(CreateParteRequest $request)
     {
-        $input = $request->all();
 
-        /** @var Parte $parte */
-        $parte = Parte::create($input);
+        try {
+            DB::beginTransaction();
 
-        Flash::success('Parte guardado exitosamente.');
+            $paciente = $this->creaOactualizaPaciente($request);
+
+            $request->merge([
+                'paciente_id' => $paciente->id,
+                'user_ingresa' => auth()->user()->id,
+                'estado_id' => ParteEstado::INGRESADA,
+            ]);
+
+            /** @var Parte $parte */
+            $parte = Parte::create($request->all());
+
+
+
+        } catch (Exception $exception) {
+            DB::rollBack();
+
+            throw new Exception($exception);
+        }
+
+        DB::commit();
+
+        flash()->success('Parte guardado exitosamente.');
 
         return redirect(route('partes.index'));
     }
@@ -75,7 +98,7 @@ class ParteController extends AppBaseController
         $parte = Parte::find($id);
 
         if (empty($parte)) {
-            Flash::error('Parte no encontrado');
+            flash()->error('Parte no encontrado');
 
             return redirect(route('partes.index'));
         }
@@ -95,8 +118,10 @@ class ParteController extends AppBaseController
         /** @var Parte $parte */
         $parte = Parte::find($id);
 
+        $parte = $this->addAttributos($parte);
+
         if (empty($parte)) {
-            Flash::error('Parte no encontrado');
+            flash()->error('Parte no encontrado');
 
             return redirect(route('partes.index'));
         }
@@ -118,7 +143,7 @@ class ParteController extends AppBaseController
         $parte = Parte::find($id);
 
         if (empty($parte)) {
-            Flash::error('Parte no encontrado');
+            flash()->error('Parte no encontrado');
 
             return redirect(route('partes.index'));
         }
@@ -126,7 +151,7 @@ class ParteController extends AppBaseController
         $parte->fill($request->all());
         $parte->save();
 
-        Flash::success('Parte actualizado con éxito.');
+        flash()->success('Parte actualizado con éxito.');
 
         return redirect(route('partes.index'));
     }
@@ -146,15 +171,71 @@ class ParteController extends AppBaseController
         $parte = Parte::find($id);
 
         if (empty($parte)) {
-            Flash::error('Parte no encontrado');
+            flash()->error('Parte no encontrado');
 
             return redirect(route('partes.index'));
         }
 
         $parte->delete();
 
-        Flash::success('Parte deleted successfully.');
+        flash()->success('Parte deleted successfully.');
 
         return redirect(route('partes.index'));
     }
+
+
+    public function creaOactualizaPaciente($request)
+    {
+        $paciente = Paciente::updateOrCreate([
+            'run' => $request->run,
+            'dv_run' => $request->dv_run,
+
+        ],[
+            'run' => $request->run,
+            'fecha_nac' => $request->fecha_nac,
+            'dv_run' => $request->dv_run,
+            'apellido_paterno' => $request->apellido_paterno,
+            'apellido_materno' => $request->apellido_materno,
+            'primer_nombre' => $request->primer_nombre,
+            'segundo_nombre' => $request->segundo_nombre,
+
+            'sexo' => $request->sexo ? 'M' : 'F',
+
+            'direccion' => $request->direccion,
+            'familiar_responsable' => $request->familiar_responsable,
+            'telefono' => $request->telefono,
+            'telefono2' => $request->telefono2,
+            'prevision_id' => $request->prevision_id,
+            'clave' => $request->clave,
+            'movil_envia' => $request->movil_envia,
+
+        ]);
+
+        return $paciente;
+    }
+
+    public function addAttributos(Parte $parte)
+    {
+
+        $parte->setAttribute("run" ,$parte->paciente->run);
+        $parte->setAttribute("dv_run" ,$parte->paciente->dv_run);
+        $parte->setAttribute("apellido_paterno" ,$parte->paciente->apellido_paterno);
+        $parte->setAttribute("apellido_materno" ,$parte->paciente->apellido_materno);
+        $parte->setAttribute("primer_nombre" ,$parte->paciente->primer_nombre);
+        $parte->setAttribute("segundo_nombre" ,$parte->paciente->segundo_nombre);
+        $parte->setAttribute("fecha_nac" ,Carbon::parse($parte->paciente->fecha_nac)->format('Y-m-d'));
+        $parte->setAttribute("sexo" ,$parte->paciente->sexo == 'M' ? 1 : 0);
+
+        $parte->setAttribute("direccion" ,$parte->paciente->direccion);
+        $parte->setAttribute("familiar_responsable" ,$parte->paciente->familiar_responsable);
+        $parte->setAttribute("telefono" ,$parte->paciente->telefono);
+        $parte->setAttribute("telefono2" ,$parte->paciente->telefono2);
+        $parte->setAttribute("prevision_id" ,$parte->paciente->prevision_id);
+        $parte->setAttribute("clave" ,$parte->paciente->clave);
+        $parte->setAttribute("movil_envia" ,$parte->paciente->movil_envia);
+
+
+        return $parte;
+    }
+
 }
