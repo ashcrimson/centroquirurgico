@@ -21,9 +21,15 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(EspecialidadesTableSeeder::class);
+        $this->call(ClasificacionesTableSeeder::class);
+        $this->call(CirugiaTiposTableSeeder::class);
+        $this->call(PabellonesTableSeeder::class);
+        $this->call(ParteEstadosTableSeeder::class);
 
         if (app()->environment()=='local'){
             $this->call(PacientesTableSeeder::class);
-        }
+
+    }
     }
 }

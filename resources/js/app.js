@@ -106,3 +106,15 @@ import { VTooltip, VPopover, VClosePopover } from 'v-tooltip';
 Vue.directive('tooltip', VTooltip);
 Vue.directive('close-popover', VClosePopover);
 Vue.component('v-popover', VPopover);
+
+import SelectClasificacion from "./components/SelectClasificacion";
+Vue.component('select-clasificacion', SelectClasificacion);
+
+import SelectCirugiaTipo from "./components/SelectCirugiaTipo";
+Vue.component('select-cirugia-tipo', SelectCirugiaTipo);
+
+import SelectEspecialidad from "./components/SelectEspecialidad";
+Vue.component('select-especialidad', SelectEspecialidad);
+
+import SelectPreoperatorio from "./components/SelectPreoperatorio";
+Vue.component('select-preoperatorio', SelectPreoperatorio);

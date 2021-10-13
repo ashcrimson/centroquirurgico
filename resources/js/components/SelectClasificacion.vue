@@ -5,7 +5,7 @@
             editar
         </a>
 
-        <multiselect v-model="item" :options="items" label="nombre" placeholder="Seleccione uno...">
+        <multiselect v-model="item" :options="options" label="nombre" placeholder="Seleccione uno...">
             <template  slot="noResult">
                 <a class="btn btn-sm btn-block btn-success" href="#" @click.prevent="newItem()">
                     <i class="fa fa-plus"></i> Nuevo
@@ -56,9 +56,11 @@
 
     export default {
 
-        name: 'select-clasificacione',
+        name: 'select-clasificacion',
         created() {
             this.item = this.value;
+            this.getItems();
+
         },
         props:{
             value: {
@@ -67,7 +69,10 @@
             },
             items:{
                 type: Array,
-                required: true,
+                default() {
+                    return [];
+                },
+                required: false,
             },
 
             name: {
@@ -88,6 +93,7 @@
             loading: false,
 
             item: null,
+            items_api: [],
             editedItem: {
                 id : 0,
             },
@@ -120,6 +126,19 @@
                 }, 300)
             },
 
+            async getItems () {
+
+                try {
+
+                    var res = await axios.get(route('api.clasificaciones.index'));
+
+                    this.items_api  = res.data.data;
+
+                }catch (e) {
+                    notifyErrorApi(e);
+                }
+
+            },
             async save () {
 
                 this.loading = true;
@@ -173,7 +192,15 @@
         computed: {
             formTitle () {
                 return this.editedItem.id === 0 ? 'Nuevo '+ this.label : 'Editar '+ this.label
+            },
+            options(){
+                if (this.items.length > 0){
+                    return this.items
+                }else {
+                    return this.items_api;
+                }
             }
+
         },
         watch: {
             item (val) {
