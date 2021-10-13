@@ -16,10 +16,10 @@ class PabellonController extends AppBaseController
 
     public function __construct()
     {
-        $this->middleware('permission:Ver Pabellons')->only(['show']);
-        $this->middleware('permission:Crear Pabellons')->only(['create','store']);
-        $this->middleware('permission:Editar Pabellons')->only(['edit','update',]);
-        $this->middleware('permission:Eliminar Pabellons')->only(['destroy']);
+        $this->middleware('permission:Ver pabellones')->only(['show']);
+        $this->middleware('permission:Crear pabellones')->only(['create','store']);
+        $this->middleware('permission:Editar pabellones')->only(['edit','update',]);
+        $this->middleware('permission:Eliminar pabellones')->only(['destroy']);
     }
 
     /**
@@ -30,7 +30,7 @@ class PabellonController extends AppBaseController
      */
     public function index(PabellonDataTable $pabellonDataTable)
     {
-        return $pabellonDataTable->render('pabellons.index');
+        return $pabellonDataTable->render('pabellones.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class PabellonController extends AppBaseController
      */
     public function create()
     {
-        return view('pabellons.create');
+        return view('pabellones.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class PabellonController extends AppBaseController
 
         Flash::success('Pabellon guardado exitosamente.');
 
-        return redirect(route('pabellons.index'));
+        return redirect(route('pabellones.index'));
     }
 
     /**
@@ -77,10 +77,10 @@ class PabellonController extends AppBaseController
         if (empty($pabellon)) {
             Flash::error('Pabellon no encontrado');
 
-            return redirect(route('pabellons.index'));
+            return redirect(route('pabellones.index'));
         }
 
-        return view('pabellons.show')->with('pabellon', $pabellon);
+        return view('pabellones.show')->with('pabellon', $pabellon);
     }
 
     /**
@@ -98,10 +98,10 @@ class PabellonController extends AppBaseController
         if (empty($pabellon)) {
             Flash::error('Pabellon no encontrado');
 
-            return redirect(route('pabellons.index'));
+            return redirect(route('pabellones.index'));
         }
 
-        return view('pabellons.edit')->with('pabellon', $pabellon);
+        return view('pabellones.edit')->with('pabellon', $pabellon);
     }
 
     /**
@@ -120,7 +120,7 @@ class PabellonController extends AppBaseController
         if (empty($pabellon)) {
             Flash::error('Pabellon no encontrado');
 
-            return redirect(route('pabellons.index'));
+            return redirect(route('pabellones.index'));
         }
 
         $pabellon->fill($request->all());
@@ -128,7 +128,7 @@ class PabellonController extends AppBaseController
 
         Flash::success('Pabellon actualizado con éxito.');
 
-        return redirect(route('pabellons.index'));
+        return redirect(route('pabellones.index'));
     }
 
     /**
@@ -148,13 +148,13 @@ class PabellonController extends AppBaseController
         if (empty($pabellon)) {
             Flash::error('Pabellon no encontrado');
 
-            return redirect(route('pabellons.index'));
+            return redirect(route('pabellones.index'));
         }
 
         $pabellon->delete();
 
         Flash::success('Pabellon deleted successfully.');
 
-        return redirect(route('pabellons.index'));
+        return redirect(route('pabellones.index'));
     }
 }

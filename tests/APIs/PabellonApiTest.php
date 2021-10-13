@@ -19,7 +19,7 @@ class PabellonApiTest extends TestCase
 
         $this->response = $this->json(
             'POST',
-            '/api/pabellons', $pabellon
+            '/api/pabellones', $pabellon
         );
 
         $this->assertApiResponse($pabellon);
@@ -34,7 +34,7 @@ class PabellonApiTest extends TestCase
 
         $this->response = $this->json(
             'GET',
-            '/api/pabellons/'.$pabellon->id
+            '/api/pabellones/'.$pabellon->id
         );
 
         $this->assertApiResponse($pabellon->toArray());
@@ -50,7 +50,7 @@ class PabellonApiTest extends TestCase
 
         $this->response = $this->json(
             'PUT',
-            '/api/pabellons/'.$pabellon->id,
+            '/api/pabellones/'.$pabellon->id,
             $editedPabellon
         );
 
@@ -66,13 +66,13 @@ class PabellonApiTest extends TestCase
 
         $this->response = $this->json(
             'DELETE',
-             '/api/pabellons/'.$pabellon->id
+             '/api/pabellones/'.$pabellon->id
          );
 
         $this->assertApiSuccess();
         $this->response = $this->json(
             'GET',
-            '/api/pabellons/'.$pabellon->id
+            '/api/pabellones/'.$pabellon->id
         );
 
         $this->response->assertStatus(404);

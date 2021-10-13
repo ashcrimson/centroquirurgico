@@ -18,7 +18,7 @@ class PabellonAPIController extends AppBaseController
 {
     /**
      * Display a listing of the Pabellon.
-     * GET|HEAD /pabellons
+     * GET|HEAD /pabellones
      *
      * @param Request $request
      * @return Response
@@ -34,14 +34,14 @@ class PabellonAPIController extends AppBaseController
             $query->limit($request->get('limit'));
         }
 
-        $pabellons = $query->get();
+        $pabellones = $query->get();
 
-        return $this->sendResponse($pabellons->toArray(), 'Pabellons retrieved successfully');
+        return $this->sendResponse($pabellones->toArray(), 'pabellones retrieved successfully');
     }
 
     /**
      * Store a newly created Pabellon in storage.
-     * POST /pabellons
+     * POST /pabellones
      *
      * @param CreatePabellonAPIRequest $request
      *
@@ -59,7 +59,7 @@ class PabellonAPIController extends AppBaseController
 
     /**
      * Display the specified Pabellon.
-     * GET|HEAD /pabellons/{id}
+     * GET|HEAD /pabellones/{id}
      *
      * @param int $id
      *
@@ -79,7 +79,7 @@ class PabellonAPIController extends AppBaseController
 
     /**
      * Update the specified Pabellon in storage.
-     * PUT/PATCH /pabellons/{id}
+     * PUT/PATCH /pabellones/{id}
      *
      * @param int $id
      * @param UpdatePabellonAPIRequest $request
@@ -103,7 +103,7 @@ class PabellonAPIController extends AppBaseController
 
     /**
      * Remove the specified Pabellon from storage.
-     * DELETE /pabellons/{id}
+     * DELETE /pabellones/{id}
      *
      * @param int $id
      *

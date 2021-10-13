@@ -13,7 +13,7 @@
                 </div>
                 <div class="col ">
                     <a class="btn btn-outline-info float-right"
-                       href="{{route('pabellons.index')}}">
+                       href="{{route('pabellones.index')}}">
                         <i class="fa fa-list" aria-hidden="true"></i>&nbsp;<span class="d-none d-sm-inline">{{__('List')}}</span>
                     </a>
                 </div>
@@ -28,14 +28,14 @@
 
             <div class="card">
                 <div class="card-body">
-                    {!! Form::open(['route' => 'pabellons.store','class' => 'wait-on-submit']) !!}
+                    {!! Form::open(['route' => 'pabellones.store','class' => 'wait-on-submit']) !!}
                         <div class="form-row">
 
-                            @include('pabellons.fields')
+                            @include('pabellones.fields')
 
                             <!-- Submit Field -->
                             <div class="form-group col-sm-12 text-right">
-                                <a href="{!! route('pabellons.index') !!}" class="btn btn-outline-secondary">
+                                <a href="{!! route('pabellones.index') !!}" class="btn btn-outline-secondary">
                                     Cancelar
                                 </a>
                                 &nbsp;

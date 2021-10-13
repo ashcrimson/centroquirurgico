@@ -23,14 +23,14 @@ class PabellonDataTable extends DataTable
 
                  $id = $pabellon->id;
 
-                 return view('pabellons.datatables_actions',compact('pabellon','id'))->render();
+                 return view('pabellones.datatables_actions',compact('pabellon','id'))->render();
              })
              ->editColumn('id',function (Pabellon $pabellon){
 
                  return $pabellon->id;
 
                  //se debe crear la vista modal_detalles
-                 //return view('pabellons.modal_detalles',compact('pabellon'))->render();
+                 //return view('pabellones.modal_detalles',compact('pabellon'))->render();
 
              })
              ->rawColumns(['action','id']);
@@ -108,6 +108,6 @@ class PabellonDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'pabellonsdatatable_' . time();
+        return 'pabellonesdatatable_' . time();
     }
 }

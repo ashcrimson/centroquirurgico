@@ -26,7 +26,7 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
 
         Route::resource('parte_estados', 'ParteEstadoAPIController');
 
-        Route::resource('pabellons', 'PabellonAPIController');
+        Route::resource('pabellones', 'PabellonAPIController');
 
         Route::resource('clasificacions', 'ClasificacionAPIController');
 
