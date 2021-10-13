@@ -9,7 +9,6 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "arielcr/numero-a-letras": "dev-master",
         "barryvdh/laravel-snappy": "^0.4.8",
         "consoletvs/charts": "7.*",
         "doctrine/dbal": "^3.0",
