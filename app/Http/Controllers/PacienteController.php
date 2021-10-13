@@ -3,33 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\PacienteDataTable;
+use App\DataTables\Scopes\ScopePacienteDataTable;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreatePacienteRequest;
 use App\Http\Requests\UpdatePacienteRequest;
 use App\Models\Paciente;
+use App\Models\Preparacion;
+use App\Models\Solicitud;
+use Carbon\Carbon;
+use Exception;
 use Flash;
-use App\Http\Controllers\AppBaseController;
+use Illuminate\Http\Request;
+use nusoap_client;
 use Response;
 
 class PacienteController extends AppBaseController
 {
-
-    public function __construct()
-    {
-        $this->middleware('permission:Ver Pacientes')->only(['show']);
-        $this->middleware('permission:Crear Pacientes')->only(['create','store']);
-        $this->middleware('permission:Editar Pacientes')->only(['edit','update',]);
-        $this->middleware('permission:Eliminar Pacientes')->only(['destroy']);
-    }
-
     /**
      * Display a listing of the Paciente.
      *
      * @param PacienteDataTable $pacienteDataTable
      * @return Response
      */
-    public function index(PacienteDataTable $pacienteDataTable)
+    public function index(PacienteDataTable $pacienteDataTable,Request $request)
     {
+
+        $scope = new ScopePacienteDataTable();
+        $scope->del = $request->del ?? null;
+        $scope->al = $request->al ?? null;
+
+        $pacienteDataTable->addScope($scope);
+
         return $pacienteDataTable->render('pacientes.index');
     }
 
@@ -52,12 +57,14 @@ class PacienteController extends AppBaseController
      */
     public function store(CreatePacienteRequest $request)
     {
-        $input = $request->all();
+        $request->merge([
+            'sexo' => $request->sexo ? 'M' : 'F',
+        ]);
 
         /** @var Paciente $paciente */
-        $paciente = Paciente::create($input);
+        $paciente = Paciente::create($request->all());
 
-        Flash::success('Paciente guardado exitosamente.');
+        Flash::success('Paciente saved successfully.');
 
         return redirect(route('pacientes.index'));
     }
@@ -75,7 +82,7 @@ class PacienteController extends AppBaseController
         $paciente = Paciente::find($id);
 
         if (empty($paciente)) {
-            Flash::error('Paciente no encontrado');
+            Flash::error('Paciente not found');
 
             return redirect(route('pacientes.index'));
         }
@@ -96,10 +103,12 @@ class PacienteController extends AppBaseController
         $paciente = Paciente::find($id);
 
         if (empty($paciente)) {
-            Flash::error('Paciente no encontrado');
+            Flash::error('Paciente not found');
 
             return redirect(route('pacientes.index'));
         }
+
+        $paciente->fecha_nac = Carbon::parse($paciente->fecha_nac)->format('Y-m-d');
 
         return view('pacientes.edit')->with('paciente', $paciente);
     }
@@ -118,15 +127,19 @@ class PacienteController extends AppBaseController
         $paciente = Paciente::find($id);
 
         if (empty($paciente)) {
-            Flash::error('Paciente no encontrado');
+            Flash::error('Paciente not found');
 
             return redirect(route('pacientes.index'));
         }
 
+        $request->merge([
+            'sexo' => $request->sexo ? 'M' : 'F',
+        ]);
+
         $paciente->fill($request->all());
         $paciente->save();
 
-        Flash::success('Paciente actualizado con éxito.');
+        Flash::success('Paciente updated successfully.');
 
         return redirect(route('pacientes.index'));
     }
@@ -146,7 +159,7 @@ class PacienteController extends AppBaseController
         $paciente = Paciente::find($id);
 
         if (empty($paciente)) {
-            Flash::error('Paciente no encontrado');
+            Flash::error('Paciente not found');
 
             return redirect(route('pacientes.index'));
         }
@@ -157,4 +170,62 @@ class PacienteController extends AppBaseController
 
         return redirect(route('pacientes.index'));
     }
+
+
+    public function getPacientePorApi(Request $request)
+    {
+
+        /**
+         * @var Paciente $paciente
+         */
+        $paciente = Paciente::with('solicitudes')->where('run',$request->run)->first();
+
+
+        if ($paciente){
+
+            /**
+             * @var Solicitud $ultimaSolicitud
+             */
+            $ultimaSolicitud = $paciente->solicitudes->last();
+
+            $ultimaSolicitud->load([
+                'estado',
+                'userCrea',
+                'userActualiza',
+                'cultivos',
+                'diagnosticos',
+                'medicamentos',
+                'microorganismos',
+            ]);
+
+
+
+            $paciente->setAttribute('ultima_preparacion',$ultimaSolicitud);
+            $paciente->setAttribute('sexo',$paciente->sexo ? 'M' : 'F');
+            return  $this->sendResponse($paciente,"Paciente");
+        }
+        else{
+
+//            dd('consulta api');
+
+            try {
+
+
+
+                $params = array('run' => $request->run);
+                $client = new nusoap_client('http://172.25.16.18/bus/webservice/ws.php?wsdl');
+                $client->response_timeout = 5;
+                $response = $client->call('buscarDetallePersona', $params);
+
+                return $this->sendResponse($response,"Paciente");
+
+            } catch (Exception $exception) {
+
+                return $this->sendError($exception->getMessage());
+            }
+        }
+
+
+    }
+
 }

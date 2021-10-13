@@ -51,14 +51,14 @@
     <!-- /.content-wrapper -->
 
     <footer class="main-footer">
-        <strong>
+        <!-- <strong>
             Copyright &copy; 2014-{{anioActual()}}
             <a href="https://solucionesaltamirano.com/">Soluciones Altamirano</a>.
         </strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
             <b>Version</b> 3.0.0
-        </div>
+        </div> -->
     </footer>
 
     <!-- Control Sidebar -->
@@ -71,7 +71,7 @@
 
 
 {{--Para utilizar las rutas en java script https://github.com/tighten/ziggy--}}
-{{--@routes--}}
+@routes
 
 @include('partials.flash_alert')
 
@@ -117,6 +117,21 @@
         })
 
     }
+
+    $(function () {
+
+        $(".wait-on-submit").submit(function( event ) {
+
+            Swal.fire({
+                title: 'Espera por favor...',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                timerProgressBar: true,
+            });
+
+            Swal.showLoading();
+        });
+    })
 
 </script>
 
