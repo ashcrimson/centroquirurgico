@@ -267,7 +267,7 @@
         },
         data: {
             cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
-            especialidad: @json($parte->especialidad ?? Especialida::find(old('especialidad_id')) ?? null),
+            especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
             clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
             preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
         },
