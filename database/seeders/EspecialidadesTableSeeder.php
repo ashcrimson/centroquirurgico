@@ -19,7 +19,7 @@ class EspecialidadesTableSeeder extends Seeder
 
         \DB::table('especialidades')->delete();
 
-        factory(Especialida::class,10)->create();
+        factory(Especialidad::class,10)->create();
 
     }
 }
