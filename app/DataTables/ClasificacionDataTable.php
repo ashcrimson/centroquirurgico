@@ -23,14 +23,14 @@ class ClasificacionDataTable extends DataTable
 
                  $id = $clasificacion->id;
 
-                 return view('clasificacions.datatables_actions',compact('clasificacion','id'))->render();
+                 return view('clasificaciones.datatables_actions',compact('clasificacion','id'))->render();
              })
              ->editColumn('id',function (Clasificacion $clasificacion){
 
                  return $clasificacion->id;
 
                  //se debe crear la vista modal_detalles
-                 //return view('clasificacions.modal_detalles',compact('clasificacion'))->render();
+                 //return view('clasificaciones.modal_detalles',compact('clasificacion'))->render();
 
              })
              ->rawColumns(['action','id']);
@@ -108,6 +108,6 @@ class ClasificacionDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'clasificacionsdatatable_' . time();
+        return 'clasificacionesdatatable_' . time();
     }
 }

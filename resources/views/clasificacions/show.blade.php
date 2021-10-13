@@ -23,8 +23,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-sm-12">
-                        @include('clasificacions.show_fields')
-                        <a href="{{ route('clasificacions.index') }}" class="btn btn-default">
+                        @include('clasificaciones.show_fields')
+                        <a href="{{ route('clasificaciones.index') }}" class="btn btn-default">
                         {{__('Back')}}
                         </a>
                     </div>

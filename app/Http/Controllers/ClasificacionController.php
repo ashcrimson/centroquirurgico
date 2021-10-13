@@ -16,10 +16,10 @@ class ClasificacionController extends AppBaseController
 
     public function __construct()
     {
-        $this->middleware('permission:Ver Clasificacions')->only(['show']);
-        $this->middleware('permission:Crear Clasificacions')->only(['create','store']);
-        $this->middleware('permission:Editar Clasificacions')->only(['edit','update',]);
-        $this->middleware('permission:Eliminar Clasificacions')->only(['destroy']);
+        $this->middleware('permission:Ver clasificaciones')->only(['show']);
+        $this->middleware('permission:Crear clasificaciones')->only(['create','store']);
+        $this->middleware('permission:Editar clasificaciones')->only(['edit','update',]);
+        $this->middleware('permission:Eliminar clasificaciones')->only(['destroy']);
     }
 
     /**
@@ -30,7 +30,7 @@ class ClasificacionController extends AppBaseController
      */
     public function index(ClasificacionDataTable $clasificacionDataTable)
     {
-        return $clasificacionDataTable->render('clasificacions.index');
+        return $clasificacionDataTable->render('clasificaciones.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class ClasificacionController extends AppBaseController
      */
     public function create()
     {
-        return view('clasificacions.create');
+        return view('clasificaciones.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class ClasificacionController extends AppBaseController
 
         Flash::success('Clasificacion guardado exitosamente.');
 
-        return redirect(route('clasificacions.index'));
+        return redirect(route('clasificaciones.index'));
     }
 
     /**
@@ -77,10 +77,10 @@ class ClasificacionController extends AppBaseController
         if (empty($clasificacion)) {
             Flash::error('Clasificacion no encontrado');
 
-            return redirect(route('clasificacions.index'));
+            return redirect(route('clasificaciones.index'));
         }
 
-        return view('clasificacions.show')->with('clasificacion', $clasificacion);
+        return view('clasificaciones.show')->with('clasificacion', $clasificacion);
     }
 
     /**
@@ -98,10 +98,10 @@ class ClasificacionController extends AppBaseController
         if (empty($clasificacion)) {
             Flash::error('Clasificacion no encontrado');
 
-            return redirect(route('clasificacions.index'));
+            return redirect(route('clasificaciones.index'));
         }
 
-        return view('clasificacions.edit')->with('clasificacion', $clasificacion);
+        return view('clasificaciones.edit')->with('clasificacion', $clasificacion);
     }
 
     /**
@@ -120,7 +120,7 @@ class ClasificacionController extends AppBaseController
         if (empty($clasificacion)) {
             Flash::error('Clasificacion no encontrado');
 
-            return redirect(route('clasificacions.index'));
+            return redirect(route('clasificaciones.index'));
         }
 
         $clasificacion->fill($request->all());
@@ -128,7 +128,7 @@ class ClasificacionController extends AppBaseController
 
         Flash::success('Clasificacion actualizado con éxito.');
 
-        return redirect(route('clasificacions.index'));
+        return redirect(route('clasificaciones.index'));
     }
 
     /**
@@ -148,13 +148,13 @@ class ClasificacionController extends AppBaseController
         if (empty($clasificacion)) {
             Flash::error('Clasificacion no encontrado');
 
-            return redirect(route('clasificacions.index'));
+            return redirect(route('clasificaciones.index'));
         }
 
         $clasificacion->delete();
 
         Flash::success('Clasificacion deleted successfully.');
 
-        return redirect(route('clasificacions.index'));
+        return redirect(route('clasificaciones.index'));
     }
 }

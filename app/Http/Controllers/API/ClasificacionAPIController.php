@@ -18,7 +18,7 @@ class ClasificacionAPIController extends AppBaseController
 {
     /**
      * Display a listing of the Clasificacion.
-     * GET|HEAD /clasificacions
+     * GET|HEAD /clasificaciones
      *
      * @param Request $request
      * @return Response
@@ -34,14 +34,14 @@ class ClasificacionAPIController extends AppBaseController
             $query->limit($request->get('limit'));
         }
 
-        $clasificacions = $query->get();
+        $clasificaciones = $query->get();
 
-        return $this->sendResponse($clasificacions->toArray(), 'Clasificacions retrieved successfully');
+        return $this->sendResponse($clasificaciones->toArray(), 'clasificaciones retrieved successfully');
     }
 
     /**
      * Store a newly created Clasificacion in storage.
-     * POST /clasificacions
+     * POST /clasificaciones
      *
      * @param CreateClasificacionAPIRequest $request
      *
@@ -59,7 +59,7 @@ class ClasificacionAPIController extends AppBaseController
 
     /**
      * Display the specified Clasificacion.
-     * GET|HEAD /clasificacions/{id}
+     * GET|HEAD /clasificaciones/{id}
      *
      * @param int $id
      *
@@ -79,7 +79,7 @@ class ClasificacionAPIController extends AppBaseController
 
     /**
      * Update the specified Clasificacion in storage.
-     * PUT/PATCH /clasificacions/{id}
+     * PUT/PATCH /clasificaciones/{id}
      *
      * @param int $id
      * @param UpdateClasificacionAPIRequest $request
@@ -103,7 +103,7 @@ class ClasificacionAPIController extends AppBaseController
 
     /**
      * Remove the specified Clasificacion from storage.
-     * DELETE /clasificacions/{id}
+     * DELETE /clasificaciones/{id}
      *
      * @param int $id
      *

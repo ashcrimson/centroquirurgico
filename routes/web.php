@@ -60,7 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('pabellones', 'PabellonController');
 
-    Route::resource('clasificacions', 'ClasificacionController');
+    Route::resource('clasificaciones', 'ClasificacionController');
 
     Route::resource('partes', 'ParteController');
 });

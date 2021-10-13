@@ -19,7 +19,7 @@ class ClasificacionApiTest extends TestCase
 
         $this->response = $this->json(
             'POST',
-            '/api/clasificacions', $clasificacion
+            '/api/clasificaciones', $clasificacion
         );
 
         $this->assertApiResponse($clasificacion);
@@ -34,7 +34,7 @@ class ClasificacionApiTest extends TestCase
 
         $this->response = $this->json(
             'GET',
-            '/api/clasificacions/'.$clasificacion->id
+            '/api/clasificaciones/'.$clasificacion->id
         );
 
         $this->assertApiResponse($clasificacion->toArray());
@@ -50,7 +50,7 @@ class ClasificacionApiTest extends TestCase
 
         $this->response = $this->json(
             'PUT',
-            '/api/clasificacions/'.$clasificacion->id,
+            '/api/clasificaciones/'.$clasificacion->id,
             $editedClasificacion
         );
 
@@ -66,13 +66,13 @@ class ClasificacionApiTest extends TestCase
 
         $this->response = $this->json(
             'DELETE',
-             '/api/clasificacions/'.$clasificacion->id
+             '/api/clasificaciones/'.$clasificacion->id
          );
 
         $this->assertApiSuccess();
         $this->response = $this->json(
             'GET',
-            '/api/clasificacions/'.$clasificacion->id
+            '/api/clasificaciones/'.$clasificacion->id
         );
 
         $this->response->assertStatus(404);

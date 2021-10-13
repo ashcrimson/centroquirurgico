@@ -14,12 +14,12 @@ class OptionsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('options')->delete();
-        
+
         \DB::table('options')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'option_id' => NULL,
@@ -35,7 +35,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2020-08-26 11:51:32',
                 'deleted_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'option_id' => NULL,
@@ -51,7 +51,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-09-23 11:46:05',
                 'deleted_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'option_id' => 2,
@@ -67,7 +67,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-09-23 11:46:05',
                 'deleted_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'option_id' => 2,
@@ -83,7 +83,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-09-23 11:46:05',
                 'deleted_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'option_id' => 2,
@@ -99,7 +99,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-09-23 11:46:05',
                 'deleted_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'option_id' => 2,
@@ -115,7 +115,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-09-23 11:46:05',
                 'deleted_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'option_id' => NULL,
@@ -131,7 +131,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-09-23 11:46:05',
                 'deleted_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'option_id' => 7,
@@ -147,7 +147,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-09-23 11:46:06',
                 'deleted_at' => NULL,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'option_id' => 7,
@@ -163,7 +163,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-09-23 11:46:05',
                 'deleted_at' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'option_id' => 7,
@@ -179,7 +179,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-09-23 11:46:06',
                 'deleted_at' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'option_id' => 7,
@@ -195,7 +195,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-09-23 11:46:05',
                 'deleted_at' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'option_id' => NULL,
@@ -211,7 +211,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-10-13 00:49:37',
                 'deleted_at' => NULL,
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'option_id' => NULL,
@@ -227,7 +227,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-10-13 00:49:51',
                 'deleted_at' => NULL,
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'option_id' => NULL,
@@ -243,7 +243,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-09-16 15:45:38',
                 'deleted_at' => NULL,
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 15,
                 'option_id' => NULL,
@@ -259,7 +259,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-09-23 11:46:05',
                 'deleted_at' => NULL,
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 16,
                 'option_id' => 15,
@@ -275,7 +275,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-10-13 00:50:56',
                 'deleted_at' => NULL,
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 17,
                 'option_id' => 15,
@@ -291,7 +291,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-10-13 00:51:17',
                 'deleted_at' => NULL,
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 18,
                 'option_id' => 15,
@@ -307,7 +307,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-10-13 00:52:43',
                 'deleted_at' => NULL,
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 19,
                 'option_id' => 15,
@@ -323,7 +323,7 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-10-13 00:52:56',
                 'deleted_at' => NULL,
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 20,
                 'option_id' => 15,
@@ -339,12 +339,12 @@ class OptionsTableSeeder extends Seeder
                 'updated_at' => '2021-10-13 00:53:44',
                 'deleted_at' => NULL,
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 21,
                 'option_id' => 15,
-                'nombre' => 'Clasificacions',
-                'ruta' => 'clasificacions.index',
+                'nombre' => 'clasificaciones',
+                'ruta' => 'clasificaciones.index',
                 'descripcion' => NULL,
                 'icono_l' => 'fa-circle-notch',
                 'icono_r' => NULL,
@@ -356,7 +356,7 @@ class OptionsTableSeeder extends Seeder
                 'deleted_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }
