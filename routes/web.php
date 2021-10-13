@@ -49,6 +49,21 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('projects', 'ProjectController');
 
+    Route::resource('pacientes', 'PacienteController');
+
+    Route::resource('cirugiaTipos', 'CirugiaTipoController');
+
+    Route::resource('especialidas', 'EspecialidaController');
+
+    Route::resource('preoperatorios', 'PreoperatorioController');
+
+    Route::resource('parteEstados', 'ParteEstadoController');
+
+    Route::resource('pabellons', 'PabellonController');
+
+    Route::resource('clasificacions', 'ClasificacionController');
+
+    Route::resource('partes', 'ParteController');
 });
 
 
