@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Especialida;
+use App\Models\Especialidad;
 use Illuminate\Database\Seeder;
 
 class EspecialidadesTableSeeder extends Seeder
