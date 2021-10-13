@@ -23,8 +23,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-sm-12">
-                        @include('especialidas.show_fields')
-                        <a href="{{ route('especialidas.index') }}" class="btn btn-default">
+                        @include('especialidades.show_fields')
+                        <a href="{{ route('especialidades.index') }}" class="btn btn-default">
                         {{__('Back')}}
                         </a>
                     </div>

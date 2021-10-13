@@ -23,14 +23,14 @@ class EspecialidaDataTable extends DataTable
 
                  $id = $especialida->id;
 
-                 return view('especialidas.datatables_actions',compact('especialida','id'))->render();
+                 return view('especialidades.datatables_actions',compact('especialida','id'))->render();
              })
              ->editColumn('id',function (Especialida $especialida){
 
                  return $especialida->id;
 
                  //se debe crear la vista modal_detalles
-                 //return view('especialidas.modal_detalles',compact('especialida'))->render();
+                 //return view('especialidades.modal_detalles',compact('especialida'))->render();
 
              })
              ->rawColumns(['action','id']);
@@ -108,6 +108,6 @@ class EspecialidaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'especialidasdatatable_' . time();
+        return 'especialidadesdatatable_' . time();
     }
 }

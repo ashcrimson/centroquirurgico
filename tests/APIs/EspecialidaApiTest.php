@@ -19,7 +19,7 @@ class EspecialidaApiTest extends TestCase
 
         $this->response = $this->json(
             'POST',
-            '/api/especialidas', $especialida
+            '/api/especialidades', $especialida
         );
 
         $this->assertApiResponse($especialida);
@@ -34,7 +34,7 @@ class EspecialidaApiTest extends TestCase
 
         $this->response = $this->json(
             'GET',
-            '/api/especialidas/'.$especialida->id
+            '/api/especialidades/'.$especialida->id
         );
 
         $this->assertApiResponse($especialida->toArray());
@@ -50,7 +50,7 @@ class EspecialidaApiTest extends TestCase
 
         $this->response = $this->json(
             'PUT',
-            '/api/especialidas/'.$especialida->id,
+            '/api/especialidades/'.$especialida->id,
             $editedEspecialida
         );
 
@@ -66,13 +66,13 @@ class EspecialidaApiTest extends TestCase
 
         $this->response = $this->json(
             'DELETE',
-             '/api/especialidas/'.$especialida->id
+             '/api/especialidades/'.$especialida->id
          );
 
         $this->assertApiSuccess();
         $this->response = $this->json(
             'GET',
-            '/api/especialidas/'.$especialida->id
+            '/api/especialidades/'.$especialida->id
         );
 
         $this->response->assertStatus(404);

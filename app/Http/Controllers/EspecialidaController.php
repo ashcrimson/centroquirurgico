@@ -16,10 +16,10 @@ class EspecialidaController extends AppBaseController
 
     public function __construct()
     {
-        $this->middleware('permission:Ver Especialidas')->only(['show']);
-        $this->middleware('permission:Crear Especialidas')->only(['create','store']);
-        $this->middleware('permission:Editar Especialidas')->only(['edit','update',]);
-        $this->middleware('permission:Eliminar Especialidas')->only(['destroy']);
+        $this->middleware('permission:Ver especialidades')->only(['show']);
+        $this->middleware('permission:Crear especialidades')->only(['create','store']);
+        $this->middleware('permission:Editar especialidades')->only(['edit','update',]);
+        $this->middleware('permission:Eliminar especialidades')->only(['destroy']);
     }
 
     /**
@@ -30,7 +30,7 @@ class EspecialidaController extends AppBaseController
      */
     public function index(EspecialidaDataTable $especialidaDataTable)
     {
-        return $especialidaDataTable->render('especialidas.index');
+        return $especialidaDataTable->render('especialidades.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class EspecialidaController extends AppBaseController
      */
     public function create()
     {
-        return view('especialidas.create');
+        return view('especialidades.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class EspecialidaController extends AppBaseController
 
         Flash::success('Especialida guardado exitosamente.');
 
-        return redirect(route('especialidas.index'));
+        return redirect(route('especialidades.index'));
     }
 
     /**
@@ -77,10 +77,10 @@ class EspecialidaController extends AppBaseController
         if (empty($especialida)) {
             Flash::error('Especialida no encontrado');
 
-            return redirect(route('especialidas.index'));
+            return redirect(route('especialidades.index'));
         }
 
-        return view('especialidas.show')->with('especialida', $especialida);
+        return view('especialidades.show')->with('especialida', $especialida);
     }
 
     /**
@@ -98,10 +98,10 @@ class EspecialidaController extends AppBaseController
         if (empty($especialida)) {
             Flash::error('Especialida no encontrado');
 
-            return redirect(route('especialidas.index'));
+            return redirect(route('especialidades.index'));
         }
 
-        return view('especialidas.edit')->with('especialida', $especialida);
+        return view('especialidades.edit')->with('especialida', $especialida);
     }
 
     /**
@@ -120,7 +120,7 @@ class EspecialidaController extends AppBaseController
         if (empty($especialida)) {
             Flash::error('Especialida no encontrado');
 
-            return redirect(route('especialidas.index'));
+            return redirect(route('especialidades.index'));
         }
 
         $especialida->fill($request->all());
@@ -128,7 +128,7 @@ class EspecialidaController extends AppBaseController
 
         Flash::success('Especialida actualizado con éxito.');
 
-        return redirect(route('especialidas.index'));
+        return redirect(route('especialidades.index'));
     }
 
     /**
@@ -148,13 +148,13 @@ class EspecialidaController extends AppBaseController
         if (empty($especialida)) {
             Flash::error('Especialida no encontrado');
 
-            return redirect(route('especialidas.index'));
+            return redirect(route('especialidades.index'));
         }
 
         $especialida->delete();
 
         Flash::success('Especialida deleted successfully.');
 
-        return redirect(route('especialidas.index'));
+        return redirect(route('especialidades.index'));
     }
 }

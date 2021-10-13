@@ -47,13 +47,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('permissions', 'PermissionController');
 
-    Route::resource('projects', 'ProjectController');
 
     Route::resource('pacientes', 'PacienteController');
 
     Route::resource('cirugiaTipos', 'CirugiaTipoController');
 
-    Route::resource('especialidas', 'EspecialidaController');
+    Route::resource('especialidades', 'EspecialidaController');
 
     Route::resource('preoperatorios', 'PreoperatorioController');
 

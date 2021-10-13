@@ -18,7 +18,7 @@ class EspecialidaAPIController extends AppBaseController
 {
     /**
      * Display a listing of the Especialida.
-     * GET|HEAD /especialidas
+     * GET|HEAD /especialidades
      *
      * @param Request $request
      * @return Response
@@ -34,14 +34,14 @@ class EspecialidaAPIController extends AppBaseController
             $query->limit($request->get('limit'));
         }
 
-        $especialidas = $query->get();
+        $especialidades = $query->get();
 
-        return $this->sendResponse($especialidas->toArray(), 'Especialidas retrieved successfully');
+        return $this->sendResponse($especialidades->toArray(), 'especialidades retrieved successfully');
     }
 
     /**
      * Store a newly created Especialida in storage.
-     * POST /especialidas
+     * POST /especialidades
      *
      * @param CreateEspecialidaAPIRequest $request
      *
@@ -59,7 +59,7 @@ class EspecialidaAPIController extends AppBaseController
 
     /**
      * Display the specified Especialida.
-     * GET|HEAD /especialidas/{id}
+     * GET|HEAD /especialidades/{id}
      *
      * @param int $id
      *
@@ -79,7 +79,7 @@ class EspecialidaAPIController extends AppBaseController
 
     /**
      * Update the specified Especialida in storage.
-     * PUT/PATCH /especialidas/{id}
+     * PUT/PATCH /especialidades/{id}
      *
      * @param int $id
      * @param UpdateEspecialidaAPIRequest $request
@@ -103,7 +103,7 @@ class EspecialidaAPIController extends AppBaseController
 
     /**
      * Remove the specified Especialida from storage.
-     * DELETE /especialidas/{id}
+     * DELETE /especialidades/{id}
      *
      * @param int $id
      *
