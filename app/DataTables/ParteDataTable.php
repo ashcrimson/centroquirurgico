@@ -46,7 +46,7 @@ class ParteDataTable extends DataTable
      */
     public function query(Parte $model)
     {
-        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'cirugiatipo', 'clasificacion']);
+        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'cirugiatipo', 'clasificacion','estado']);
     }
 
     /**
@@ -98,7 +98,7 @@ class ParteDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'paciente.nombre_completo', 
+            'paciente.run', 
             'cirugiatipo.nombre',
             'especialidad.nombre',
             'diagnostico',
@@ -122,7 +122,7 @@ class ParteDataTable extends DataTable
             'preoperatorio.nombre',
             'biopsia',
             'user_ingresa',
-            'estado_id',
+            'estado.nombre',
             'pabellon_id',
             'fecha_pabellon',
             'fecha_digitacion',
