@@ -234,11 +234,16 @@
                     </label>
                 </div>
 
+                <!-- Medicamentos Field -->
+                <div class="form-group col-sm-6 col-lg-6">
+                    {!! Form::label('medicamentos', 'Medicamentos:') !!}
+                    {!! Form::textarea('medicamentos', null, ['class' => 'form-control','rows' => 2]) !!}
+                </div>
 
 
 
             <!-- Instrumental Field -->
-                <div class="form-group col-sm-12 col-lg-12">
+                <div class="form-group col-sm-6 col-lg-6">
                     {!! Form::label('instrumental', 'Instrumental:') !!}
                     {!! Form::textarea('instrumental', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>

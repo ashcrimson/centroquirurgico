@@ -247,7 +247,7 @@ class OptionsTableSeeder extends Seeder
             array (
                 'id' => 15,
                 'option_id' => NULL,
-                'nombre' => 'Mantemedores',
+                'nombre' => 'Mantenedores',
                 'ruta' => 'x',
                 'descripcion' => NULL,
                 'icono_l' => 'fa-list-alt',

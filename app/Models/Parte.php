@@ -92,6 +92,7 @@ class Parte extends Model
         'fecha_pabellon',
         'fecha_digitacion',
         'instrumental',
+        'medicamentos',
         'observaciones'
     ];
 
@@ -130,6 +131,7 @@ class Parte extends Model
         'pabellon_id' => 'integer',
         'fecha_pabellon' => 'datetime',
         'fecha_digitacion' => 'datetime',
+        'medicamentos' => 'string',
         'instrumental' => 'string',
         'observaciones' => 'string'
     ];

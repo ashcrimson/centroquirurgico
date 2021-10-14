@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Paciente
@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $apellido_materno
  * @property string $primer_nombre
  * @property string $segundo_nombre
+ * @property string $nombre_completo
+ * @property string $rut_completo
  * @property string $fecha_nac
  * @property string $sexo
  * @property string $sigla_grado
@@ -38,6 +40,7 @@ class Paciente extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected $appends = ['nombre_completo','rut_completo'];
 
 
     public $fillable = [
@@ -114,5 +117,15 @@ class Paciente extends Model
     public function partes()
     {
         return $this->hasMany(\App\Models\Parte::class, 'paciente_id');
+    }
+
+    public function getNombreCompletoAttribute()
+    {
+        return $this->primer_nombre.' '.$this->segundo_nombre.' '.$this->apellido_paterno." ".$this->apellido_materno;
+    }
+
+    public function getRutCompletoAttribute()
+    {
+        return $this->run.'-'.$this->dv_run;
     }
 }

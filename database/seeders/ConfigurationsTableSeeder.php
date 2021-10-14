@@ -23,7 +23,7 @@ class ConfigurationsTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'key' => 'name',
-                'value' => 'PROA',
+                'value' => 'Centro Quirúrgico',
                 'descripcion' => 'SysBase',
                 'created_at' => '2004-07-23 07:21:12',
                 'updated_at' => '2021-07-16 09:30:10',

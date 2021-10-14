@@ -5,7 +5,8 @@
 @section('content')
 
     <div class="login-box">
-        <div class="login-logo text-dark text-uppercase text-bold"  >
+        <div class="login-logo text-dark text-uppercase text-bold">
+            <p><img src="{{asset('dist/img/Logo HNV.png')}}" alt=""></p>
             <a href="{{ route('home') }}"><b style="color: black !important;">{{ config('app.name', 'Laravel') }}</b></a>
         </div>
         <!-- /.login-logo -->
@@ -104,7 +105,7 @@
 
 
 
-                <p class="mb-1">
+                <!-- <p class="mb-1">
                     @if (Route::has('password.request'))
                         <a class="text-center" href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
@@ -115,7 +116,7 @@
                     <a href="{{route("register")}}" class="text-center">
                         {{__("Register a new membership")}}
                     </a>
-                </p>
+                </p> -->
             </div>
             <!-- /.login-card-body -->
         </div>
