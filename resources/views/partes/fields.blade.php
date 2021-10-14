@@ -60,10 +60,12 @@
                     </select-especialidad>
                 </div>
 
-                <!-- Diagnostico Field -->
-                <div class="form-group col-sm-4 col-lg-4">
-                    {!! Form::label('diagnostico', 'Diagnostico:') !!}
-                    {!! Form::text('diagnostico', null, ['class' => 'form-control']) !!}
+                <div class="form-group col-sm-4">
+                    <select-especialidad
+                        label="Diagnostico"
+                        v-model="diagnostico" >
+
+                    </select-especialidad>
                 </div>
 
                 <!-- Otros Diagnosticos Field -->
@@ -273,6 +275,7 @@
         data: {
             cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
             especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
+            diagnostico: @json($parte->diagnostico ?? App\Models\diagnosticos::find(old('diagnostico_id')) ?? null),
             clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
             preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
         },

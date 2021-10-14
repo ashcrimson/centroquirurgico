@@ -18,7 +18,7 @@ class CreatePartesTable extends Migration
             $table->unsignedBigInteger('paciente_id')->index('fk_partes_pacientes1_idx');
             $table->unsignedBigInteger('cirugia_tipo_id')->index('fk_partes_cirugia_tipos_idx');
             $table->unsignedBigInteger('especialidad_id')->index('fk_partes_especialidades1_idx');
-            $table->text('diagnostico')->nullable();
+            $table->unsignedBigInteger('diagnostico_id')->index('fk_partes_diagnosticos_idx');
             $table->text('otros_diagnosticos')->nullable();
             $table->text('medicamentos')->nullable();
             $table->text('intervencion')->nullable();

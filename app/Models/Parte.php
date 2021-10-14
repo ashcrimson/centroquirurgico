@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models; 
 
 use Illuminate\Database\Eloquent\Model;;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -66,7 +66,7 @@ class Parte extends Model
         'paciente_id',
         'cirugia_tipo_id',
         'especialidad_id',
-        'diagnostico',
+        'diagnostico_id',
         'otros_diagnosticos',
         'intervencion',
         'lateralidad',
@@ -106,7 +106,7 @@ class Parte extends Model
         'paciente_id' => 'integer',
         'cirugia_tipo_id' => 'integer',
         'especialidad_id' => 'integer',
-        'diagnostico' => 'string',
+        'diagnostico_id' => 'integer',
         'otros_diagnosticos' => 'string',
         'intervencion' => 'string',
         'lateralidad' => 'boolean',
@@ -237,5 +237,13 @@ class Parte extends Model
     public function userIngresa()
     {
         return $this->belongsTo(\App\Models\User::class, 'user_ingresa');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function diagnostico()
+    {
+        return $this->belongsTo(\App\Models\diagnosticos::class, 'diagnostico_id');
     }
 }
