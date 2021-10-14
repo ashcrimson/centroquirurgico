@@ -68,3 +68,8 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
+
+
+Route::resource('diagnosticos', 'diagnosticosController');
+
+Route::resource('intervenciones', 'IntervencionesController');
