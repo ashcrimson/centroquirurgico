@@ -1,6 +1,4 @@
 
-
-
 <div class="col-12">
     <div class="card card-secondary ">
         <div class="card-header py-1 px-3">
@@ -61,11 +59,15 @@
                 </div>
 
                 <div class="form-group col-sm-4">
-                    <select-diagnostico
-                        label="Diagnostico"
-                        v-model="diagnostico_id" >
-
-                    </select-diagnostico>
+                    {!! Form::label('diagnostico', 'Diagnostico:') !!}
+                    <multiselect v-model="diagnostico" :options="diagnosticos" label="campo_extra" placeholder="Seleccione uno...">
+                    <template  slot="noResult">
+                        <a class="btn btn-sm btn-block btn-success" href="#" @click.prevent="newItem()">
+                            <i class="fa fa-plus"></i> Nuevo
+                        </a>
+                    </template >
+                    </multiselect>
+                    <input type="hidden" name="diagnostico_id" value="diagnostico.id">
                 </div>
 
                 <!-- Otros Diagnosticos Field -->
@@ -76,11 +78,15 @@
 
                 <!-- Intervencion Field -->
                 <div class="form-group col-sm-8 col-lg-8">
-                    <select-intervencion
-                        label="Diagnostico"
-                        v-model="diagnostico_id" >
-
-                    </select-intervencion>
+                    {!! Form::label('Intervencion', 'Intervencion:') !!}
+                    <multiselect v-model="intervencion" :options="intervenciones" label="text" placeholder="Seleccione uno...">
+                    <template  slot="noResult">
+                        <a class="btn btn-sm btn-block btn-success" href="#" @click.prevent="newItem()">
+                            <i class="fa fa-plus"></i> Nuevo
+                        </a>
+                    </template >
+                    </multiselect>
+                    <input type="hidden" name="intervencion_id" value="intervencion.id">
                 </div>
 
                 <!-- Lateralidad Field -->
@@ -299,10 +305,14 @@
         data: {
             cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
             especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
-            diagnostico: @json($parte->diagnostico_id ?? App\Models\diagnosticos::find(old('diagnostico_id')) ?? null),
-            intervencion: @json($parte->Intervencion_id ?? App\Models\Intervenciones::find(old('intervencion_id')) ?? null),
+            diagnostico: @json($parte->diagnostico ?? App\Models\Diagnostico::find(old('diagnostico_id')) ?? null),
+            intervencion: null,
             clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
             preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
+            intervenciones:@json(App\Models\Intervencion::all()),
+
+            diagnosticos:@json(App\Models\Diagnostico::all())
+
         },
         methods: {
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
- * Class Intervenciones
+ * Class Intervencion
  * @package App\Models
  * @version October 14, 2021, 9:46 am CST
  *
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $cod_as400
  * @property integer $codpab
  */
-class Intervenciones extends Model
+class Intervencion extends Model
 {
     use SoftDeletes;
 
@@ -47,6 +47,10 @@ class Intervenciones extends Model
         'codpab' => 'integer'
     ];
 
+    protected $appends = [
+        'text'     
+    ];
+
     /**
      * Validation rules
      *
@@ -55,6 +59,12 @@ class Intervenciones extends Model
     public static $rules = [
         
     ];
+
+    public function getTextAttribute(){
+        return $this->cod_fonasa.'/'.$this->glosa;
+    }
+
+
 
     
 }

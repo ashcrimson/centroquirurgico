@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
- * Class diagnosticos
+ * Class Diagnostico
  * @package App\Models
  * @version October 14, 2021, 9:33 am CST
  *
  * @property string $codigo
  * @property string $descripcion
  */
-class diagnosticos extends Model
+class Diagnostico extends Model
 {
     use SoftDeletes;
 
@@ -38,6 +38,10 @@ class diagnosticos extends Model
         'descripcion' => 'string'
     ];
 
+    protected $appends = [
+        'campo_extra'     
+    ];
+
     /**
      * Validation rules
      *
@@ -46,6 +50,10 @@ class diagnosticos extends Model
     public static $rules = [
         
     ];
+
+    public function getCampoExtraAttribute(){
+        return $this->codigo.'/'.$this->descripcion;
+    }
 
     
 }
