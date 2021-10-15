@@ -13,9 +13,9 @@
 {!! $parte->especialidad_id !!}<br>
 
 
-<!-- Diagnostico Field -->
-{!! Form::label('diagnostico', 'Diagnostico:') !!}
-{!! $parte->diagnostico !!}<br>
+<!-- Diagnostico Id Field -->
+{!! Form::label('diagnostico_id', 'Diagnostico Id:') !!}
+{!! $parte->diagnostico_id !!}<br>
 
 
 <!-- Otros Diagnosticos Field -->
@@ -23,9 +23,14 @@
 {!! $parte->otros_diagnosticos !!}<br>
 
 
-<!-- Intervencion Field -->
-{!! Form::label('intervencion', 'Intervencion:') !!}
-{!! $parte->intervencion !!}<br>
+<!-- Medicamentos Field -->
+{!! Form::label('medicamentos', 'Medicamentos:') !!}
+{!! $parte->medicamentos !!}<br>
+
+
+<!-- Intervencion Id Field -->
+{!! Form::label('intervencion_id', 'Intervencion Id:') !!}
+{!! $parte->intervencion_id !!}<br>
 
 
 <!-- Lateralidad Field -->

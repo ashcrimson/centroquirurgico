@@ -3,7 +3,6 @@
 namespace App\DataTables;
 
 use App\Models\Parte;
-use Carbon\Carbon;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
@@ -46,7 +45,7 @@ class ParteDataTable extends DataTable
      */
     public function query(Parte $model)
     {
-        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'cirugiatipo', 'clasificacion','estado']);
+        return $model->newQuery();
     }
 
     /**
@@ -98,36 +97,37 @@ class ParteDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'paciente.run', 
-            'cirugiatipo.nombre',
-            'especialidad.nombre',
-            'diagnostico',
-            'otros_diagnosticos',
-            'intervencion',
-            'lateralidad',
-            'otras_intervenciones',
-            'cma',
-            'clasificacion.nombre',
-            'tiempo_quirurgico',
-            'anestesia_sugerida',
-            'aislamiento',
-            'alergia_latex',
-            'usuario_taco',
-            'nececidad_cama_upc',
-            'prioridad',
-            'necesita_donante_sangre',
-            'evaluacion_preanestesica',
-            'equipo_rayos',
-            'insumos_especificos',
-            'preoperatorio.nombre',
-            'biopsia',
-            'user_ingresa',
-            'estado.nombre',
-            'pabellon_id',
-            'fecha_pabellon',
-            'fecha_digitacion',
-            'instrumental',
-            'observaciones'
+            Column::make('paciente_id'),
+            Column::make('cirugia_tipo_id'),
+            Column::make('especialidad_id'),
+            Column::make('diagnostico_id'),
+            Column::make('otros_diagnosticos'),
+            Column::make('medicamentos'),
+            Column::make('intervencion_id'),
+            Column::make('lateralidad'),
+            Column::make('otras_intervenciones'),
+            Column::make('cma'),
+            Column::make('clasificacion_id'),
+            Column::make('tiempo_quirurgico'),
+            Column::make('anestesia_sugerida'),
+            Column::make('aislamiento'),
+            Column::make('alergia_latex'),
+            Column::make('usuario_taco'),
+            Column::make('nececidad_cama_upc'),
+            Column::make('prioridad'),
+            Column::make('necesita_donante_sangre'),
+            Column::make('evaluacion_preanestesica'),
+            Column::make('equipo_rayos'),
+            Column::make('insumos_especificos'),
+            Column::make('preoperatorio_id'),
+            Column::make('biopsia'),
+            Column::make('user_ingresa'),
+            Column::make('estado_id'),
+            Column::make('pabellon_id'),
+            Column::make('fecha_pabellon'),
+            Column::make('fecha_digitacion'),
+            Column::make('instrumental'),
+            Column::make('observaciones')
         ];
     }
 
