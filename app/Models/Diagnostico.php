@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @version October 15, 2021, 10:41 am CST
  *
  * @property \Illuminate\Database\Eloquent\Collection $partes
- * @property string $cdogio
+ * @property string $codigo
  * @property string $nombre
  */
 class Diagnostico extends Model
@@ -25,10 +25,10 @@ class Diagnostico extends Model
 
     protected $dates = ['deleted_at'];
 
-
+    protected $appends = ['text'];
 
     public $fillable = [
-        'cdogio',
+        'codigo',
         'nombre'
     ];
 
@@ -39,7 +39,7 @@ class Diagnostico extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'cdogio' => 'string',
+        'codigo' => 'string',
         'nombre' => 'string'
     ];
 
@@ -49,11 +49,11 @@ class Diagnostico extends Model
      * @var array
      */
     public static $rules = [
-        'cdogio' => 'required|string|max:255',
+        'codigo' => 'required|string|max:255',
         'nombre' => 'required|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
-        'deleted_at' => 'nullable'
+        'deleted_at' => 'nucllable'
     ];
 
     /**

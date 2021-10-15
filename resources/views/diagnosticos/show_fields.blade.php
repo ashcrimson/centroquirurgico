@@ -1,6 +1,6 @@
-<!-- Cdogio Field -->
-{!! Form::label('cdogio', 'Cdogio:') !!}
-{!! $diagnostico->cdogio !!}<br>
+<!-- Codigo Field -->
+{!! Form::label('codigo', 'Codigo:') !!}
+{!! $diagnostico->codigo !!}<br>
 
 
 <!-- Nombre Field -->

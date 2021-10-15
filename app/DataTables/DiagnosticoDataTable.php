@@ -97,7 +97,7 @@ class DiagnosticoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('cdogio'),
+            Column::make('codigo'),
             Column::make('nombre')
         ];
     }

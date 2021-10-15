@@ -15,7 +15,7 @@ class CreateDiagnosticosTable extends Migration
     {
         Schema::create('diagnosticos', function (Blueprint $table) {
             $table->id();
-            $table->string('cdogio');
+            $table->string('codigo');
             $table->string('nombre');
             $table->timestamps();
             $table->softDeletes();
