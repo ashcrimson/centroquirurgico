@@ -127,7 +127,26 @@
                 <!-- Tiempo Quirurgico Field -->
                 <div class="form-group col-sm-4">
                     {!! Form::label('tiempo_quirurgico', 'Tiempo Quirurgico:') !!}
-                    {!! Form::number('tiempo_quirurgico', null, ['class' => 'form-control']) !!}
+                    {!!
+                        Form::select(
+                            'tiempo_quirurgico',
+                            [
+                                null => 'Seleccione uno...',
+                                30 => 30,
+                                60 => 60,
+                                90 => 90,
+                                120 => 120,
+                                150 => 150,
+                                180 => 180,
+                                210 => 210,
+                                240 => 240,
+                                270 => 270,
+                                300 => 300,
+                            ]
+                            , null
+                            , ['id'=>'tiempo_quirurgico','class' => 'form-control','style'=>'width: 100%']
+                        )
+                    !!}
                 </div>
 
                 <!-- Anestesia Sugerida Field -->
