@@ -65,11 +65,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('clasificaciones', 'ClasificacionController');
 
     Route::resource('partes', 'ParteController');
+
+    Route::resource('intervencions', 'IntervencionController');
+
+    ///aca se deben de colocal las ruas para que solo los usuarios auntenticados puedan ingreasr
 });
 
 
 
 
-Route::resource('diagnosticos', 'diagnosticosController');
-
-Route::resource('intervenciones', 'IntervencionesController');

@@ -7,25 +7,29 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Diagnostico
  * @package App\Models
- * @version October 14, 2021, 9:33 am CST
+ * @version October 15, 2021, 10:41 am CST
  *
- * @property string $codigo
- * @property string $descripcion
+ * @property \Illuminate\Database\Eloquent\Collection $partes
+ * @property string $cdogio
+ * @property string $nombre
  */
 class Diagnostico extends Model
 {
     use SoftDeletes;
 
     public $table = 'diagnosticos';
-    
+
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
+
 
     protected $dates = ['deleted_at'];
 
 
 
     public $fillable = [
-        'codigo',
-        'descripcion'
+        'cdogio',
+        'nombre'
     ];
 
     /**
@@ -34,12 +38,9 @@ class Diagnostico extends Model
      * @var array
      */
     protected $casts = [
-        'codigo' => 'string',
-        'descripcion' => 'string'
-    ];
-
-    protected $appends = [
-        'campo_extra'     
+        'id' => 'integer',
+        'cdogio' => 'string',
+        'nombre' => 'string'
     ];
 
     /**
@@ -48,12 +49,22 @@ class Diagnostico extends Model
      * @var array
      */
     public static $rules = [
-        
+        'cdogio' => 'required|string|max:255',
+        'nombre' => 'required|string|max:255',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable',
+        'deleted_at' => 'nullable'
     ];
 
-    public function getCampoExtraAttribute(){
-        return $this->codigo.'/'.$this->descripcion;
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function partes()
+    {
+        return $this->hasMany(\App\Models\Parte::class, 'diagnostico_id');
     }
 
-    
+    public function getTextAttribute(){
+        return $this->codigo.' / '.$this->nombre;
+    }
 }

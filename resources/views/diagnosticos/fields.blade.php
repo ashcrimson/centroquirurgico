@@ -1,11 +1,11 @@
-<!-- Codigo Field -->
+<!-- Cdogio Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('codigo', 'Codigo:') !!}
-    {!! Form::text('codigo', null, ['class' => 'form-control']) !!}
+    {!! Form::label('cdogio', 'Cdogio:') !!}
+    {!! Form::text('cdogio', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
-<!-- Descripcion Field -->
+<!-- Nombre Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('descripcion', 'Descripcion:') !!}
-    {!! Form::text('descripcion', null, ['class' => 'form-control']) !!}
+    {!! Form::label('nombre', 'Nombre:') !!}
+    {!! Form::text('nombre', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
 </div>

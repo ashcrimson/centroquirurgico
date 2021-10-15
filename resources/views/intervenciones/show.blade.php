@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title_page',__('Intervenciones'))
+@section('title_page',__('Intervencion'))
 
 @section('content')
 
@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{__('Intervenciones')}}</h1>
+                    <h1>{{__('Intervencion')}}</h1>
                 </div>
                 <div class="col-sm-6">
 
@@ -23,8 +23,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-sm-12">
-                        @include('intervenciones.show_fields')
-                        <a href="{{ route('intervenciones.index') }}" class="btn btn-default">
+                        @include('intervencions.show_fields')
+                        <a href="{{ route('intervencions.index') }}" class="btn btn-default">
                         {{__('Back')}}
                         </a>
                     </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title_page',__('Edit Diagnosticos'))
+@section('title_page',__('Edit Diagnostico'))
 
 @section('content')
 
@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col">
-                    <h1>{{__('Edit Diagnosticos')}}</h1>
+                    <h1>{{__('Edit Diagnostico')}}</h1>
                 </div>
                 <div class="col">
                     <a class="btn btn-outline-info float-right"
@@ -30,7 +30,7 @@
             <div class="card">
                 <div class="card-body">
 
-                   {!! Form::model($diagnosticos, ['route' => ['diagnosticos.update', $diagnosticos->id], 'method' => 'patch','class' => 'wait-on-submit']) !!}
+                   {!! Form::model($diagnostico, ['route' => ['diagnosticos.update', $diagnostico->id], 'method' => 'patch','class' => 'wait-on-submit']) !!}
                         <div class="form-row">
 
                             @include('diagnosticos.fields')
