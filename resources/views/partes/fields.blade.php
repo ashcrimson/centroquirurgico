@@ -76,8 +76,11 @@
 
                 <!-- Intervencion Field -->
                 <div class="form-group col-sm-8 col-lg-8">
-                    {!! Form::label('intervencion', 'Intervencion:') !!}
-                    {!! Form::text('intervencion', null, ['class' => 'form-control','rows' => 2]) !!}
+                    <select-intervencion
+                        label="Diagnostico"
+                        v-model="diagnostico_id" >
+
+                    </select-intervencion>
                 </div>
 
                 <!-- Lateralidad Field -->
@@ -297,6 +300,7 @@
             cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
             especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
             diagnostico: @json($parte->diagnostico_id ?? App\Models\diagnosticos::find(old('diagnostico_id')) ?? null),
+            intervencion: @json($parte->Intervencion_id ?? App\Models\Intervenciones::find(old('intervencion_id')) ?? null),
             clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
             preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
         },
