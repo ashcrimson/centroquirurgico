@@ -19,7 +19,33 @@ class CirugiaTiposTableSeeder extends Seeder
 
         \DB::table('cirugia_tipos')->delete();
 
-        factory(CirugiaTipo::class,10)->create();
+        \DB::table('cirugia_tipos')->insert(array (
+            0 =>
+            array (
+                'id' => 1,
+                'nombre' => 'Cirugía Mayor',
+                'created_at' => '2020-08-26 11:46:42',
+                'updated_at' => '2020-08-26 11:51:32',
+                'deleted_at' => NULL,
+            ),
+            1 =>
+            array (
+                'id' => 2,
+                'nombre' => 'Cirugía Menor',
+                'created_at' => '2020-08-26 11:46:42',
+                'updated_at' => '2021-09-23 11:46:05',
+                'deleted_at' => NULL,
+            ),
+            2 =>
+            array (
+                'id' => 3,
+                'nombre' => 'Urgencia',
+                'created_at' => '2020-08-26 11:46:42',
+                'updated_at' => '2021-09-23 11:46:05',
+                'deleted_at' => NULL,
+            ),
+
+        ));
 
 
 

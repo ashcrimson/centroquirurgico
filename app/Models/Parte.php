@@ -144,7 +144,7 @@ class Parte extends Model
     public static $rules = [
         'cirugia_tipo_id' => 'required',
         'especialidad_id' => 'required',
-        'diagnostico' => 'nullable|string',
+        'diagnostico_id' => 'nullable',
         'otros_diagnosticos' => 'nullable|string',
         'intervencion' => 'nullable|string',
         'lateralidad' => 'nullable|boolean',

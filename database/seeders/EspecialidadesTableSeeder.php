@@ -19,7 +19,31 @@ class EspecialidadesTableSeeder extends Seeder
 
         \DB::table('especialidades')->delete();
 
-        factory(Especialidad::class,10)->create();
+        \DB::table('especialidades')->insert(array (
+            0 =>
+            array (
+                'id' => 1,
+                'nombre' => 'Cirugía General',
+                'created_at' => '2020-08-26 11:46:42',
+                'updated_at' => '2020-08-26 11:51:32',
+                'deleted_at' => NULL,
+            ),
+            1 =>
+            array (
+                'id' => 2,
+                'nombre' => 'Vascular',
+                'created_at' => '2020-08-26 11:46:42',
+                'updated_at' => '2021-09-23 11:46:05',
+                'deleted_at' => NULL,
+            ),
+            2 =>
+            array (
+                'id' => 3,
+                'nombre' => 'Neurocirugía',
+                'created_at' => '2020-08-26 11:46:42',
+                'updated_at' => '2021-09-23 11:46:05',
+                'deleted_at' => NULL,
+            ),
 
     }
 }
