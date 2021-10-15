@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateDiagnosticosTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -14,9 +14,9 @@ class CreateDiagnosticosTable extends Migration
     public function up()
     {
         Schema::create('diagnosticos', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('codigo');
-            $table->string('descripcion');
+            $table->id();
+            $table->string('cdogio');
+            $table->string('nombre');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +29,6 @@ class CreateDiagnosticosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('diagnosticos');
+        Schema::dropIfExists('diagnosticos');
     }
 }
