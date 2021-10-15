@@ -191,7 +191,7 @@ class Parte extends Model
      **/
     public function clasificacion()
     {
-        return $this->belongsTo(\App\Models\Clasificacione::class, 'clasificacion_id');
+        return $this->belongsTo(\App\Models\Clasificacion::class, 'clasificacion_id');
     }
 
     /**
@@ -205,7 +205,7 @@ class Parte extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function especialidad()
+        public function especialidad()
     {
         return $this->belongsTo(\App\Models\Especialidad::class, 'especialidad_id');
     }

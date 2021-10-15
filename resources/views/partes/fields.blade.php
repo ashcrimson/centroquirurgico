@@ -158,6 +158,7 @@
 
                 <!-- Aislamiento Field -->
                 <div class="form-group col-sm-4">
+                    <input type="hidden" name="aislamiento" value="0">
                     {!! Form::label('aislamiento', 'Aislamiento:') !!}<br>
 
                 <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="aislamiento" id="aislamiento"
@@ -169,6 +170,7 @@
 
                 <!-- Alergia Latex Field -->
                 <div class="form-group col-sm-4">
+                    <input type="hidden" name="alergia_latex" value="0">
                     {!! Form::label('alergia_latex', 'Alergia Latex:') !!}<br>
                     <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="alergia_latex" id="alergia_latex"
                        value="1"
@@ -179,6 +181,7 @@
 
                 <!-- Usuario Taco Field -->
                 <div class="form-group col-sm-4">
+                    <input type="hidden" name="alergia_latex" value="0">
                     {!! Form::label('usuario_taco', 'Usuario Taco:') !!}<br>
                     <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="usuario_taco" id="usuario_taco"
                        value="1"
@@ -188,6 +191,7 @@
 
                 <!-- Nececidad Cama Upc Field -->
                 <div class="form-group col-sm-4">
+                    <input type="hidden" name="nececidad_cama_upc" value="0">
                     {!! Form::label('nececidad_cama_upc', 'Nececidad Cama Upc:') !!}<br>
                     <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="nececidad_cama_upc" id="nececidad_cama_upc"
                        value="1"
@@ -197,6 +201,7 @@
 
                 <!-- Prioridad Field -->
                 <div class="form-group col-sm-4">
+                    <input type="hidden" name="prioridad" value="0">
                     {!! Form::label('prioridad', 'Prioridad:') !!}<br>
                     <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="prioridad" id="prioridad"
                        value="1"
@@ -206,6 +211,7 @@
 
                 <!-- Necesita Donante Sangre Field -->
                 <div class="form-group col-sm-4">
+                    <input type="hidden" name="necesita_donante_sangre" value="0">
                     {!! Form::label('necesita_donante_sangre', 'Necesita Donante Sangre:') !!}<br>
                     <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="necesita_donante_sangre" id="necesita_donante_sangre"
                        value="1"
@@ -215,6 +221,7 @@
 
                 <!-- Evaluacion Preanestesica Field -->
                 <div class="form-group col-sm-4">
+                    <input type="hidden" name="evaluacion_preanestesica" value="0">
                     {!! Form::label('evaluacion_preanestesica', 'Evaluacion Preanestesica:') !!}<br>
                     <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="evaluacion_preanestesica" id="evaluacion_preanestesica"
                        value="1"
@@ -224,6 +231,7 @@
 
                 <!-- Equipo Rayos Field -->
                 <div class="form-group col-sm-4">
+                    <input type="hidden" name="equipo_rayos" value="0">
                     {!! Form::label('equipo_rayos', 'Equipo Rayos:') !!}<br>
                     <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="equipo_rayos" id="equipo_rayos"
                        value="1"
@@ -233,6 +241,7 @@
 
                 <!-- Insumos Especificos Field -->
                 <div class="form-group col-sm-4">
+                    <input type="hidden" name="insumos_especificos" value="0">
                     {!! Form::label('insumos_especificos', 'Insumos Especificos:') !!}<br>
                     <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="insumos_especificos" id="insumos_especificos"
                        value="1"
@@ -252,6 +261,7 @@
 
                 <!-- Biopsia Field -->
                 <div class="form-group col-sm-6">
+                    <input type="hidden" name="biopsia" value="0">
                     {!! Form::label('biopsia', 'Biopsia:') !!}<br>
                     <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="biopsias" id="biopsia"
                        value="1"

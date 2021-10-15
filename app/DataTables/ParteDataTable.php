@@ -25,6 +25,21 @@ class ParteDataTable extends DataTable
 
                  return view('partes.datatables_actions',compact('parte','id'))->render();
              })
+           ->editColumn('paciente.nombre_completo',function (Parte $parte){
+
+               return $parte->paciente->nombre_completo;
+
+           })
+           ->editColumn('paciente.fecha_nac',function (Parte $parte){
+
+               return $parte->paciente->fecha_nac->format('d/m/Y');
+
+           })
+           ->editColumn('created_at',function (Parte $parte){
+
+               return $parte->created_at->format('d/m/Y');
+
+           })
              ->editColumn('id',function (Parte $parte){
 
                  return $parte->id;
@@ -45,7 +60,7 @@ class ParteDataTable extends DataTable
      */
     public function query(Parte $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado']);
     }
 
     /**
@@ -96,38 +111,42 @@ class ParteDataTable extends DataTable
      */
     protected function getColumns()
     {
+
+
+        //el metodo ->name()
+        // sirve para que datatables sepa como se llama el campo de la base de datos
+        // con los que hace querys cuando ser escribe algo en el campo de busqueda
+
+        //el metodo ->data()
+        // normalmente se coloca el mismo nombre del campo que se coloca en name
+        //pero en ocaciones cuando las relaciones estan escritras en camelCase laravel devuelve el attributo
+        // en snake_case por lo tanto en este caso el nombre del campo se esctibe nombre_relacion.campo
+        // tambien sirve para editar la columna a travez del nombre que lleve este metodo
+
         return [
-            Column::make('paciente_id'),
-            Column::make('cirugia_tipo_id'),
-            Column::make('especialidad_id'),
-            Column::make('diagnostico_id'),
-            Column::make('otros_diagnosticos'),
-            Column::make('medicamentos'),
-            Column::make('intervencion_id'),
-            Column::make('lateralidad'),
-            Column::make('otras_intervenciones'),
-            Column::make('cma'),
-            Column::make('clasificacion_id'),
-            Column::make('tiempo_quirurgico'),
-            Column::make('anestesia_sugerida'),
-            Column::make('aislamiento'),
-            Column::make('alergia_latex'),
-            Column::make('usuario_taco'),
-            Column::make('nececidad_cama_upc'),
-            Column::make('prioridad'),
-            Column::make('necesita_donante_sangre'),
-            Column::make('evaluacion_preanestesica'),
-            Column::make('equipo_rayos'),
-            Column::make('insumos_especificos'),
-            Column::make('preoperatorio_id'),
-            Column::make('biopsia'),
-            Column::make('user_ingresa'),
-            Column::make('estado_id'),
-            Column::make('pabellon_id'),
-            Column::make('fecha_pabellon'),
-            Column::make('fecha_digitacion'),
-            Column::make('instrumental'),
-            Column::make('observaciones')
+
+            Column::make('id')->data('id')->name('partes.id'),
+
+            //las siguientes 4 columnas no se ven por lo tanto no es nescesario los metodos name y data
+            Column::make('paciente.apellido_paterno')
+                ->visible(false)->exportable(false),
+            Column::make('paciente.apellido_materno')
+                ->visible(false)->exportable(false),
+            Column::make('paciente.primer_nombre')
+                ->visible(false)->exportable(false),
+            Column::make('paciente.segundo_nombre')
+                ->visible(false)->exportable(false),
+
+
+            Column::make('rut')->name('paciente.run')->data('paciente.run'),
+
+            Column::make('paciente')->name('paciente.nombre_completo')->data('paciente.nombre_completo')
+                ->searchable(false)->orderable(false),
+
+            Column::make('fecha_nac')->data('paciente.fecha_nac')->name('paciente.fecha_nac'),
+            Column::make('Fecha Parte')->name('created_at')->data('created_at'),
+
+            Column::make('estado')->data('estado.nombre')->name('estado.nombre')
         ];
     }
 
