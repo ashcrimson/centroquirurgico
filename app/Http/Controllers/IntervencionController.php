@@ -16,10 +16,10 @@ class IntervencionController extends AppBaseController
 
     public function __construct()
     {
-        $this->middleware('permission:Ver Intervencions')->only(['show']);
-        $this->middleware('permission:Crear Intervencions')->only(['create','store']);
-        $this->middleware('permission:Editar Intervencions')->only(['edit','update',]);
-        $this->middleware('permission:Eliminar Intervencions')->only(['destroy']);
+        $this->middleware('permission:Ver intervenciones')->only(['show']);
+        $this->middleware('permission:Crear intervenciones')->only(['create','store']);
+        $this->middleware('permission:Editar intervenciones')->only(['edit','update',]);
+        $this->middleware('permission:Eliminar intervenciones')->only(['destroy']);
     }
 
     /**
@@ -30,7 +30,7 @@ class IntervencionController extends AppBaseController
      */
     public function index(IntervencionDataTable $intervencionDataTable)
     {
-        return $intervencionDataTable->render('intervencions.index');
+        return $intervencionDataTable->render('intervenciones.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class IntervencionController extends AppBaseController
      */
     public function create()
     {
-        return view('intervencions.create');
+        return view('intervenciones.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class IntervencionController extends AppBaseController
 
         Flash::success('Intervencion guardado exitosamente.');
 
-        return redirect(route('intervencions.index'));
+        return redirect(route('intervenciones.index'));
     }
 
     /**
@@ -77,10 +77,10 @@ class IntervencionController extends AppBaseController
         if (empty($intervencion)) {
             Flash::error('Intervencion no encontrado');
 
-            return redirect(route('intervencions.index'));
+            return redirect(route('intervenciones.index'));
         }
 
-        return view('intervencions.show')->with('intervencion', $intervencion);
+        return view('intervenciones.show')->with('intervencion', $intervencion);
     }
 
     /**
@@ -98,10 +98,10 @@ class IntervencionController extends AppBaseController
         if (empty($intervencion)) {
             Flash::error('Intervencion no encontrado');
 
-            return redirect(route('intervencions.index'));
+            return redirect(route('intervenciones.index'));
         }
 
-        return view('intervencions.edit')->with('intervencion', $intervencion);
+        return view('intervenciones.edit')->with('intervencion', $intervencion);
     }
 
     /**
@@ -120,7 +120,7 @@ class IntervencionController extends AppBaseController
         if (empty($intervencion)) {
             Flash::error('Intervencion no encontrado');
 
-            return redirect(route('intervencions.index'));
+            return redirect(route('intervenciones.index'));
         }
 
         $intervencion->fill($request->all());
@@ -128,7 +128,7 @@ class IntervencionController extends AppBaseController
 
         Flash::success('Intervencion actualizado con éxito.');
 
-        return redirect(route('intervencions.index'));
+        return redirect(route('intervenciones.index'));
     }
 
     /**
@@ -148,13 +148,13 @@ class IntervencionController extends AppBaseController
         if (empty($intervencion)) {
             Flash::error('Intervencion no encontrado');
 
-            return redirect(route('intervencions.index'));
+            return redirect(route('intervenciones.index'));
         }
 
         $intervencion->delete();
 
         Flash::success('Intervencion deleted successfully.');
 
-        return redirect(route('intervencions.index'));
+        return redirect(route('intervenciones.index'));
     }
 }

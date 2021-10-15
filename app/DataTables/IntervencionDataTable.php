@@ -23,14 +23,14 @@ class IntervencionDataTable extends DataTable
 
                  $id = $intervencion->id;
 
-                 return view('intervencions.datatables_actions',compact('intervencion','id'))->render();
+                 return view('intervenciones.datatables_actions',compact('intervencion','id'))->render();
              })
              ->editColumn('id',function (Intervencion $intervencion){
 
                  return $intervencion->id;
 
                  //se debe crear la vista modal_detalles
-                 //return view('intervencions.modal_detalles',compact('intervencion'))->render();
+                 //return view('intervenciones.modal_detalles',compact('intervencion'))->render();
 
              })
              ->rawColumns(['action','id']);
@@ -112,6 +112,6 @@ class IntervencionDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'intervencionsdatatable_' . time();
+        return 'intervencionesdatatable_' . time();
     }
 }

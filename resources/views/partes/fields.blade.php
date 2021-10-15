@@ -59,15 +59,11 @@
                 </div>
 
                 <div class="form-group col-sm-4">
-                    {!! Form::label('diagnostico', 'Diagnostico:') !!}
-                    <multiselect v-model="diagnostico" :options="diagnosticos" label="campo_extra" placeholder="Seleccione uno...">
-                    <template  slot="noResult">
-                        <a class="btn btn-sm btn-block btn-success" href="#" @click.prevent="newItem()">
-                            <i class="fa fa-plus"></i> Nuevo
-                        </a>
-                    </template >
-                    </multiselect>
-                    <input type="hidden" name="diagnostico_id" value="diagnostico.id">
+                    <select-diagnostico
+                        label="Diagnostico"
+                        v-model="diagnostico" >
+
+                    </select-diagnostico>
                 </div>
 
                 <!-- Otros Diagnosticos Field -->
@@ -78,15 +74,11 @@
 
                 <!-- Intervencion Field -->
                 <div class="form-group col-sm-8 col-lg-8">
-                    {!! Form::label('Intervencion', 'Intervencion:') !!}
-                    <multiselect v-model="intervencion" :options="intervenciones" label="text" placeholder="Seleccione uno...">
-                    <template  slot="noResult">
-                        <a class="btn btn-sm btn-block btn-success" href="#" @click.prevent="newItem()">
-                            <i class="fa fa-plus"></i> Nuevo
-                        </a>
-                    </template >
-                    </multiselect>
-                    <input type="hidden" name="intervencion_id" value="intervencion.id">
+                    <select-intervencion
+                        label="Intervencion"
+                        v-model="intervencion" >
+
+                    </select-intervencion>
                 </div>
 
                 <!-- Lateralidad Field -->
@@ -171,7 +163,7 @@
                 <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="aislamiento" id="aislamiento"
                        value="1"
                         {{ ($parte->aislamiento ?? old('aislamiento') ?? false) ? 'checked' : '' }}>
-                   
+
                 </div>
 
 
@@ -181,7 +173,7 @@
                     <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="alergia_latex" id="alergia_latex"
                        value="1"
                         {{ ($parte->alergia_latex ?? old('alergia_latex') ?? false) ? 'checked' : '' }}>
-                    
+
                 </div>
 
 
@@ -304,15 +296,16 @@
         },
         data: {
             cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
+
             especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
-            diagnostico: @json($parte->diagnostico ?? App\Models\Diagnostico::find(old('diagnostico_id')) ?? null),
-            intervencion: null,
+
+            diagnostico: @json($parte->diagnostico ?? Diagnostico::find(old('diagnostico_id')) ?? null),
+
+            intervencion: @json($parte->intervencion ?? Intervencion::find(old('intervencion_id')) ?? null),
+
             clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
+
             preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
-            intervenciones:@json(App\Models\Intervencion::all()),
-
-            diagnosticos:@json(App\Models\Diagnostico::all())
-
         },
         methods: {
 

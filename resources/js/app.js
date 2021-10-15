@@ -121,3 +121,6 @@ Vue.component('select-preoperatorio', SelectPreoperatorio);
 
 import SelectIntervencion from "./components/SelectIntervencion";
 Vue.component('select-intervencion', SelectIntervencion);
+
+import SelectDiagnostico from "./components/SelectDiagnostico";
+Vue.component('select-diagnostico', SelectDiagnostico);

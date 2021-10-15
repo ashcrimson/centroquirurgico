@@ -27,10 +27,12 @@ class DatabaseSeeder extends Seeder
         $this->call(PabellonesTableSeeder::class);
         $this->call(ParteEstadosTableSeeder::class);
         $this->call(PreoperatoriosTableSeeder::class);
-
+        $this->call(IntervencionesTableSeeder::class);
+        $this->call(DiagnosticosTableSeeder::class);
 
         if (app()->environment()=='local'){
             $this->call(PacientesTableSeeder::class);
+
 
         }
     }

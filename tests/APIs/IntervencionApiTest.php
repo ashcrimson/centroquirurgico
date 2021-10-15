@@ -19,7 +19,7 @@ class IntervencionApiTest extends TestCase
 
         $this->response = $this->json(
             'POST',
-            '/api/intervencions', $intervencion
+            '/api/intervenciones', $intervencion
         );
 
         $this->assertApiResponse($intervencion);
@@ -34,7 +34,7 @@ class IntervencionApiTest extends TestCase
 
         $this->response = $this->json(
             'GET',
-            '/api/intervencions/'.$intervencion->id
+            '/api/intervenciones/'.$intervencion->id
         );
 
         $this->assertApiResponse($intervencion->toArray());
@@ -50,7 +50,7 @@ class IntervencionApiTest extends TestCase
 
         $this->response = $this->json(
             'PUT',
-            '/api/intervencions/'.$intervencion->id,
+            '/api/intervenciones/'.$intervencion->id,
             $editedIntervencion
         );
 
@@ -66,13 +66,13 @@ class IntervencionApiTest extends TestCase
 
         $this->response = $this->json(
             'DELETE',
-             '/api/intervencions/'.$intervencion->id
+             '/api/intervenciones/'.$intervencion->id
          );
 
         $this->assertApiSuccess();
         $this->response = $this->json(
             'GET',
-            '/api/intervencions/'.$intervencion->id
+            '/api/intervenciones/'.$intervencion->id
         );
 
         $this->response->assertStatus(404);

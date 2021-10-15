@@ -5,13 +5,16 @@
 use App\Models\Diagnostico;
 use Faker\Generator as Faker;
 
-$factory->define(Diagnostico::class, function (Faker $faker) {
+$autoIncrement = autoIncrementFaker();
+
+$factory->define(Diagnostico::class, function (Faker $faker) use ($autoIncrement) {
+
+    $autoIncrement->next();
 
     return [
-        'cdogio' => $this->faker->word,
-        'nombre' => $this->faker->word,
+        'cdogio' => prefijoCeros($autoIncrement->current(),2),
+        'nombre' => "Diagnostico - ".$autoIncrement->current(),
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
-        'updated_at' => $this->faker->date('Y-m-d H:i:s'),
-        'deleted_at' => $this->faker->date('Y-m-d H:i:s')
+        'updated_at' => $this->faker->date('Y-m-d H:i:s')
     ];
 });

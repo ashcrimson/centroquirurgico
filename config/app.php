@@ -233,6 +233,8 @@ return [
         'CirugiaTipo' => \App\Models\CirugiaTipo::class,
         'Preoperatorio' => \App\Models\Preoperatorio::class,
         'Clasificacion' => \App\Models\Clasificacion::class,
+        'Diagnostico' => \App\Models\Diagnostico::class,
+        'Intervencion' => \App\Models\Intervencion::class,
 
     ],
 

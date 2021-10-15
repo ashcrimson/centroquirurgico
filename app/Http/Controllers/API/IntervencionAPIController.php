@@ -18,7 +18,7 @@ class IntervencionAPIController extends AppBaseController
 {
     /**
      * Display a listing of the Intervencion.
-     * GET|HEAD /intervencions
+     * GET|HEAD /intervenciones
      *
      * @param Request $request
      * @return Response
@@ -34,14 +34,14 @@ class IntervencionAPIController extends AppBaseController
             $query->limit($request->get('limit'));
         }
 
-        $intervencions = $query->get();
+        $intervenciones = $query->get();
 
-        return $this->sendResponse($intervencions->toArray(), 'Intervencions retrieved successfully');
+        return $this->sendResponse($intervenciones->toArray(), 'intervenciones retrieved successfully');
     }
 
     /**
      * Store a newly created Intervencion in storage.
-     * POST /intervencions
+     * POST /intervenciones
      *
      * @param CreateIntervencionAPIRequest $request
      *
@@ -59,7 +59,7 @@ class IntervencionAPIController extends AppBaseController
 
     /**
      * Display the specified Intervencion.
-     * GET|HEAD /intervencions/{id}
+     * GET|HEAD /intervenciones/{id}
      *
      * @param int $id
      *
@@ -79,7 +79,7 @@ class IntervencionAPIController extends AppBaseController
 
     /**
      * Update the specified Intervencion in storage.
-     * PUT/PATCH /intervencions/{id}
+     * PUT/PATCH /intervenciones/{id}
      *
      * @param int $id
      * @param UpdateIntervencionAPIRequest $request
@@ -103,7 +103,7 @@ class IntervencionAPIController extends AppBaseController
 
     /**
      * Remove the specified Intervencion from storage.
-     * DELETE /intervencions/{id}
+     * DELETE /intervenciones/{id}
      *
      * @param int $id
      *
