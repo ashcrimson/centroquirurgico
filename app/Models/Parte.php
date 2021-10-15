@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Models; 
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Parte
  * @package App\Models
- * @version October 13, 2021, 12:35 am CST
+ * @version October 15, 2021, 11:21 am CST
  *
  * @property \App\Models\CirugiaTipo $cirugiaTipo
  * @property \App\Models\Clasificacion $clasificacion
+ * @property \App\Models\Diagnostico $diagnostico
  * @property \App\Models\Especialidad $especialidad
+ * @property \App\Models\Intervencion $intervencion
  * @property \App\Models\Pabellon $pabellon
  * @property \App\Models\Paciente $paciente
  * @property \App\Models\ParteEstado $estado
@@ -20,10 +22,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $paciente_id
  * @property integer $cirugia_tipo_id
  * @property integer $especialidad_id
- * @property string $diagnostico
+ * @property integer $diagnostico_id
  * @property string $otros_diagnosticos
- * @property string $intervencion
- * @property boolean $lateralidad
+ * @property string $medicamentos
+ * @property integer $intervencion_id
+ * @property string $lateralidad
  * @property string $otras_intervenciones
  * @property boolean $cma
  * @property integer $clasificacion_id
@@ -68,7 +71,8 @@ class Parte extends Model
         'especialidad_id',
         'diagnostico_id',
         'otros_diagnosticos',
-        'intervencion',
+        'medicamentos',
+        'intervencion_id',
         'lateralidad',
         'otras_intervenciones',
         'cma',
@@ -92,7 +96,6 @@ class Parte extends Model
         'fecha_pabellon',
         'fecha_digitacion',
         'instrumental',
-        'medicamentos',
         'observaciones'
     ];
 
@@ -108,8 +111,9 @@ class Parte extends Model
         'especialidad_id' => 'integer',
         'diagnostico_id' => 'integer',
         'otros_diagnosticos' => 'string',
-        'intervencion' => 'string',
-        'lateralidad' => 'boolean',
+        'medicamentos' => 'string',
+        'intervencion_id' => 'integer',
+        'lateralidad' => 'string',
         'otras_intervenciones' => 'string',
         'cma' => 'boolean',
         'clasificacion_id' => 'integer',
@@ -131,7 +135,6 @@ class Parte extends Model
         'pabellon_id' => 'integer',
         'fecha_pabellon' => 'datetime',
         'fecha_digitacion' => 'datetime',
-        'medicamentos' => 'string',
         'instrumental' => 'string',
         'observaciones' => 'string'
     ];
@@ -144,10 +147,11 @@ class Parte extends Model
     public static $rules = [
         'cirugia_tipo_id' => 'required',
         'especialidad_id' => 'required',
-        'diagnostico_id' => 'nullable',
+        'diagnostico_id' => 'required',
         'otros_diagnosticos' => 'nullable|string',
-        'intervencion' => 'nullable|string',
-        'lateralidad' => 'nullable|boolean',
+        'medicamentos' => 'nullable|string',
+        'intervencion_id' => 'required',
+        'lateralidad' => 'nullable|string|max:255',
         'otras_intervenciones' => 'nullable|string',
         'cma' => 'nullable|boolean',
         'clasificacion_id' => 'required',
@@ -164,7 +168,6 @@ class Parte extends Model
         'insumos_especificos' => 'nullable|boolean',
         'preoperatorio_id' => 'required',
         'biopsia' => 'nullable|boolean',
-
         'pabellon_id' => 'nullable|integer',
         'fecha_pabellon' => 'nullable',
         'fecha_digitacion' => 'nullable',
@@ -188,7 +191,15 @@ class Parte extends Model
      **/
     public function clasificacion()
     {
-        return $this->belongsTo(\App\Models\Clasificacion::class, 'clasificacion_id');
+        return $this->belongsTo(\App\Models\Clasificacione::class, 'clasificacion_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function diagnostico()
+    {
+        return $this->belongsTo(\App\Models\Diagnostico::class, 'diagnostico_id');
     }
 
     /**
@@ -197,6 +208,14 @@ class Parte extends Model
     public function especialidad()
     {
         return $this->belongsTo(\App\Models\Especialidad::class, 'especialidad_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function intervencion()
+    {
+        return $this->belongsTo(\App\Models\Intervencion::class, 'intervencion_id');
     }
 
     /**
@@ -237,13 +256,5 @@ class Parte extends Model
     public function userIngresa()
     {
         return $this->belongsTo(\App\Models\User::class, 'user_ingresa');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function diagnostico()
-    {
-        return $this->belongsTo(\App\Models\diagnosticos::class, 'diagnostico_id');
     }
 }

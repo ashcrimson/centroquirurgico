@@ -22,7 +22,7 @@ class CreatePartesTable extends Migration
             $table->text('otros_diagnosticos')->nullable();
             $table->text('medicamentos')->nullable();
             $table->unsignedBigInteger('intervencion_id')->index('fk_partes_intervenciones1_idx');
-            $table->tinyInteger('lateralidad')->nullable();
+            $table->string('lateralidad')->nullable();
             $table->text('otras_intervenciones')->nullable();
             $table->tinyInteger('cma')->nullable();
             $table->unsignedBigInteger('clasificacion_id')->index('fk_partes_clasificaciones1_idx');
