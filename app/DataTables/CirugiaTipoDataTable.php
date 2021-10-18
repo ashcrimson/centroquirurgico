@@ -33,6 +33,11 @@ class CirugiaTipoDataTable extends DataTable
                  //return view('cirugia_tipos.modal_detalles',compact('cirugiaTipo'))->render();
 
              })
+           ->editColumn('clasificaciones',function (CirugiaTipo $cirugiaTipo){
+               if ($cirugiaTipo->clasificaciones->count()>0){
+                   return implode(',',$cirugiaTipo->clasificaciones->pluck('nombre')->toArray());
+               }
+           })
              ->rawColumns(['action','id']);
 
     }
@@ -97,7 +102,8 @@ class CirugiaTipoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('nombre')
+            Column::make('nombre'),
+            Column::make('clasificaciones')->searchable(false)->orderable(false)
         ];
     }
 

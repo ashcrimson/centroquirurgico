@@ -19,7 +19,17 @@ class ClasificacionesTableSeeder extends Seeder
 
         \DB::table('clasificaciones')->delete();
 
-        factory(Clasificacion::class,10)->create();
+        factory(Clasificacion::class,1)->create(['nombre' => 'ASA 1']);
+        factory(Clasificacion::class,1)->create(['nombre' => 'ASA 2']);
+        factory(Clasificacion::class,1)->create(['nombre' => 'ASA 3']);
+        factory(Clasificacion::class,1)->create(['nombre' => 'ASA 4']);
+        factory(Clasificacion::class,1)->create(['nombre' => 'ASA 5']);
+
+        factory(Clasificacion::class,1)->create(['nombre' => 'ASA 1-E']);
+        factory(Clasificacion::class,1)->create(['nombre' => 'ASA 2-E']);
+        factory(Clasificacion::class,1)->create(['nombre' => 'ASA 3-E']);
+        factory(Clasificacion::class,1)->create(['nombre' => 'ASA 4-E']);
+        factory(Clasificacion::class,1)->create(['nombre' => 'ASA 5-E']);
 
     }
 }

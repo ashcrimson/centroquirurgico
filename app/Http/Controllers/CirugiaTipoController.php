@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateCirugiaTipoRequest;
 use App\Models\CirugiaTipo;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\DB;
 use Response;
 
 class CirugiaTipoController extends AppBaseController
@@ -54,8 +55,24 @@ class CirugiaTipoController extends AppBaseController
     {
         $input = $request->all();
 
-        /** @var CirugiaTipo $cirugiaTipo */
-        $cirugiaTipo = CirugiaTipo::create($input);
+        try {
+            DB::beginTransaction();
+
+            /**
+             * @var CirugiaTipo $cirugiaTipo
+             */
+            $cirugiaTipo = CirugiaTipo::create($input);
+
+            $cirugiaTipo->clasificaciones()->sync($request->clasificaciones ?? []);
+
+        } catch (Exception $exception) {
+            DB::rollBack();
+
+            throw new Exception($exception);
+        }
+
+        DB::commit();
+
 
         Flash::success('Cirugia Tipo guardado exitosamente.');
 
@@ -95,6 +112,7 @@ class CirugiaTipoController extends AppBaseController
         /** @var CirugiaTipo $cirugiaTipo */
         $cirugiaTipo = CirugiaTipo::find($id);
 
+
         if (empty($cirugiaTipo)) {
             Flash::error('Cirugia Tipo no encontrado');
 
@@ -117,14 +135,32 @@ class CirugiaTipoController extends AppBaseController
         /** @var CirugiaTipo $cirugiaTipo */
         $cirugiaTipo = CirugiaTipo::find($id);
 
+
         if (empty($cirugiaTipo)) {
             Flash::error('Cirugia Tipo no encontrado');
 
             return redirect(route('cirugiaTipos.index'));
         }
 
-        $cirugiaTipo->fill($request->all());
-        $cirugiaTipo->save();
+
+        try {
+            DB::beginTransaction();
+
+            $cirugiaTipo->fill($request->all());
+            $cirugiaTipo->save();
+
+            $cirugiaTipo->clasificaciones()->sync($request->clasificaciones ?? []);
+
+        } catch (Exception $exception) {
+            DB::rollBack();
+
+            throw new Exception($exception);
+        }
+
+        DB::commit();
+
+
+
 
         Flash::success('Cirugia Tipo actualizado con éxito.');
 

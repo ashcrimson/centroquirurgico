@@ -25,7 +25,7 @@ class CirugiaTipoAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $query = CirugiaTipo::query();
+        $query = CirugiaTipo::with('clasificaciones');
 
         if ($request->get('skip')) {
             $query->skip($request->get('skip'));

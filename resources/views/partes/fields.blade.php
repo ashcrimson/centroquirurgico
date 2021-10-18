@@ -108,23 +108,31 @@
                 </div>
 
                 <!-- Cma Field -->
-                <div class="form-group col-sm-4">
-                    {!! Form::label('cma', 'Cma:') !!}<br>
-                    <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="cma" id="cma"
+                <div class="form-group col-sm-4" >
+                    {!! Form::label('cma', 'Cma:') !!}
+                    <span v-show="cirugia_tipo && !esCirugiaMayor " class="text-muted">No aplica par el tipo de cirugia</span>
+                    <br>
+
+                    <input type="checkbox" data-toggle="toggle"
+                           data-size="normal"
+                           data-on="Si" data-off="No"
+                           data-style="ios"
+                           name="cma"
+                           id="cma"
+                           :disabled="!esCirugiaMayor"
+                           :required="esCirugiaMayor"
                        value="1"
                         {{ ($parte->cma ?? old('cma') ?? false) ? 'checked' : '' }}>
                 </div>
 
 
-                <!-- Clasificacion Id Field -->
                 <div class="form-group col-sm-4">
-                    <select-clasificacion
-                        label="Clasificación ASA"
-                        v-model="clasificacion" >
+                    {!! Form::label('clasificacion', 'Clasificación ASA:') !!}
+                    <!-- Clasificacion Id Field -->
+                    <multiselect v-model="clasificacion" :options="clasificaciones" label="nombre" placeholder="Seleccione uno...">
+                    </multiselect>
 
-                    </select-clasificacion>
                 </div>
-
                 <!-- Tiempo Quirurgico Field -->
                 <div class="form-group col-sm-4">
                     {!! Form::label('tiempo_quirurgico', 'Tiempo Quirurgico:') !!}
@@ -156,96 +164,120 @@
                     {!! Form::text('anestesia_sugerida', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
                 </div>
 
-                <!-- Aislamiento Field -->
-                <div class="form-group col-sm-4">
-                    <input type="hidden" name="aislamiento" value="0">
-                    {!! Form::label('aislamiento', 'Aislamiento:') !!}<br>
 
-                <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="aislamiento" id="aislamiento"
-                       value="1"
-                        {{ ($parte->aislamiento ?? old('aislamiento') ?? false) ? 'checked' : '' }}>
+                <div class="form-group col-sm-12">
+                    <div class="card  card-secondary">
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Mamrcar todos como si -->
+                            <div class="col-sm-12">
+                                {!! Form::label('toso_si', 'Marcar todos como sí:') !!}<br>
 
+                                <input type="checkbox"  data-toggle="toggle"
+                                       data-size="normal" data-on="Si" data-off="No"
+                                       data-style="ios" name="todos_si" id="todos_si"
+                                       value="1"
+                                    {{ ($parte->todos_si ?? old('todos_si') ?? false) ? 'checked' : '' }}>
+
+                            </div>
+
+                            <!-- Aislamiento Field -->
+                            <div class="col-sm-3">
+                                <input type="hidden" name="aislamiento" value="0">
+                                {!! Form::label('aislamiento', 'Aislamiento:') !!}<br>
+
+                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="aislamiento" id="aislamiento"
+                                       value="1"
+                                    {{ ($parte->aislamiento ?? old('aislamiento') ?? false) ? 'checked' : '' }}>
+
+                            </div>
+
+
+                            <!-- Alergia Latex Field -->
+                            <div class="col-sm-3">
+                                <input type="hidden" name="alergia_latex" value="0">
+                                {!! Form::label('alergia_latex', 'Alergia Latex:') !!}<br>
+                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="alergia_latex" id="alergia_latex"
+                                       value="1"
+                                    {{ ($parte->alergia_latex ?? old('alergia_latex') ?? false) ? 'checked' : '' }}>
+
+                            </div>
+
+
+                            <!-- Usuario Taco Field -->
+                            <div class="col-sm-3">
+                                <input type="hidden" name="alergia_latex" value="0">
+                                {!! Form::label('usuario_taco', 'Usuario Taco:') !!}<br>
+                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="usuario_taco" id="usuario_taco"
+                                       value="1"
+                                    {{ ($parte->alergia_latex ?? old('alergia_latex') ?? false) ? 'checked' : '' }}>
+                            </div>
+
+
+                            <!-- Nececidad Cama Upc Field -->
+                            <div class="col-sm-3">
+                                <input type="hidden" name="nececidad_cama_upc" value="0">
+                                {!! Form::label('nececidad_cama_upc', 'Nececidad Cama Upc:') !!}<br>
+                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="nececidad_cama_upc" id="nececidad_cama_upc"
+                                       value="1"
+                                    {{ ($parte->nececidad_cama_upc ?? old('nececidad_cama_upc') ?? false) ? 'checked' : '' }}>
+                            </div>
+
+
+                            <!-- Prioridad Field -->
+                            <div class="col-sm-3">
+                                <input type="hidden" name="prioridad" value="0">
+                                {!! Form::label('prioridad', 'Prioridad:') !!}<br>
+                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="prioridad" id="prioridad"
+                                       value="1"
+                                    {{ ($parte->prioridad ?? old('prioridad') ?? false) ? 'checked' : '' }}>
+                            </div>
+
+
+                            <!-- Necesita Donante Sangre Field -->
+                            <div class="col-sm-3">
+                                <input type="hidden" name="necesita_donante_sangre" value="0">
+                                {!! Form::label('necesita_donante_sangre', 'Necesita Donante Sangre:') !!}<br>
+                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="necesita_donante_sangre" id="necesita_donante_sangre"
+                                       value="1"
+                                    {{ ($parte->necesita_donante_sangre ?? old('necesita_donante_sangre') ?? false) ? 'checked' : '' }}>
+                            </div>
+
+
+                            <!-- Evaluacion Preanestesica Field -->
+                            <div class="col-sm-3">
+                                <input type="hidden" name="evaluacion_preanestesica" value="0">
+                                {!! Form::label('evaluacion_preanestesica', 'Evaluacion Preanestesica:') !!}<br>
+                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="evaluacion_preanestesica" id="evaluacion_preanestesica"
+                                       value="1"
+                                    {{ ($parte->evaluacion_preanestesica ?? old('evaluacion_preanestesica') ?? false) ? 'checked' : '' }}>
+                            </div>
+
+
+                            <!-- Equipo Rayos Field -->
+                            <div class="col-sm-3">
+                                <input type="hidden" name="equipo_rayos" value="0">
+                                {!! Form::label('equipo_rayos', 'Equipo Rayos:') !!}<br>
+                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="equipo_rayos" id="equipo_rayos"
+                                       value="1"
+                                    {{ ($parte->equipo_rayos ?? old('equipo_rayos') ?? false) ? 'checked' : '' }}>
+                            </div>
+
+
+                            <!-- Insumos Especificos Field -->
+                            <div class="col-sm-3">
+                                <input type="hidden" name="insumos_especificos" value="0">
+                                {!! Form::label('insumos_especificos', 'Insumos Especificos:') !!}<br>
+                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="insumos_especificos" id="insumos_especificos"
+                                       value="1"
+                                    {{ ($parte->insumos_especificos ?? old('insumos_especificos') ?? false) ? 'checked' : '' }}>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.card-body -->
                 </div>
-
-
-                <!-- Alergia Latex Field -->
-                <div class="form-group col-sm-4">
-                    <input type="hidden" name="alergia_latex" value="0">
-                    {!! Form::label('alergia_latex', 'Alergia Latex:') !!}<br>
-                    <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="alergia_latex" id="alergia_latex"
-                       value="1"
-                        {{ ($parte->alergia_latex ?? old('alergia_latex') ?? false) ? 'checked' : '' }}>
-
-                </div>
-
-
-                <!-- Usuario Taco Field -->
-                <div class="form-group col-sm-4">
-                    <input type="hidden" name="alergia_latex" value="0">
-                    {!! Form::label('usuario_taco', 'Usuario Taco:') !!}<br>
-                    <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="usuario_taco" id="usuario_taco"
-                       value="1"
-                        {{ ($parte->alergia_latex ?? old('alergia_latex') ?? false) ? 'checked' : '' }}>
-                </div>
-
-
-                <!-- Nececidad Cama Upc Field -->
-                <div class="form-group col-sm-4">
-                    <input type="hidden" name="nececidad_cama_upc" value="0">
-                    {!! Form::label('nececidad_cama_upc', 'Nececidad Cama Upc:') !!}<br>
-                    <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="nececidad_cama_upc" id="nececidad_cama_upc"
-                       value="1"
-                        {{ ($parte->nececidad_cama_upc ?? old('nececidad_cama_upc') ?? false) ? 'checked' : '' }}>
-                </div>
-
-
-                <!-- Prioridad Field -->
-                <div class="form-group col-sm-4">
-                    <input type="hidden" name="prioridad" value="0">
-                    {!! Form::label('prioridad', 'Prioridad:') !!}<br>
-                    <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="prioridad" id="prioridad"
-                       value="1"
-                        {{ ($parte->prioridad ?? old('prioridad') ?? false) ? 'checked' : '' }}>
-                </div>
-
-
-                <!-- Necesita Donante Sangre Field -->
-                <div class="form-group col-sm-4">
-                    <input type="hidden" name="necesita_donante_sangre" value="0">
-                    {!! Form::label('necesita_donante_sangre', 'Necesita Donante Sangre:') !!}<br>
-                    <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="necesita_donante_sangre" id="necesita_donante_sangre"
-                       value="1"
-                        {{ ($parte->necesita_donante_sangre ?? old('necesita_donante_sangre') ?? false) ? 'checked' : '' }}>
-                </div>
-
-
-                <!-- Evaluacion Preanestesica Field -->
-                <div class="form-group col-sm-4">
-                    <input type="hidden" name="evaluacion_preanestesica" value="0">
-                    {!! Form::label('evaluacion_preanestesica', 'Evaluacion Preanestesica:') !!}<br>
-                    <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="evaluacion_preanestesica" id="evaluacion_preanestesica"
-                       value="1"
-                        {{ ($parte->evaluacion_preanestesica ?? old('evaluacion_preanestesica') ?? false) ? 'checked' : '' }}>
-                </div>
-
-
-                <!-- Equipo Rayos Field -->
-                <div class="form-group col-sm-4">
-                    <input type="hidden" name="equipo_rayos" value="0">
-                    {!! Form::label('equipo_rayos', 'Equipo Rayos:') !!}<br>
-                    <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="equipo_rayos" id="equipo_rayos"
-                       value="1"
-                        {{ ($parte->equipo_rayos ?? old('equipo_rayos') ?? false) ? 'checked' : '' }}>
-                </div>
-
-
-                <!-- Insumos Especificos Field -->
-                <div class="form-group col-sm-4">
-                    <input type="hidden" name="insumos_especificos" value="0">
-                    {!! Form::label('insumos_especificos', 'Insumos Especificos:') !!}<br>
-                    <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="insumos_especificos" id="insumos_especificos"
-                       value="1"
-                        {{ ($parte->insumos_especificos ?? old('insumos_especificos') ?? false) ? 'checked' : '' }}>
                 </div>
 
                 <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
@@ -298,6 +330,17 @@
 
 @push('scripts')
 <script>
+
+    $(function () {
+        $("#todos_si").change(function (){
+            if ($(this).prop('checked')){
+                $(".cambiar_todos").bootstrapToggle('on')
+            }else {
+                $(".cambiar_todos").bootstrapToggle('off')
+            }
+        });
+    })
+
     const app = new Vue({
         el: '#fieldsPartes',
         name: 'fieldsPartes',
@@ -314,11 +357,34 @@
             intervencion: @json($parte->intervencion ?? Intervencion::find(old('intervencion_id')) ?? null),
 
             clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
+            clasificaciones: @json($parte->cirugiaTipo->clasificaciones ?? []),
 
             preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
         },
         methods: {
 
+        },
+        watch: {
+            cirugia_tipo (tipo) {
+                if (tipo){
+                    this.clasificaciones =tipo.clasificaciones
+                }else{
+                    this.clasificaciones = [];
+                }
+            }
+        },
+        computed:{
+            esCirugiaMayor(){
+
+                if (this.cirugia_tipo){
+                    if (this.cirugia_tipo.id=='{{\App\Models\CirugiaTipo::MAYOR}}'){
+                      return true;
+                    }
+                }
+
+                $("#cma").bootstrapToggle('off')
+                return false;
+            }
         }
     });
 </script>

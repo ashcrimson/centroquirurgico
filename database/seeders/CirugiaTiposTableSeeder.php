@@ -19,34 +19,18 @@ class CirugiaTiposTableSeeder extends Seeder
 
         \DB::table('cirugia_tipos')->delete();
 
-        \DB::table('cirugia_tipos')->insert(array (
-            0 =>
-            array (
-                'id' => 1,
-                'nombre' => 'Cirugía Mayor',
-                'created_at' => '2020-08-26 11:46:42',
-                'updated_at' => '2020-08-26 11:51:32',
-                'deleted_at' => NULL,
-            ),
-            1 =>
-            array (
-                'id' => 2,
-                'nombre' => 'Cirugía Menor',
-                'created_at' => '2020-08-26 11:46:42',
-                'updated_at' => '2021-09-23 11:46:05',
-                'deleted_at' => NULL,
-            ),
-            2 =>
-            array (
-                'id' => 3,
-                'nombre' => 'Urgencia',
-                'created_at' => '2020-08-26 11:46:42',
-                'updated_at' => '2021-09-23 11:46:05',
-                'deleted_at' => NULL,
-            ),
-
-        ));
-
+        factory(CirugiaTipo::class,1)->create(['nombre' => 'Cirugía Mayor'])
+            ->each(function (CirugiaTipo $cirugiaTipo){
+                $cirugiaTipo->clasificaciones()->sync([1,2,3,4,5]);
+            });
+        factory(CirugiaTipo::class,1)->create(['nombre' => 'Cirugía Menor'])
+            ->each(function (CirugiaTipo $cirugiaTipo){
+                $cirugiaTipo->clasificaciones()->sync([1,2,3,4,5]);
+            });
+        factory(CirugiaTipo::class,1)->create(['nombre' => 'Urgencia'])
+            ->each(function (CirugiaTipo $cirugiaTipo){
+                $cirugiaTipo->clasificaciones()->sync([6,7,8,9,10]);
+            });
 
 
     }

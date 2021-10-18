@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class CirugiaTipo
  * @package App\Models
- * @version October 13, 2021, 12:35 am CST
+ * @version October 17, 2021, 9:45 pm CST
  *
+ * @property \Illuminate\Database\Eloquent\Collection $clasificaciones
  * @property \Illuminate\Database\Eloquent\Collection $partes
  * @property string $nombre
  */
@@ -17,9 +18,13 @@ class CirugiaTipo extends Model
     use SoftDeletes;
 
     public $table = 'cirugia_tipos';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
+
+    const MAYOR =      1;
+    const MENOR =      2;
+    const URGENCIA =   3;
 
 
     protected $dates = ['deleted_at'];
@@ -51,6 +56,14 @@ class CirugiaTipo extends Model
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function clasificaciones()
+    {
+        return $this->belongsToMany(\App\Models\Clasificacion::class, 'cirugia_tipo_clasificacion');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

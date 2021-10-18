@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Clasificacion
  * @package App\Models
- * @version October 13, 2021, 12:35 am CST
+ * @version October 17, 2021, 9:46 pm CST
  *
+ * @property \Illuminate\Database\Eloquent\Collection $cirugiaTipos
  * @property \Illuminate\Database\Eloquent\Collection $partes
  * @property string $nombre
  */
@@ -51,6 +52,14 @@ class Clasificacion extends Model
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function cirugiaTipos()
+    {
+        return $this->belongsToMany(\App\Models\CirugiaTipo::class, 'cirugia_tipo_clasificacion');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
