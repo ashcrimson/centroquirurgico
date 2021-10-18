@@ -142,6 +142,7 @@ class ParteController extends AppBaseController
         /** @var Parte $parte */
         $parte = Parte::find($id);
 
+
         if (empty($parte)) {
             flash()->error('Parte no encontrado');
 
