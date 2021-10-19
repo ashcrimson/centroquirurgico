@@ -66,44 +66,16 @@ class UsersTableSeeder extends Seeder
 
             User::factory(1)->create([
 
-                "username" => "Infectologo",
-                "name" => "Infectologo",
+                "username" => "Admisión",
+                "name" => "Admisión",
                 "password" => bcrypt("123")
             ])->each(function (User $user){
-                $user->syncRoles(Role::INFECTOLOGO);
+                $user->syncRoles(Role::ADMISION);
 //            $user->shortcuts()->sync([3,4,5,6]);
 
             });
 
-            User::factory(1)->create([
-                "username" => "QF",
-                "name" => "QF",
-                "password" => bcrypt("123")
-            ])->each(function (User $user){
-                $user->syncRoles(Role::QF_CLINICO);
-//            $user->shortcuts()->sync([3,4,5,6]);
 
-            });
-
-            User::factory(1)->create([
-                "username" => "Tecnico",
-                "name" => "Tecnico ",
-                "password" => bcrypt("123")
-            ])->each(function (User $user){
-                $user->syncRoles(Role::TECNICO );
-//            $user->shortcuts()->sync([3,4,5,6]);
-
-            });
-
-            User::factory(1)->create([
-                "username" => "Enfermera",
-                "name" => "Enfermera",
-                "password" => bcrypt("123")
-            ])->each(function (User $user){
-                $user->syncRoles(Role::ENFERMERA);
-//            $user->shortcuts()->sync([3,4,5,6]);
-
-            });
         }
     }
 }

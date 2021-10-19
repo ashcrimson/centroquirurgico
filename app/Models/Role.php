@@ -27,10 +27,7 @@ class Role extends \Spatie\Permission\Models\Role
     const SUPERADMIN =  2;
     const ADMIN =       3;
     const MEDICO =      4;
-    const INFECTOLOGO = 5;
-    const QF_CLINICO =  6;
-    const TECNICO  =    7;
-    const ENFERMERA =   8;
+    const ADMISION =    5;
 
     protected $dates = ['deleted_at'];
 

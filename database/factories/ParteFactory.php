@@ -2,44 +2,58 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Models\CirugiaTipo;
+use App\Models\Clasificacion;
+use App\Models\Diagnostico;
+use App\Models\Especialidad;
+use App\Models\Intervencion;
+use App\Models\Paciente;
 use App\Models\Parte;
+use App\Models\ParteEstado;
+use App\Models\Preoperatorio;
+use App\Models\User;
 use Faker\Generator as Faker;
 
 $factory->define(Parte::class, function (Faker $faker) {
 
     return [
-        'paciente_id' => $this->faker->word,
-        'cirugia_tipo_id' => $this->faker->word,
-        'especialidad_id' => $this->faker->word,
-        'diagnostico' => $this->faker->text,
-        'otros_diagnosticos' => $this->faker->text,
-        'intervencion' => $this->faker->text,
-        'lateralidad' => $this->faker->word,
-        'otras_intervenciones' => $this->faker->text,
-        'cma' => $this->faker->word,
-        'clasificacion_id' => $this->faker->word,
-        'tiempo_quirurgico' => $this->faker->randomDigitNotNull,
-        'anestesia_sugerida' => $this->faker->word,
-        'aislamiento' => $this->faker->word,
-        'alergia_latex' => $this->faker->word,
-        'usuario_taco' => $this->faker->word,
-        'nececidad_cama_upc' => $this->faker->word,
-        'prioridad' => $this->faker->word,
-        'necesita_donante_sangre' => $this->faker->word,
-        'evaluacion_preanestesica' => $this->faker->word,
-        'equipo_rayos' => $this->faker->word,
-        'insumos_especificos' => $this->faker->word,
-        'preoperatorio_id' => $this->faker->word,
-        'biopsia' => $this->faker->word,
-        'user_ingresa' => $this->faker->word,
-        'estado_id' => $this->faker->word,
-        'pabellon_id' => $this->faker->randomDigitNotNull,
-        'fecha_pabellon' => $this->faker->date('Y-m-d H:i:s'),
-        'fecha_digitacion' => $this->faker->date('Y-m-d H:i:s'),
-        'instrumental' => $this->faker->text,
-        'observaciones' => $this->faker->text,
-        'created_at' => $this->faker->date('Y-m-d H:i:s'),
-        'updated_at' => $this->faker->date('Y-m-d H:i:s'),
-
+        'paciente_id' => Paciente::all()->random()->id,
+        'cirugia_tipo_id' => CirugiaTipo::all()->random()->id,
+        'especialidad_id' => Especialidad::all()->random()->id,
+        'diagnostico' => Diagnostico::all()->random()->id,
+        'otros_diagnosticos' => $faker->text,
+        'intervencion' => Intervencion::all()->random()->id,
+        'lateralidad' => $faker->randomElement(['Izquierda', 'Derecha', 'Bilateral', 'No Aplica',]),
+        'otras_intervenciones' => $faker->text,
+        'cma' => $faker->boolean,
+        'clasificacion_id' => Clasificacion::all()->random()->id,
+        'tiempo_quirurgico' => $faker->randomElement([30, 60, 90, 120, 150, 180, 210, 240, 270, 300,]),
+        'anestesia_sugerida' => $faker->word,
+        'aislamiento' => $faker->boolean,
+        'alergia_latex' => $faker->boolean,
+        'usuario_taco' => $faker->boolean,
+        'nececidad_cama_upc' => $faker->boolean,
+        'prioridad' => $faker->boolean,
+        'necesita_donante_sangre' => $faker->boolean,
+        'evaluacion_preanestesica' => $faker->boolean,
+        'equipo_rayos' => $faker->boolean,
+        'insumos_especificos' => $faker->boolean,
+        'preoperatorio_id' => Preoperatorio::all()->random()->id,
+        'biopsia' => $faker->randomElement([
+            'Externa',
+            'Rápida',
+            'Diferida',
+            'Citometría de flujo',
+            'No aplica',
+        ]),
+        'user_ingresa' => User::role('Medico')->get()->random()->id,
+        'estado_id' => ParteEstado::all()->random()->id,
+        'pabellon_id' => null,
+        'fecha_pabellon' => null,
+        'fecha_digitacion' => null,
+        'instrumental' => $faker->text,
+        'observaciones' => $faker->text,
+        'created_at' => $faker->date('Y-m-d H:i:s'),
+        'updated_at' => $faker->date('Y-m-d H:i:s'),
     ];
 });

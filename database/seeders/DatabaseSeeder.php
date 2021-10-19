@@ -32,8 +32,7 @@ class DatabaseSeeder extends Seeder
 
         if (app()->environment()=='local'){
             $this->call(PacientesTableSeeder::class);
-
-
-        }
+            $this->call(PartesTableSeeder::class);
+    }
     }
 }
