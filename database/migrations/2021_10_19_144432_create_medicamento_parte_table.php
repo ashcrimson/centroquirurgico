@@ -14,8 +14,8 @@ class CreateMedicamentoParteTable extends Migration
     public function up()
     {
         Schema::create('medicamento_parte', function (Blueprint $table) {
-            $table->unsignedBigInteger('medicamento_id')->index('fk_medicamentos_has_partes_medicamentos1_idx');
-            $table->unsignedBigInteger('parte_id')->index('fk_medicamentos_has_partes_partes1_idx');
+            $table->unsignedBigInteger('medicamento_id')->index('fk_medicamento_partes_idx1');
+            $table->unsignedBigInteger('parte_id')->index('fk_medicamento_parte_idx2');
             $table->primary(['medicamento_id', 'parte_id']);
         });
     }
