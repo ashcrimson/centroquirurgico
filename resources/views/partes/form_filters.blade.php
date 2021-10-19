@@ -44,7 +44,7 @@
         <div class="form-group col-sm-2">
             {!! Form::label('boton','&nbsp;') !!}
             <div>
-                <a  href="{{route('solicitudes.index')}}" type="submit" id="boton" class="btn btn-info btn-block">
+                <a  href="{{route('partes.index')}}" type="submit" id="boton" class="btn btn-info btn-block">
                     <i class="fa fa-times"></i> Limpiar Filtros
                 </a>
             </div>
@@ -77,7 +77,7 @@
                 estados : @json($estados ?? []),
                 estado: null,
 
-                users : @json(\App\Models\User::role([\App\Models\Role::MEDICO,\App\Models\Role::INFECTOLOGO])->get() ?? []),
+                users : @json(\App\Models\User::role([\App\Models\Role::MEDICO])->get() ?? []),
                 user: null,
 
 
