@@ -5,7 +5,7 @@
             editar
         </a>
 
-        <multiselect v-model="item" :options="options" label="nombre" placeholder="Seleccione uno...">
+        <multiselect v-model="item" :options="options" label="nombre" placeholder="Seleccione uno..." :disabled="disabled">
             <template  slot="noResult">
                 <a class="btn btn-sm btn-block btn-success" href="#" @click.prevent="newItem()">
                     <i class="fa fa-plus"></i> Nuevo
@@ -86,6 +86,10 @@ export default {
         id:{
             type: String,
             default: 'modalSelectPreoperatorio'
+        },
+        disabled:{
+            type: Boolean,
+            default: false
         }
     },
 

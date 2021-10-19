@@ -257,4 +257,11 @@ class Parte extends Model
     {
         return $this->belongsTo(\App\Models\User::class, 'user_ingresa');
     }
+
+    public function estaAdmision()
+    {
+        return in_array($this->estado_id,[
+            ParteEstado::ENVIADA_ADMISION,
+        ]);
+    }
 }

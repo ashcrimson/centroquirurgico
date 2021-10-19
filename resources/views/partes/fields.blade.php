@@ -25,7 +25,6 @@
 
 
 <div class="col-sm-12 mb-3">
-@can('Medico')
     <div class="card card-secondary ">
         <div class="card-header py-1 px-3">
             <h3 class="card-title">Información de la Cirugía</h3>
@@ -125,7 +124,7 @@
                     {!! Form::textarea('otras_intervenciones', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
-                
+
 
 
                 <div class="form-group col-sm-4">
@@ -306,24 +305,22 @@
                     {!! Form::label('instrumental', 'Instrumental:') !!}
                     {!! Form::textarea('instrumental', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
-    @endcan
 
-    @can('Admision')
+                @if($parte->estaAdmision() && auth()->user()->hasRole('Admision'))
+                    <!-- Medicamentos Field -->
+                    <div class="form-group col-sm-6 col-lg-6">
+                        {!! Form::label('medicamentos', 'Medicamentos:') !!}
+                        {!! Form::textarea('medicamentos', null, ['class' => 'form-control','rows' => 2]) !!}
+                    </div>
 
-                <!-- Medicamentos Field -->
-                <div class="form-group col-sm-6 col-lg-6">
-                    {!! Form::label('medicamentos', 'Medicamentos:') !!}
-                    {!! Form::textarea('medicamentos', null, ['class' => 'form-control','rows' => 2]) !!}
-                </div>
 
-            
 
-                <!-- Observaciones Field -->
-                <div class="form-group col-sm-12 col-lg-12">
-                    {!! Form::label('observaciones', 'Observaciones:') !!}
-                    {!! Form::textarea('observaciones', null, ['class' => 'form-control','rows' => 2]) !!}
-                </div>
-    @endcan
+                    <!-- Observaciones Field -->
+                    <div class="form-group col-sm-12 col-lg-12">
+                        {!! Form::label('observaciones', 'Observaciones:') !!}
+                        {!! Form::textarea('observaciones', null, ['class' => 'form-control','rows' => 2]) !!}
+                    </div>
+                @endcan
 
 
 
