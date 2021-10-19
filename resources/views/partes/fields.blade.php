@@ -306,7 +306,8 @@
                     {!! Form::textarea('instrumental', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
-                @if($parte->estaAdmision() && auth()->user()->hasRole('Admision'))
+
+                @if(auth()->user()->hasRole('Admisión'))
                     <!-- Medicamentos Field -->
                     <div class="form-group col-sm-6 col-lg-6">
                         {!! Form::label('medicamentos', 'Medicamentos:') !!}
