@@ -65,47 +65,47 @@
 
 <!-- Aislamiento Field -->
 {!! Form::label('aislamiento', 'Aislamiento:') !!}
-{!! $parte->aislamiento !!}<br>
+{!! $parte->aislamiento ? "Si" : "No" !!}<br>
 
 
 <!-- Alergia Latex Field -->
 {!! Form::label('alergia_latex', 'Alergia Latex:') !!}
-{!! $parte->alergia_latex !!}<br>
+{!! $parte->alergia_latex ? "Si" : "No" !!}<br>
 
 
 <!-- Usuario Taco Field -->
 {!! Form::label('usuario_taco', 'Usuario Taco:') !!}
-{!! $parte->usuario_taco !!}<br>
+{!! $parte->usuario_taco ? "Si" : "No" !!}<br>
 
 
 <!-- Nececidad Cama Upc Field -->
 {!! Form::label('nececidad_cama_upc', 'Nececidad Cama Upc:') !!}
-{!! $parte->nececidad_cama_upc !!}<br>
+{!! $parte->nececidad_cama_upc ? "Si" : "No" !!}<br>
 
 
 <!-- Prioridad Field -->
 {!! Form::label('prioridad', 'Prioridad:') !!}
-{!! $parte->prioridad !!}<br>
+{!! $parte->prioridad ? "Si" : "No" !!}<br>
 
 
 <!-- Necesita Donante Sangre Field -->
 {!! Form::label('necesita_donante_sangre', 'Necesita Donante Sangre:') !!}
-{!! $parte->necesita_donante_sangre !!}<br>
+{!! $parte->necesita_donante_sangre ? "Si" : "No" !!}<br>
 
 
 <!-- Evaluacion Preanestesica Field -->
 {!! Form::label('evaluacion_preanestesica', 'Evaluacion Preanestesica:') !!}
-{!! $parte->evaluacion_preanestesica !!}<br>
+{!! $parte->evaluacion_preanestesica ? "Si" : "No" !!}<br>
 
 
 <!-- Equipo Rayos Field -->
 {!! Form::label('equipo_rayos', 'Equipo Rayos:') !!}
-{!! $parte->equipo_rayos !!}<br>
+{!! $parte->equipo_rayos ? "Si" : "No" !!}<br>
 
 
 <!-- Insumos Especificos Field -->
 {!! Form::label('insumos_especificos', 'Insumos Especificos:') !!}
-{!! $parte->insumos_especificos !!}<br>
+{!! $parte->insumos_especificos ? "Si" : "No" !!}<br>
 
 
 <!-- Preoperatorio Id Field -->
