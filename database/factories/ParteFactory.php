@@ -47,7 +47,7 @@ $factory->define(Parte::class, function (Faker $faker) {
             'Citometría de flujo',
             'No aplica',
         ]),
-        'user_ingresa' => User::role(['Medico','Admision'])->get()->random()->id,
+        'user_ingresa' => User::role(['Medico','Admisión'])->get()->random()->id,
         'estado_id' => ParteEstado::all()->random()->id,
         'pabellon_id' => null,
         'fecha_pabellon' => null,
