@@ -7,7 +7,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class ParteDataTable extends DataTable
+class ParteDataTable extends DataTable 
 {
     /**
      * Build DataTable class.
@@ -28,6 +28,11 @@ class ParteDataTable extends DataTable
            ->editColumn('paciente.nombre_completo',function (Parte $parte){
 
                return $parte->paciente->nombre_completo;
+
+           })
+           ->editColumn('paciente.rut_completo',function (Parte $parte){
+
+               return $parte->paciente->rut_completo;
 
            })
            ->editColumn('paciente.fecha_nac',function (Parte $parte){
@@ -60,7 +65,7 @@ class ParteDataTable extends DataTable
      */
     public function query(Parte $model)
     {
-        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado']);
+        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado', 'diagnostico', 'intervencion', 'clasificacion']);
     }
 
     /**
@@ -123,30 +128,16 @@ class ParteDataTable extends DataTable
         // en snake_case por lo tanto en este caso el nombre del campo se esctibe nombre_relacion.campo
         // tambien sirve para editar la columna a travez del nombre que lleve este metodo
 
-        return [
+        return [ 
+            'id',
+            'Rut' => ['name' => 'paciente.run','data' => 'paciente.run'],
+            'Nombre Paciente' => ['name' => 'paciente.nombre_completo','data' => 'paciente.nombre_completo'],
+            'Especialidad' => ['name' => 'especialidad.nombre','data' => 'especialidad.nombre'],
+            'Diagnóstico' => ['name' => 'diagnostico.nombre','data' => 'diagnostico.nombre'],
+            'Medicamentos' => ['name' => 'medicamentos','data' => 'medicamentos'],
+            'Intervención' => ['name' => 'intervencion.nombre','data' => 'intervencion.nombre'],
+            'Clasificación' => ['name' => 'clasificacion.nombre','data' => 'clasificacion.nombre'],
 
-            Column::make('id')->data('id')->name('partes.id'),
-
-            //las siguientes 4 columnas no se ven por lo tanto no es nescesario los metodos name y data
-            Column::make('paciente.apellido_paterno')
-                ->visible(false)->exportable(false),
-            Column::make('paciente.apellido_materno')
-                ->visible(false)->exportable(false),
-            Column::make('paciente.primer_nombre')
-                ->visible(false)->exportable(false),
-            Column::make('paciente.segundo_nombre')
-                ->visible(false)->exportable(false),
-
-
-            Column::make('rut')->name('paciente.run')->data('paciente.run'),
-
-            Column::make('paciente')->name('paciente.nombre_completo')->data('paciente.nombre_completo')
-                ->searchable(false)->orderable(false),
-
-            Column::make('fecha_nac')->data('paciente.fecha_nac')->name('paciente.fecha_nac'),
-            Column::make('Fecha Parte')->name('created_at')->data('created_at'),
-
-            Column::make('estado')->data('estado.nombre')->name('estado.nombre')
         ];
     }
 

@@ -1,21 +1,21 @@
 <!-- Paciente Id Field -->
-{!! Form::label('paciente_id', 'Paciente Id:') !!}
-{!! $parte->paciente_id !!}<br>
+{!! Form::label('paciente', 'Paciente:') !!}
+{!! $parte->paciente->nombre_completo !!}<br>
 
 
 <!-- Cirugia Tipo Id Field -->
-{!! Form::label('cirugia_tipo_id', 'Cirugia Tipo Id:') !!}
-{!! $parte->cirugia_tipo_id !!}<br>
+{!! Form::label('tipo_cirugia', 'Tipo Cirugía:') !!}
+{!! $parte->cirugiaTipo->nombre !!}<br>
 
 
 <!-- Especialidad Id Field -->
-{!! Form::label('especialidad_id', 'Especialidad Id:') !!}
-{!! $parte->especialidad_id !!}<br>
+{!! Form::label('especialidad', 'Especialidad:') !!}
+{!! $parte->especialidad->nombre !!}<br>
 
 
 <!-- Diagnostico Id Field -->
-{!! Form::label('diagnostico_id', 'Diagnostico Id:') !!}
-{!! $parte->diagnostico_id !!}<br>
+{!! Form::label('diagnostico', 'Diagnostico:') !!}
+{!! $parte->diagnostico->nombre !!}<br>
 
 
 <!-- Otros Diagnosticos Field -->
@@ -29,8 +29,8 @@
 
 
 <!-- Intervencion Id Field -->
-{!! Form::label('intervencion_id', 'Intervencion Id:') !!}
-{!! $parte->intervencion_id !!}<br>
+{!! Form::label('intervencion', 'Intervencion:') !!}
+{!! $parte->intervencion->nombre !!}<br>
 
 
 <!-- Lateralidad Field -->
@@ -49,8 +49,8 @@
 
 
 <!-- Clasificacion Id Field -->
-{!! Form::label('clasificacion_id', 'Clasificacion Id:') !!}
-{!! $parte->clasificacion_id !!}<br>
+{!! Form::label('clasificacion_asa', 'Clasificacion ASA:') !!}
+{!! $parte->clasificacion->nombre !!}<br>
 
 
 <!-- Tiempo Quirurgico Field -->
@@ -109,8 +109,8 @@
 
 
 <!-- Preoperatorio Id Field -->
-{!! Form::label('preoperatorio_id', 'Preoperatorio Id:') !!}
-{!! $parte->preoperatorio_id !!}<br>
+{!! Form::label('examenes_preoperatorios', 'Examenes Preoperatorios:') !!}
+{!! $parte->preoperatorio->nombre !!}<br>
 
 
 <!-- Biopsia Field -->
@@ -119,13 +119,13 @@
 
 
 <!-- User Ingresa Field -->
-{!! Form::label('user_ingresa', 'User Ingresa:') !!}
-{!! $parte->user_ingresa !!}<br>
+{!! Form::label('ingresado_por', 'Ingresado Por:') !!}
+{!! $parte->userIngresa->name !!}<br>
 
 
 <!-- Estado Id Field -->
-{!! Form::label('estado_id', 'Estado Id:') !!}
-{!! $parte->estado_id !!}<br>
+{!! Form::label('estado', 'Estado:') !!}
+{!! $parte->estado->nombre !!}<br>
 
 
 <!-- Pabellon Id Field -->

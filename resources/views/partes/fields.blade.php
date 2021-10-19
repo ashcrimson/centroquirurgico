@@ -25,6 +25,7 @@
 
 
 <div class="col-sm-12 mb-3">
+@can('Medico')
     <div class="card card-secondary ">
         <div class="card-header py-1 px-3">
             <h3 class="card-title">Información de la Cirugía</h3>
@@ -58,7 +59,24 @@
                     </select-especialidad>
                 </div>
 
-                <div class="form-group col-sm-4">
+                <!-- Cma Field -->
+                <div class="form-group col-sm-4" >
+                    {!! Form::label('cma', 'Cma:') !!}
+                    <span v-show="cirugia_tipo && !esCirugiaMayor " class="text-muted">No aplica par el tipo de cirugia</span>
+                    <br>
+
+                    <input type="checkbox" data-toggle="toggle"
+                           data-size="normal"
+                           data-on="Si" data-off="No"
+                           data-style="ios"
+                           name="cma"
+                           id="cma"
+                           :disabled="!esCirugiaMayor"
+                       value="1"
+                        {{ ($parte->cma ?? old('cma') ?? false) ? 'checked' : '' }}>
+                </div>
+
+                <div class="form-group col-sm-12">
                     <select-diagnostico
                         label="Diagnostico"
                         v-model="diagnostico" >
@@ -107,22 +125,7 @@
                     {!! Form::textarea('otras_intervenciones', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
-                <!-- Cma Field -->
-                <div class="form-group col-sm-4" >
-                    {!! Form::label('cma', 'Cma:') !!}
-                    <span v-show="cirugia_tipo && !esCirugiaMayor " class="text-muted">No aplica par el tipo de cirugia</span>
-                    <br>
-
-                    <input type="checkbox" data-toggle="toggle"
-                           data-size="normal"
-                           data-on="Si" data-off="No"
-                           data-style="ios"
-                           name="cma"
-                           id="cma"
-                           :disabled="!esCirugiaMayor"
-                       value="1"
-                        {{ ($parte->cma ?? old('cma') ?? false) ? 'checked' : '' }}>
-                </div>
+                
 
 
                 <div class="form-group col-sm-4">
@@ -298,25 +301,29 @@
                     <input type="hidden" name="biopsia" :value="biopsia">
                 </div>
 
+                <!-- Instrumental Field -->
+                <div class="form-group col-sm-6 col-lg-6">
+                    {!! Form::label('instrumental', 'Instrumental:') !!}
+                    {!! Form::textarea('instrumental', null, ['class' => 'form-control','rows' => 2]) !!}
+                </div>
+    @endcan
+
+    @can('Admision')
+
                 <!-- Medicamentos Field -->
                 <div class="form-group col-sm-6 col-lg-6">
                     {!! Form::label('medicamentos', 'Medicamentos:') !!}
                     {!! Form::textarea('medicamentos', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
-
-
-            <!-- Instrumental Field -->
-                <div class="form-group col-sm-6 col-lg-6">
-                    {!! Form::label('instrumental', 'Instrumental:') !!}
-                    {!! Form::textarea('instrumental', null, ['class' => 'form-control','rows' => 2]) !!}
-                </div>
+            
 
                 <!-- Observaciones Field -->
                 <div class="form-group col-sm-12 col-lg-12">
                     {!! Form::label('observaciones', 'Observaciones:') !!}
                     {!! Form::textarea('observaciones', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
+    @endcan
 
 
 
