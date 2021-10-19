@@ -16,6 +16,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Parte::class, function (Faker $faker) {
 
+    $fechaParte = \Carbon\Carbon::now()->subDays(rand(1,4));
     return [
         'paciente_id' => Paciente::all()->random()->id,
         'cirugia_tipo_id' => CirugiaTipo::all()->random()->id,
@@ -46,14 +47,14 @@ $factory->define(Parte::class, function (Faker $faker) {
             'Citometría de flujo',
             'No aplica',
         ]),
-        'user_ingresa' => User::role('Medico')->get()->random()->id,
+        'user_ingresa' => User::role(['Medico','Admision'])->get()->random()->id,
         'estado_id' => ParteEstado::all()->random()->id,
         'pabellon_id' => null,
         'fecha_pabellon' => null,
         'fecha_digitacion' => null,
         'instrumental' => $faker->text,
         'observaciones' => $faker->text,
-        'created_at' => $faker->date('Y-m-d H:i:s'),
+        'created_at' => $fechaParte,
         'updated_at' => $faker->date('Y-m-d H:i:s'),
     ];
 });

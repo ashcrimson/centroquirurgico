@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ParteDataTable;
+use App\DataTables\Scopes\ScopeParteDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateParteRequest;
 use App\Http\Requests\UpdateParteRequest;
@@ -33,6 +34,10 @@ class ParteController extends AppBaseController
      */
     public function index(ParteDataTable $parteDataTable)
     {
+        $scope = new ScopeParteDataTable();
+
+        $parteDataTable->addScope($scope);
+
         return $parteDataTable->render('partes.index');
     }
 

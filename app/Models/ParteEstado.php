@@ -24,7 +24,7 @@ class ParteEstado extends Model
 
     const INGRESADA =           1;
     const ENVIADA_ADMICION =    2;
-    const AMITIDAD =            3;
+    const SALA_ESPERA =         3;
     const FINALIZADA =          4;
 
 
