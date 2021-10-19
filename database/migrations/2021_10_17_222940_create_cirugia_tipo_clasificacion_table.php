@@ -14,8 +14,8 @@ class CreateCirugiaTipoClasificacionTable extends Migration
     public function up()
     {
         Schema::create('cirugia_tipo_clasificacion', function (Blueprint $table) {
-            $table->unsignedBigInteger('cirugia_tipo_id')->index('cirugia_tipo_clasificacion_idx1');
-            $table->unsignedBigInteger('clasificacion_id')->index('cirugia_tipo_clasificacion_idx2');
+            $table->unsignedBigInteger('cirugia_tipo_id')->index('cirugia_clasificacion_idx1');
+            $table->unsignedBigInteger('clasificacion_id')->index('cirugia_clasificacion_idx2');
             $table->primary(['cirugia_tipo_id', 'clasificacion_id'],'pk_cirugia_tipo_clasificacion');
         });
     }

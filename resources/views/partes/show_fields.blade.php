@@ -1,21 +1,21 @@
 <!-- Paciente Id Field -->
-{!! Form::label('paciente_id', 'Paciente Id:') !!}
-{!! $parte->paciente_id !!}<br>
+{!! Form::label('paciente', 'Paciente:') !!}
+{!! $parte->paciente->nombre_completo !!}<br>
 
 
 <!-- Cirugia Tipo Id Field -->
-{!! Form::label('cirugia_tipo_id', 'Cirugia Tipo Id:') !!}
-{!! $parte->cirugia_tipo_id !!}<br>
+{!! Form::label('tipo_cirugia', 'Tipo Cirugía:') !!}
+{!! $parte->cirugiaTipo->nombre !!}<br>
 
 
 <!-- Especialidad Id Field -->
-{!! Form::label('especialidad_id', 'Especialidad Id:') !!}
-{!! $parte->especialidad_id !!}<br>
+{!! Form::label('especialidad', 'Especialidad:') !!}
+{!! $parte->especialidad->nombre !!}<br>
 
 
 <!-- Diagnostico Id Field -->
-{!! Form::label('diagnostico_id', 'Diagnostico Id:') !!}
-{!! $parte->diagnostico_id !!}<br>
+{!! Form::label('diagnostico', 'Diagnostico:') !!}
+{!! $parte->diagnostico->nombre !!}<br>
 
 
 <!-- Otros Diagnosticos Field -->
@@ -29,8 +29,8 @@
 
 
 <!-- Intervencion Id Field -->
-{!! Form::label('intervencion_id', 'Intervencion Id:') !!}
-{!! $parte->intervencion_id !!}<br>
+{!! Form::label('intervencion', 'Intervencion:') !!}
+{!! $parte->intervencion->nombre !!}<br>
 
 
 <!-- Lateralidad Field -->
@@ -49,8 +49,8 @@
 
 
 <!-- Clasificacion Id Field -->
-{!! Form::label('clasificacion_id', 'Clasificacion Id:') !!}
-{!! $parte->clasificacion_id !!}<br>
+{!! Form::label('clasificacion_asa', 'Clasificacion ASA:') !!}
+{!! $parte->clasificacion->nombre !!}<br>
 
 
 <!-- Tiempo Quirurgico Field -->
@@ -65,52 +65,52 @@
 
 <!-- Aislamiento Field -->
 {!! Form::label('aislamiento', 'Aislamiento:') !!}
-{!! $parte->aislamiento !!}<br>
+{!! $parte->aislamiento ? "Si" : "No" !!}<br>
 
 
 <!-- Alergia Latex Field -->
 {!! Form::label('alergia_latex', 'Alergia Latex:') !!}
-{!! $parte->alergia_latex !!}<br>
+{!! $parte->alergia_latex ? "Si" : "No" !!}<br>
 
 
 <!-- Usuario Taco Field -->
 {!! Form::label('usuario_taco', 'Usuario Taco:') !!}
-{!! $parte->usuario_taco !!}<br>
+{!! $parte->usuario_taco ? "Si" : "No" !!}<br>
 
 
 <!-- Nececidad Cama Upc Field -->
 {!! Form::label('nececidad_cama_upc', 'Nececidad Cama Upc:') !!}
-{!! $parte->nececidad_cama_upc !!}<br>
+{!! $parte->nececidad_cama_upc ? "Si" : "No" !!}<br>
 
 
 <!-- Prioridad Field -->
 {!! Form::label('prioridad', 'Prioridad:') !!}
-{!! $parte->prioridad !!}<br>
+{!! $parte->prioridad ? "Si" : "No" !!}<br>
 
 
 <!-- Necesita Donante Sangre Field -->
 {!! Form::label('necesita_donante_sangre', 'Necesita Donante Sangre:') !!}
-{!! $parte->necesita_donante_sangre !!}<br>
+{!! $parte->necesita_donante_sangre ? "Si" : "No" !!}<br>
 
 
 <!-- Evaluacion Preanestesica Field -->
 {!! Form::label('evaluacion_preanestesica', 'Evaluacion Preanestesica:') !!}
-{!! $parte->evaluacion_preanestesica !!}<br>
+{!! $parte->evaluacion_preanestesica ? "Si" : "No" !!}<br>
 
 
 <!-- Equipo Rayos Field -->
 {!! Form::label('equipo_rayos', 'Equipo Rayos:') !!}
-{!! $parte->equipo_rayos !!}<br>
+{!! $parte->equipo_rayos ? "Si" : "No" !!}<br>
 
 
 <!-- Insumos Especificos Field -->
 {!! Form::label('insumos_especificos', 'Insumos Especificos:') !!}
-{!! $parte->insumos_especificos !!}<br>
+{!! $parte->insumos_especificos ? "Si" : "No" !!}<br>
 
 
 <!-- Preoperatorio Id Field -->
-{!! Form::label('preoperatorio_id', 'Preoperatorio Id:') !!}
-{!! $parte->preoperatorio_id !!}<br>
+{!! Form::label('examenes_preoperatorios', 'Examenes Preoperatorios:') !!}
+{!! $parte->preoperatorio->nombre !!}<br>
 
 
 <!-- Biopsia Field -->
@@ -119,13 +119,13 @@
 
 
 <!-- User Ingresa Field -->
-{!! Form::label('user_ingresa', 'User Ingresa:') !!}
-{!! $parte->user_ingresa !!}<br>
+{!! Form::label('ingresado_por', 'Ingresado Por:') !!}
+{!! $parte->userIngresa->name !!}<br>
 
 
 <!-- Estado Id Field -->
-{!! Form::label('estado_id', 'Estado Id:') !!}
-{!! $parte->estado_id !!}<br>
+{!! Form::label('estado', 'Estado:') !!}
+{!! $parte->estado->nombre !!}<br>
 
 
 <!-- Pabellon Id Field -->
