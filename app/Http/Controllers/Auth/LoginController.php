@@ -228,7 +228,7 @@ class LoginController extends Controller
 
         auth()->loginUsingId($userLocal->id);
 
-        return redirect(route('home'));
+        return redirect(route('partes.index'));
 
 
     }

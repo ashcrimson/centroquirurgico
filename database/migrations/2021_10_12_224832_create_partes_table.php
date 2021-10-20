@@ -46,6 +46,7 @@ class CreatePartesTable extends Migration
             $table->dateTime('fecha_digitacion')->nullable();
             $table->text('instrumental')->nullable();
             $table->text('observaciones')->nullable();
+            $table->text('email')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

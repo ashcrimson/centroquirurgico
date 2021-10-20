@@ -18,7 +18,7 @@
                             <a class="btn btn-outline-success"
                                 href="{!! route('partes.create') !!}">
                                 <i class="fa fa-plus"></i>
-                                <span class="d-none d-sm-inline">{{__('New')}}</span>
+                                <span class="d-none d-sm-inline">{{__('Nuevo')}}</span>
                             </a>
                             @endcan
                         </li>

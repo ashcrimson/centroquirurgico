@@ -50,6 +50,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|\Carbon\Carbon $fecha_digitacion
  * @property string $instrumental
  * @property string $observaciones
+ * @property string $email
  */
 class Parte extends Model
 {
@@ -96,7 +97,8 @@ class Parte extends Model
         'fecha_pabellon',
         'fecha_digitacion',
         'instrumental',
-        'observaciones'
+        'observaciones',
+        'email'
     ];
 
     /**
@@ -136,7 +138,8 @@ class Parte extends Model
         'fecha_pabellon' => 'datetime',
         'fecha_digitacion' => 'datetime',
         'instrumental' => 'string',
-        'observaciones' => 'string'
+        'observaciones' => 'string',
+        'email' => 'string'
     ];
 
     /**
@@ -173,6 +176,7 @@ class Parte extends Model
         'fecha_digitacion' => 'nullable',
         'instrumental' => 'nullable|string',
         'observaciones' => 'nullable|string',
+        'email' => 'nullable|string',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'

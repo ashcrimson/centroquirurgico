@@ -21,8 +21,8 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 
-    Route::get('/', 'HomeController@index')->name('index');
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'ParteController@index')->name('index');
+    Route::get('/home', 'ParteController@index')->name('home');
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('/contact', 'HomeController@contact')->name('contact');
     Route::get('/calendar', 'HomeController@calendar')->name('calendar');
@@ -76,3 +76,10 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
+
+
+Route::resource('condicions', 'CondicionController');
+
+Route::resource('sistemasaluds', 'SistemasaludController');
+
+Route::resource('grupobases', 'GrupobaseController');

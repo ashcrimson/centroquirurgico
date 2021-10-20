@@ -72,10 +72,10 @@
 
 
     <!-- telefono Field -->
-    <div class="form-group col-sm-3">
+    <!-- <div class="form-group col-sm-3">
         {!! Form::label('telefono', 'Telefono:') !!}
         {!! Form::text('telefono', null, ['id' => 'telefono','class' => 'form-control','maxlength' => 255]) !!}
-    </div>
+    </div> -->
 
     <!-- Direccion Field -->
    <!--  <div class="form-group col-sm-12">

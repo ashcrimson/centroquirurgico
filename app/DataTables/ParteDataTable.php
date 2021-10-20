@@ -118,15 +118,7 @@ class ParteDataTable extends DataTable
     {
 
 
-        //el metodo ->name()
-        // sirve para que datatables sepa como se llama el campo de la base de datos
-        // con los que hace querys cuando ser escribe algo en el campo de busqueda
-
-        //el metodo ->data()
-        // normalmente se coloca el mismo nombre del campo que se coloca en name
-        //pero en ocaciones cuando las relaciones estan escritras en camelCase laravel devuelve el attributo
-        // en snake_case por lo tanto en este caso el nombre del campo se esctibe nombre_relacion.campo
-        // tambien sirve para editar la columna a travez del nombre que lleve este metodo
+      
 
         return [ 
             'id',

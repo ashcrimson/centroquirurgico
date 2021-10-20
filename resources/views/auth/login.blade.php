@@ -6,7 +6,7 @@
 
     <div class="login-box">
         <div class="login-logo text-dark text-uppercase text-bold">
-            <p><img src="{{asset('dist/img/Logo HNV.png')}}" alt=""></p>
+            <p><img src="http://sistemarema.hospitalnaval.cl/dist/img/Logo%20HNV.png" alt=""></p>
             <a href="{{ route('home') }}"><b style="color: black !important;">{{ config('app.name', 'Laravel') }}</b></a>
         </div>
         <!-- /.login-logo -->
