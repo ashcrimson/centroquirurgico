@@ -100,7 +100,8 @@ class Parte extends Model
         'instrumental',
         'observaciones',
         'email',
-        'sistemasalud_id'
+        'sistemasalud_id',
+        'grupobase_id'
     ];
 
     /**
@@ -136,6 +137,7 @@ class Parte extends Model
         'biopsia' => 'string',
         'user_ingresa' => 'integer',
         'sistemasalud_id'  => 'integer',
+        'grupobase_id'  => 'integer',
         'estado_id' => 'integer',
         'pabellon_id' => 'integer',
         'fecha_pabellon' => 'datetime',
@@ -181,6 +183,7 @@ class Parte extends Model
         'observaciones' => 'nullable|string',
         'email' => 'string',
         'sistemasalud_id' => 'nullable',
+        'grupobase_id' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
@@ -271,6 +274,10 @@ class Parte extends Model
         return $this->belongsTo(\App\Models\Sistemasalud::class, 'sistemasalud_id');
     }
 
+    public function grupoBase()
+    {
+        return $this->belongsTo(\App\Models\GrupoBase::class, 'grupobase_id');
+    }
 
 
     public function estaAdmision()

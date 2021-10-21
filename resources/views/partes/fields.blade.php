@@ -465,9 +465,9 @@
 
                     <!-- Grupo Base Field -->
                     <div class="form-group col-sm-4">
-                        {!! Form::label('grupobase', 'Grupo Base:') !!}
+                        {!! Form::label('grupobase_id', 'Grupo Base:') !!}
                         <br>
-                        <select class="form-control">
+                        <select class="form-control" name="grupobase_id">
 
                             @foreach(App\Models\Grupobase::get() as $grupobase)
 
@@ -478,7 +478,7 @@
                             @endforeach
 
                         </select>
-                    <input type="hidden" name="grupobase" :value="grupobase">
+                    
                     </div>
                 </div>
 

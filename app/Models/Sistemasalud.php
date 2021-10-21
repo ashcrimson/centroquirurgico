@@ -41,7 +41,7 @@ class Sistemasalud extends Model
      * @var array
      */
     public static $rules = [
-        
+         
     ];
 
     /**

@@ -17,7 +17,7 @@ class Grupobase extends Model
 
     public $table = 'grupobases';
     
-
+ 
     protected $dates = ['deleted_at'];
 
 
@@ -43,6 +43,14 @@ class Grupobase extends Model
     public static $rules = [
         
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function partes()
+    {
+        return $this->hasMany(\App\Models\Parte::class, 'grupobase_id');
+    }
 
     
 }
