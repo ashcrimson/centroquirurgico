@@ -449,7 +449,7 @@
                     <div class="form-group col-sm-4">
                         {!! Form::label('sistemasalud_id', 'Sistema Salud:') !!}
                         <br>
-                        <select class="form-control">
+                        <select class="form-control" name="sistemasalud_id">
 
                             @foreach(App\Models\Sistemasalud::get() as $sistemasalud)
 
@@ -460,7 +460,7 @@
                             @endforeach
 
                         </select>
-                    <input type="hidden" name="sistemasalud_id" value="sistemasalud_id">
+                    
                     </div>
 
                     <!-- Grupo Base Field -->
