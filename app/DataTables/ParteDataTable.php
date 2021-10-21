@@ -65,7 +65,7 @@ class ParteDataTable extends DataTable
      */
     public function query(Parte $model)
     {
-        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado', 'diagnostico', 'intervencion', 'clasificacion']);
+        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado', 'diagnostico', 'intervencion', 'clasificacion', 'sistemasalud']);
     }
 
     /**
@@ -129,6 +129,7 @@ class ParteDataTable extends DataTable
             'Medicamentos' => ['name' => 'medicamentos','data' => 'medicamentos'],
             'Intervención' => ['name' => 'intervencion.nombre','data' => 'intervencion.nombre'],
             'Clasificación' => ['name' => 'clasificacion.nombre','data' => 'clasificacion.nombre'],
+            'Sistema Salud' => ['name' => 'sistemasalud.nombre','data' => 'sistemasalud.nombre'],
 
         ];
     }
