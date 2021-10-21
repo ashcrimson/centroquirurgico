@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
- * Class Sistemasalud
+ * Class Insumoespecifico
  * @package App\Models
- * @version October 20, 2021, 1:31 pm CST
+ * @version October 21, 2021, 7:51 am CST
  *
  * @property string $nombre
  */
-class Sistemasalud extends Model
+class Insumoespecifico extends Model
 {
     use SoftDeletes;
 
-    public $table = 'sistemasaluds';
+    public $table = 'insumoespecificos';
     
 
     protected $dates = ['deleted_at'];
@@ -43,14 +43,6 @@ class Sistemasalud extends Model
     public static $rules = [
         
     ];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function partes()
-    {
-        return $this->hasMany(\App\Models\Parte::class, 'sistemasalud_id');
-    }
 
     
 }

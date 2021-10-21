@@ -83,3 +83,5 @@ Route::resource('condicions', 'CondicionController');
 Route::resource('sistemasaluds', 'SistemasaludController');
 
 Route::resource('grupobases', 'GrupobaseController');
+
+Route::resource('insumoespecificos', 'InsumoespecificoController');

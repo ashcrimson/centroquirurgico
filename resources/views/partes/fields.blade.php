@@ -113,7 +113,7 @@
                                 'No_Aplica' => 'No Aplica',
                             ]
                             , null
-                            , ['id'=>'volumen_suero','class' => 'form-control','style'=>'width: 100%']
+                            , ['id'=>'lateralidad','class' => 'form-control','style'=>'width: 100%']
                         )
                     !!}
                 </div>
@@ -270,9 +270,19 @@
                             <div class="col-sm-3">
                                 <input type="hidden" name="insumos_especificos" value="0">
                                 {!! Form::label('insumos_especificos', 'Insumos Especificos:') !!}<br>
-                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="insumos_especificos" id="insumos_especificos"
-                                       value="1"
-                                    {{ ($parte->insumos_especificos ?? old('insumos_especificos') ?? false) ? 'checked' : '' }}>
+                                <br>
+                                <select class="form-control">
+
+                                    @foreach(App\Models\Insumoespecifico::get() as $insumoespecifico)
+
+                                        <option value="{{ $insumoespecifico->id }}" >
+                                            {{ $insumoespecifico->nombre }}
+                                        </option>
+
+                                    @endforeach
+
+                                </select>
+                                <input type="hidden" name="insumoespecifico" :value="insumoespecifico">
                             </div>
                         </div>
 
@@ -393,8 +403,9 @@
                 <div class="row">
                     <!-- Correo Electrónico -->
                     <div class="form-group col-sm-3">
-                        {!! Form::label('correo_electronico', 'Correo Electrónico:') !!}
-                        {!! Form::email('correo_electronico', null, ['id' => 'correo_electronico','class' => 'form-control']) !!}
+                        {!! Form::label('email', 'Correo Electrónico:') !!}
+                        {!! Form::email('email', null, ['id' => 'email','class' => 'form-control']) !!}
+
                     </div>
 
                     <!-- Tiempo Quirurgico Field -->
@@ -403,10 +414,10 @@
                         <br>
                         <select class="form-control">
 
-                            @foreach(App\Models\User::get() as $user)
+                            @foreach(App\Models\User::where('username', 'Medico')->get() as $user)
 
                                 <option value="{{ $user->id }}" >
-                                    {{ $user->name }}
+                                    {{ $user->name }} 
                                 </option>
 
                             @endforeach
@@ -436,7 +447,7 @@
 
                     <!-- Sistema Salud Field -->
                     <div class="form-group col-sm-4">
-                        {!! Form::label('sistemasalud', 'Sistema Salud:') !!}
+                        {!! Form::label('sistemasalud_id', 'Sistema Salud:') !!}
                         <br>
                         <select class="form-control">
 
@@ -449,7 +460,7 @@
                             @endforeach
 
                         </select>
-                    <input type="hidden" name="sistema-salud" :value="sistema-salud">
+                    <input type="hidden" name="sistemasalud_id" value="sistemasalud_id">
                     </div>
 
                     <!-- Grupo Base Field -->
@@ -467,7 +478,7 @@
                             @endforeach
 
                         </select>
-                    <input type="hidden" name="sistema-salud" :value="sistema-salud">
+                    <input type="hidden" name="grupobase" :value="grupobase">
                     </div>
                 </div>
 

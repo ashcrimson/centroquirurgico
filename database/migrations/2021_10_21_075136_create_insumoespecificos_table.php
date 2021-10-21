@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint; 
+use Illuminate\Database\Schema\Blueprint;
 
-class CreateSistemasaludsTable extends Migration
+class CreateInsumoespecificosTable extends Migration
 {
 
     /**
@@ -13,7 +13,7 @@ class CreateSistemasaludsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sistemasaluds', function (Blueprint $table) {
+        Schema::create('insumoespecificos', function (Blueprint $table) {
             $table->id('id');
             $table->string('nombre');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateSistemasaludsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sistemasaluds');
+        Schema::drop('insumoespecificos');
     }
 }

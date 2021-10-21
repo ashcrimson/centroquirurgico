@@ -44,6 +44,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $preoperatorio_id
  * @property boolean $biopsia
  * @property integer $user_ingresa
+ * @property integer $sistemasalud_id
  * @property integer $estado_id
  * @property integer $pabellon_id
  * @property string|\Carbon\Carbon $fecha_pabellon
@@ -98,7 +99,8 @@ class Parte extends Model
         'fecha_digitacion',
         'instrumental',
         'observaciones',
-        'email'
+        'email',
+        'sistemasalud_id'
     ];
 
     /**
@@ -133,6 +135,7 @@ class Parte extends Model
         'preoperatorio_id' => 'integer',
         'biopsia' => 'string',
         'user_ingresa' => 'integer',
+        'sistemasalud_id'  => 'integer',
         'estado_id' => 'integer',
         'pabellon_id' => 'integer',
         'fecha_pabellon' => 'datetime',
@@ -176,7 +179,8 @@ class Parte extends Model
         'fecha_digitacion' => 'nullable',
         'instrumental' => 'nullable|string',
         'observaciones' => 'nullable|string',
-        'email' => 'nullable|string',
+        'email' => 'string',
+        'sistemasalud_id' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
@@ -261,6 +265,13 @@ class Parte extends Model
     {
         return $this->belongsTo(\App\Models\User::class, 'user_ingresa');
     }
+
+    public function sistemaSalud()
+    {
+        return $this->belongsTo(\App\Models\Sistemasalud::class, 'sistemasalud_id');
+    }
+
+
 
     public function estaAdmision()
     {
