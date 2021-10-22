@@ -6,11 +6,7 @@
 
 
 
-<!-- Observaciones Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('observaciones', 'Observaciones:') !!}
-    {!! Form::textarea('observaciones', null, ['class' => 'form-control','rows' => 2]) !!}
-</div>
+
 
 <div class="row">
 

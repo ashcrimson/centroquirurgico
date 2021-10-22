@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Parte
  * @package App\Models
- * @version October 15, 2021, 11:21 am CST
+ * @version October 21, 2021, 11:45 pm CST
  *
  * @property \App\Models\CirugiaTipo $cirugiaTipo
  * @property \App\Models\Clasificacion $clasificacion
@@ -18,13 +18,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \App\Models\Paciente $paciente
  * @property \App\Models\ParteEstado $estado
  * @property \App\Models\Preoperatorio $preoperatorio
+ * @property \App\Models\Sistemasalud $sistemasalud
  * @property \App\Models\User $userIngresa
+ * @property \Illuminate\Database\Eloquent\Collection $bitacoras
+ * @property \Illuminate\Database\Eloquent\Collection $medicamentos
  * @property integer $paciente_id
  * @property integer $cirugia_tipo_id
  * @property integer $especialidad_id
  * @property integer $diagnostico_id
  * @property string $otros_diagnosticos
- * @property string $medicamentos
  * @property integer $intervencion_id
  * @property string $lateralidad
  * @property string $otras_intervenciones
@@ -42,9 +44,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property boolean $equipo_rayos
  * @property boolean $insumos_especificos
  * @property integer $preoperatorio_id
- * @property boolean $biopsia
+ * @property string $biopsia
  * @property integer $user_ingresa
  * @property integer $sistemasalud_id
+ * @property integer $grupobase_id
  * @property integer $estado_id
  * @property integer $pabellon_id
  * @property string|\Carbon\Carbon $fecha_pabellon
@@ -93,15 +96,15 @@ class Parte extends Model
         'preoperatorio_id',
         'biopsia',
         'user_ingresa',
+        'sistemasalud_id',
+        'grupobase_id',
         'estado_id',
         'pabellon_id',
         'fecha_pabellon',
         'fecha_digitacion',
         'instrumental',
         'observaciones',
-        'email',
-        'sistemasalud_id',
-        'grupobase_id'
+        'email'
     ];
 
     /**
@@ -136,8 +139,8 @@ class Parte extends Model
         'preoperatorio_id' => 'integer',
         'biopsia' => 'string',
         'user_ingresa' => 'integer',
-        'sistemasalud_id'  => 'integer',
-        'grupobase_id'  => 'integer',
+        'sistemasalud_id' => 'integer',
+        'grupobase_id' => 'integer',
         'estado_id' => 'integer',
         'pabellon_id' => 'integer',
         'fecha_pabellon' => 'datetime',
@@ -181,9 +184,7 @@ class Parte extends Model
         'fecha_digitacion' => 'nullable',
         'instrumental' => 'nullable|string',
         'observaciones' => 'nullable|string',
-        'email' => 'string',
-        'sistemasalud_id' => 'nullable',
-        'grupobase_id' => 'nullable',
+        'email' => 'nullable|string',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
@@ -277,6 +278,22 @@ class Parte extends Model
     public function grupoBase()
     {
         return $this->belongsTo(\App\Models\GrupoBase::class, 'grupobase_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function bitacoras()
+    {
+        return $this->hasMany(\App\Models\Bitacora::class, 'parte_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function medicamentos()
+    {
+        return $this->belongsToMany(\App\Models\Medicamento::class, 'medicamento_parte');
     }
 
 

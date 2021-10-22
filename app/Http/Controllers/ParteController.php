@@ -317,4 +317,6 @@ class ParteController extends AppBaseController
 
         return $sol;
     }
+
+
 }
