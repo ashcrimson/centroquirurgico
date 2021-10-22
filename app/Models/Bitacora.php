@@ -21,14 +21,14 @@ class Bitacora extends Model
     use SoftDeletes;
 
     public $table = 'bitacoras';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
 
     protected $dates = ['deleted_at'];
 
-
+    protected $appends = ['creado_el'];
 
     public $fillable = [
         'parte_id',
@@ -79,5 +79,10 @@ class Bitacora extends Model
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id');
+    }
+
+    public function getCreadoElAttribute()
+    {
+        return $this->created_at->format('d/m/Y h:i:s a');
     }
 }

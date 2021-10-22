@@ -25,7 +25,7 @@ class BitacoraAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $query = Bitacora::query();
+        $query = Bitacora::with(['user']);
 
         if ($request->get('skip')) {
             $query->skip($request->get('skip'));
@@ -34,6 +34,9 @@ class BitacoraAPIController extends AppBaseController
             $query->limit($request->get('limit'));
         }
 
+        if ($request->parte_id){
+            $query->where('parte_id',$request->parte_id);
+        }
         $bitacoras = $query->get();
 
         return $this->sendResponse($bitacoras->toArray(), 'Bitacoras retrieved successfully');

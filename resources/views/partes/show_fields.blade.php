@@ -362,7 +362,7 @@
 
 
 
-        const app = new Vue({
+        new Vue({
             el: '#fieldsPartes',
             name: 'fieldsPartes',
             created() {
@@ -431,7 +431,7 @@
     <script>
 
 
-        const app = new Vue({
+        new Vue({
             el: '#fieldsPartes',
             name: 'fieldsPartes',
             created() {
