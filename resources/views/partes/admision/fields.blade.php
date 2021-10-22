@@ -130,7 +130,7 @@
         <br>
         <select class="form-control" name="sistemasalud_id">
 
-            @foreach(App\Models\Sistemasalud::get() as $sistemasalud)
+            @foreach(App\Models\SistemaSalud::get() as $sistemasalud)
 
                 <option value="{{ $sistemasalud->id }}" >
                     {{ $sistemasalud->nombre }}

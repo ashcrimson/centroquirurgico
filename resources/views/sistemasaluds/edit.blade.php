@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title_page',__('Edit Sistemasalud'))
+@section('title_page',__('Edit SistemaSalud'))
 
 @section('content')
 
@@ -9,11 +9,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col">
-                    <h1>{{__('Edit Sistemasalud')}}</h1>
+                    <h1>{{__('Edit SistemaSalud')}}</h1>
                 </div>
                 <div class="col">
                     <a class="btn btn-outline-info float-right"
-                       href="{{route('sistemasaluds.index')}}">
+                       href="{{route('sistemasalud.index')}}">
                         <i class="fa fa-list" aria-hidden="true"></i>&nbsp;<span class="d-none d-sm-inline">{{__('List')}}</span>
                     </a>
                 </div>
@@ -30,14 +30,14 @@
             <div class="card">
                 <div class="card-body">
 
-                   {!! Form::model($sistemasalud, ['route' => ['sistemasaluds.update', $sistemasalud->id], 'method' => 'patch','class' => 'wait-on-submit']) !!}
+                   {!! Form::model($sistemasalud, ['route' => ['sistemasalud.update', $sistemasalud->id], 'method' => 'patch','class' => 'wait-on-submit']) !!}
                         <div class="form-row">
 
-                            @include('sistemasaluds.fields')
+                            @include('sistemasalud.fields')
 
                             <!-- Submit Field -->
                             <div class="form-group col-sm-12 text-right">
-                                <a href="{!! route('sistemasaluds.index') !!}" class="btn btn-outline-secondary">
+                                <a href="{!! route('sistemasalud.index') !!}" class="btn btn-outline-secondary">
                                     Cancelar
                                 </a>
                                 &nbsp;

@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Sistemasalud;
+use App\Models\SistemaSalud;
 
 class CreateSistemasaludRequest extends FormRequest
 {
@@ -25,6 +25,6 @@ class CreateSistemasaludRequest extends FormRequest
      */
     public function rules()
     {
-        return Sistemasalud::$rules;
+        return SistemaSalud::$rules;
     }
 }

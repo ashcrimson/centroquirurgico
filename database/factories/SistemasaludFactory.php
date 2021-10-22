@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Sistemasalud;
+use App\Models\SistemaSalud;
 use Faker\Generator as Faker;
 
-$factory->define(Sistemasalud::class, function (Faker $faker) {
+$factory->define(SistemaSalud::class, function (Faker $faker) {
 
     return [
         'nombre' => $this->faker->word,

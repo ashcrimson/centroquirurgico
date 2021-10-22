@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \App\Models\Paciente $paciente
  * @property \App\Models\ParteEstado $estado
  * @property \App\Models\Preoperatorio $preoperatorio
- * @property \App\Models\Sistemasalud $sistemasalud
+ * @property \App\Models\SistemaSalud $sistemasalud
  * @property \App\Models\User $userIngresa
  * @property \Illuminate\Database\Eloquent\Collection $bitacoras
  * @property \Illuminate\Database\Eloquent\Collection $medicamentos
@@ -272,7 +272,7 @@ class Parte extends Model
 
     public function sistemaSalud()
     {
-        return $this->belongsTo(\App\Models\Sistemasalud::class, 'sistemasalud_id');
+        return $this->belongsTo(\App\Models\SistemaSalud::class, 'sistemasalud_id');
     }
 
     public function grupoBase()

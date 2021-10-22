@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Sistemasalud;
+use App\Models\SistemaSalud;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
@@ -19,18 +19,18 @@ class SistemasaludDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-       return $dataTable->addColumn('action', function(Sistemasalud $sistemasalud){
+       return $dataTable->addColumn('action', function(SistemaSalud $sistemasalud){
 
                  $id = $sistemasalud->id;
 
-                 return view('sistemasaluds.datatables_actions',compact('sistemasalud','id'))->render();
+                 return view('sistemasalud.datatables_actions',compact('sistemasalud','id'))->render();
              })
-             ->editColumn('id',function (Sistemasalud $sistemasalud){
+             ->editColumn('id',function (SistemaSalud $sistemasalud){
 
                  return $sistemasalud->id;
 
                  //se debe crear la vista modal_detalles
-                 //return view('sistemasaluds.modal_detalles',compact('sistemasalud'))->render();
+                 //return view('sistemasalud.modal_detalles',compact('sistemasalud'))->render();
 
              })
              ->rawColumns(['action','id']);
@@ -40,10 +40,10 @@ class SistemasaludDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Sistemasalud $model
+     * @param \App\Models\SistemaSalud $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Sistemasalud $model)
+    public function query(SistemaSalud $model)
     {
         return $model->newQuery();
     }
@@ -108,6 +108,6 @@ class SistemasaludDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'sistemasaludsdatatable_' . time();
+        return 'sistemasaluddatatable_' . time();
     }
 }

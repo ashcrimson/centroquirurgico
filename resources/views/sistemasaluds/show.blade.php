@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title_page',__('Sistemasalud'))
+@section('title_page',__('SistemaSalud'))
 
 @section('content')
 
@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{__('Sistemasalud')}}</h1>
+                    <h1>{{__('SistemaSalud')}}</h1>
                 </div>
                 <div class="col-sm-6">
 
@@ -23,8 +23,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-sm-12">
-                        @include('sistemasaluds.show_fields')
-                        <a href="{{ route('sistemasaluds.index') }}" class="btn btn-default">
+                        @include('sistemasalud.show_fields')
+                        <a href="{{ route('sistemasalud.index') }}" class="btn btn-default">
                         {{__('Back')}}
                         </a>
                     </div>
