@@ -5,17 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
- * Class Grupobase
+ * Class GrupoBase
  * @package App\Models
- * @version October 20, 2021, 1:41 pm CST
+ * @version October 22, 2021, 11:34 am CST
  *
+ * @property \Illuminate\Database\Eloquent\Collection $partes
  * @property string $nombre
  */
 class GrupoBase extends Model
 {
     use SoftDeletes;
 
-    public $table = 'grupobase';
+    public $table = 'grupo_base';
+    
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 
 
     protected $dates = ['deleted_at'];
@@ -32,6 +36,7 @@ class GrupoBase extends Model
      * @var array
      */
     protected $casts = [
+        'id' => 'integer',
         'nombre' => 'string'
     ];
 
@@ -41,7 +46,10 @@ class GrupoBase extends Model
      * @var array
      */
     public static $rules = [
-
+        'nombre' => 'required|string|max:255',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable',
+        'deleted_at' => 'nullable'
     ];
 
     /**
@@ -49,8 +57,6 @@ class GrupoBase extends Model
      **/
     public function partes()
     {
-        return $this->hasMany(\App\Models\Parte::class, 'grupobase_id');
+        return $this->hasMany(\App\Models\Parte::class, 'grupo_base_id');
     }
-
-
 }

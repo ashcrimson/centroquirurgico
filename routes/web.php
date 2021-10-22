@@ -78,16 +78,21 @@ Route::group(['middleware' => ['auth']], function () {
 
     ///aca se deben de colocal las ruas para que solo los usuarios auntenticados puedan ingreasr
 
-
-
-    Route::resource('condicions', 'CondicionController');
-
-    Route::resource('sistemasalud', 'SistemaSaludController');
-
-    Route::resource('grupobase', 'GrupoBaseController');
-
-
     Route::resource('medicamentos', 'MedicamentoController');
+
+    Route::resource('contactoTipos', 'ContactoTipoController');
+
+    Route::resource('grupoBases', 'GrupoBaseController');
+
+    Route::resource('insumoEspecificos', 'InsumoEspecificoController');
+
+    Route::resource('parteContactos', 'ParteContactoController');
+
+    Route::resource('parteIntervencions', 'ParteIntervencionController');
+
+    Route::resource('reparticions', 'ReparticionController');
+
+    Route::resource('sistemaSaluds', 'SistemaSaludController');
 });
 
 

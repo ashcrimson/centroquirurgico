@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\SistemaSalud;
 
-class CreateSistemasaludRequest extends FormRequest
+class CreateSistemaSaludRequest extends FormRequest
 {
 
     /**

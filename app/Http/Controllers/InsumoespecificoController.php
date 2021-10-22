@@ -2,68 +2,68 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\InsumoespecificoDataTable;
+use App\DataTables\InsumoEspecificoDataTable;
 use App\Http\Requests;
-use App\Http\Requests\CreateInsumoespecificoRequest;
-use App\Http\Requests\UpdateInsumoespecificoRequest;
-use App\Models\Insumoespecifico;
+use App\Http\Requests\CreateInsumoEspecificoRequest;
+use App\Http\Requests\UpdateInsumoEspecificoRequest;
+use App\Models\InsumoEspecifico;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
-class InsumoespecificoController extends AppBaseController
+class InsumoEspecificoController extends AppBaseController
 {
 
     public function __construct()
     {
-        $this->middleware('permission:Ver Insumoespecificos')->only(['show']);
-        $this->middleware('permission:Crear Insumoespecificos')->only(['create','store']);
-        $this->middleware('permission:Editar Insumoespecificos')->only(['edit','update',]);
-        $this->middleware('permission:Eliminar Insumoespecificos')->only(['destroy']);
+        $this->middleware('permission:Ver Insumo Especificos')->only(['show']);
+        $this->middleware('permission:Crear Insumo Especificos')->only(['create','store']);
+        $this->middleware('permission:Editar Insumo Especificos')->only(['edit','update',]);
+        $this->middleware('permission:Eliminar Insumo Especificos')->only(['destroy']);
     }
 
     /**
-     * Display a listing of the Insumoespecifico.
+     * Display a listing of the InsumoEspecifico.
      *
-     * @param InsumoespecificoDataTable $insumoespecificoDataTable
+     * @param InsumoEspecificoDataTable $insumoEspecificoDataTable
      * @return Response
      */
-    public function index(InsumoespecificoDataTable $insumoespecificoDataTable)
+    public function index(InsumoEspecificoDataTable $insumoEspecificoDataTable)
     {
-        return $insumoespecificoDataTable->render('insumoespecificos.index');
+        return $insumoEspecificoDataTable->render('insumo_especificos.index');
     }
 
     /**
-     * Show the form for creating a new Insumoespecifico.
+     * Show the form for creating a new InsumoEspecifico.
      *
      * @return Response
      */
     public function create()
     {
-        return view('insumoespecificos.create');
+        return view('insumo_especificos.create');
     }
 
     /**
-     * Store a newly created Insumoespecifico in storage.
+     * Store a newly created InsumoEspecifico in storage.
      *
-     * @param CreateInsumoespecificoRequest $request
+     * @param CreateInsumoEspecificoRequest $request
      *
      * @return Response
      */
-    public function store(CreateInsumoespecificoRequest $request)
+    public function store(CreateInsumoEspecificoRequest $request)
     {
         $input = $request->all();
 
-        /** @var Insumoespecifico $insumoespecifico */
-        $insumoespecifico = Insumoespecifico::create($input);
+        /** @var InsumoEspecifico $insumoEspecifico */
+        $insumoEspecifico = InsumoEspecifico::create($input);
 
-        Flash::success('Insumoespecifico guardado exitosamente.');
+        Flash::success('Insumo Especifico guardado exitosamente.');
 
-        return redirect(route('insumoespecificos.index'));
+        return redirect(route('insumoEspecificos.index'));
     }
 
     /**
-     * Display the specified Insumoespecifico.
+     * Display the specified InsumoEspecifico.
      *
      * @param  int $id
      *
@@ -71,20 +71,20 @@ class InsumoespecificoController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var Insumoespecifico $insumoespecifico */
-        $insumoespecifico = Insumoespecifico::find($id);
+        /** @var InsumoEspecifico $insumoEspecifico */
+        $insumoEspecifico = InsumoEspecifico::find($id);
 
-        if (empty($insumoespecifico)) {
-            Flash::error('Insumoespecifico no encontrado');
+        if (empty($insumoEspecifico)) {
+            Flash::error('Insumo Especifico no encontrado');
 
-            return redirect(route('insumoespecificos.index'));
+            return redirect(route('insumoEspecificos.index'));
         }
 
-        return view('insumoespecificos.show')->with('insumoespecifico', $insumoespecifico);
+        return view('insumo_especificos.show')->with('insumoEspecifico', $insumoEspecifico);
     }
 
     /**
-     * Show the form for editing the specified Insumoespecifico.
+     * Show the form for editing the specified InsumoEspecifico.
      *
      * @param  int $id
      *
@@ -92,47 +92,47 @@ class InsumoespecificoController extends AppBaseController
      */
     public function edit($id)
     {
-        /** @var Insumoespecifico $insumoespecifico */
-        $insumoespecifico = Insumoespecifico::find($id);
+        /** @var InsumoEspecifico $insumoEspecifico */
+        $insumoEspecifico = InsumoEspecifico::find($id);
 
-        if (empty($insumoespecifico)) {
-            Flash::error('Insumoespecifico no encontrado');
+        if (empty($insumoEspecifico)) {
+            Flash::error('Insumo Especifico no encontrado');
 
-            return redirect(route('insumoespecificos.index'));
+            return redirect(route('insumoEspecificos.index'));
         }
 
-        return view('insumoespecificos.edit')->with('insumoespecifico', $insumoespecifico);
+        return view('insumo_especificos.edit')->with('insumoEspecifico', $insumoEspecifico);
     }
 
     /**
-     * Update the specified Insumoespecifico in storage.
+     * Update the specified InsumoEspecifico in storage.
      *
      * @param  int              $id
-     * @param UpdateInsumoespecificoRequest $request
+     * @param UpdateInsumoEspecificoRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateInsumoespecificoRequest $request)
+    public function update($id, UpdateInsumoEspecificoRequest $request)
     {
-        /** @var Insumoespecifico $insumoespecifico */
-        $insumoespecifico = Insumoespecifico::find($id);
+        /** @var InsumoEspecifico $insumoEspecifico */
+        $insumoEspecifico = InsumoEspecifico::find($id);
 
-        if (empty($insumoespecifico)) {
-            Flash::error('Insumoespecifico no encontrado');
+        if (empty($insumoEspecifico)) {
+            Flash::error('Insumo Especifico no encontrado');
 
-            return redirect(route('insumoespecificos.index'));
+            return redirect(route('insumoEspecificos.index'));
         }
 
-        $insumoespecifico->fill($request->all());
-        $insumoespecifico->save();
+        $insumoEspecifico->fill($request->all());
+        $insumoEspecifico->save();
 
-        Flash::success('Insumoespecifico actualizado con éxito.');
+        Flash::success('Insumo Especifico actualizado con éxito.');
 
-        return redirect(route('insumoespecificos.index'));
+        return redirect(route('insumoEspecificos.index'));
     }
 
     /**
-     * Remove the specified Insumoespecifico from storage.
+     * Remove the specified InsumoEspecifico from storage.
      *
      * @param  int $id
      *
@@ -142,19 +142,19 @@ class InsumoespecificoController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var Insumoespecifico $insumoespecifico */
-        $insumoespecifico = Insumoespecifico::find($id);
+        /** @var InsumoEspecifico $insumoEspecifico */
+        $insumoEspecifico = InsumoEspecifico::find($id);
 
-        if (empty($insumoespecifico)) {
-            Flash::error('Insumoespecifico no encontrado');
+        if (empty($insumoEspecifico)) {
+            Flash::error('Insumo Especifico no encontrado');
 
-            return redirect(route('insumoespecificos.index'));
+            return redirect(route('insumoEspecificos.index'));
         }
 
-        $insumoespecifico->delete();
+        $insumoEspecifico->delete();
 
-        Flash::success('Insumoespecifico deleted successfully.');
+        Flash::success('Insumo Especifico deleted successfully.');
 
-        return redirect(route('insumoespecificos.index'));
+        return redirect(route('insumoEspecificos.index'));
     }
 }

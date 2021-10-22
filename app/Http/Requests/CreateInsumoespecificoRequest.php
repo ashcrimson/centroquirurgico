@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Insumoespecifico;
+use App\Models\InsumoEspecifico;
 
-class CreateInsumoespecificoRequest extends FormRequest
+class CreateInsumoEspecificoRequest extends FormRequest
 {
 
     /**
@@ -25,6 +25,6 @@ class CreateInsumoespecificoRequest extends FormRequest
      */
     public function rules()
     {
-        return Insumoespecifico::$rules;
+        return InsumoEspecifico::$rules;
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\GrupobaseDataTable;
+use App\DataTables\GrupoBaseDataTable;
 use App\Http\Requests;
-use App\Http\Requests\CreateGrupobaseRequest;
-use App\Http\Requests\UpdateGrupobaseRequest;
-use App\Models\Grupobase;
+use App\Http\Requests\CreateGrupoBaseRequest;
+use App\Http\Requests\UpdateGrupoBaseRequest;
+use App\Models\GrupoBase;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -16,54 +16,54 @@ class GrupoBaseController extends AppBaseController
 
     public function __construct()
     {
-        $this->middleware('permission:Ver Grupo Base')->only(['show']);
-        $this->middleware('permission:Crear Grupo Base')->only(['create','store']);
-        $this->middleware('permission:Editar Grupo Base')->only(['edit','update',]);
-        $this->middleware('permission:Eliminar Grupo Base')->only(['destroy']);
+        $this->middleware('permission:Ver Grupo Bases')->only(['show']);
+        $this->middleware('permission:Crear Grupo Bases')->only(['create','store']);
+        $this->middleware('permission:Editar Grupo Bases')->only(['edit','update',]);
+        $this->middleware('permission:Eliminar Grupo Bases')->only(['destroy']);
     }
 
     /**
-     * Display a listing of the Grupobase.
+     * Display a listing of the GrupoBase.
      *
-     * @param GrupobaseDataTable $grupobaseDataTable
+     * @param GrupoBaseDataTable $grupoBaseDataTable
      * @return Response
      */
-    public function index(GrupobaseDataTable $grupobaseDataTable)
+    public function index(GrupoBaseDataTable $grupoBaseDataTable)
     {
-        return $grupobaseDataTable->render('grupobase.index');
+        return $grupoBaseDataTable->render('grupo_bases.index');
     }
 
     /**
-     * Show the form for creating a new Grupobase.
+     * Show the form for creating a new GrupoBase.
      *
      * @return Response
      */
     public function create()
     {
-        return view('grupobase.create');
+        return view('grupo_bases.create');
     }
 
     /**
-     * Store a newly created Grupobase in storage.
+     * Store a newly created GrupoBase in storage.
      *
-     * @param CreateGrupobaseRequest $request
+     * @param CreateGrupoBaseRequest $request
      *
      * @return Response
      */
-    public function store(CreateGrupobaseRequest $request)
+    public function store(CreateGrupoBaseRequest $request)
     {
         $input = $request->all();
 
-        /** @var Grupobase $grupobase */
-        $grupobase = Grupobase::create($input);
+        /** @var GrupoBase $grupoBase */
+        $grupoBase = GrupoBase::create($input);
 
-        Flash::success('Grupobase guardado exitosamente.');
+        Flash::success('Grupo Base guardado exitosamente.');
 
-        return redirect(route('grupobase.index'));
+        return redirect(route('grupoBases.index'));
     }
 
     /**
-     * Display the specified Grupobase.
+     * Display the specified GrupoBase.
      *
      * @param  int $id
      *
@@ -71,20 +71,20 @@ class GrupoBaseController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var Grupobase $grupobase */
-        $grupobase = Grupobase::find($id);
+        /** @var GrupoBase $grupoBase */
+        $grupoBase = GrupoBase::find($id);
 
-        if (empty($grupobase)) {
-            Flash::error('Grupobase no encontrado');
+        if (empty($grupoBase)) {
+            Flash::error('Grupo Base no encontrado');
 
-            return redirect(route('grupobase.index'));
+            return redirect(route('grupoBases.index'));
         }
 
-        return view('grupobase.show')->with('grupobase', $grupobase);
+        return view('grupo_bases.show')->with('grupoBase', $grupoBase);
     }
 
     /**
-     * Show the form for editing the specified Grupobase.
+     * Show the form for editing the specified GrupoBase.
      *
      * @param  int $id
      *
@@ -92,47 +92,47 @@ class GrupoBaseController extends AppBaseController
      */
     public function edit($id)
     {
-        /** @var Grupobase $grupobase */
-        $grupobase = Grupobase::find($id);
+        /** @var GrupoBase $grupoBase */
+        $grupoBase = GrupoBase::find($id);
 
-        if (empty($grupobase)) {
-            Flash::error('Grupobase no encontrado');
+        if (empty($grupoBase)) {
+            Flash::error('Grupo Base no encontrado');
 
-            return redirect(route('grupobase.index'));
+            return redirect(route('grupoBases.index'));
         }
 
-        return view('grupobase.edit')->with('grupobase', $grupobase);
+        return view('grupo_bases.edit')->with('grupoBase', $grupoBase);
     }
 
     /**
-     * Update the specified Grupobase in storage.
+     * Update the specified GrupoBase in storage.
      *
      * @param  int              $id
-     * @param UpdateGrupobaseRequest $request
+     * @param UpdateGrupoBaseRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateGrupobaseRequest $request)
+    public function update($id, UpdateGrupoBaseRequest $request)
     {
-        /** @var Grupobase $grupobase */
-        $grupobase = Grupobase::find($id);
+        /** @var GrupoBase $grupoBase */
+        $grupoBase = GrupoBase::find($id);
 
-        if (empty($grupobase)) {
-            Flash::error('Grupobase no encontrado');
+        if (empty($grupoBase)) {
+            Flash::error('Grupo Base no encontrado');
 
-            return redirect(route('grupobase.index'));
+            return redirect(route('grupoBases.index'));
         }
 
-        $grupobase->fill($request->all());
-        $grupobase->save();
+        $grupoBase->fill($request->all());
+        $grupoBase->save();
 
-        Flash::success('Grupobase actualizado con éxito.');
+        Flash::success('Grupo Base actualizado con éxito.');
 
-        return redirect(route('grupobase.index'));
+        return redirect(route('grupoBases.index'));
     }
 
     /**
-     * Remove the specified Grupobase from storage.
+     * Remove the specified GrupoBase from storage.
      *
      * @param  int $id
      *
@@ -142,19 +142,19 @@ class GrupoBaseController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var Grupobase $grupobase */
-        $grupobase = Grupobase::find($id);
+        /** @var GrupoBase $grupoBase */
+        $grupoBase = GrupoBase::find($id);
 
-        if (empty($grupobase)) {
-            Flash::error('Grupobase no encontrado');
+        if (empty($grupoBase)) {
+            Flash::error('Grupo Base no encontrado');
 
-            return redirect(route('grupobase.index'));
+            return redirect(route('grupoBases.index'));
         }
 
-        $grupobase->delete();
+        $grupoBase->delete();
 
-        Flash::success('Grupobase deleted successfully.');
+        Flash::success('Grupo Base deleted successfully.');
 
-        return redirect(route('grupobase.index'));
+        return redirect(route('grupoBases.index'));
     }
 }

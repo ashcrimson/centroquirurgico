@@ -2,12 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\Insumoespecifico;
+use App\Models\InsumoEspecifico;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class InsumoespecificoDataTable extends DataTable
+class InsumoEspecificoDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -19,18 +19,18 @@ class InsumoespecificoDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-       return $dataTable->addColumn('action', function(Insumoespecifico $insumoespecifico){
+       return $dataTable->addColumn('action', function(InsumoEspecifico $insumoEspecifico){
 
-                 $id = $insumoespecifico->id;
+                 $id = $insumoEspecifico->id;
 
-                 return view('insumoespecificos.datatables_actions',compact('insumoespecifico','id'))->render();
+                 return view('insumo_especificos.datatables_actions',compact('insumoEspecifico','id'))->render();
              })
-             ->editColumn('id',function (Insumoespecifico $insumoespecifico){
+             ->editColumn('id',function (InsumoEspecifico $insumoEspecifico){
 
-                 return $insumoespecifico->id;
+                 return $insumoEspecifico->id;
 
                  //se debe crear la vista modal_detalles
-                 //return view('insumoespecificos.modal_detalles',compact('insumoespecifico'))->render();
+                 //return view('insumo_especificos.modal_detalles',compact('insumoEspecifico'))->render();
 
              })
              ->rawColumns(['action','id']);
@@ -40,10 +40,10 @@ class InsumoespecificoDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Insumoespecifico $model
+     * @param \App\Models\InsumoEspecifico $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Insumoespecifico $model)
+    public function query(InsumoEspecifico $model)
     {
         return $model->newQuery();
     }
@@ -108,6 +108,6 @@ class InsumoespecificoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'insumoespecificosdatatable_' . time();
+        return 'insumo_especificosdatatable_' . time();
     }
 }

@@ -7,7 +7,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class SistemasaludDataTable extends DataTable
+class SistemaSaludDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -19,18 +19,18 @@ class SistemasaludDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-       return $dataTable->addColumn('action', function(SistemaSalud $sistemasalud){
+       return $dataTable->addColumn('action', function(SistemaSalud $sistemaSalud){
 
-                 $id = $sistemasalud->id;
+                 $id = $sistemaSalud->id;
 
-                 return view('sistemasalud.datatables_actions',compact('sistemasalud','id'))->render();
+                 return view('sistema_saluds.datatables_actions',compact('sistemaSalud','id'))->render();
              })
-             ->editColumn('id',function (SistemaSalud $sistemasalud){
+             ->editColumn('id',function (SistemaSalud $sistemaSalud){
 
-                 return $sistemasalud->id;
+                 return $sistemaSalud->id;
 
                  //se debe crear la vista modal_detalles
-                 //return view('sistemasalud.modal_detalles',compact('sistemasalud'))->render();
+                 //return view('sistema_saluds.modal_detalles',compact('sistemaSalud'))->render();
 
              })
              ->rawColumns(['action','id']);
@@ -108,6 +108,6 @@ class SistemasaludDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'sistemasaluddatatable_' . time();
+        return 'sistema_saludsdatatable_' . time();
     }
 }

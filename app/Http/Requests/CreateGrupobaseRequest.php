@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Grupobase;
+use App\Models\GrupoBase;
 
-class CreateGrupobaseRequest extends FormRequest
+class CreateGrupoBaseRequest extends FormRequest
 {
 
     /**
@@ -25,6 +25,6 @@ class CreateGrupobaseRequest extends FormRequest
      */
     public function rules()
     {
-        return Grupobase::$rules;
+        return GrupoBase::$rules;
     }
 }

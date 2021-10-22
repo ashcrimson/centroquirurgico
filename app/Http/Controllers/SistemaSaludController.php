@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\SistemasaludDataTable;
+use App\DataTables\SistemaSaludDataTable;
 use App\Http\Requests;
-use App\Http\Requests\CreateSistemasaludRequest;
-use App\Http\Requests\UpdateSistemasaludRequest;
+use App\Http\Requests\CreateSistemaSaludRequest;
+use App\Http\Requests\UpdateSistemaSaludRequest;
 use App\Models\SistemaSalud;
 use Flash;
 use App\Http\Controllers\AppBaseController;
@@ -16,21 +16,21 @@ class SistemaSaludController extends AppBaseController
 
     public function __construct()
     {
-        $this->middleware('permission:Ver sistemasalud')->only(['show']);
-        $this->middleware('permission:Crear sistemasalud')->only(['create','store']);
-        $this->middleware('permission:Editar sistemasalud')->only(['edit','update',]);
-        $this->middleware('permission:Eliminar sistemasalud')->only(['destroy']);
+        $this->middleware('permission:Ver Sistema Saluds')->only(['show']);
+        $this->middleware('permission:Crear Sistema Saluds')->only(['create','store']);
+        $this->middleware('permission:Editar Sistema Saluds')->only(['edit','update',]);
+        $this->middleware('permission:Eliminar Sistema Saluds')->only(['destroy']);
     }
 
     /**
      * Display a listing of the SistemaSalud.
      *
-     * @param SistemasaludDataTable $sistemasaludDataTable
+     * @param SistemaSaludDataTable $sistemaSaludDataTable
      * @return Response
      */
-    public function index(SistemasaludDataTable $sistemasaludDataTable)
+    public function index(SistemaSaludDataTable $sistemaSaludDataTable)
     {
-        return $sistemasaludDataTable->render('sistemasalud.index');
+        return $sistemaSaludDataTable->render('sistema_saluds.index');
     }
 
     /**
@@ -40,26 +40,26 @@ class SistemaSaludController extends AppBaseController
      */
     public function create()
     {
-        return view('sistemasalud.create');
+        return view('sistema_saluds.create');
     }
 
     /**
      * Store a newly created SistemaSalud in storage.
      *
-     * @param CreateSistemasaludRequest $request
+     * @param CreateSistemaSaludRequest $request
      *
      * @return Response
      */
-    public function store(CreateSistemasaludRequest $request)
+    public function store(CreateSistemaSaludRequest $request)
     {
         $input = $request->all();
 
-        /** @var SistemaSalud $sistemasalud */
-        $sistemasalud = SistemaSalud::create($input);
+        /** @var SistemaSalud $sistemaSalud */
+        $sistemaSalud = SistemaSalud::create($input);
 
-        Flash::success('SistemaSalud guardado exitosamente.');
+        Flash::success('Sistema Salud guardado exitosamente.');
 
-        return redirect(route('sistemasalud.index'));
+        return redirect(route('sistemaSaluds.index'));
     }
 
     /**
@@ -71,16 +71,16 @@ class SistemaSaludController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var SistemaSalud $sistemasalud */
-        $sistemasalud = SistemaSalud::find($id);
+        /** @var SistemaSalud $sistemaSalud */
+        $sistemaSalud = SistemaSalud::find($id);
 
-        if (empty($sistemasalud)) {
-            Flash::error('SistemaSalud no encontrado');
+        if (empty($sistemaSalud)) {
+            Flash::error('Sistema Salud no encontrado');
 
-            return redirect(route('sistemasalud.index'));
+            return redirect(route('sistemaSaluds.index'));
         }
 
-        return view('sistemasalud.show')->with('sistemasalud', $sistemasalud);
+        return view('sistema_saluds.show')->with('sistemaSalud', $sistemaSalud);
     }
 
     /**
@@ -92,43 +92,43 @@ class SistemaSaludController extends AppBaseController
      */
     public function edit($id)
     {
-        /** @var SistemaSalud $sistemasalud */
-        $sistemasalud = SistemaSalud::find($id);
+        /** @var SistemaSalud $sistemaSalud */
+        $sistemaSalud = SistemaSalud::find($id);
 
-        if (empty($sistemasalud)) {
-            Flash::error('SistemaSalud no encontrado');
+        if (empty($sistemaSalud)) {
+            Flash::error('Sistema Salud no encontrado');
 
-            return redirect(route('sistemasalud.index'));
+            return redirect(route('sistemaSaluds.index'));
         }
 
-        return view('sistemasalud.edit')->with('sistemasalud', $sistemasalud);
+        return view('sistema_saluds.edit')->with('sistemaSalud', $sistemaSalud);
     }
 
     /**
      * Update the specified SistemaSalud in storage.
      *
      * @param  int              $id
-     * @param UpdateSistemasaludRequest $request
+     * @param UpdateSistemaSaludRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateSistemasaludRequest $request)
+    public function update($id, UpdateSistemaSaludRequest $request)
     {
-        /** @var SistemaSalud $sistemasalud */
-        $sistemasalud = SistemaSalud::find($id);
+        /** @var SistemaSalud $sistemaSalud */
+        $sistemaSalud = SistemaSalud::find($id);
 
-        if (empty($sistemasalud)) {
-            Flash::error('SistemaSalud no encontrado');
+        if (empty($sistemaSalud)) {
+            Flash::error('Sistema Salud no encontrado');
 
-            return redirect(route('sistemasalud.index'));
+            return redirect(route('sistemaSaluds.index'));
         }
 
-        $sistemasalud->fill($request->all());
-        $sistemasalud->save();
+        $sistemaSalud->fill($request->all());
+        $sistemaSalud->save();
 
-        Flash::success('SistemaSalud actualizado con éxito.');
+        Flash::success('Sistema Salud actualizado con éxito.');
 
-        return redirect(route('sistemasalud.index'));
+        return redirect(route('sistemaSaluds.index'));
     }
 
     /**
@@ -142,19 +142,19 @@ class SistemaSaludController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var SistemaSalud $sistemasalud */
-        $sistemasalud = SistemaSalud::find($id);
+        /** @var SistemaSalud $sistemaSalud */
+        $sistemaSalud = SistemaSalud::find($id);
 
-        if (empty($sistemasalud)) {
-            Flash::error('SistemaSalud no encontrado');
+        if (empty($sistemaSalud)) {
+            Flash::error('Sistema Salud no encontrado');
 
-            return redirect(route('sistemasalud.index'));
+            return redirect(route('sistemaSaluds.index'));
         }
 
-        $sistemasalud->delete();
+        $sistemaSalud->delete();
 
-        Flash::success('SistemaSalud deleted successfully.');
+        Flash::success('Sistema Salud deleted successfully.');
 
-        return redirect(route('sistemasalud.index'));
+        return redirect(route('sistemaSaluds.index'));
     }
 }

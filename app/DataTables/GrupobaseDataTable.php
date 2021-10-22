@@ -2,12 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\Grupobase;
+use App\Models\GrupoBase;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class GrupobaseDataTable extends DataTable
+class GrupoBaseDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -19,18 +19,18 @@ class GrupobaseDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-       return $dataTable->addColumn('action', function(Grupobase $grupobase){
+       return $dataTable->addColumn('action', function(GrupoBase $grupoBase){
 
-                 $id = $grupobase->id;
+                 $id = $grupoBase->id;
 
-                 return view('grupobase.datatables_actions',compact('grupobase','id'))->render();
+                 return view('grupo_bases.datatables_actions',compact('grupoBase','id'))->render();
              })
-             ->editColumn('id',function (Grupobase $grupobase){
+             ->editColumn('id',function (GrupoBase $grupoBase){
 
-                 return $grupobase->id;
+                 return $grupoBase->id;
 
                  //se debe crear la vista modal_detalles
-                 //return view('grupobase.modal_detalles',compact('grupobase'))->render();
+                 //return view('grupo_bases.modal_detalles',compact('grupoBase'))->render();
 
              })
              ->rawColumns(['action','id']);
@@ -40,10 +40,10 @@ class GrupobaseDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Grupobase $model
+     * @param \App\Models\GrupoBase $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Grupobase $model)
+    public function query(GrupoBase $model)
     {
         return $model->newQuery();
     }
@@ -108,6 +108,6 @@ class GrupobaseDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'grupobasedatatable_' . time();
+        return 'grupo_basesdatatable_' . time();
     }
 }

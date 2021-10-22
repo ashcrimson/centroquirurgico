@@ -1,0 +1,127 @@
+<?php
+
+namespace App\Http\Controllers\API;
+
+use App\Http\Requests\API\CreateParteIntervencionAPIRequest;
+use App\Http\Requests\API\UpdateParteIntervencionAPIRequest;
+use App\Models\ParteIntervencion;
+use Illuminate\Http\Request;
+use App\Http\Controllers\AppBaseController;
+use Response;
+
+/**
+ * Class ParteIntervencionController
+ * @package App\Http\Controllers\API
+ */
+
+class ParteIntervencionAPIController extends AppBaseController
+{
+    /**
+     * Display a listing of the ParteIntervencion.
+     * GET|HEAD /parteIntervencions
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function index(Request $request)
+    {
+        $query = ParteIntervencion::query();
+
+        if ($request->get('skip')) {
+            $query->skip($request->get('skip'));
+        }
+        if ($request->get('limit')) {
+            $query->limit($request->get('limit'));
+        }
+
+        $parteIntervencions = $query->get();
+
+        return $this->sendResponse($parteIntervencions->toArray(), 'Parte Intervencions retrieved successfully');
+    }
+
+    /**
+     * Store a newly created ParteIntervencion in storage.
+     * POST /parteIntervencions
+     *
+     * @param CreateParteIntervencionAPIRequest $request
+     *
+     * @return Response
+     */
+    public function store(CreateParteIntervencionAPIRequest $request)
+    {
+        $input = $request->all();
+
+        /** @var ParteIntervencion $parteIntervencion */
+        $parteIntervencion = ParteIntervencion::create($input);
+
+        return $this->sendResponse($parteIntervencion->toArray(), 'Parte Intervencion guardado exitosamente');
+    }
+
+    /**
+     * Display the specified ParteIntervencion.
+     * GET|HEAD /parteIntervencions/{id}
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        /** @var ParteIntervencion $parteIntervencion */
+        $parteIntervencion = ParteIntervencion::find($id);
+
+        if (empty($parteIntervencion)) {
+            return $this->sendError('Parte Intervencion no encontrado');
+        }
+
+        return $this->sendResponse($parteIntervencion->toArray(), 'Parte Intervencion retrieved successfully');
+    }
+
+    /**
+     * Update the specified ParteIntervencion in storage.
+     * PUT/PATCH /parteIntervencions/{id}
+     *
+     * @param int $id
+     * @param UpdateParteIntervencionAPIRequest $request
+     *
+     * @return Response
+     */
+    public function update($id, UpdateParteIntervencionAPIRequest $request)
+    {
+        /** @var ParteIntervencion $parteIntervencion */
+        $parteIntervencion = ParteIntervencion::find($id);
+
+        if (empty($parteIntervencion)) {
+            return $this->sendError('Parte Intervencion no encontrado');
+        }
+
+        $parteIntervencion->fill($request->all());
+        $parteIntervencion->save();
+
+        return $this->sendResponse($parteIntervencion->toArray(), 'ParteIntervencion actualizado con éxito');
+    }
+
+    /**
+     * Remove the specified ParteIntervencion from storage.
+     * DELETE /parteIntervencions/{id}
+     *
+     * @param int $id
+     *
+     * @throws \Exception
+     *
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        /** @var ParteIntervencion $parteIntervencion */
+        $parteIntervencion = ParteIntervencion::find($id);
+
+        if (empty($parteIntervencion)) {
+            return $this->sendError('Parte Intervencion no encontrado');
+        }
+
+        $parteIntervencion->delete();
+
+        return $this->sendSuccess('Parte Intervencion deleted successfully');
+    }
+}
