@@ -6,11 +6,14 @@ use App\Models\CirugiaTipo;
 use App\Models\Clasificacion;
 use App\Models\Diagnostico;
 use App\Models\Especialidad;
+use App\Models\GrupoBase;
+use App\Models\InsumoEspecifico;
 use App\Models\Intervencion;
 use App\Models\Paciente;
 use App\Models\Parte;
 use App\Models\ParteEstado;
 use App\Models\Preoperatorio;
+use App\Models\SistemaSalud;
 use App\Models\User;
 use Faker\Generator as Faker;
 
@@ -38,8 +41,10 @@ $factory->define(Parte::class, function (Faker $faker) {
         'necesita_donante_sangre' => $faker->boolean,
         'evaluacion_preanestesica' => $faker->boolean,
         'equipo_rayos' => $faker->boolean,
-        'insumos_especificos' => $faker->boolean,
+        'sistema_salud_id' => SistemaSalud::all()->random()->id,
         'preoperatorio_id' => Preoperatorio::all()->random()->id,
+        'grupo_base_id' => GrupoBase::all()->random()->id,
+        'insumo_especifico_id' => InsumoEspecifico::all()->random()->id,
         'biopsia' => $faker->randomElement([
             'Externa',
             'Rápida',
@@ -52,9 +57,22 @@ $factory->define(Parte::class, function (Faker $faker) {
         'pabellon_id' => null,
         'fecha_pabellon' => null,
         'fecha_digitacion' => null,
+        'extrademanda' => $faker->boolean,
+        'convenio_id' => \App\Models\Convenio::all()->random()->id,
+        'derivacion' => $faker->boolean,
+        'reparticion_id' => \App\Models\Reparticion::all()->random()->id,
+        'examenes_realizados' => $faker->boolean,
+        'fecha_examenes' => $faker->date('Y-m-d H:i:s'),
+        'control_preop_eu' => $faker->boolean,
+        'fecha_preop_eu' => $faker->date('Y-m-d H:i:s'),
+        'control_preop_medico' => $faker->boolean,
+        'fecha_preop_medico' => $faker->date('Y-m-d H:i:s'),
+        'control_preop_anestesista' => $faker->boolean,
+        'fecha_preop_anestesista' => $faker->date('Y-m-d H:i:s'),
         'instrumental' => $faker->text,
         'observaciones' => $faker->text,
-        'created_at' => $fechaParte,
+        'email' => $faker->email,
+        'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s'),
     ];
 });

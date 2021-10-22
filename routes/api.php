@@ -53,6 +53,8 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
         Route::resource('reparticions', 'ReparticionAPIController');
 
         Route::resource('sistema_saluds', 'SistemaSaludAPIController');
+
+        Route::resource('convenios', 'ConvenioAPIController');
     });
 
 

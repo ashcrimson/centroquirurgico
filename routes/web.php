@@ -93,9 +93,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('reparticions', 'ReparticionController');
 
     Route::resource('sistemaSaluds', 'SistemaSaludController');
+
+    Route::resource('convenios', 'ConvenioController');
 });
-
-
-
-
 
