@@ -295,6 +295,16 @@ class Parte extends Model
         ]);
     }
 
+    public function puedeEditarAdmision()
+    {
+        return in_array($this->estado_id,[
+            ParteEstado::ENVIADA_ADMICION,
+            ParteEstado::LISTA_ESPERA,
+            ParteEstado::PROGRAMADO,
+            ParteEstado::SUSPENDIDO,
+        ]);
+    }
+
     public function esTemporal()
     {
         return $this->estado_id==ParteEstado::TEMPORAL;

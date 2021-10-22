@@ -32,10 +32,6 @@ class RoleSeeder extends Seeder
             'Crear Partes',
             'Editar Partes',
             'Eliminar Partes',
-            'Aprobar Partes',
-            'Despachar Partes',
-            'Rechazar Partes',
-            'Editar Parte Rechazada',
         ]);
         $role->options()->sync([
             12, //partes
@@ -52,10 +48,6 @@ class RoleSeeder extends Seeder
             'Crear Partes',
             'Editar Partes',
             'Eliminar Partes',
-            'Aprobar Partes',
-            'Despachar Partes',
-            'Rechazar Partes',
-            'Editar Parte Rechazada',
         ]);
         $role->options()->sync([
             12, //partes

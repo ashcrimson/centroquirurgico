@@ -13,9 +13,11 @@
 @endcan
 
 @role('Admisión')
-    <a href="{{ route('partes.edit.admision', $id) }}" data-toggle="tooltip" title="Editar" class='btn btn-outline-info btn-sm'>
+    @if($parte->puedeEditarAdmision())
+    <a href="{{ route('admision.partes.edit', $id) }}" data-toggle="tooltip" title="Editar" class='btn btn-outline-info btn-sm'>
         <i class="fa fa-edit"></i>
     </a>
+    @endif
 @endrole
 
 @can('Eliminar Partes')

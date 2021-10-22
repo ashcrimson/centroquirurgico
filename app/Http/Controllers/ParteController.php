@@ -50,6 +50,23 @@ class ParteController extends AppBaseController
         return $parteDataTable->render('partes.index');
     }
 
+    public function admision(ParteDataTable $parteDataTable)
+    {
+        $scope = new ScopeParteDataTable();
+
+        $scope->estados = [
+            ParteEstado::ENVIADA_ADMICION,
+            ParteEstado::LISTA_ESPERA,
+            ParteEstado::PROGRAMADO,
+            ParteEstado::SUSPENDIDO,
+            ParteEstado::ELIMINADO,
+        ];
+
+        $parteDataTable->addScope($scope);
+
+        return $parteDataTable->render('partes.admision.index');
+    }
+
     /**
      * Show the form for creating a new Parte.
      *

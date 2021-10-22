@@ -65,7 +65,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('clasificaciones', 'ClasificacionController');
 
     Route::resource('partes', 'ParteController');
-    Route::get('partes/{parte}/edit/admision', 'ParteController@editAdmision')->name('partes.edit.admision');
+
+    Route::group(['prefix' => 'admision','as' => 'admision.'],function (){
+        Route::get('partes', 'ParteController@admision')->name('partes');
+        Route::get('partes/{parte}/edit', 'ParteController@editAdmision')->name('partes.edit');
+    });
 
     Route::resource('intervenciones', 'IntervencionController');
 
