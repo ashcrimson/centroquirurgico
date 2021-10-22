@@ -286,4 +286,22 @@ class Parte extends Model
             ParteEstado::ENVIADA_ADMISION,
         ]);
     }
+
+    public function puedeEditar()
+    {
+        return in_array($this->estado_id,[
+            ParteEstado::TEMPORAL,
+            ParteEstado::INGRESADA,
+        ]);
+    }
+
+    public function esTemporal()
+    {
+        return $this->estado_id==ParteEstado::TEMPORAL;
+    }
+
+    public function estaEnEspera()
+    {
+        return $this->estado_id==ParteEstado::LISTA_ESPERA;
+    }
 }

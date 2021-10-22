@@ -22,10 +22,13 @@ class ParteEstado extends Model
     const UPDATED_AT = 'updated_at';
 
 
-    const INGRESADA =           1;
-    const ENVIADA_ADMISION =    2;
-    const SALA_ESPERA =         3;
-    const FINALIZADA =          4;
+    const TEMPORAL =            1;
+    const INGRESADA =           2;
+    const ENVIADA_ADMICION =    3;
+    const LISTA_ESPERA =        4;
+    const PROGRAMADO =          5;
+    const SUSPENDIDO =          6;
+    const ELIMINADO =           7;
 
 
     protected $dates = ['deleted_at'];

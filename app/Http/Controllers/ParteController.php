@@ -48,7 +48,11 @@ class ParteController extends AppBaseController
      */
     public function create()
     {
-        return view('partes.create');
+
+
+        $parte = $this->getParteTemporal();
+
+        return redirect(route('partes.edit',$parte->id));
     }
 
     /**
@@ -123,7 +127,9 @@ class ParteController extends AppBaseController
         /** @var Parte $parte */
         $parte = Parte::find($id);
 
-        $parte = $this->addAttributos($parte);
+        if (!$parte->esTemporal()){
+            $parte = $this->addAttributos($parte);
+        }
 
         if (empty($parte)) {
             flash()->error('Parte no encontrado');
@@ -244,4 +250,20 @@ class ParteController extends AppBaseController
         return $parte;
     }
 
+
+    public function getParteTemporal(){
+
+        $sol = Parte::where('user_ingresa',auth()->user()->id)
+            ->where('estado_id',ParteEstado::TEMPORAL)
+            ->first();
+
+        if (!$sol){
+            $sol = Parte::create([
+                'user_ingresa' => auth()->user()->id,
+                'estado_id' => ParteEstado::TEMPORAL,
+            ]);
+        }
+
+        return $sol;
+    }
 }

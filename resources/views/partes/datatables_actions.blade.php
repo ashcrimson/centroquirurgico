@@ -5,9 +5,11 @@
 @endcan
 
 @can('Editar Partes')
-<a href="{{ route('partes.edit', $id) }}" data-toggle="tooltip" title="Editar" class='btn btn-outline-info btn-sm'>
-    <i class="fa fa-edit"></i>
-</a>
+    @if($parte->puedeEditar())
+        <a href="{{ route('partes.edit', $id) }}" data-toggle="tooltip" title="Editar" class='btn btn-outline-info btn-sm'>
+            <i class="fa fa-edit"></i>
+        </a>
+    @endif
 @endcan
 
 @can('Eliminar Partes')

@@ -9,7 +9,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col">
-                    <h1>{{__('Edit Parte')}}</h1>
+                    <h1>
+                        @if($parte->esTemporal())
+                            {{__('Nueva Parte')}}
+                        @else
+                            {{__('Editar Parte')}}
+                        @endif
+                    </h1>
                 </div>
                 <div class="col">
                     <a class="btn btn-outline-info float-right"
