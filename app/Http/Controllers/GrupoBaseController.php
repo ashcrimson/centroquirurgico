@@ -11,15 +11,15 @@ use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
-class GrupobaseController extends AppBaseController
+class GrupoBaseController extends AppBaseController
 {
 
     public function __construct()
     {
-        $this->middleware('permission:Ver Grupobases')->only(['show']);
-        $this->middleware('permission:Crear Grupobases')->only(['create','store']);
-        $this->middleware('permission:Editar Grupobases')->only(['edit','update',]);
-        $this->middleware('permission:Eliminar Grupobases')->only(['destroy']);
+        $this->middleware('permission:Ver Grupo Base')->only(['show']);
+        $this->middleware('permission:Crear Grupo Base')->only(['create','store']);
+        $this->middleware('permission:Editar Grupo Base')->only(['edit','update',]);
+        $this->middleware('permission:Eliminar Grupo Base')->only(['destroy']);
     }
 
     /**
@@ -30,7 +30,7 @@ class GrupobaseController extends AppBaseController
      */
     public function index(GrupobaseDataTable $grupobaseDataTable)
     {
-        return $grupobaseDataTable->render('grupobases.index');
+        return $grupobaseDataTable->render('grupobase.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class GrupobaseController extends AppBaseController
      */
     public function create()
     {
-        return view('grupobases.create');
+        return view('grupobase.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class GrupobaseController extends AppBaseController
 
         Flash::success('Grupobase guardado exitosamente.');
 
-        return redirect(route('grupobases.index'));
+        return redirect(route('grupobase.index'));
     }
 
     /**
@@ -77,10 +77,10 @@ class GrupobaseController extends AppBaseController
         if (empty($grupobase)) {
             Flash::error('Grupobase no encontrado');
 
-            return redirect(route('grupobases.index'));
+            return redirect(route('grupobase.index'));
         }
 
-        return view('grupobases.show')->with('grupobase', $grupobase);
+        return view('grupobase.show')->with('grupobase', $grupobase);
     }
 
     /**
@@ -98,10 +98,10 @@ class GrupobaseController extends AppBaseController
         if (empty($grupobase)) {
             Flash::error('Grupobase no encontrado');
 
-            return redirect(route('grupobases.index'));
+            return redirect(route('grupobase.index'));
         }
 
-        return view('grupobases.edit')->with('grupobase', $grupobase);
+        return view('grupobase.edit')->with('grupobase', $grupobase);
     }
 
     /**
@@ -120,7 +120,7 @@ class GrupobaseController extends AppBaseController
         if (empty($grupobase)) {
             Flash::error('Grupobase no encontrado');
 
-            return redirect(route('grupobases.index'));
+            return redirect(route('grupobase.index'));
         }
 
         $grupobase->fill($request->all());
@@ -128,7 +128,7 @@ class GrupobaseController extends AppBaseController
 
         Flash::success('Grupobase actualizado con éxito.');
 
-        return redirect(route('grupobases.index'));
+        return redirect(route('grupobase.index'));
     }
 
     /**
@@ -148,13 +148,13 @@ class GrupobaseController extends AppBaseController
         if (empty($grupobase)) {
             Flash::error('Grupobase no encontrado');
 
-            return redirect(route('grupobases.index'));
+            return redirect(route('grupobase.index'));
         }
 
         $grupobase->delete();
 
         Flash::success('Grupobase deleted successfully.');
 
-        return redirect(route('grupobases.index'));
+        return redirect(route('grupobase.index'));
     }
 }

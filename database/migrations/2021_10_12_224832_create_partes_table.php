@@ -41,7 +41,7 @@ class CreatePartesTable extends Migration
             $table->string('biopsia')->nullable();
             $table->unsignedBigInteger('user_ingresa')->index('fk_partes_users1_idx');
             $table->unsignedBigInteger('sistemasalud_id')->nullable()->index('fk_partes_sistemasaluds1_idx')->nullable();
-            $table->unsignedBigInteger('grupobase_id')->nullable()->index('fk_partes_grupobases1_idx')->nullable();
+            $table->unsignedBigInteger('grupobase_id')->nullable()->index('fk_partes_grupobase1_idx')->nullable();
             $table->unsignedBigInteger('estado_id')->index('fk_partes_parte_estados1_idx');
             $table->unsignedInteger('pabellon_id')->nullable()->index('fk_partes_pabellones1_idx');
             $table->dateTime('fecha_pabellon')->nullable();

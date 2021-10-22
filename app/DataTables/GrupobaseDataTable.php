@@ -23,14 +23,14 @@ class GrupobaseDataTable extends DataTable
 
                  $id = $grupobase->id;
 
-                 return view('grupobases.datatables_actions',compact('grupobase','id'))->render();
+                 return view('grupobase.datatables_actions',compact('grupobase','id'))->render();
              })
              ->editColumn('id',function (Grupobase $grupobase){
 
                  return $grupobase->id;
 
                  //se debe crear la vista modal_detalles
-                 //return view('grupobases.modal_detalles',compact('grupobase'))->render();
+                 //return view('grupobase.modal_detalles',compact('grupobase'))->render();
 
              })
              ->rawColumns(['action','id']);
@@ -108,6 +108,6 @@ class GrupobaseDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'grupobasesdatatable_' . time();
+        return 'grupobasedatatable_' . time();
     }
 }

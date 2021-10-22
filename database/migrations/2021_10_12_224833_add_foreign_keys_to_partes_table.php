@@ -25,7 +25,7 @@ class AddForeignKeysToPartesTable extends Migration
             $table->foreign('preoperatorio_id', 'fk_partes_preoperatorios1')->references('id')->on('preoperatorios');
             $table->foreign('user_ingresa', 'fk_partes_users1')->references('id')->on('users');
             $table->foreign('sistemasalud_id', 'fk_partes_sistemasaluds1')->references('id')->on('sistemasaluds');
-            $table->foreign('grupobase_id', 'fk_partes_grupobases1')->references('id')->on('grupobases');
+            $table->foreign('grupobase_id', 'fk_partes_grupobase1')->references('id')->on('grupobase');
         });
     }
 
@@ -48,7 +48,7 @@ class AddForeignKeysToPartesTable extends Migration
             $table->dropForeign('fk_partes_preoperatorios1');
             $table->dropForeign('fk_partes_users1');
             $table->dropForeign('fk_partes_sistemasaluds1');
-            $table->dropForeign('fk_partes_grupobases1');
+            $table->dropForeign('fk_partes_grupobase1');
         });
     }
 }

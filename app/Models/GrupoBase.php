@@ -11,13 +11,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @property string $nombre
  */
-class Grupobase extends Model
+class GrupoBase extends Model
 {
     use SoftDeletes;
 
-    public $table = 'grupobases';
-    
- 
+    public $table = 'grupobase';
+
+
     protected $dates = ['deleted_at'];
 
 
@@ -41,7 +41,7 @@ class Grupobase extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**
@@ -52,5 +52,5 @@ class Grupobase extends Model
         return $this->hasMany(\App\Models\Parte::class, 'grupobase_id');
     }
 
-    
+
 }
