@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="form-group col-sm-12">
                         @include('sistema_saluds.show_fields')
-                        <a href="{{ route('sistemaSaluds.index') }}" class="btn btn-default">
+                        <a href="{{ route('sistemaSalud.index') }}" class="btn btn-default">
                         {{__('Back')}}
                         </a>
                     </div>

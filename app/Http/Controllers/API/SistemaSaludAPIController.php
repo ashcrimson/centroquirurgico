@@ -18,7 +18,7 @@ class SistemaSaludAPIController extends AppBaseController
 {
     /**
      * Display a listing of the SistemaSalud.
-     * GET|HEAD /sistemaSaluds
+     * GET|HEAD /sistemaSalud
      *
      * @param Request $request
      * @return Response
@@ -34,14 +34,14 @@ class SistemaSaludAPIController extends AppBaseController
             $query->limit($request->get('limit'));
         }
 
-        $sistemaSaluds = $query->get();
+        $sistemaSalud = $query->get();
 
-        return $this->sendResponse($sistemaSaluds->toArray(), 'Sistema Saluds retrieved successfully');
+        return $this->sendResponse($sistemaSalud->toArray(), 'Sistema Saluds retrieved successfully');
     }
 
     /**
      * Store a newly created SistemaSalud in storage.
-     * POST /sistemaSaluds
+     * POST /sistemaSalud
      *
      * @param CreateSistemaSaludAPIRequest $request
      *
@@ -59,7 +59,7 @@ class SistemaSaludAPIController extends AppBaseController
 
     /**
      * Display the specified SistemaSalud.
-     * GET|HEAD /sistemaSaluds/{id}
+     * GET|HEAD /sistemaSalud/{id}
      *
      * @param int $id
      *
@@ -79,7 +79,7 @@ class SistemaSaludAPIController extends AppBaseController
 
     /**
      * Update the specified SistemaSalud in storage.
-     * PUT/PATCH /sistemaSaluds/{id}
+     * PUT/PATCH /sistemaSalud/{id}
      *
      * @param int $id
      * @param UpdateSistemaSaludAPIRequest $request
@@ -103,7 +103,7 @@ class SistemaSaludAPIController extends AppBaseController
 
     /**
      * Remove the specified SistemaSalud from storage.
-     * DELETE /sistemaSaluds/{id}
+     * DELETE /sistemaSalud/{id}
      *
      * @param int $id
      *

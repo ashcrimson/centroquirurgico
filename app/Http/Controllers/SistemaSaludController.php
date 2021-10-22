@@ -59,7 +59,7 @@ class SistemaSaludController extends AppBaseController
 
         Flash::success('Sistema Salud guardado exitosamente.');
 
-        return redirect(route('sistemaSaluds.index'));
+        return redirect(route('sistemaSalud.index'));
     }
 
     /**
@@ -77,7 +77,7 @@ class SistemaSaludController extends AppBaseController
         if (empty($sistemaSalud)) {
             Flash::error('Sistema Salud no encontrado');
 
-            return redirect(route('sistemaSaluds.index'));
+            return redirect(route('sistemaSalud.index'));
         }
 
         return view('sistema_saluds.show')->with('sistemaSalud', $sistemaSalud);
@@ -98,7 +98,7 @@ class SistemaSaludController extends AppBaseController
         if (empty($sistemaSalud)) {
             Flash::error('Sistema Salud no encontrado');
 
-            return redirect(route('sistemaSaluds.index'));
+            return redirect(route('sistemaSalud.index'));
         }
 
         return view('sistema_saluds.edit')->with('sistemaSalud', $sistemaSalud);
@@ -120,7 +120,7 @@ class SistemaSaludController extends AppBaseController
         if (empty($sistemaSalud)) {
             Flash::error('Sistema Salud no encontrado');
 
-            return redirect(route('sistemaSaluds.index'));
+            return redirect(route('sistemaSalud.index'));
         }
 
         $sistemaSalud->fill($request->all());
@@ -128,7 +128,7 @@ class SistemaSaludController extends AppBaseController
 
         Flash::success('Sistema Salud actualizado con éxito.');
 
-        return redirect(route('sistemaSaluds.index'));
+        return redirect(route('sistemaSalud.index'));
     }
 
     /**
@@ -148,13 +148,13 @@ class SistemaSaludController extends AppBaseController
         if (empty($sistemaSalud)) {
             Flash::error('Sistema Salud no encontrado');
 
-            return redirect(route('sistemaSaluds.index'));
+            return redirect(route('sistemaSalud.index'));
         }
 
         $sistemaSalud->delete();
 
         Flash::success('Sistema Salud deleted successfully.');
 
-        return redirect(route('sistemaSaluds.index'));
+        return redirect(route('sistemaSalud.index'));
     }
 }

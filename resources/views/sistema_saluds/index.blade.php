@@ -15,7 +15,7 @@
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item">
                             <a class="btn btn-outline-success"
-                                href="{!! route('sistemaSaluds.create') !!}">
+                                href="{!! route('sistemaSalud.create') !!}">
                                 <i class="fa fa-plus"></i>
                                 <span class="d-none d-sm-inline">{{__('New')}}</span>
                             </a>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="text-center">
-                
+
             </div>
         </div>
     </div>
