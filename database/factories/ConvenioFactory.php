@@ -5,12 +5,16 @@
 use App\Models\Convenio;
 use Faker\Generator as Faker;
 
-$factory->define(Convenio::class, function (Faker $faker) {
+$autoIncrement = autoIncrementFaker();
+
+$factory->define(Convenio::class, function (Faker $faker) use ($autoIncrement) {
+
+    $autoIncrement->next();
 
     return [
-        'nombre' => $this->faker->word,
+        'nombre' => "Convenio - ".$autoIncrement->current(),
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s'),
-        'deleted_at' => $this->faker->date('Y-m-d H:i:s')
+
     ];
 });

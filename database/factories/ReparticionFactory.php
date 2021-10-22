@@ -5,12 +5,14 @@
 use App\Models\Reparticion;
 use Faker\Generator as Faker;
 
-$factory->define(Reparticion::class, function (Faker $faker) {
+$autoIncrement = autoIncrementFaker();
+
+$factory->define(Reparticion::class, function (Faker $faker) use ($autoIncrement) {
 
     return [
-        'nombre' => $this->faker->word,
+        'nombre' => "Reparticion - ".$autoIncrement->current(),
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s'),
-        'deleted_at' => $this->faker->date('Y-m-d H:i:s')
+
     ];
 });
