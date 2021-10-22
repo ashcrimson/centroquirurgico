@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateInsumoespecificosTable extends Migration
+class CreateGrupoBaseTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,9 +13,9 @@ class CreateInsumoespecificosTable extends Migration
      */
     public function up()
     {
-        Schema::create('insumoespecificos', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('nombre');
+        Schema::create('grupo_base', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre')->unique();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +28,6 @@ class CreateInsumoespecificosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('insumoespecificos');
+        Schema::dropIfExists('grupo_base');
     }
 }

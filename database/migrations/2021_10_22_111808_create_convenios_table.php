@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateGrupobaseTable extends Migration
+class CreateConveniosTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,8 +13,8 @@ class CreateGrupobaseTable extends Migration
      */
     public function up()
     {
-        Schema::create('grupobase', function (Blueprint $table) {
-            $table->id('id');
+        Schema::create('convenios', function (Blueprint $table) {
+            $table->id();
             $table->string('nombre');
             $table->timestamps();
             $table->softDeletes();
@@ -28,6 +28,6 @@ class CreateGrupobaseTable extends Migration
      */
     public function down()
     {
-        Schema::drop('grupobase');
+        Schema::dropIfExists('convenios');
     }
 }

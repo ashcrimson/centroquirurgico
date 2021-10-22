@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateSistemaSaludTable extends Migration
+class CreateParteContactosTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,9 +13,11 @@ class CreateSistemaSaludTable extends Migration
      */
     public function up()
     {
-        Schema::create('sistemasalud', function (Blueprint $table) {
+        Schema::create('parte_contactos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->unsignedBigInteger('tipo_id')->index('fk_parte_contactosIdx1');
+            $table->unsignedBigInteger('parte_id')->index('fk_parte_contactosIdx2');
+            $table->string('numero');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +30,6 @@ class CreateSistemaSaludTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sistemasalud');
+        Schema::dropIfExists('parte_contactos');
     }
 }
