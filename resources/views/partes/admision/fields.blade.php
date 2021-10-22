@@ -5,7 +5,7 @@
     {!!
         Form::select(
             'medicamentos[]',
-            select(\App\Models\Medicamento::class,'name','id',null)
+            select(\App\Models\Medicamento::class,'nombre','id',null)
             , null
             , ['class' => 'form-control duallistbox','multiple']
         )
@@ -23,15 +23,6 @@
         <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="extrademanda" id="extrademanda"
                value="1"
             {{ ($parte->extrademanda ?? old('extrademanda') ?? false) ? 'checked' : '' }}>
-    </div>
-
-    <!-- Segundo Ojo Field -->
-    <div class="col-sm-3 col-lg-3">
-        <input type="hidden" name="segundoojo" value="0">
-        {!! Form::label('segundoojo', '2° Ojo:') !!}<br>
-        <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="segundoojo" id="segundoojo"
-               value="1"
-            {{ ($parte->segundoojo ?? old('segundoojo') ?? false) ? 'checked' : '' }}>
     </div>
 
     <!-- Derivación Field -->
@@ -112,7 +103,7 @@
         <br>
         <select class="form-control">
 
-            @foreach(App\Models\Condicion::get() as $condicion)
+            @foreach(App\Models\ParteEstado::whereNotIn('id',[\App\Models\ParteEstado::TEMPORAL,\App\Models\ParteEstado::INGRESADA,\App\Models\ParteEstado::ENVIADA_ADMICION])->get() as $condicion)
 
                 <option value="{{ $condicion->id }}" >
                     {{ $condicion->nombre }}
@@ -159,4 +150,5 @@
         </select>
 
     </div>
+
 </div>

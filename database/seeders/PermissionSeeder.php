@@ -47,10 +47,7 @@ class PermissionSeeder extends Seeder
             Permission::firstOrCreate(['name' => 'Crear Partes']);
             Permission::firstOrCreate(['name' => 'Editar Partes']);
             Permission::firstOrCreate(['name' => 'Eliminar Partes']);
-            Permission::firstOrCreate(['name' => 'Aprobar Partes']);
-            Permission::firstOrCreate(['name' => 'Despachar Partes']);
-            Permission::firstOrCreate(['name' => 'Rechazar Partes']);
-            Permission::firstOrCreate(['name' => 'Editar Parte Rechazada']);
+            Permission::firstOrCreate(['name' => 'Admisión Parte']);
 
             Permission::firstOrCreate(['name' => 'Ver Pacientes']);
             Permission::firstOrCreate(['name' => 'Crear Pacientes']);

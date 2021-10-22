@@ -220,8 +220,6 @@ class Parte extends Model
         'grupo_base_id' => 'nullable',
         'insumo_especifico_id' => 'nullable',
         'biopsia' => 'nullable|string|max:255',
-        'user_ingresa' => 'required',
-        'estado_id' => 'required',
         'pabellon_id' => 'nullable|integer',
         'extrademanda' => 'nullable|boolean',
         'convenio_id' => 'nullable',

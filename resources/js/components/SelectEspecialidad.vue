@@ -1,7 +1,7 @@
 <template>
     <div>
         <label v-text="label+':'"></label>
-        <a href="#" v-if="item" @click.prevent="editItem(item)">
+        <a href="#" v-if="item" @click.prevent="editItem(item)" v-show="!disabled">
             editar
         </a>
 
