@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatesistemasaludTable extends Migration
+class CreateSistemaSaludTable extends Migration
 {
 
     /**
@@ -14,7 +14,7 @@ class CreatesistemasaludTable extends Migration
     public function up()
     {
         Schema::create('sistemasalud', function (Blueprint $table) {
-            $table->id('id');
+            $table->id();
             $table->string('nombre');
             $table->timestamps();
             $table->softDeletes();
