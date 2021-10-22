@@ -35,7 +35,6 @@
             </div>
             <!-- /.card-tools -->
         </div>
-        @if(auth()->user()->hasRole('Medico'))
         <!-- /.card-header -->
         <div class="card-body" id="fieldsPartes">
             <div class="form-row">
@@ -316,10 +315,9 @@
                     {!! Form::label('instrumental', 'Instrumental:') !!}
                     {!! Form::textarea('instrumental', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
-                @endcan
 
 
-           
+
                     <!-- Medicamentos Field -->
                     <div class="form-group col-sm-6 col-lg-6">
                         {!! Form::label('medicamentos', 'Medicamentos:') !!}
@@ -399,7 +397,7 @@
                                value="1"
                             {{ ($parte->preop_anestesista ?? old('preop_anestesista') ?? false) ? 'checked' : '' }}>
                     </div>
-                </div> 
+                </div>
                 <div class="row">
                     <!-- Correo Electrónico -->
                     <div class="form-group col-sm-3">
@@ -417,7 +415,7 @@
                             @foreach(App\Models\User::where('username', 'Medico')->get() as $user)
 
                                 <option value="{{ $user->id }}" >
-                                    {{ $user->name }} 
+                                    {{ $user->name }}
                                 </option>
 
                             @endforeach
@@ -429,7 +427,7 @@
                     <!-- Condición Field -->
                     <div class="form-group col-sm-4">
                         {!! Form::label('condicion', 'Condición:') !!}
-                       
+
                         <br>
                         <select class="form-control">
 
@@ -460,7 +458,7 @@
                             @endforeach
 
                         </select>
-                    
+
                     </div>
 
                     <!-- Grupo Base Field -->
@@ -478,11 +476,11 @@
                             @endforeach
 
                         </select>
-                    
+
                     </div>
                 </div>
 
-              
+
 
 
             </div>
