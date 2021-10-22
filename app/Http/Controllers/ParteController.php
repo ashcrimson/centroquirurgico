@@ -36,6 +36,15 @@ class ParteController extends AppBaseController
     {
         $scope = new ScopeParteDataTable();
 
+        $scope->estados = [
+            ParteEstado::INGRESADA,
+            ParteEstado::ENVIADA_ADMICION,
+            ParteEstado::LISTA_ESPERA,
+            ParteEstado::PROGRAMADO,
+            ParteEstado::SUSPENDIDO,
+            ParteEstado::ELIMINADO,
+        ];
+
         $parteDataTable->addScope($scope);
 
         return $parteDataTable->render('partes.index');
@@ -140,6 +149,19 @@ class ParteController extends AppBaseController
         return view('partes.edit')->with('parte', $parte);
     }
 
+
+    public function editAdmision(Parte $parte)
+    {
+
+        if (empty($parte)) {
+            flash()->error('Parte no encontrado');
+
+            return redirect(route('partes.index'));
+        }
+
+        return view('partes.admision.edit')->with('parte', $parte);
+    }
+
     /**
      * Update the specified Parte in storage.
      *
@@ -150,8 +172,10 @@ class ParteController extends AppBaseController
      */
     public function update($id, UpdateParteRequest $request)
     {
+
         /** @var Parte $parte */
         $parte = Parte::find($id);
+
 
 
         if (empty($parte)) {
@@ -162,10 +186,13 @@ class ParteController extends AppBaseController
 
         $paciente = $this->creaOactualizaPaciente($request);
 
+        $estado = $request->enviar_admin ? ParteEstado::ENVIADA_ADMICION : ParteEstado::INGRESADA;
+
         $request->merge([
             'paciente_id' => $paciente->id,
-            'estado_id' => ParteEstado::INGRESADA,
+            'estado_id' => $estado,
         ]);
+
 
         $parte->fill($request->all());
         $parte->save();

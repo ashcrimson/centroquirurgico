@@ -12,6 +12,12 @@
     @endif
 @endcan
 
+@role('Admisión')
+    <a href="{{ route('partes.edit.admision', $id) }}" data-toggle="tooltip" title="Editar" class='btn btn-outline-info btn-sm'>
+        <i class="fa fa-edit"></i>
+    </a>
+@endrole
+
 @can('Eliminar Partes')
 <a href="#" onclick="deleteItemDt(this)" data-id="{{$id}}" data-toggle="tooltip" title="Eliminar" class='btn btn-outline-danger btn-sm'>
     <i class="fa fa-trash-alt"></i>

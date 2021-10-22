@@ -7,7 +7,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class ParteDataTable extends DataTable 
+class ParteDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -19,41 +19,36 @@ class ParteDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-       return $dataTable->addColumn('action', function(Parte $parte){
+        return $dataTable->addColumn('action', function(Parte $parte){
 
-                 $id = $parte->id;
+            $id = $parte->id;
 
-                 return view('partes.datatables_actions',compact('parte','id'))->render();
-             })
-           ->editColumn('paciente.nombre_completo',function (Parte $parte){
+            return view('partes.datatables_actions',compact('parte','id'))->render();
+        })
+            ->editColumn('paciente.nombre_completo',function (Parte $parte){
 
-               return $parte->paciente->nombre_completo;
+                return $parte->paciente->nombre_completo;
 
-           })
-           ->editColumn('paciente.rut_completo',function (Parte $parte){
+            })
+            ->editColumn('paciente.fecha_nac',function (Parte $parte){
 
-               return $parte->paciente->rut_completo;
+                return $parte->paciente->fecha_nac->format('d/m/Y');
 
-           })
-           ->editColumn('paciente.fecha_nac',function (Parte $parte){
+            })
+            ->editColumn('created_at',function (Parte $parte){
 
-               return $parte->paciente->fecha_nac->format('d/m/Y');
+                return $parte->created_at->format('d/m/Y');
 
-           })
-           ->editColumn('created_at',function (Parte $parte){
+            })
+            ->editColumn('id',function (Parte $parte){
 
-               return $parte->created_at->format('d/m/Y');
+                return $parte->id;
 
-           })
-             ->editColumn('id',function (Parte $parte){
+                //se debe crear la vista modal_detalles
+                //return view('partes.modal_detalles',compact('parte'))->render();
 
-                 return $parte->id;
-
-                 //se debe crear la vista modal_detalles
-                 //return view('partes.modal_detalles',compact('parte'))->render();
-
-             })
-             ->rawColumns(['action','id']);
+            })
+            ->rawColumns(['action','id']);
 
     }
 
@@ -65,7 +60,7 @@ class ParteDataTable extends DataTable
      */
     public function query(Parte $model)
     {
-        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado', 'diagnostico', 'intervencion', 'clasificacion', 'sistemasalud','grupobase']);
+        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado','grupoBase']);
     }
 
     /**
@@ -118,20 +113,40 @@ class ParteDataTable extends DataTable
     {
 
 
-      
+        //el metodo ->name()
+        // sirve para que datatables sepa como se llama el campo de la base de datos
+        // con los que hace querys cuando ser escribe algo en el campo de busqueda
 
-        return [  
-            'id',
-            'Rut' => ['name' => 'paciente.run','data' => 'paciente.run'],
-            'Nombre Paciente' => ['name' => 'paciente.nombre_completo','data' => 'paciente.nombre_completo'],
-            'Especialidad' => ['name' => 'especialidad.nombre','data' => 'especialidad.nombre'],
-            'Diagnóstico' => ['name' => 'diagnostico.nombre','data' => 'diagnostico.nombre'],
-            'Medicamentos' => ['name' => 'medicamentos','data' => 'medicamentos'],
-            'Intervención' => ['name' => 'intervencion.nombre','data' => 'intervencion.nombre'],
-            'Clasificación' => ['name' => 'clasificacion.nombre','data' => 'clasificacion.nombre'],
-            'Sistema Salud' => ['name' => 'sistemasalud.nombre','data' => 'sistemasalud.nombre'],
-            'Grupo base' => ['name' => 'grupobase.nombre','data' => 'grupobase.nombre'],
+        //el metodo ->data()
+        // normalmente se coloca el mismo nombre del campo que se coloca en name
+        //pero en ocaciones cuando las relaciones estan escritras en camelCase laravel devuelve el attributo
+        // en snake_case por lo tanto en este caso el nombre del campo se esctibe nombre_relacion.campo
+        // tambien sirve para editar la columna a travez del nombre que lleve este metodo
 
+        return [
+
+            Column::make('id')->data('id')->name('partes.id'),
+
+
+            Column::make('rut')->name('paciente.run')->data('paciente.run'),
+
+            Column::make('paciente')->name('paciente.nombre_completo')->data('paciente.nombre_completo')
+                ->searchable(false)->orderable(false),
+
+            Column::make('fecha_nac')->data('paciente.fecha_nac')->name('paciente.fecha_nac'),
+            Column::make('Fecha Parte')->name('created_at')->data('created_at'),
+
+            Column::make('estado')->data('estado.nombre')->name('estado.nombre'),
+
+            Column::make('paciente.apellido_paterno')
+                ->visible(false)
+                ->exportable(false),
+            Column::make('paciente.apellido_materno')
+                ->visible(false)->exportable(false),
+            Column::make('paciente.primer_nombre')
+                ->visible(false)->exportable(false),
+            Column::make('paciente.segundo_nombre')
+                ->visible(false)->exportable(false),
         ];
     }
 

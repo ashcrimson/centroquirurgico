@@ -283,7 +283,7 @@ class Parte extends Model
     public function estaAdmision()
     {
         return in_array($this->estado_id,[
-            ParteEstado::ENVIADA_ADMISION,
+            ParteEstado::ENVIADA_ADMICION,
         ]);
     }
 
@@ -303,5 +303,10 @@ class Parte extends Model
     public function estaEnEspera()
     {
         return $this->estado_id==ParteEstado::LISTA_ESPERA;
+    }
+
+    public function puedeEnviarAdmision()
+    {
+        return $this->estado_id==ParteEstado::INGRESADA;
     }
 }

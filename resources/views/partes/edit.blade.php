@@ -50,6 +50,13 @@
                                 <button type="submit" class="btn btn-outline-success">
                                     <i class="fa fa-floppy-o"></i> Guardar
                                 </button>
+
+
+                                @if($parte->puedeEnviarAdmision())
+                                <button type="submit" class="btn btn-outline-primary ml-3" name="enviar_admin" value="1">
+                                    <i class="fa fa-plane"></i> Enviar Admisión
+                                </button>
+                                @endif
                             </div>
                         </div>
 
