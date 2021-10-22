@@ -37,6 +37,8 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
         Route::resource('diagnosticos', 'DiagnosticoAPIController');
 
         Route::resource('bitacoras', 'BitacoraAPIController');
+
+        Route::resource('medicamentos', 'MedicamentoAPIController');
     });
 
 

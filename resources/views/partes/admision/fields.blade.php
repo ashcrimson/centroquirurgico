@@ -1,11 +1,16 @@
 <!-- Medicamentos Field -->
-<div class="form-group col-sm-6 col-lg-6">
-    {!! Form::label('medicamentos', 'Medicamentos:') !!}
-    {!! Form::textarea('medicamentos', null, ['class' => 'form-control','rows' => 2]) !!}
+<div class="form-group col-sm-12">
+    {!! Form::label('name', 'Medicamentos:') !!} <a class="success" data-toggle="modal" href="#modal-form-permissions" tabindex="1000">nuevo</a>
+
+    {!!
+        Form::select(
+            'medicamentos[]',
+            select(\App\Models\Medicamento::class,'name','id',null)
+            , null
+            , ['class' => 'form-control duallistbox','multiple']
+        )
+    !!}
 </div>
-
-
-
 
 
 <div class="row">
