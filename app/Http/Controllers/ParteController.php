@@ -160,6 +160,13 @@ class ParteController extends AppBaseController
             return redirect(route('partes.index'));
         }
 
+        $paciente = $this->creaOactualizaPaciente($request);
+
+        $request->merge([
+            'paciente_id' => $paciente->id,
+            'estado_id' => ParteEstado::INGRESADA,
+        ]);
+
         $parte->fill($request->all());
         $parte->save();
 
