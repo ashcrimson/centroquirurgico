@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Parte
  * @package App\Models
- * @version October 22, 2021, 11:37 am CST
+ * @version October 22, 2021, 11:37 am CST 
  *
  * @property \App\Models\CirugiaTipo $cirugiaTipo
  * @property \App\Models\Clasificacion $clasificacion
@@ -220,8 +220,8 @@ class Parte extends Model
         'grupo_base_id' => 'nullable',
         'insumo_especifico_id' => 'nullable',
         'biopsia' => 'nullable|string|max:255',
-        'user_ingresa' => 'required',
-        'estado_id' => 'required',
+        'user_ingresa' => 'nullable',
+        'estado_id' => 'nullable',
         'pabellon_id' => 'nullable|integer',
         'extrademanda' => 'nullable|boolean',
         'convenio_id' => 'nullable',
