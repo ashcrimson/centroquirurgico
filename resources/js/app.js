@@ -124,3 +124,6 @@ Vue.component('select-intervencion', SelectIntervencion);
 
 import SelectDiagnostico from "./components/SelectDiagnostico";
 Vue.component('select-diagnostico', SelectDiagnostico);
+
+import SelectInsumoEspecifico from "./components/SelectInsumoEspecifico";
+Vue.component('select-insumo-especifico', SelectInsumoEspecifico);
