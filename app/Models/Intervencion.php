@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Intervencion
- * @package App\Models
+ * @package App\Models 
  * @version October 15, 2021, 10:40 am CST
  *
  * @property \Illuminate\Database\Eloquent\Collection $partes

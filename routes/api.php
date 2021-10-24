@@ -48,7 +48,7 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
 
         Route::resource('parte_contactos', 'ParteContactoAPIController');
 
-        Route::resource('parte_intervencions', 'ParteIntervencionAPIController');
+        Route::resource('parte_intervenciones', 'ParteIntervencionAPIController');
 
         Route::resource('reparticions', 'ReparticionAPIController');
 

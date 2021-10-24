@@ -91,15 +91,11 @@
 
                 <!-- Intervencion Field -->
                 <div class="form-group col-sm-8 col-lg-8">
-                    <select-intervencion
-                        label="Intervencion"
-                        v-model="intervencion" >
-
-                    </select-intervencion>
+                @include('partes.panel_intervenciones')
                 </div>
 
                 <!-- Lateralidad Field -->
-                <div class="form-group col-sm-4">
+                <!-- <div class="form-group col-sm-4">
                     {!! Form::label('lateralidad', 'Lateralidad:') !!}
                     {!!
                         Form::select(
@@ -115,7 +111,7 @@
                             , ['id'=>'lateralidad','class' => 'form-control','style'=>'width: 100%']
                         )
                     !!}
-                </div>
+                </div> -->
 
 
                 <!-- Otras Intervenciones Field -->
@@ -367,7 +363,6 @@
 
             diagnostico: @json($parte->diagnostico ?? Diagnostico::find(old('diagnostico_id')) ?? null),
 
-            intervencion: @json($parte->intervencion ?? Intervencion::find(old('intervencion_id')) ?? null),
 
             clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
             clasificaciones: @json($parte->cirugiaTipo->clasificaciones ?? []),
