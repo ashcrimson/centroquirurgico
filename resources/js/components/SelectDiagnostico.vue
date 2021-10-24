@@ -11,7 +11,7 @@
                     <i class="fa fa-plus"></i> Nuevo
                 </a>
             </template >
-        </multiselect>
+        </multiselect> 
 
 
         <input type="hidden" :name="name" :value="getId(item)">
@@ -33,7 +33,7 @@
                             <div class="form-row">
 
                                 <div class="form-group col-sm-12">
-                                    <label >Nombre <span  class="text-danger">*</span></label>
+                                    <label >Nombressss <span  class="text-danger">*</span></label>
                                     <input type="text" class="form-control" v-model="editedItem.nombre" >
                                 </div>
 
