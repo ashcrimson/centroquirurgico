@@ -18,7 +18,7 @@ class ParteIntervencionAPIController extends AppBaseController
 {
     /**
      * Display a listing of the ParteIntervencion.
-     * GET|HEAD /parteIntervencions
+     * GET|HEAD /parteIntervenciones
      *
      * @param Request $request
      * @return Response
@@ -34,14 +34,14 @@ class ParteIntervencionAPIController extends AppBaseController
             $query->limit($request->get('limit'));
         }
 
-        $parteIntervencions = $query->get();
+        $parteIntervenciones = $query->get();
 
-        return $this->sendResponse($parteIntervencions->toArray(), 'Parte Intervencions retrieved successfully');
+        return $this->sendResponse($parteIntervenciones->toArray(), 'Parte Intervenciones retrieved successfully');
     }
 
     /**
      * Store a newly created ParteIntervencion in storage.
-     * POST /parteIntervencions
+     * POST /parteIntervenciones
      *
      * @param CreateParteIntervencionAPIRequest $request
      *
@@ -59,7 +59,7 @@ class ParteIntervencionAPIController extends AppBaseController
 
     /**
      * Display the specified ParteIntervencion.
-     * GET|HEAD /parteIntervencions/{id}
+     * GET|HEAD /parteIntervenciones/{id}
      *
      * @param int $id
      *
@@ -79,7 +79,7 @@ class ParteIntervencionAPIController extends AppBaseController
 
     /**
      * Update the specified ParteIntervencion in storage.
-     * PUT/PATCH /parteIntervencions/{id}
+     * PUT/PATCH /parteIntervenciones/{id}
      *
      * @param int $id
      * @param UpdateParteIntervencionAPIRequest $request
@@ -103,7 +103,7 @@ class ParteIntervencionAPIController extends AppBaseController
 
     /**
      * Remove the specified ParteIntervencion from storage.
-     * DELETE /parteIntervencions/{id}
+     * DELETE /parteIntervenciones/{id}
      *
      * @param int $id
      *

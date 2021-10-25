@@ -11,7 +11,7 @@
                     <i class="fa fa-plus"></i> Nuevo
                 </a>
             </template >
-        </multiselect>
+        </multiselect> 
 
 
         <input type="hidden" :name="name" :value="getId(item)">
@@ -31,8 +31,12 @@
                     <form @submit.prevent="save">
                         <div class="modal-body">
                             <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <label >Codigo <span  class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" v-model="editedItem.codigo" >
+                                </div>
 
-                                <div class="form-group col-sm-12">
+                                <div class="form-group col-sm-6">
                                     <label >Nombre <span  class="text-danger">*</span></label>
                                     <input type="text" class="form-control" v-model="editedItem.nombre" >
                                 </div>
@@ -103,6 +107,7 @@ export default {
         },
         defaultItem: {
             id : 0,
+            codigo: '',
             nombre: '',
         },
     }),

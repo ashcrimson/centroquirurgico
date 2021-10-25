@@ -91,15 +91,11 @@
 
                 <!-- Intervencion Field -->
                 <div class="form-group col-sm-8 col-lg-8">
-                    <select-intervencion
-                        label="Intervencion"
-                        v-model="intervencion" >
-
-                    </select-intervencion>
+                @include('partes.panel_intervenciones')
                 </div>
 
                 <!-- Lateralidad Field -->
-                <div class="form-group col-sm-4">
+                <!-- <div class="form-group col-sm-4">
                     {!! Form::label('lateralidad', 'Lateralidad:') !!}
                     {!!
                         Form::select(
@@ -115,7 +111,7 @@
                             , ['id'=>'lateralidad','class' => 'form-control','style'=>'width: 100%']
                         )
                     !!}
-                </div>
+                </div> -->
 
 
                 <!-- Otras Intervenciones Field -->
@@ -266,22 +262,12 @@
 
 
                             <!-- Insumos Especificos Field -->
-                            <div class="col-sm-3">
-                                <input type="hidden" name="insumos_especificos" value="0">
-                                {!! Form::label('insumos_especificos', 'Insumos Especificos:') !!}<br>
-                                <br>
-                                <select class="form-control">
+                            <div class="form-group col-sm-4">
+                                <select-insumo-especifico
+                                    label="Insumo Especifico"
+                                    v-model="insumo_especifico" >
 
-                                    @foreach(App\Models\Insumoespecifico::get() as $insumoespecifico)
-
-                                        <option value="{{ $insumoespecifico->id }}" >
-                                            {{ $insumoespecifico->nombre }}
-                                        </option>
-
-                                    @endforeach
-
-                                </select>
-                                <input type="hidden" name="insumoespecifico" :value="insumoespecifico">
+                                </select-insumo-especifico>
                             </div>
                         </div>
 
@@ -371,11 +357,12 @@
         data: {
             cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
 
+            insumo_especifico: @json($parte->insumoEspecifico ?? App\Models\Insumoespecifico::find(old('insumo_especifico_id')) ?? null),
+
             especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
 
             diagnostico: @json($parte->diagnostico ?? Diagnostico::find(old('diagnostico_id')) ?? null),
 
-            intervencion: @json($parte->intervencion ?? Intervencion::find(old('intervencion_id')) ?? null),
 
             clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
             clasificaciones: @json($parte->cirugiaTipo->clasificaciones ?? []),
