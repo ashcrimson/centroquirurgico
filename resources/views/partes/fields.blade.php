@@ -569,7 +569,7 @@
                         logI(res.data);
 
                         iziTs(res.data.message);
-                        this.getItems();
+                        this.editIntervencion();
 
 
                     }catch (e){
