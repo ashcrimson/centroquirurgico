@@ -91,5 +91,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('sistemaSalud', 'SistemaSaludController');
 
     Route::resource('convenios', 'ConvenioController');
+
+    Route::resource('parteContactos', 'ParteContactoController');
 });
 

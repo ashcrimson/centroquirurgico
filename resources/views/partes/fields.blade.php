@@ -36,8 +36,8 @@
             <!-- /.card-tools -->
         </div>
         <!-- /.card-header -->
-        <div class="card-body" id="fieldsPartes">
-            <div class="form-row">
+        <div class="card-body" >
+            <div class="form-row" id="fieldsPartes">
 
 
                 <!-- Cirugia Tipo Id Field -->
@@ -395,7 +395,12 @@
 
 
             </div>
-        </div>
+
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    @include('partes.panel_contactos')
+                </div>
+            </div>
         <!-- /.card-body -->
     </div>
 </div>
@@ -511,8 +516,6 @@
             },
             async getIntervenciones() {
                 const res = await  axios.get(route('api.parte_intervenciones.index',{parte_id: this.parte_id}));
-
-                console.log('res getItems:',res)
                 this.parte_intervenciones = res.data.data;
             },
             async saveIntervencion () {

@@ -25,7 +25,7 @@ class ParteContactoAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $query = ParteContacto::query();
+        $query = ParteContacto::with(['tipo']);
 
         if ($request->get('skip')) {
             $query->skip($request->get('skip'));
@@ -33,6 +33,11 @@ class ParteContactoAPIController extends AppBaseController
         if ($request->get('limit')) {
             $query->limit($request->get('limit'));
         }
+
+        if ($request->parte_id){
+            $query->where('parte_id',$request->parte_id);
+        }
+
 
         $parteContactos = $query->get();
 
