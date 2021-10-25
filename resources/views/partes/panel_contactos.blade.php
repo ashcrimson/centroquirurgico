@@ -19,7 +19,7 @@
                 <div class="form-row">
 
 
-                    <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-6">
                         <select-contacto-tipo
                             label="Tipo"
                             v-model="tipo_contacto" >
@@ -27,11 +27,12 @@
                         </select-contacto-tipo>
                     </div>
 
-                    <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
+                    <div class="form-group col-sm-6" style="padding: 0px; margin: 0px">
 
-                    <div class="form-group col-sm-8">
+                    
                         <label for="vol">Numero:</label>
-                        <input class="form-control" type="text" @keypress.prevent.enter="save()" v-model="editedItem.numero">
+                        <input class="form-control" type="text" @keypress.prevent.enter="save()" v-model="editedItem.numero"
+                        style="padding:20px;">
                     </div>
 
 

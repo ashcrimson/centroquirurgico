@@ -32,7 +32,7 @@
                             <div class="modal-body">
                                 <div class="form-row">
 
-                                    <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
                                         <label >Nombre <span  class="text-danger">*</span></label>
                                         <input type="text" class="form-control" v-model="editedItem.nombre" >
                                     </div>

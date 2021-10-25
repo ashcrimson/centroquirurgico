@@ -90,7 +90,7 @@
                 </div>
 
                 <!-- Intervencion Field -->
-                <div class="form-group col-sm-8 col-lg-8">
+                <div class="form-group col-sm-12 col-lg-12">
                     <div class="card " >
                         <div class="card-header py-0 px-1">
                             <h3 class="card-title">Intervenciones</h3>
@@ -112,7 +112,7 @@
                                     <div class="form-row">
 
 
-                                        <div class="form-group col-sm-12">
+                                        <div class="form-group col-sm-6">
                                             <select-intervencion
                                                 :items="intervenciones"
                                                 label="Intervencion"
@@ -121,11 +121,12 @@
                                             </select-intervencion>
                                         </div>
 
-                                        <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
+                                        <div class="form-group col-sm-6" >
 
-                                        <div class="form-group col-sm-8">
+                                        
                                             <label for="vol">Lateralidad:</label>
-                                            <input class="form-control" type="text" @keypress.prevent.enter="saveIntervencion()" v-model="editedItem.lateralidad">
+                                            <input class="form-control" type="text" @keypress.prevent.enter="saveIntervencion()" v-model="editedItem.lateralidad"
+                                            style="padding:20px;">
                                         </div>
 
 
@@ -239,7 +240,7 @@
                                 300 => 300,
                             ]
                             , null
-                            , ['id'=>'tiempo_quirurgico','class' => 'form-control','style'=>'width: 100%']
+                            , ['id'=>'tiempo_quirurgico','class' => 'form-control','style'=>'width: 100%','style'=>'padding: 20px']
                         )
                     !!}
                 </div>
@@ -397,7 +398,7 @@
             </div>
 
             <div class="form-row">
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-12">
                     @include('partes.panel_contactos')
                 </div>
             </div>
