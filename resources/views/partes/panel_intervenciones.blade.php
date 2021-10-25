@@ -122,7 +122,7 @@
 
                 loading: false,
 
-                parte_id: @json($parte->id), 
+                parte_id: @json($parte->id),
 
             },
             methods: {

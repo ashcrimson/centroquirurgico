@@ -81,6 +81,10 @@
             id:{
                 type: String,
                 default: 'modalSelectIntervencion'
+            },
+            disabled:{
+                type: Boolean,
+                default: false
             }
         },
 

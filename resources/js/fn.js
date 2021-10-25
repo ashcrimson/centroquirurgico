@@ -193,7 +193,13 @@ window.errorToList = (errors) => {
 
 window.notifyErrorApi = (e) =>{
 
-    logW(e.response);
+    if(typeof e.response !== 'undefined'){
+
+        logW(e.response);
+    }else {
+        logW(e);
+
+    }
 
     var errors = e.response.data.errors;
 

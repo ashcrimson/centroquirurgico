@@ -20,7 +20,7 @@ class ParteIntervencion extends Model
     use SoftDeletes;
 
     public $table = 'parte_intervenciones';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -66,7 +66,7 @@ class ParteIntervencion extends Model
      **/
     public function intervencion()
     {
-        return $this->belongsTo(\App\Models\Intervencione::class, 'intervencion_id');
+        return $this->belongsTo(\App\Models\Intervencion::class, 'intervencion_id');
     }
 
     /**

@@ -25,13 +25,17 @@ class ParteIntervencionAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $query = ParteIntervencion::query();
+        $query = ParteIntervencion::with(['intervencion']);
 
         if ($request->get('skip')) {
             $query->skip($request->get('skip'));
         }
         if ($request->get('limit')) {
             $query->limit($request->get('limit'));
+        }
+
+        if ($request->parte_id){
+            $query->where('parte_id',$request->parte_id);
         }
 
         $parteIntervenciones = $query->get();
