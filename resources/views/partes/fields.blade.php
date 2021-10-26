@@ -76,12 +76,14 @@
                 </div>
 
                 <div class="form-group col-sm-12">
-                    <select-diagnostico
+                    <!-- <select-diagnostico
                         label="Diagnostico"
                         v-model="diagnostico" >
 
-                    </select-diagnostico>
+                    </select-diagnostico> -->
+                    @include('partes.panel_diagnosticos')
                 </div>
+  
 
                 <!-- Otros Diagnosticos Field -->
                 <div class="form-group col-sm-12 col-lg-12">
@@ -123,10 +125,24 @@
 
                                         <div class="form-group col-sm-6" >
 
-
-                                            <label for="vol">Lateralidad:</label>
+                                            <!-- <label for="vol">Lateralidad:</label>
                                             <input class="form-control" type="text" @keypress.prevent.enter="saveIntervencion()" v-model="editedItem.lateralidad"
-                                            style="padding:20px;">
+                                            style="padding:20px;"> -->
+                                            {!! Form::label('lateralidad', 'Lateralidad:') !!}
+                                        {!!
+                                            Form::select(
+                                                'lateralidad',
+                                                [
+                                                    null => 'Seleccione uno...',
+                                                    'Izquierda' => 'Izquierda',
+                                                    'Derecha'=> 'Derecha',
+                                                    'Bilateral' => 'Bilateral',
+                                                    'No_Aplica' => 'No Aplica',
+                                                ]
+                                                , null
+                                                , ['id'=>'lateralidad','class' => 'form-control','style'=>'padding:20px']
+                                            )
+                                        !!}
                                         </div>
 
 
