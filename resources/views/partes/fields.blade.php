@@ -123,7 +123,7 @@
 
                                         <div class="form-group col-sm-6" >
 
-                                        
+
                                             <label for="vol">Lateralidad:</label>
                                             <input class="form-control" type="text" @keypress.prevent.enter="saveIntervencion()" v-model="editedItem.lateralidad"
                                             style="padding:20px;">
@@ -223,26 +223,11 @@
                 <!-- Tiempo Quirurgico Field -->
                 <div class="form-group col-sm-4">
                     {!! Form::label('tiempo_quirurgico', 'Tiempo Quirurgico:') !!}
-                    {!!
-                        Form::select(
-                            'tiempo_quirurgico',
-                            [
-                                null => 'Seleccione uno...',
-                                30 => 30,
-                                60 => 60,
-                                90 => 90,
-                                120 => 120,
-                                150 => 150,
-                                180 => 180,
-                                210 => 210,
-                                240 => 240,
-                                270 => 270,
-                                300 => 300,
-                            ]
-                            , null
-                            , ['id'=>'tiempo_quirurgico','class' => 'form-control','style'=>'width: 100%','style'=>'padding: 20px']
-                        )
-                    !!}
+
+                    <multiselect v-model="tiempo_quirurgico" :options="tiempos"  placeholder="Seleccione uno...">
+                    </multiselect>
+                    <input type="hidden" name="tiempo_quirurgico" :value="tiempo_quirurgico">
+
                 </div>
 
                 <!-- Anestesia Sugerida Field -->
@@ -251,6 +236,32 @@
                     {!! Form::text('anestesia_sugerida', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
                 </div>
 
+                <!-- extrademanda Field -->
+                <div class="form-group col-sm-2">
+
+                    <label for="">extrademanda:</label>
+                    <div class="text-lg">
+
+                        <toggle-button :sync="true"
+                                       :labels="{checked: 'Sí', unchecked: 'No'}"
+                                       v-model="extrademanda"
+                                       :width="75"
+                                       :height="35"
+                                       :font-size="16"
+                        ></toggle-button>
+
+                        <input type="hidden" name="extrademanda" :value="extrademanda ? 1 : 0">
+                    </div>
+
+                </div>
+
+                <div class="form-group col-sm-4" v-show="extrademanda">
+                    <select-convenio
+                        label="Convenio"
+                        v-model="convenio" >
+
+                    </select-convenio>
+                </div>
 
                 <div class="form-group col-sm-12">
                     <div class="card  card-secondary">
@@ -392,6 +403,35 @@
                     {!! Form::textarea('instrumental', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
+                <!-- derivacion Field -->
+                <div class="form-group col-sm-2">
+
+                    <label for="">derivacion:</label>
+                    <div class="text-lg">
+
+                        <toggle-button :sync="true"
+                                       :labels="{checked: 'Sí', unchecked: 'No'}"
+                                       v-model="derivacion"
+                                       :width="75"
+                                       :height="35"
+                                       :font-size="16"
+                        ></toggle-button>
+
+                        <input type="hidden" name="derivacion" :value="derivacion ? 1 : 0">
+                    </div>
+
+
+                </div>
+
+                <div class="form-group col-sm-4" v-show="derivacion">
+                    <select-reparticion
+                        label="Reparticion"
+                        v-model="reparticion" >
+
+                    </select-reparticion>
+                </div>
+
+
 
 
 
@@ -464,7 +504,7 @@
 
             preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
 
-            biopsia : @json($parte->biopsia ?? old('biopcias') ?? null),
+            biopsia : @json($parte->biopsia ?? old('biopsia') ?? null),
 
             biopsias : [
                 'Externa',
@@ -473,6 +513,10 @@
                 'Citometría de flujo',
                 'No aplica',
             ],
+
+            tiempo_quirurgico : @json($parte->tiempo_quirurgico ?? old('tiempo_quirurgico') ?? null),
+
+            tiempos : [30, 60, 90, 120, 150, 180, 210, 240, 270, 300],
 
             intervenciones: @json(\App\Models\Intervencion::all() ?? []),
             intervencion: null,
@@ -495,6 +539,17 @@
             loading: false,
 
             parte_id: @json($parte->id),
+
+
+            extrademanda: @json($parte->extrademanda ?? null),
+            derivacion: @json($parte->derivacion ?? null),
+            examenes_realizados: @json($parte->examenes_realizados ?? null),
+            control_preop_eu: @json($parte->control_preop_eu ?? null),
+            control_preop_medico: @json($parte->control_preop_medico ?? null),
+            control_preop_anestesista: @json($parte->control_preop_anestesista ?? null),
+
+            convenio: @json($parte->convenio ?? null),
+            reparticion: @json($parte->reparticion ?? null),
         },
         methods: {
             close () {

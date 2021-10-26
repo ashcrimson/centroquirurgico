@@ -130,3 +130,9 @@ Vue.component('select-insumo-especifico', SelectInsumoEspecifico);
 
 import SelectTipoContacto from "./components/SelectTipoContacto";
 Vue.component('select-contacto-tipo', SelectTipoContacto);
+
+import SelectConvenio from "./components/SelectConvenio";
+Vue.component('select-convenio', SelectConvenio);
+
+import SelectReparticion from "./components/SelectReparticion";
+Vue.component('select-reparticion',SelectReparticion)

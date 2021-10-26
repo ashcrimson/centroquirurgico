@@ -344,7 +344,7 @@ class Parte extends Model
      **/
     public function reparticion()
     {
-        return $this->belongsTo(\App\Models\Reparticione::class, 'reparticion_id');
+        return $this->belongsTo(\App\Models\Reparticion::class, 'reparticion_id');
     }
 
     /**
