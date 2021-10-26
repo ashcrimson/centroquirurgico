@@ -263,6 +263,109 @@
                     </select-convenio>
                 </div>
 
+                <!-- Examenes Realizados Field -->
+                <div class="form-group col-sm-2">
+
+                    <label for="">Examenes Realizados:</label>
+                    <div class="text-lg">
+
+                        <toggle-button :sync="true"
+                                       :labels="{checked: 'Sí', unchecked: 'No'}"
+                                       v-model="examenes_realizados"
+                                       :width="75"
+                                       :height="35"
+                                       :font-size="16"
+                        ></toggle-button>
+
+                        <input type="hidden" name="examenes_realizados" :value="examenes_realizados ? 1 : 0">
+                    </div>
+
+                </div>
+
+                <div class="form-group col-sm-4" v-show="examenes_realizados">
+                {!! Form::label('fecha_examenes', 'Fecha examenes realizados') !!}    
+             
+                {!! Form::date('fecha_examenes', null, ['id' => 'fecha_examenes','class' => 'form-control','id'=>'fecha_examenes']) !!}
+                </div>
+
+                <!-- Control preop eu Field -->
+                <div class="form-group col-sm-2">
+
+                    <label for="">Control Preop EU:</label>
+                    <div class="text-lg">
+
+                        <toggle-button :sync="true"
+                                       :labels="{checked: 'Sí', unchecked: 'No'}"
+                                       v-model="control_preop_eu"
+                                       :width="75"
+                                       :height="35"
+                                       :font-size="16"
+                        ></toggle-button>
+
+                        <input type="hidden" name="control_preop_eu" :value="control_preop_eu ? 1 : 0">
+                    </div>
+
+                </div>
+
+                <div class="form-group col-sm-4" v-show="control_preop_eu">
+                {!! Form::label('fecha_preop_eu', 'Fecha PreOp EU') !!}    
+       
+                {!! Form::date('fecha_preop_eu', null, ['id' => 'fecha_preop_eu','class' => 'form-control','id'=>'fecha_preop_eu']) !!}
+
+                </div>
+
+                <!-- Control preop Medico Field -->
+                <div class="form-group col-sm-2">
+
+                    <label for="">Control Preop Médico:</label>
+                    <div class="text-lg">
+
+                        <toggle-button :sync="true"
+                                       :labels="{checked: 'Sí', unchecked: 'No'}"
+                                       v-model="control_preop_medico"
+                                       :width="75"
+                                       :height="35"
+                                       :font-size="16"
+                        ></toggle-button>
+
+                        <input type="hidden" name="control_preop_medico" :value="control_preop_medico ? 1 : 0">
+                    </div>
+
+                </div>
+
+                <div class="form-group col-sm-4" v-show="control_preop_medico">
+                {!! Form::label('fecha_preop_medico', 'Fecha PreOp Médico') !!}    
+                {!! Form::date('fecha_preop_medico', null, ['id' => 'fecha_preop_medico','class' => 'form-control','id'=>'fecha_preop_medico']) !!}
+
+                </div>
+
+                <!-- Control preop Antestesista Field -->
+                <div class="form-group col-sm-2">
+
+                    <label for="">Control Preop Anestesista:</label>
+                    <div class="text-lg">
+
+                        <toggle-button :sync="true"
+                                       :labels="{checked: 'Sí', unchecked: 'No'}"
+                                       v-model="control_preop_anestesista"
+                                       :width="75"
+                                       :height="35"
+                                       :font-size="16"
+                        ></toggle-button>
+
+                        <input type="hidden" name="control_preop_anestesista" :value="control_preop_anestesista ? 1 : 0">
+                    </div>
+
+                </div>
+
+                <div class="form-group col-sm-4" v-show="control_preop_anestesista">
+                {!! Form::label('fecha_preop_anestesista', 'Fecha PreOp Anestesista') !!}    
+                {!! Form::date('fecha_preop_anestesista', null, ['id' => 'fecha_preop_anestesista','class' => 'form-control','id'=>'fecha_preop_anestesista']) !!}
+
+                </div>
+
+
+
                 <div class="form-group col-sm-12">
                     <div class="card  card-secondary">
                     <!-- /.card-header -->
