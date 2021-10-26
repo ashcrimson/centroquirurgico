@@ -507,6 +507,15 @@
                     </select-preoperatorio>
                 </div>
 
+                <!-- Grupo Base Field -->
+                <div class="form-group col-sm-6">
+                    <select-grupo-base
+                        label="Grupo Base"
+                        v-model="grupo_base" >
+
+                    </select-grupo-base>
+                </div>
+
                 <!-- Biopsia Field -->
                 <div class="form-group col-sm-6">
                     {!! Form::label('biopsia', 'Biopsias:') !!}
@@ -617,6 +626,7 @@
 
             diagnostico: @json($parte->diagnostico ?? Diagnostico::find(old('diagnostico_id')) ?? null),
 
+            grupo_base: @json($parte->grupoBase ?? App\Models\GrupoBase::find(old('grupo_base_id')) ?? null),
 
             clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
             clasificaciones: @json($parte->cirugiaTipo->clasificaciones ?? []),
