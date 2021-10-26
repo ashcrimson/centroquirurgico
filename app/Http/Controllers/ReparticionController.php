@@ -16,10 +16,10 @@ class ReparticionController extends AppBaseController
 
     public function __construct()
     {
-        $this->middleware('permission:Ver Reparticions')->only(['show']);
-        $this->middleware('permission:Crear Reparticions')->only(['create','store']);
-        $this->middleware('permission:Editar Reparticions')->only(['edit','update',]);
-        $this->middleware('permission:Eliminar Reparticions')->only(['destroy']);
+        $this->middleware('permission:Ver reparticiones')->only(['show']);
+        $this->middleware('permission:Crear reparticiones')->only(['create','store']);
+        $this->middleware('permission:Editar reparticiones')->only(['edit','update',]);
+        $this->middleware('permission:Eliminar reparticiones')->only(['destroy']);
     }
 
     /**
@@ -30,7 +30,7 @@ class ReparticionController extends AppBaseController
      */
     public function index(ReparticionDataTable $reparticionDataTable)
     {
-        return $reparticionDataTable->render('reparticions.index');
+        return $reparticionDataTable->render('reparticiones.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class ReparticionController extends AppBaseController
      */
     public function create()
     {
-        return view('reparticions.create');
+        return view('reparticiones.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class ReparticionController extends AppBaseController
 
         Flash::success('Reparticion guardado exitosamente.');
 
-        return redirect(route('reparticions.index'));
+        return redirect(route('reparticiones.index'));
     }
 
     /**
@@ -77,10 +77,10 @@ class ReparticionController extends AppBaseController
         if (empty($reparticion)) {
             Flash::error('Reparticion no encontrado');
 
-            return redirect(route('reparticions.index'));
+            return redirect(route('reparticiones.index'));
         }
 
-        return view('reparticions.show')->with('reparticion', $reparticion);
+        return view('reparticiones.show')->with('reparticion', $reparticion);
     }
 
     /**
@@ -98,10 +98,10 @@ class ReparticionController extends AppBaseController
         if (empty($reparticion)) {
             Flash::error('Reparticion no encontrado');
 
-            return redirect(route('reparticions.index'));
+            return redirect(route('reparticiones.index'));
         }
 
-        return view('reparticions.edit')->with('reparticion', $reparticion);
+        return view('reparticiones.edit')->with('reparticion', $reparticion);
     }
 
     /**
@@ -120,7 +120,7 @@ class ReparticionController extends AppBaseController
         if (empty($reparticion)) {
             Flash::error('Reparticion no encontrado');
 
-            return redirect(route('reparticions.index'));
+            return redirect(route('reparticiones.index'));
         }
 
         $reparticion->fill($request->all());
@@ -128,7 +128,7 @@ class ReparticionController extends AppBaseController
 
         Flash::success('Reparticion actualizado con éxito.');
 
-        return redirect(route('reparticions.index'));
+        return redirect(route('reparticiones.index'));
     }
 
     /**
@@ -148,13 +148,13 @@ class ReparticionController extends AppBaseController
         if (empty($reparticion)) {
             Flash::error('Reparticion no encontrado');
 
-            return redirect(route('reparticions.index'));
+            return redirect(route('reparticiones.index'));
         }
 
         $reparticion->delete();
 
         Flash::success('Reparticion deleted successfully.');
 
-        return redirect(route('reparticions.index'));
+        return redirect(route('reparticiones.index'));
     }
 }

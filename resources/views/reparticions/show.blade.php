@@ -23,8 +23,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-sm-12">
-                        @include('reparticions.show_fields')
-                        <a href="{{ route('reparticions.index') }}" class="btn btn-default">
+                        @include('reparticiones.show_fields')
+                        <a href="{{ route('reparticiones.index') }}" class="btn btn-default">
                         {{__('Back')}}
                         </a>
                     </div>

@@ -19,7 +19,7 @@ class ReparticionApiTest extends TestCase
 
         $this->response = $this->json(
             'POST',
-            '/api/reparticions', $reparticion
+            '/api/reparticiones', $reparticion
         );
 
         $this->assertApiResponse($reparticion);
@@ -34,7 +34,7 @@ class ReparticionApiTest extends TestCase
 
         $this->response = $this->json(
             'GET',
-            '/api/reparticions/'.$reparticion->id
+            '/api/reparticiones/'.$reparticion->id
         );
 
         $this->assertApiResponse($reparticion->toArray());
@@ -50,7 +50,7 @@ class ReparticionApiTest extends TestCase
 
         $this->response = $this->json(
             'PUT',
-            '/api/reparticions/'.$reparticion->id,
+            '/api/reparticiones/'.$reparticion->id,
             $editedReparticion
         );
 
@@ -66,13 +66,13 @@ class ReparticionApiTest extends TestCase
 
         $this->response = $this->json(
             'DELETE',
-             '/api/reparticions/'.$reparticion->id
+             '/api/reparticiones/'.$reparticion->id
          );
 
         $this->assertApiSuccess();
         $this->response = $this->json(
             'GET',
-            '/api/reparticions/'.$reparticion->id
+            '/api/reparticiones/'.$reparticion->id
         );
 
         $this->response->assertStatus(404);

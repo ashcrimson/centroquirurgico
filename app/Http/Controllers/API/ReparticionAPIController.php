@@ -18,7 +18,7 @@ class ReparticionAPIController extends AppBaseController
 {
     /**
      * Display a listing of the Reparticion.
-     * GET|HEAD /reparticions
+     * GET|HEAD /reparticiones
      *
      * @param Request $request
      * @return Response
@@ -34,14 +34,14 @@ class ReparticionAPIController extends AppBaseController
             $query->limit($request->get('limit'));
         }
 
-        $reparticions = $query->get();
+        $reparticiones = $query->get();
 
-        return $this->sendResponse($reparticions->toArray(), 'Reparticions retrieved successfully');
+        return $this->sendResponse($reparticiones->toArray(), 'reparticiones retrieved successfully');
     }
 
     /**
      * Store a newly created Reparticion in storage.
-     * POST /reparticions
+     * POST /reparticiones
      *
      * @param CreateReparticionAPIRequest $request
      *
@@ -59,7 +59,7 @@ class ReparticionAPIController extends AppBaseController
 
     /**
      * Display the specified Reparticion.
-     * GET|HEAD /reparticions/{id}
+     * GET|HEAD /reparticiones/{id}
      *
      * @param int $id
      *
@@ -79,7 +79,7 @@ class ReparticionAPIController extends AppBaseController
 
     /**
      * Update the specified Reparticion in storage.
-     * PUT/PATCH /reparticions/{id}
+     * PUT/PATCH /reparticiones/{id}
      *
      * @param int $id
      * @param UpdateReparticionAPIRequest $request
@@ -103,7 +103,7 @@ class ReparticionAPIController extends AppBaseController
 
     /**
      * Remove the specified Reparticion from storage.
-     * DELETE /reparticions/{id}
+     * DELETE /reparticiones/{id}
      *
      * @param int $id
      *

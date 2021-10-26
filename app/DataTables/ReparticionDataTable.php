@@ -23,14 +23,14 @@ class ReparticionDataTable extends DataTable
 
                  $id = $reparticion->id;
 
-                 return view('reparticions.datatables_actions',compact('reparticion','id'))->render();
+                 return view('reparticiones.datatables_actions',compact('reparticion','id'))->render();
              })
              ->editColumn('id',function (Reparticion $reparticion){
 
                  return $reparticion->id;
 
                  //se debe crear la vista modal_detalles
-                 //return view('reparticions.modal_detalles',compact('reparticion'))->render();
+                 //return view('reparticiones.modal_detalles',compact('reparticion'))->render();
 
              })
              ->rawColumns(['action','id']);
@@ -108,6 +108,6 @@ class ReparticionDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'reparticionsdatatable_' . time();
+        return 'reparticionesdatatable_' . time();
     }
 }

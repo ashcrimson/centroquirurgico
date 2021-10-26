@@ -1,22 +1,22 @@
-@can('Ver Reparticions')
-<a href="{{ route('reparticions.show', $id) }}" data-toggle="tooltip" title="Ver" class='btn btn-default btn-sm'>
+@can('Ver reparticiones')
+<a href="{{ route('reparticiones.show', $id) }}" data-toggle="tooltip" title="Ver" class='btn btn-default btn-sm'>
     <i class="fa fa-eye"></i>
 </a>
 @endcan
 
-@can('Editar Reparticions')
-<a href="{{ route('reparticions.edit', $id) }}" data-toggle="tooltip" title="Editar" class='btn btn-outline-info btn-sm'>
+@can('Editar reparticiones')
+<a href="{{ route('reparticiones.edit', $id) }}" data-toggle="tooltip" title="Editar" class='btn btn-outline-info btn-sm'>
     <i class="fa fa-edit"></i>
 </a>
 @endcan
 
-@can('Eliminar Reparticions')
+@can('Eliminar reparticiones')
 <a href="#" onclick="deleteItemDt(this)" data-id="{{$id}}" data-toggle="tooltip" title="Eliminar" class='btn btn-outline-danger btn-sm'>
     <i class="fa fa-trash-alt"></i>
 </a>
 
 
-<form action="{{ route('reparticions.destroy', $id)}}" method="POST" id="delete-form{{$id}}">
+<form action="{{ route('reparticiones.destroy', $id)}}" method="POST" id="delete-form{{$id}}">
     @method('DELETE')
     @csrf
 </form>

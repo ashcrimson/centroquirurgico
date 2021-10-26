@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title_page',__('Reparticions'))
+@section('title_page',__('reparticiones'))
 
 @section('content')
 
@@ -9,13 +9,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Reparticions</h1>
+                    <h1>reparticiones</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item">
                             <a class="btn btn-outline-success"
-                                href="{!! route('reparticions.create') !!}">
+                                href="{!! route('reparticiones.create') !!}">
                                 <i class="fa fa-plus"></i>
                                 <span class="d-none d-sm-inline">{{__('New')}}</span>
                             </a>
@@ -35,11 +35,11 @@
             <div class="clearfix"></div>
             <div class="card card-primary">
                 <div class="card-body">
-                        @include('reparticions.table')
+                        @include('reparticiones.table')
                 </div>
             </div>
             <div class="text-center">
-                
+
             </div>
         </div>
     </div>
