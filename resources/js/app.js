@@ -135,4 +135,7 @@ import SelectConvenio from "./components/SelectConvenio";
 Vue.component('select-convenio', SelectConvenio);
 
 import SelectReparticion from "./components/SelectReparticion";
-Vue.component('select-reparticion',SelectReparticion)
+Vue.component('select-reparticion',SelectReparticion);
+
+import SelectGrupoBase from "./components/SelectGrupoBase";
+Vue.component('select-grupo-base',SelectGrupoBase);
