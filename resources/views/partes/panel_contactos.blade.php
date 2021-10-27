@@ -29,10 +29,26 @@
 
                     <div class="form-group col-sm-6" style="padding: 0px; margin: 0px">
 
-                    
+
                         <label for="vol">Numero:</label>
                         <input class="form-control" type="text" @keypress.prevent.enter="save()" v-model="editedItem.numero"
                         style="padding:20px;">
+                    </div>
+
+                    <div class="form-group col-sm-6" style="padding: 0px; margin: 0px">
+
+
+                        <label for="vol">Nombre:</label>
+                        <input class="form-control" type="text" @keypress.prevent.enter="save()" v-model="editedItem.nombre"
+                               style="padding:20px;">
+                    </div>
+
+                    <div class="form-group col-sm-6" style="padding: 0px; margin: 0px">
+
+
+                        <label for="vol">Parentesco:</label>
+                        <input class="form-control" type="text" @keypress.prevent.enter="save()" v-model="editedItem.parentesco"
+                               style="padding:20px;">
                     </div>
 
 
@@ -59,6 +75,8 @@
                 <tr>
                     <th>Tipo</th>
                     <th>Numero</th>
+                    <th>Parentesco</th>
+                    <th>Nombre</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -69,6 +87,8 @@
                 <tr v-for="det in parte_contactos">
                     <td v-text="det.tipo.nombre"></td>
                     <td v-text="det.numero"></td>
+                    <td v-text="det.parentesco"></td>
+                    <td v-text="det.nombre"></td>
                     <td  class="text-nowrap">
                         <button type="button" @click="editItem(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >
                             <i class="fa fa-edit"></i>
@@ -160,6 +180,7 @@
                         console.log(data);
 
                         if(this.editedItem.id === 0){
+
 
                             var res = await axios.post(route('api.parte_contactos.store'),data);
 

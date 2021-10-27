@@ -76,7 +76,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('diagnosticos', 'DiagnosticoController');
 
-    ///aca se deben de colocal las ruas para que solo los usuarios auntenticados puedan ingreasr
 
     Route::resource('medicamentos', 'MedicamentoController');
 
@@ -93,5 +92,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('convenios', 'ConvenioController');
 
     Route::resource('parteContactos', 'ParteContactoController');
+
+
+    ///Colocar ariba de esta linea las rutas a proteger por autenticacion
+
 });
 
+//################# OOOOJJJJJJOOOOOOOOOOOOOOOOOooo ########################
+//las rutas que se coloque debajo de esta linea NOOOO estan protegidas por autenticación

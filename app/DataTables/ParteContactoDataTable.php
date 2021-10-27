@@ -99,7 +99,9 @@ class ParteContactoDataTable extends DataTable
         return [
             Column::make('tipo_id'),
             Column::make('parte_id'),
-            Column::make('numero')
+            Column::make('numero'),
+            Column::make('nombre'),
+            Column::make('parentesco')
         ];
     }
 

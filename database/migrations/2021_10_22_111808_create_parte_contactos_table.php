@@ -14,7 +14,7 @@ class CreateParteContactosTable extends Migration
     public function up()
     {
         Schema::create('parte_contactos', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary();
+            $table->id();
             $table->unsignedBigInteger('tipo_id')->index('fk_parte_contactos_contacto_tipos1_idx');
             $table->unsignedBigInteger('parte_id')->index('fk_parte_contactos_partes1_idx');
             $table->string('numero');

@@ -13,3 +13,13 @@
 {!! $parteContacto->numero !!}<br>
 
 
+<!-- Nombre Field -->
+{!! Form::label('nombre', 'Nombre:') !!}
+{!! $parteContacto->nombre !!}<br>
+
+
+<!-- Parentesco Field -->
+{!! Form::label('parentesco', 'Parentesco:') !!}
+{!! $parteContacto->parentesco !!}<br>
+
+

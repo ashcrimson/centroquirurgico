@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class ParteContacto
  * @package App\Models
- * @version October 24, 2021, 10:29 pm CST
+ * @version October 26, 2021, 9:45 pm CST
  *
  * @property \App\Models\ContactoTipo $tipo
  * @property \App\Models\Parte $parte
  * @property integer $tipo_id
  * @property integer $parte_id
  * @property string $numero
+ * @property string $nombre
+ * @property string $parentesco
  */
 class ParteContacto extends Model
 {
@@ -32,7 +34,9 @@ class ParteContacto extends Model
     public $fillable = [
         'tipo_id',
         'parte_id',
-        'numero'
+        'numero',
+        'nombre',
+        'parentesco'
     ];
 
     /**
@@ -44,7 +48,9 @@ class ParteContacto extends Model
         'id' => 'integer',
         'tipo_id' => 'integer',
         'parte_id' => 'integer',
-        'numero' => 'string'
+        'numero' => 'string',
+        'nombre' => 'string',
+        'parentesco' => 'string'
     ];
 
     /**
@@ -56,6 +62,8 @@ class ParteContacto extends Model
         'tipo_id' => 'required',
         'parte_id' => 'required',
         'numero' => 'required|string|max:255',
+        'nombre' => 'required|string|max:255',
+        'parentesco' => 'required|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
