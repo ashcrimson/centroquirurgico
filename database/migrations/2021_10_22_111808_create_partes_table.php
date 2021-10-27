@@ -35,6 +35,7 @@ class CreatePartesTable extends Migration
             $table->tinyInteger('necesita_donante_sangre')->nullable();
             $table->tinyInteger('evaluacion_preanestesica')->nullable();
             $table->tinyInteger('equipo_rayos')->nullable();
+            $table->tinyInteger('segundo_ojo')->nullable();
             $table->unsignedBigInteger('sistema_salud_id')->nullable()->index('fk_partes_sistema_salud1_idx');
             $table->unsignedBigInteger('preoperatorio_id')->nullable()->index('fk_partes_preoperatorios1_idx');
             $table->unsignedBigInteger('grupo_base_id')->nullable()->index('fk_partes_grupo_base1_idx');
