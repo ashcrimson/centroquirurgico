@@ -76,11 +76,11 @@
                 </div>
 
                 <div class="form-group col-sm-12">
-                    <!-- <select-diagnostico
+                    <select-diagnostico
                         label="Diagnostico"
                         v-model="diagnostico" >
 
-                    </select-diagnostico> -->
+                    </select-diagnostico>
 {{--                    @include('partes.panel_diagnosticos')--}}
                 </div>
 
@@ -240,133 +240,7 @@
                     {!! Form::text('anestesia_sugerida', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
                 </div>
 
-                <!-- extrademanda Field -->
-                <div class="form-group col-sm-2">
 
-                    <label for="">extrademanda:</label>
-                    <div class="text-lg">
-
-                        <toggle-button :sync="true"
-                                       :labels="{checked: 'Sí', unchecked: 'No'}"
-                                       v-model="extrademanda"
-                                       :width="75"
-                                       :height="35"
-                                       :font-size="16"
-                        ></toggle-button>
-
-                        <input type="hidden" name="extrademanda" :value="extrademanda ? 1 : 0">
-                    </div>
-
-                </div>
-
-                <div class="form-group col-sm-4" v-show="extrademanda">
-                    <select-convenio
-                        label="Convenio"
-                        v-model="convenio" >
-
-                    </select-convenio>
-                </div>
-
-                <!-- Examenes Realizados Field -->
-                <div class="form-group col-sm-2">
-
-                    <label for="">Examenes Realizados:</label>
-                    <div class="text-lg">
-
-                        <toggle-button :sync="true"
-                                       :labels="{checked: 'Sí', unchecked: 'No'}"
-                                       v-model="examenes_realizados"
-                                       :width="75"
-                                       :height="35"
-                                       :font-size="16"
-                        ></toggle-button>
-
-                        <input type="hidden" name="examenes_realizados" :value="examenes_realizados ? 1 : 0">
-                    </div>
-
-                </div>
-
-                <div class="form-group col-sm-4" v-show="examenes_realizados">
-                {!! Form::label('fecha_examenes', 'Fecha examenes realizados') !!}
-
-                {!! Form::date('fecha_examenes', null, ['id' => 'fecha_examenes','class' => 'form-control','id'=>'fecha_examenes']) !!}
-                </div>
-
-                <!-- Control preop eu Field -->
-                <div class="form-group col-sm-2">
-
-                    <label for="">Control Preop EU:</label>
-                    <div class="text-lg">
-
-                        <toggle-button :sync="true"
-                                       :labels="{checked: 'Sí', unchecked: 'No'}"
-                                       v-model="control_preop_eu"
-                                       :width="75"
-                                       :height="35"
-                                       :font-size="16"
-                        ></toggle-button>
-
-                        <input type="hidden" name="control_preop_eu" :value="control_preop_eu ? 1 : 0">
-                    </div>
-
-                </div>
-
-                <div class="form-group col-sm-4" v-show="control_preop_eu">
-                {!! Form::label('fecha_preop_eu', 'Fecha PreOp EU') !!}
-
-                {!! Form::date('fecha_preop_eu', null, ['id' => 'fecha_preop_eu','class' => 'form-control','id'=>'fecha_preop_eu']) !!}
-
-                </div>
-
-                <!-- Control preop Medico Field -->
-                <div class="form-group col-sm-2">
-
-                    <label for="">Control Preop Médico:</label>
-                    <div class="text-lg">
-
-                        <toggle-button :sync="true"
-                                       :labels="{checked: 'Sí', unchecked: 'No'}"
-                                       v-model="control_preop_medico"
-                                       :width="75"
-                                       :height="35"
-                                       :font-size="16"
-                        ></toggle-button>
-
-                        <input type="hidden" name="control_preop_medico" :value="control_preop_medico ? 1 : 0">
-                    </div>
-
-                </div>
-
-                <div class="form-group col-sm-4" v-show="control_preop_medico">
-                {!! Form::label('fecha_preop_medico', 'Fecha PreOp Médico') !!}
-                {!! Form::date('fecha_preop_medico', null, ['id' => 'fecha_preop_medico','class' => 'form-control','id'=>'fecha_preop_medico']) !!}
-
-                </div>
-
-                <!-- Control preop Antestesista Field -->
-                <div class="form-group col-sm-2">
-
-                    <label for="">Control Preop Anestesista:</label>
-                    <div class="text-lg">
-
-                        <toggle-button :sync="true"
-                                       :labels="{checked: 'Sí', unchecked: 'No'}"
-                                       v-model="control_preop_anestesista"
-                                       :width="75"
-                                       :height="35"
-                                       :font-size="16"
-                        ></toggle-button>
-
-                        <input type="hidden" name="control_preop_anestesista" :value="control_preop_anestesista ? 1 : 0">
-                    </div>
-
-                </div>
-
-                <div class="form-group col-sm-4" v-show="control_preop_anestesista">
-                {!! Form::label('fecha_preop_anestesista', 'Fecha PreOp Anestesista') !!}
-                {!! Form::date('fecha_preop_anestesista', null, ['id' => 'fecha_preop_anestesista','class' => 'form-control','id'=>'fecha_preop_anestesista']) !!}
-
-                </div>
 
 
 
@@ -428,6 +302,16 @@
                                     {{ ($parte->nececidad_cama_upc ?? old('nececidad_cama_upc') ?? false) ? 'checked' : '' }}>
                             </div>
 
+                            <div class="col-sm-3" id="select_tipo_cama">
+                                {!! Form::label('tipo_cama_upc', 'Tipo Cama:') !!}<br>
+
+                                <multiselect v-model="tipo_cama_upc" :options='["UCIGEN", "UCICAR", "UCIM"]'  placeholder="Seleccione uno...">
+                                </multiselect>
+
+                                <input type="hidden" name="tipo_cama_upc" :value="tipo_cama_upc">
+
+                            </div>
+
 
                             <!-- Prioridad Field -->
                             <div class="col-sm-3">
@@ -466,6 +350,15 @@
                                 <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="equipo_rayos" id="equipo_rayos"
                                        value="1"
                                     {{ ($parte->equipo_rayos ?? old('equipo_rayos') ?? false) ? 'checked' : '' }}>
+                            </div>
+
+                            <!-- Segunco Ojo Field -->
+                            <div class="col-sm-3">
+                                <input type="hidden" name="segundo_ojo" value="0">
+                                {!! Form::label('segundo_ojo', '2do Ojo:') !!}<br>
+                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="segundo_ojo" id="segundo_ojo"
+                                       value="1"
+                                    {{ ($parte->segundo_ojo ?? old('segundo_ojo') ?? false) ? 'checked' : '' }}>
                             </div>
 
 
@@ -566,6 +459,24 @@
 <script>
 
     $(function () {
+
+        $("#select_tipo_cama").hide();
+
+        $("#nececidad_cama_upc").change(function (){
+            validadNececidadCama();
+        });
+
+        function validadNececidadCama(){
+            if ($("#nececidad_cama_upc").prop('checked')){
+                $("#select_tipo_cama").show()
+            }else {
+                $("#select_tipo_cama").hide()
+            }
+        }
+
+        validadNececidadCama();
+
+
         $("#todos_si").change(function (){
             if ($(this).prop('checked')){
                 $(".cambiar_todos").bootstrapToggle('on')
@@ -662,15 +573,11 @@
             parte_id: @json($parte->id),
 
 
-            extrademanda: @json($parte->extrademanda ?? null),
             derivacion: @json($parte->derivacion ?? null),
-            examenes_realizados: @json($parte->examenes_realizados ?? null),
-            control_preop_eu: @json($parte->control_preop_eu ?? null),
-            control_preop_medico: @json($parte->control_preop_medico ?? null),
-            control_preop_anestesista: @json($parte->control_preop_anestesista ?? null),
 
             convenio: @json($parte->convenio ?? null),
             reparticion: @json($parte->reparticion ?? null),
+            tipo_cama_upc: @json($parte->tipo_cama_upc ?? null),
         },
         methods: {
             close () {

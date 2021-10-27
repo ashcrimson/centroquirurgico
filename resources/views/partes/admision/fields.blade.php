@@ -13,142 +13,230 @@
 </div>
 
 
-<div class="row">
+<div id="fieldsAdmision">
+
+    <div class="row" >
 
 
-    <!-- Extrademanda Field -->
-    <div class="col-sm-3 col-lg-3">
-        <input type="hidden" name="extrademanda" value="0">
-        {!! Form::label('extrademanda', 'Extrademanda:') !!}<br>
-        <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="extrademanda" id="extrademanda"
-               value="1"
-            {{ ($parte->extrademanda ?? old('extrademanda') ?? false) ? 'checked' : '' }}>
+        <!-- extrademanda Field -->
+        <div class="form-group col-sm-2">
+
+            <label for="">extrademanda:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="extrademanda"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="extrademanda" :value="extrademanda ? 1 : 0">
+            </div>
+
+        </div>
+
+        <div class="form-group col-sm-4" v-show="extrademanda">
+            <select-convenio
+                label="Convenio"
+                v-model="convenio" >
+
+            </select-convenio>
+        </div>
+
+        <!-- Examenes Realizados Field -->
+        <div class="form-group col-sm-2">
+
+            <label for="">Examenes Realizados:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="examenes_realizados"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="examenes_realizados" :value="examenes_realizados ? 1 : 0">
+            </div>
+
+        </div>
+
+        <div class="form-group col-sm-4" v-show="examenes_realizados">
+            {!! Form::label('fecha_examenes', 'Fecha examenes realizados') !!}
+
+            {!! Form::date('fecha_examenes', fechaEn($parte->fecha_examenes), ['id' => 'fecha_examenes','class' => 'form-control','id'=>'fecha_examenes']) !!}
+        </div>
+
+        <!-- Control preop eu Field -->
+        <div class="form-group col-sm-2">
+
+            <label for="">Control Preop EU:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="control_preop_eu"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="control_preop_eu" :value="control_preop_eu ? 1 : 0">
+            </div>
+
+        </div>
+
+        <div class="form-group col-sm-4" v-show="control_preop_eu">
+            {!! Form::label('fecha_preop_eu', 'Fecha PreOp EU') !!}
+
+            {!! Form::date('fecha_preop_eu', fechaEn($parte->fecha_preop_eu), ['id' => 'fecha_preop_eu','class' => 'form-control','id'=>'fecha_preop_eu']) !!}
+
+        </div>
+
+        <!-- Control preop Medico Field -->
+        <div class="form-group col-sm-2">
+
+            <label for="">Control Preop Médico:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="control_preop_medico"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="control_preop_medico" :value="control_preop_medico ? 1 : 0">
+            </div>
+
+        </div>
+
+        <div class="form-group col-sm-4" v-show="control_preop_medico">
+            {!! Form::label('fecha_preop_medico', 'Fecha PreOp Médico') !!}
+            {!! Form::date('fecha_preop_medico', fechaEn($parte->fecha_preop_medico), ['id' => 'fecha_preop_medico','class' => 'form-control','id'=>'fecha_preop_medico']) !!}
+
+        </div>
+
+        <!-- Control preop Antestesista Field -->
+        <div class="form-group col-sm-2">
+
+            <label for="">Control Preop Anestesista:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="control_preop_anestesista"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="control_preop_anestesista" :value="control_preop_anestesista ? 1 : 0">
+            </div>
+
+        </div>
+
+        <div class="form-group col-sm-4" v-show="control_preop_anestesista">
+            {!! Form::label('fecha_preop_anestesista', 'Fecha PreOp Anestesista') !!}
+            {!! Form::date('fecha_preop_anestesista', fechaEn($parte->fecha_preop_anestesista), ['id' => 'fecha_preop_anestesista','class' => 'form-control','id'=>'fecha_preop_anestesista']) !!}
+
+        </div>
     </div>
+    <div class="row">
+        <!-- Correo Electrónico -->
+        <div class="form-group col-sm-3">
+            {!! Form::label('email', 'Correo Electrónico:') !!}
+            {!! Form::email('email', null, ['id' => 'email','class' => 'form-control']) !!}
 
-    <!-- Derivación Field -->
-    <div class="col-sm-3 col-lg-3">
-        <input type="hidden" name="derivacion" value="0">
-        {!! Form::label('derivacion', 'Derivación:') !!}<br>
-        <input type="checkbox" class="derivacion" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="derivacion" id="derivacion"
-               value="1"
-            {{ ($parte->derivacion ?? old('derivacion') ?? false) ? 'checked' : '' }}>
-    </div>
+        </div>
 
-    <!-- Exámenes Realizados Field -->
-    <div class="col-sm-3 col-lg-3">
-        <input type="hidden" name="examenes_realizados" value="0">
-        {!! Form::label('examenes_realizados', 'Exámenes Realizados:') !!}<br>
-        <input type="checkbox" class="examenes_realizados" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="examenes_realizados" id="examenes_realizados"
-               value="1"
-            {{ ($parte->examenes_realizados ?? old('examenes_realizados') ?? false) ? 'checked' : '' }}>
-    </div>
+        <!-- Tiempo Quirurgico Field -->
+        <div class="form-group col-sm-4">
+            {!! Form::label('cambio_medico', 'Cambio de Medico:') !!}
+            <multiselect v-model="medico" :options="medicos" label="name"  placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="cambio_medico" :value="medico ? medico.id : null">
+        </div>
 
-    <!-- Control Pre-op EU -->
-    <div class="col-sm-3 col-lg-3">
-        <input type="hidden" name="preop_eu" value="0">
-        {!! Form::label('preop_eu', 'Control pre-op EU:') !!}<br>
-        <input type="checkbox" class="preop_eu" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="preop_eu" id="preop_eu"
-               value="1"
-            {{ ($parte->preop_eu ?? old('preop_eu') ?? false) ? 'checked' : '' }}>
-    </div>
+        <!-- Condición Field -->
+        <div class="form-group col-sm-4">
+            {!! Form::label('condicion', 'Condición:') !!}
 
-    <!-- Control Pre-op Medico -->
-    <div class="col-sm-3 col-lg-3">
-        <input type="hidden" name="preop_medico" value="0">
-        {!! Form::label('preop_medico', 'Control pre-op Medico:') !!}<br>
-        <input type="checkbox" class="preop_medico" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="preop_medico" id="preop_medico"
-               value="1"
-            {{ ($parte->preop_medico ?? old('preop_medico') ?? false) ? 'checked' : '' }}>
-    </div>
+            <br>
+            <select class="form-control">
 
-    <!-- Control Pre-op Anestesista -->
-    <div class="col-sm-3 col-lg-3">
-        <input type="hidden" name="preop_anestesista" value="0">
-        {!! Form::label('preop_anestesista', 'Control pre-op Anestesista:') !!}<br>
-        <input type="checkbox" class="preop_anestesista" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="preop_anestesista" id="preop_anestesista"
-               value="1"
-            {{ ($parte->preop_anestesista ?? old('preop_anestesista') ?? false) ? 'checked' : '' }}>
+                @foreach(App\Models\ParteEstado::whereNotIn('id',[\App\Models\ParteEstado::TEMPORAL,\App\Models\ParteEstado::INGRESADA,\App\Models\ParteEstado::ENVIADA_ADMICION])->get() as $condicion)
+
+                    <option value="{{ $condicion->id }}" >
+                        {{ $condicion->nombre }}
+                    </option>
+
+                @endforeach
+
+            </select>
+        </div>
+
+        <!-- Sistema Salud Field -->
+        <div class="form-group col-sm-4">
+            {!! Form::label('sistemasalud_id', 'Sistema Salud:') !!}
+            <br>
+            <select class="form-control" name="sistemasalud_id">
+
+                @foreach(App\Models\SistemaSalud::get() as $sistemasalud)
+
+                    <option value="{{ $sistemasalud->id }}" >
+                        {{ $sistemasalud->nombre }}
+                    </option>
+
+                @endforeach
+
+            </select>
+
+        </div>
+
+        <!-- Grupo Base Field -->
+        <div class="form-group col-sm-4">
+            <select-grupo-base
+                label="Grupo Base"
+                v-model="grupo_base" >
+
+            </select-grupo-base>
+
+        </div>
+
     </div>
 </div>
-<div class="row">
-    <!-- Correo Electrónico -->
-    <div class="form-group col-sm-3">
-        {!! Form::label('email', 'Correo Electrónico:') !!}
-        {!! Form::email('email', null, ['id' => 'email','class' => 'form-control']) !!}
 
-    </div>
+@push('scripts')
+<script>
+    new Vue({
+        el: '#fieldsAdmision',
+        name: 'fieldsAdmision',
+        created() {
 
-    <!-- Tiempo Quirurgico Field -->
-    <div class="form-group col-sm-4">
-        {!! Form::label('cambio_medico', 'Cambio de Medico:') !!}
-        <br>
-        <select class="form-control">
+        },
+        data: {
+            medico : @json($parte->user_igresa ?? null),
+            medicos: @json(\App\Models\User::role('medico')->get()),
 
-            @foreach(App\Models\User::where('username', 'Medico')->get() as $user)
+            grupo_base: @json($parte->grupo_base ?? null),
+            extrademanda: @json($parte->extrademanda ?? null),
+            examenes_realizados: @json($parte->examenes_realizados ?? null),
+            control_preop_eu: @json($parte->control_preop_eu ?? null),
+            control_preop_medico: @json($parte->control_preop_medico ?? null),
+            control_preop_anestesista: @json($parte->control_preop_anestesista ?? null),
 
-                <option value="{{ $user->id }}" >
-                    {{ $user->name }}
-                </option>
+            convenio: @json($parte->convenio ?? null),
+            reparticion: @json($parte->reparticion ?? null),
 
-            @endforeach
+        },
+        methods: {
 
-        </select>
-        <input type="hidden" name="cambio_medico" :value="cambio_medico">
-    </div>
-
-    <!-- Condición Field -->
-    <div class="form-group col-sm-4">
-        {!! Form::label('condicion', 'Condición:') !!}
-
-        <br>
-        <select class="form-control">
-
-            @foreach(App\Models\ParteEstado::whereNotIn('id',[\App\Models\ParteEstado::TEMPORAL,\App\Models\ParteEstado::INGRESADA,\App\Models\ParteEstado::ENVIADA_ADMICION])->get() as $condicion)
-
-                <option value="{{ $condicion->id }}" >
-                    {{ $condicion->nombre }}
-                </option>
-
-            @endforeach
-
-        </select>
-        <input type="hidden" name="condicion" :value="condicion">
-    </div>
-
-    <!-- Sistema Salud Field -->
-    <div class="form-group col-sm-4">
-        {!! Form::label('sistemasalud_id', 'Sistema Salud:') !!}
-        <br>
-        <select class="form-control" name="sistemasalud_id">
-
-            @foreach(App\Models\SistemaSalud::get() as $sistemasalud)
-
-                <option value="{{ $sistemasalud->id }}" >
-                    {{ $sistemasalud->nombre }}
-                </option>
-
-            @endforeach
-
-        </select>
-
-    </div>
-
-    <!-- Grupo Base Field -->
-    <div class="form-group col-sm-4">
-        {!! Form::label('grupobase_id', 'Grupo Base:') !!}
-        <br>
-        <select class="form-control" name="grupobase_id">
-
-            @foreach(App\Models\Grupobase::get() as $grupobase)
-
-                <option value="{{ $grupobase->id }}" >
-                    {{ $grupobase->nombre }}
-                </option>
-
-            @endforeach
-
-        </select>
-
-    </div>
-
-</div>
+        }
+    });
+</script>
+@endpush

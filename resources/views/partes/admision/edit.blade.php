@@ -45,26 +45,28 @@
                     <div class="card card-secondary">
                         <!-- /.card-header -->
                         <div class="card-body">
-                            {!! Form::model($parte, ['route' => ['partes.update', $parte->id], 'method' => 'patch','class' => 'wait-on-submit']) !!}
                             <div class="form-row">
 
-                            @include('partes.show_fields')
-                            @include('partes.admision.fields')
+                                @include('partes.show_fields')
+                                {!! Form::model($parte, ['route' => ['admision.partes.update', $parte->id], 'method' => 'patch','class' => 'wait-on-submit']) !!}
 
-                            <!-- Submit Field -->
-                                <div class="form-group col-sm-12 text-right">
-                                    <a href="{!! route('partes.index') !!}" class="btn btn-outline-secondary">
-                                        Cancelar
-                                    </a>
-                                    &nbsp;
-                                    <button type="submit" class="btn btn-outline-success">
-                                        <i class="fa fa-floppy-o"></i> Guardar
-                                    </button>
+                                    @include('partes.admision.fields')
 
-                                </div>
+                                <!-- Submit Field -->
+                                    <div class="form-group col-sm-12 text-right">
+                                        <a href="{!! route('partes.index') !!}" class="btn btn-outline-secondary">
+                                            Cancelar
+                                        </a>
+                                        &nbsp;
+                                        <button type="submit" class="btn btn-outline-success">
+                                            <i class="fa fa-floppy-o"></i> Guardar
+                                        </button>
+
+                                    </div>
+                                {!! Form::close() !!}
+
                             </div>
 
-                            {!! Form::close() !!}
                         </div>
                         <!-- /.card-body -->
                     </div>

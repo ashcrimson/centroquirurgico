@@ -50,22 +50,6 @@ class ParteController extends AppBaseController
         return $parteDataTable->render('partes.index');
     }
 
-    public function admision(ParteDataTable $parteDataTable)
-    {
-        $scope = new ScopeParteDataTable();
-
-        $scope->estados = [
-            ParteEstado::ENVIADA_ADMICION,
-            ParteEstado::LISTA_ESPERA,
-            ParteEstado::PROGRAMADO,
-            ParteEstado::SUSPENDIDO,
-            ParteEstado::ELIMINADO,
-        ];
-
-        $parteDataTable->addScope($scope);
-
-        return $parteDataTable->render('partes.admision.index');
-    }
 
     /**
      * Show the form for creating a new Parte.
@@ -166,19 +150,6 @@ class ParteController extends AppBaseController
         return view('partes.edit')->with('parte', $parte);
     }
 
-
-    public function editAdmision(Parte $parte)
-    {
-
-        if (empty($parte)) {
-            flash()->error('Parte no encontrado');
-
-            return redirect(route('partes.index'));
-        }
-
-        return view('partes.admision.edit')->with('parte', $parte);
-    }
-
     /**
      * Update the specified Parte in storage.
      *
@@ -246,7 +217,6 @@ class ParteController extends AppBaseController
         return redirect(route('partes.index'));
     }
 
-
     public function creaOactualizaPaciente($request)
     {
         $paciente = Paciente::updateOrCreate([
@@ -300,7 +270,6 @@ class ParteController extends AppBaseController
 
         return $parte;
     }
-
 
     public function getParteTemporal(){
 

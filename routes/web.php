@@ -67,8 +67,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('partes', 'ParteController');
 
     Route::group(['prefix' => 'admision','as' => 'admision.'],function (){
-        Route::get('partes', 'ParteController@admision')->name('partes');
-        Route::get('partes/{parte}/edit', 'ParteController@editAdmision')->name('partes.edit');
+        Route::get('partes', 'ParteAdmisionController@index')->name('partes');
+        Route::get('partes/{parte}/edit', 'ParteAdmisionController@edit')->name('partes.edit');
+        Route::patch('partes/{parte}/edit', 'ParteAdmisionController@update')->name('partes.update');
         Route::get('partes/bitacora/store/{parte}', 'ParteController@bitacoraStore')->name('bitacora.store');
     });
 

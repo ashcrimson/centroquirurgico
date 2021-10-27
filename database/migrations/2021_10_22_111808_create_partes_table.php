@@ -31,6 +31,7 @@ class CreatePartesTable extends Migration
             $table->tinyInteger('alergia_latex')->nullable();
             $table->tinyInteger('usuario_taco')->nullable();
             $table->tinyInteger('nececidad_cama_upc')->nullable();
+            $table->string('tipo_cama_upc')->nullable();
             $table->tinyInteger('prioridad')->nullable();
             $table->tinyInteger('necesita_donante_sangre')->nullable();
             $table->tinyInteger('evaluacion_preanestesica')->nullable();

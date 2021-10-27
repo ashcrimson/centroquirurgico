@@ -26,7 +26,9 @@ class UpdateParteRequest extends FormRequest
     public function rules()
     {
         $rules = Parte::$rules;
-        
+
+        unset($rules['user_ingresa']);
+
         return $rules;
     }
 }

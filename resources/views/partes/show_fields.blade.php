@@ -92,34 +92,38 @@
                 </div>
 
                 <!-- Intervencion Field -->
-                <div class="form-group col-sm-8 col-lg-8">
-                    <select-intervencion
-                        label="Intervencion"
-                        v-model="intervencion"
-                        :disabled="true"
-                    >
+                <div class="form-group col-sm-12 col-lg-12">
+                    <div class="table-responsive mb-0">
+                        <table class="table table-bordered table-sm table-striped mb-0">
+                            <thead>
+                            <tr>
+                                <th>intervencion</th>
+                                <th>Lateralidad</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-if="parte_intervenciones.length == 0">
+                                <td colspan="10" class="text-center">Ningún Registro agregado</td>
+                            </tr>
+                            <tr v-for="det in parte_intervenciones">
+                                <td v-text="det.intervencion.nombre"></td>
+                                <td v-text="det.lateralidad"></td>
+                                <td  class="text-nowrap">
+                                    <button type="button" @click="editIntervencion(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >
+                                        <i class="fa fa-edit"></i>
+                                    </button>
 
-                    </select-intervencion>
+                                    <button type="button" @click="deleteIntervencion(det)"  class='btn btn-outline-danger btn-sm' v-tooltip="'Eliminar'" >
+                                        <i class="fa fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
-                <!-- Lateralidad Field -->
-                <div class="form-group col-sm-4">
-                    {!! Form::label('lateralidad', 'Lateralidad:') !!}
-                    {!!
-                        Form::select(
-                            'lateralidad',
-                            [
-                                null => 'Seleccione uno...',
-                                'Izquierda' => 'Izquierda',
-                                'Derecha'=> 'Derecha',
-                                'Bilateral' => 'Bilateral',
-                                'No_Aplica' => 'No Aplica',
-                            ]
-                            , $parte->lateralidad ?? null
-                            , ['id'=>'volumen_suero','class' => 'form-control','style'=>'width: 100%','readonly']
-                        )
-                    !!}
-                </div>
 
 
                 <!-- Otras Intervenciones Field -->
@@ -362,27 +366,31 @@
 
 
 
+
+
         new Vue({
             el: '#fieldsPartes',
             name: 'fieldsPartes',
             created() {
-
+                this.getIntervenciones();
             },
             data: {
                 cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
+
+                insumo_especifico: @json($parte->insumoEspecifico ?? App\Models\Insumoespecifico::find(old('insumo_especifico_id')) ?? null),
 
                 especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
 
                 diagnostico: @json($parte->diagnostico ?? Diagnostico::find(old('diagnostico_id')) ?? null),
 
-                intervencion: @json($parte->intervencion ?? Intervencion::find(old('intervencion_id')) ?? null),
+                grupo_base: @json($parte->grupoBase ?? App\Models\GrupoBase::find(old('grupo_base_id')) ?? null),
 
                 clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
                 clasificaciones: @json($parte->cirugiaTipo->clasificaciones ?? []),
 
                 preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
 
-                biopsia : @json($parte->biopsia ?? old('biopcias') ?? null),
+                biopsia : @json($parte->biopsia ?? old('biopsia') ?? null),
 
                 biopsias : [
                     'Externa',
@@ -390,10 +398,138 @@
                     'Diferida',
                     'Citometría de flujo',
                     'No aplica',
-                ]
+                ],
+
+                tiempo_quirurgico : @json($parte->tiempo_quirurgico ?? old('tiempo_quirurgico') ?? null),
+
+                tiempos : [30, 60, 90, 120, 150, 180, 210, 240, 270, 300],
+
+                lateralidad : @json(old('lateralidad') ?? null),
+
+                lateralidad_opciones : ["izquierda", "derecha", "bidireccional"],
+
+                intervenciones: @json(\App\Models\Intervencion::all() ?? []),
+                intervencion: null,
+
+
+                parte_intervenciones: [],
+                editedItem: {
+                    id : 0,
+                    parte_id: @json($parte->id),
+                },
+                defaultItem: {
+                    id : 0,
+                    parte_id: @json($parte->id),
+
+                },
+                itemElimina: {
+
+                },
+
+                loading: false,
+
+                parte_id: @json($parte->id),
+
+
+                extrademanda: @json($parte->extrademanda ?? null),
+                derivacion: @json($parte->derivacion ?? null),
+                examenes_realizados: @json($parte->examenes_realizados ?? null),
+                control_preop_eu: @json($parte->control_preop_eu ?? null),
+                control_preop_medico: @json($parte->control_preop_medico ?? null),
+                control_preop_anestesista: @json($parte->control_preop_anestesista ?? null),
+
+                convenio: @json($parte->convenio ?? null),
+                reparticion: @json($parte->reparticion ?? null),
             },
             methods: {
+                close () {
+                    this.loading = false;
+                    setTimeout(() => {
+                        this.intervencion = null;
+                        this.editedItem = Object.assign({}, this.defaultItem);
+                    }, 300)
+                },
+                getId(item){
+                    if(item)
+                        return item.id;
 
+                    return null
+                },
+                editIntervencion (item) {
+                    this.intervencion = Object.assign({}, item.intervencion);
+                    this.editedItem = Object.assign({}, item);
+
+                },
+                async getIntervenciones() {
+                    const res = await  axios.get(route('api.parte_intervenciones.index',{parte_id: this.parte_id}));
+                    this.parte_intervenciones = res.data.data;
+                },
+                async saveIntervencion () {
+
+
+                    this.loading = true;
+
+
+
+                    try {
+
+                        this.editedItem.intervencion_id = this.getId(this.intervencion)
+                        const data = this.editedItem;
+
+                        console.log('data inter',data);
+
+                        if(this.editedItem.id === 0){
+
+                            var res = await axios.post(route('api.parte_intervenciones.store'),data);
+
+                        }else {
+
+                            var res = await axios.patch(route('api.parte_intervenciones.update',this.editedItem.id),data);
+
+                        }
+
+                        logI(res.data);
+
+                        iziTs(res.data.message);
+                        this.getIntervenciones();
+                        this.close();
+
+
+                    }catch (e) {
+                        notifyErrorApi(e);
+                        this.loading = false;
+                    }
+
+                },
+                async deleteIntervencion(item) {
+
+                    let confirm = await Swal.fire({
+                        title: '¿Estás seguro?',
+                        text: "¡No podrás revertir esto!",
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, elimínalo\n!'
+                    });
+
+                    if (confirm.isConfirmed){
+                        try{
+                            let res = await  axios.delete(route('api.parte_intervenciones.destroy',item.id))
+                            logI(res.data);
+
+                            iziTs(res.data.message);
+                            this.editIntervencion();
+
+
+                        }catch (e){
+                            notifyErrorApi(e);
+                            this.itemElimina = {};
+                        }
+
+                    }
+
+                    console.log("Confirmacion",confirm);
+                }
             },
             watch: {
                 cirugia_tipo (tipo) {
@@ -402,7 +538,8 @@
                     }else{
                         this.clasificaciones = [];
                     }
-                }
+                },
+
             },
             computed:{
                 esCirugiaMayor(){
@@ -415,6 +552,15 @@
 
                     $("#cma").bootstrapToggle('off')
                     return false;
+                },
+                textButtonSubmint () {
+                    if (this.loading){
+                        return this.editedItem.id === 0 ? 'Agregando...' : 'Actualizando...'
+
+                    }else {
+                        return this.editedItem.id === 0 ? 'Agregar' : 'Actualizar'
+
+                    }
                 }
             }
         });

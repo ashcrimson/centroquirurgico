@@ -133,7 +133,9 @@ class Parte extends Model
         'fecha_preop_anestesista',
         'instrumental',
         'observaciones',
-        'email'
+        'email',
+        'segundo_ojo',
+        'tipo_cama_upc',
     ];
 
     /**
