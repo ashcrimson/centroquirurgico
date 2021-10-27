@@ -81,9 +81,9 @@
                         v-model="diagnostico" >
 
                     </select-diagnostico> -->
-                    @include('partes.panel_diagnosticos')
+{{--                    @include('partes.panel_diagnosticos')--}}
                 </div>
-  
+
 
                 <!-- Otros Diagnosticos Field -->
                 <div class="form-group col-sm-12 col-lg-12">
@@ -125,24 +125,12 @@
 
                                         <div class="form-group col-sm-6" >
 
-                                            <!-- <label for="vol">Lateralidad:</label>
-                                            <input class="form-control" type="text" @keypress.prevent.enter="saveIntervencion()" v-model="editedItem.lateralidad"
-                                            style="padding:20px;"> -->
                                             {!! Form::label('lateralidad', 'Lateralidad:') !!}
-                                        {!!
-                                            Form::select(
-                                                'lateralidad',
-                                                [
-                                                    null => 'Seleccione uno...',
-                                                    'Izquierda' => 'Izquierda',
-                                                    'Derecha'=> 'Derecha',
-                                                    'Bilateral' => 'Bilateral',
-                                                    'No_Aplica' => 'No Aplica',
-                                                ]
-                                                , null
-                                                , ['id'=>'lateralidad','class' => 'form-control','style'=>'padding:20px']
-                                            )
-                                        !!}
+
+                                            <multiselect v-model="editedItem.lateralidad" :options='["izquierda", "derecha", "bidireccional"]'  placeholder="Seleccione uno...">
+                                            </multiselect>
+
+
                                         </div>
 
 
@@ -299,8 +287,8 @@
                 </div>
 
                 <div class="form-group col-sm-4" v-show="examenes_realizados">
-                {!! Form::label('fecha_examenes', 'Fecha examenes realizados') !!}    
-             
+                {!! Form::label('fecha_examenes', 'Fecha examenes realizados') !!}
+
                 {!! Form::date('fecha_examenes', null, ['id' => 'fecha_examenes','class' => 'form-control','id'=>'fecha_examenes']) !!}
                 </div>
 
@@ -324,8 +312,8 @@
                 </div>
 
                 <div class="form-group col-sm-4" v-show="control_preop_eu">
-                {!! Form::label('fecha_preop_eu', 'Fecha PreOp EU') !!}    
-       
+                {!! Form::label('fecha_preop_eu', 'Fecha PreOp EU') !!}
+
                 {!! Form::date('fecha_preop_eu', null, ['id' => 'fecha_preop_eu','class' => 'form-control','id'=>'fecha_preop_eu']) !!}
 
                 </div>
@@ -350,7 +338,7 @@
                 </div>
 
                 <div class="form-group col-sm-4" v-show="control_preop_medico">
-                {!! Form::label('fecha_preop_medico', 'Fecha PreOp Médico') !!}    
+                {!! Form::label('fecha_preop_medico', 'Fecha PreOp Médico') !!}
                 {!! Form::date('fecha_preop_medico', null, ['id' => 'fecha_preop_medico','class' => 'form-control','id'=>'fecha_preop_medico']) !!}
 
                 </div>
@@ -375,7 +363,7 @@
                 </div>
 
                 <div class="form-group col-sm-4" v-show="control_preop_anestesista">
-                {!! Form::label('fecha_preop_anestesista', 'Fecha PreOp Anestesista') !!}    
+                {!! Form::label('fecha_preop_anestesista', 'Fecha PreOp Anestesista') !!}
                 {!! Form::date('fecha_preop_anestesista', null, ['id' => 'fecha_preop_anestesista','class' => 'form-control','id'=>'fecha_preop_anestesista']) !!}
 
                 </div>
@@ -646,6 +634,10 @@
             tiempo_quirurgico : @json($parte->tiempo_quirurgico ?? old('tiempo_quirurgico') ?? null),
 
             tiempos : [30, 60, 90, 120, 150, 180, 210, 240, 270, 300],
+
+            lateralidad : @json(old('lateralidad') ?? null),
+
+            lateralidad_opciones : ["izquierda", "derecha", "bidireccional"],
 
             intervenciones: @json(\App\Models\Intervencion::all() ?? []),
             intervencion: null,

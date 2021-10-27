@@ -134,7 +134,7 @@ export default {
 
             try {
 
-                var res = await axios.get(route('api.grupo_base.index'));
+                var res = await axios.get(route('api.grupo_bases.index'));
 
                 this.items_api  = res.data.data;
 
@@ -154,11 +154,11 @@ export default {
 
                 if(this.editedItem.id === 0){
 
-                    var res = await axios.post(route('api.grupo_base.store'),data);
+                    var res = await axios.post(route('api.grupo_bases.store'),data);
 
                 }else {
 
-                    var res = await axios.patch(route('api.grupo_base.update',this.editedItem.id),data);
+                    var res = await axios.patch(route('api.grupo_bases.update',this.editedItem.id),data);
 
                 }
 
