@@ -50,6 +50,7 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
 
         Route::resource('parte_intervenciones', 'ParteIntervencionAPIController');
 
+        Route::resource('parte_diagnosticos', 'ParteDiagnosticoAPIController');
 
         Route::resource('sistema_saluds', 'SistemaSaludAPIController');
 
