@@ -392,6 +392,16 @@ class Parte extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
+    public function parteDiagnosticos()
+    {
+        return $this->hasMany(\App\Models\ParteDiagnostico::class, 'parte_id');
+    }
+
+    
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
     public function parteIntervenciones()
     {
         return $this->hasMany(\App\Models\ParteIntervencione::class, 'parte_id');

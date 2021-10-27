@@ -76,12 +76,12 @@
                 </div>
 
                 <div class="form-group col-sm-12">
-                    <select-diagnostico
+                    <!-- <select-diagnostico
                         label="Diagnostico"
                         v-model="diagnostico" >
 
-                    </select-diagnostico>
-{{--                    @include('partes.panel_diagnosticos')--}}
+                    </select-diagnostico> -->
+                  @include('partes.panel_diagnosticos')
                 </div>
 
 
