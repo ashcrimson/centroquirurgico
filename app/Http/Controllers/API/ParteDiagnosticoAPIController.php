@@ -16,7 +16,7 @@ use Response;
 
 class ParteDiagnosticoAPIController extends AppBaseController
 {
-    /** 
+    /**
      * Display a listing of the ParteDiagnostico.
      * GET|HEAD /parteDiagnosticos
      *
@@ -25,7 +25,7 @@ class ParteDiagnosticoAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $query = ParteDiagnostico::with(['nombre']);
+        $query = ParteDiagnostico::with(['diagnostico']);
 
         if ($request->get('skip')) {
             $query->skip($request->get('skip'));

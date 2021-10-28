@@ -27,14 +27,15 @@
                         </select-diagnostico>
                     </div>
 
-                    <!-- <div class="form-group col-sm-6" style="padding: 0px; margin: 0px">
 
-                    
-                        <label for="vol">Diagnóstico:</label>
-                        <input class="form-control" type="text" @keypress.prevent.enter="save()" v-model="editedItem.nombre"
-                        style="padding:20px;">
-                    </div> -->
 
+{{--                    <div class="form-group col-sm-6" style="padding: 0px; margin: 0px">--}}
+
+
+{{--                        <label for="vol">Nombre:</label>--}}
+{{--                        <input class="form-control" type="text" @keypress.prevent.enter="save()" v-model="editedItem.nombre"--}}
+{{--                               style="padding:20px;">--}}
+{{--                    </div>--}}
 
                     <div class="form-group col-sm-4">
                         <label for="peep">&nbsp;</label>
@@ -57,7 +58,7 @@
             <table class="table table-bordered table-sm table-striped mb-0">
                 <thead>
                 <tr>
-           
+
                     <th>Diagnóstico</th>
                     <th>Actions</th>
                 </tr>
@@ -67,8 +68,8 @@
                     <td colspan="10" class="text-center">Ningún Registro agregado</td>
                 </tr>
                 <tr v-for="det in parte_diagnosticos">
-                    <td v-text="det.nombre"></td>
-                  
+                    <td v-text="det.diagnostico.text"></td>
+
                     <td  class="text-nowrap">
                         <button type="button" @click="editItem(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >
                             <i class="fa fa-edit"></i>
@@ -116,6 +117,8 @@
 
                 },
 
+                diagnostico: @json($parte->diagnostico ?? Diagnostico::find(old('diagnostico_id')) ?? null),
+
                 loading: false,
 
                 parte_id: @json($parte->id),
@@ -154,7 +157,7 @@
 
                     try {
 
-                        this.editedItem.tipo_id = this.getId(this.nombre)
+                        this.editedItem.diagnostico_id = this.getId(this.diagnostico)
                         const data = this.editedItem;
 
                         console.log(data);

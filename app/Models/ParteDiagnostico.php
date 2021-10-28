@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class ParteDiagnostico
  * @package App\Models
- * @version October 26, 2021, 9:45 pm CST
+ * @version October 27, 2021, 10:01 pm CST
  *
  * @property \App\Models\Diagnostico $diagnostico
  * @property \App\Models\Parte $parte
- * @property integer $diagnostico_id
  * @property integer $parte_id
- * @property string $nombre
+ * @property integer $diagnostico_id
+ * @property string $lateralidad
  */
 class ParteDiagnostico extends Model
 {
@@ -30,7 +30,9 @@ class ParteDiagnostico extends Model
 
 
     public $fillable = [
-        'nombre'
+        'parte_id',
+        'diagnostico_id',
+        'lateralidad'
     ];
 
     /**
@@ -40,9 +42,9 @@ class ParteDiagnostico extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'diagnostico_id' => 'integer',
         'parte_id' => 'integer',
-        'nombre' => 'string'
+        'diagnostico_id' => 'integer',
+        'lateralidad' => 'string'
     ];
 
     /**
@@ -51,9 +53,9 @@ class ParteDiagnostico extends Model
      * @var array
      */
     public static $rules = [
-        'diagnostico_id' => 'required',
         'parte_id' => 'required',
-        'nombre' => 'required|string|max:255',
+        'diagnostico_id' => 'required',
+        'lateralidad' => 'nullable|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
@@ -73,13 +75,5 @@ class ParteDiagnostico extends Model
     public function parte()
     {
         return $this->belongsTo(\App\Models\Parte::class, 'parte_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function parteDiagnosticos()
-    {
-        return $this->hasMany(\App\Models\ParteDiagnostico::class, 'diagnostico_id');
     }
 }

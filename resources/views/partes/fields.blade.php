@@ -75,7 +75,7 @@
                         {{ ($parte->cma ?? old('cma') ?? false) ? 'checked' : '' }}>
                 </div>
 
-                
+
 
 
                 <!-- Otros Diagnosticos Field -->
@@ -84,7 +84,7 @@
                     {!! Form::textarea('otros_diagnosticos', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
-                
+
 
                 <!-- Intervencion Field -->
                 <div class="form-group col-sm-12 col-lg-12">
@@ -146,7 +146,7 @@
                                 </div>
                             </div>
 
-                            
+
 
                             <div class="table-responsive mb-0">
                                 <table class="table table-bordered table-sm table-striped mb-0">
@@ -177,9 +177,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
+
                         </div>
-                        
+
                     </div>
 
 
@@ -213,7 +213,7 @@
                     {!! Form::textarea('otras_intervenciones', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
-                
+
 
 
 
@@ -225,7 +225,7 @@
                     </multiselect>
                     <input type="hidden" name="clasificacion_id" :value="clasificacion ? clasificacion.id : null">
                 </div>
-                
+
                 <!-- Tiempo Quirurgico Field -->
                 <div class="form-group col-sm-4">
                     {!! Form::label('tiempo_quirurgico', 'Tiempo Quirurgico:') !!}
@@ -242,7 +242,7 @@
                     {!! Form::text('anestesia_sugerida', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
                 </div>
 
-                
+
 
                 <div class="form-group col-sm-12">
                     <div class="card  card-secondary">
@@ -370,7 +370,7 @@
 
                                 </select-insumo-especifico>
                             </div>
-                            
+
                         </div>
 
                     </div>
@@ -378,7 +378,7 @@
                 </div>
                 </div>
 
-                
+
 
                 <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
 
@@ -460,7 +460,7 @@
 
                     </select-diagnostico> -->
                   @include('partes.panel_diagnosticos')
-                </div>
+        </div>
     </div>
 </div>
 
@@ -532,7 +532,6 @@
 
             especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
 
-            diagnostico: @json($parte->diagnostico ?? Diagnostico::find(old('diagnostico_id')) ?? null),
 
             grupo_base: @json($parte->grupoBase ?? App\Models\GrupoBase::find(old('grupo_base_id')) ?? null),
 
