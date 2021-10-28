@@ -3,3 +3,8 @@
 {!! $parteEstado->nombre !!}<br>
 
 
+<!-- Siglas Field -->
+{!! Form::label('siglas', 'Siglas:') !!}
+{!! $parteEstado->siglas !!}<br>
+
+

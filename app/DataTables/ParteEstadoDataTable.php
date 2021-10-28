@@ -97,6 +97,7 @@ class ParteEstadoDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('siglas'),
             Column::make('nombre')
         ];
     }
