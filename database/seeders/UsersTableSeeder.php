@@ -52,15 +52,34 @@ class UsersTableSeeder extends Seeder
 
         });
 
-        if (app()->environment()=='local'){
 
             User::factory(1)->create([
-                "username" => "Medico",
+                "username" => "Medico 1",
                 "name" => "Medico",
                 "password" => bcrypt("123")
             ])->each(function (User $user){
                 $user->syncRoles(Role::MEDICO);
 //            $user->shortcuts()->sync([3,4,5,6]);
+
+            });
+
+            User::factory(1)->create([
+                "username" => "Medico2",
+                "name" => "Medico 2",
+                "password" => bcrypt("123")
+            ])->each(function (User $user){
+                $user->syncRoles(Role::MEDICO);
+    //            $user->shortcuts()->sync([3,4,5,6]);
+
+            });
+
+            User::factory(1)->create([
+                "username" => "Medico3",
+                "name" => "Medico 3",
+                "password" => bcrypt("123")
+            ])->each(function (User $user){
+                $user->syncRoles(Role::MEDICO);
+    //            $user->shortcuts()->sync([3,4,5,6]);
 
             });
 
@@ -76,6 +95,5 @@ class UsersTableSeeder extends Seeder
             });
 
 
-        }
     }
 }

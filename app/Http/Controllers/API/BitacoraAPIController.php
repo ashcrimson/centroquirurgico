@@ -5,8 +5,12 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreateBitacoraAPIRequest;
 use App\Http\Requests\API\UpdateBitacoraAPIRequest;
 use App\Models\Bitacora;
+use App\Models\Parte;
+use App\Models\ParteEstado;
+use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\DB;
 use Response;
 
 /**
@@ -37,7 +41,7 @@ class BitacoraAPIController extends AppBaseController
         if ($request->parte_id){
             $query->where('parte_id',$request->parte_id);
         }
-        $bitacoras = $query->get();
+        $bitacoras = $query->orderBy('created_at','desc')->get();
 
         return $this->sendResponse($bitacoras->toArray(), 'Bitacoras retrieved successfully');
     }
@@ -52,10 +56,45 @@ class BitacoraAPIController extends AppBaseController
      */
     public function store(CreateBitacoraAPIRequest $request)
     {
-        $input = $request->all();
 
-        /** @var Bitacora $bitacora */
-        $bitacora = Bitacora::create($input);
+
+        try {
+            DB::beginTransaction();
+
+
+            $titulo = "";
+
+            if ($request->estado_id){
+                /**
+                 * @var Parte $parte
+                 */
+                $parte = Parte::find($request->parte_id);
+                $parte->estado_id = $request->estado_id;
+                $parte->save();
+
+                /**
+                 * @var ParteEstado $estado
+                 */
+                $estado = ParteEstado::find($parte->estado_id);
+
+                $titulo = "Cambio condición a: ". $estado->nombre;
+            }
+
+            $request->merge([
+                'titulo' => $titulo
+            ]);
+
+            /** @var Bitacora $bitacora */
+            $bitacora = Bitacora::create($request->all());
+
+
+        } catch (Exception $exception) {
+            DB::rollBack();
+
+            throw new Exception($exception);
+        }
+
+        DB::commit();
 
         return $this->sendResponse($bitacora->toArray(), 'Bitacora guardado exitosamente');
     }

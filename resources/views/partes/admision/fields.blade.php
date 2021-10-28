@@ -148,7 +148,7 @@
     </div>
     <div class="row">
         <!-- Correo Electrónico -->
-        <div class="form-group col-sm-3">
+        <div class="form-group col-sm-4">
             {!! Form::label('email', 'Correo Electrónico:') !!}
             {!! Form::email('email', null, ['id' => 'email','class' => 'form-control']) !!}
 
@@ -156,29 +156,12 @@
 
         <!-- Tiempo Quirurgico Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('cambio_medico', 'Cambio de Medico:') !!}
+            {!! Form::label('user_ingresa', 'Cambio de Medico:') !!}
             <multiselect v-model="medico" :options="medicos" label="name"  placeholder="Seleccione uno...">
             </multiselect>
-            <input type="hidden" name="cambio_medico" :value="medico ? medico.id : null">
+            <input type="hidden" name="user_ingresa" :value="medico ? medico.id : null">
         </div>
 
-        <!-- Condición Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('condicion', 'Condición:') !!}
-
-            <br>
-            <select class="form-control">
-
-                @foreach(App\Models\ParteEstado::whereNotIn('id',[\App\Models\ParteEstado::TEMPORAL,\App\Models\ParteEstado::INGRESADA,\App\Models\ParteEstado::ENVIADA_ADMICION])->get() as $condicion)
-
-                    <option value="{{ $condicion->id }}" >
-                        {{ $condicion->nombre }}
-                    </option>
-
-                @endforeach
-
-            </select>
-        </div>
 
         <!-- Sistema Salud Field -->
         <div class="form-group col-sm-4">
@@ -220,10 +203,10 @@
 
         },
         data: {
-            medico : @json($parte->user_igresa ?? null),
+            medico : @json($parte->userIngresa ?? null),
             medicos: @json(\App\Models\User::role('medico')->get()),
 
-            grupo_base: @json($parte->grupo_base ?? null),
+            grupo_base: @json($parte->grupoBase ?? null),
             extrademanda: @json($parte->extrademanda ?? null),
             examenes_realizados: @json($parte->examenes_realizados ?? null),
             control_preop_eu: @json($parte->control_preop_eu ?? null),

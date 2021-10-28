@@ -73,4 +73,9 @@ class ParteEstado extends Model
     {
         return $this->hasMany(\App\Models\Parte::class, 'estado_id');
     }
+
+    public function scopeParaAdmision($q)
+    {
+        $q->whereNotIn('id',[self::TEMPORAL,self::INGRESADA,self::ENVIADA_ADMICION]);
+    }
 }

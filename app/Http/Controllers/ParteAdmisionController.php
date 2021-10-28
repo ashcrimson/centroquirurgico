@@ -80,6 +80,7 @@ class ParteAdmisionController extends Controller
         }
 
 
+
         $parte->fill($request->all());
 
 

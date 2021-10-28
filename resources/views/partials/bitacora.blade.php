@@ -5,6 +5,13 @@
 
         <div class="form-row ml-3">
 
+
+            <div class="form-group col-sm-3">
+                <label for="">Condición</label>
+                <multiselect v-model="estado" :options="estados" label="nombre" placeholder="Seleccione uno...">
+                </multiselect>
+            </div>
+
             <!-- Observaciones Field -->
             <div class="form-group col-sm-10 col-lg-10">
                 {!! Form::label('observaciones', 'Observaciones:') !!}
@@ -88,6 +95,10 @@
         data: {
             loading: false,
 
+
+            estados : @json(\App\Models\ParteEstado::paraAdmision()->get() ?? []),
+            estado: null,
+
             items: [],
             editedItem: {
                 id : 0,
@@ -106,6 +117,12 @@
         },
         methods: {
 
+            getId(item){
+                if (item){
+                    return item.id
+                }
+                return null
+            },
             async getItems () {
 
                 try {
@@ -127,7 +144,9 @@
 
                 try {
 
+                    this.editedItem.estado_id = this.getId(this.estado);
                     const data = this.editedItem;
+
 
                     if(this.editedItem.id === 0){
 
