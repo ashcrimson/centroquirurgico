@@ -5,7 +5,6 @@
 
 
 
-
         <div class="form-group col-sm-2">
             {!! Form::label('del', 'Desde:') !!}
             {!! Form::date('del', null, ['class' => 'form-control']) !!}

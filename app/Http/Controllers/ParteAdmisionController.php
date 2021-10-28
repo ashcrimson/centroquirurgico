@@ -19,17 +19,22 @@ class ParteAdmisionController extends Controller
     {
         $scope = new ScopeParteDataTable();
 
-        $scope->estados = [
+        $idsEstadosDefecto = [
             ParteEstado::ENVIADA_ADMICION,
             ParteEstado::LISTA_ESPERA,
             ParteEstado::PROGRAMADO,
             ParteEstado::SUSPENDIDO,
+            ParteEstado::ACTIVACION,
             ParteEstado::ELIMINADO,
         ];
 
+        $scope->estados = $idsEstadosDefecto;
+
         $parteDataTable->addScope($scope);
 
-        return $parteDataTable->render('partes.admision.index');
+        $estados = ParteEstado::whereIn('id',$idsEstadosDefecto)->get();
+
+        return $parteDataTable->render('partes.admision.index',compact('estados'));
     }
 
 

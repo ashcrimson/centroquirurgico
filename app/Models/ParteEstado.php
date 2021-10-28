@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class ParteEstado
  * @package App\Models
- * @version October 13, 2021, 12:35 am CST
+ * @version October 27, 2021, 10:19 pm CST
  *
  * @property \Illuminate\Database\Eloquent\Collection $partes
  * @property string $nombre
+ * @property string $siglas
  */
 class ParteEstado extends Model
 {
@@ -28,7 +29,8 @@ class ParteEstado extends Model
     const LISTA_ESPERA =        4;
     const PROGRAMADO =          5;
     const SUSPENDIDO =          6;
-    const ELIMINADO =           7;
+    const ACTIVACION =          7;
+    const ELIMINADO =           8;
 
 
     protected $dates = ['deleted_at'];
@@ -36,7 +38,8 @@ class ParteEstado extends Model
 
 
     public $fillable = [
-        'nombre'
+        'nombre',
+        'siglas'
     ];
 
     /**
@@ -46,7 +49,8 @@ class ParteEstado extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'nombre' => 'string'
+        'nombre' => 'string',
+        'siglas' => 'string'
     ];
 
     /**
@@ -56,6 +60,7 @@ class ParteEstado extends Model
      */
     public static $rules = [
         'nombre' => 'required|string|max:255',
+        'siglas' => 'nullable|string|max:3',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
