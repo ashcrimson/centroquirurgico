@@ -46,7 +46,7 @@ class RoleSeeder extends Seeder
         $role->syncPermissions([
             'Ver Partes',
             'Crear Partes',
-            'Editar Partes',
+            'Editar Partes Admisión',
             'Eliminar Partes',
         ]);
         $role->options()->sync([
