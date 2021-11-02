@@ -53,7 +53,7 @@ $factory->define(Parte::class, function (Faker $faker) {
             'No aplica',
         ]),
         'user_ingresa' => User::role(['Medico','Admisión'])->get()->random()->id,
-        'estado_id' => ParteEstado::all()->random()->id,
+        'estado_id' => ParteEstado::whereNotIn('id',[ParteEstado::TEMPORAL])->get()->random()->id,
         'pabellon_id' => null,
         'fecha_pabellon' => null,
         'fecha_digitacion' => null,
