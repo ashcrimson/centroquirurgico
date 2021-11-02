@@ -259,7 +259,7 @@
                     <div class="card-body">
                         <div class="row">
                             <!-- Mamrcar todos como si -->
-                            <div class="col-sm-12">
+                            <!-- <div class="col-sm-12">
                                 {!! Form::label('toso_si', 'Marcar todos como sí:') !!}<br>
 
                                 <input type="checkbox"  data-toggle="toggle"
@@ -267,7 +267,7 @@
                                        data-style="ios" name="todos_si" id="todos_si"
                                        value="1">
 
-                            </div>
+                            </div> -->
 
                             <!-- Aislamiento Field -->
                             <div class="col-sm-3">
@@ -392,13 +392,13 @@
                 <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
 
                 <!-- Preoperatorio Id Field -->
-                <!-- <div class="form-group col-sm-6">
+                <div class="form-group col-sm-6">
                     <select-preoperatorio
                         label="Ex Preoperatorios"
                         v-model="preoperatorio" >
 
                     </select-preoperatorio>
-                </div> -->
+                </div>
 
 
                 <!-- Grupo Base Field -->
@@ -423,6 +423,12 @@
                 <div class="form-group col-sm-6 col-lg-6">
                     {!! Form::label('instrumental', 'Instrumental:') !!}
                     {!! Form::textarea('instrumental', null, ['class' => 'form-control','rows' => 2]) !!}
+                </div>
+
+                <!-- Instrumental Field -->
+                <div class="form-group col-sm-6 col-lg-6">
+                    {!! Form::label('observaciones', 'Observaciones:') !!}
+                    {!! Form::textarea('observaciones', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
                 <!-- derivacion Field -->
