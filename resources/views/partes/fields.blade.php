@@ -19,22 +19,41 @@
         <!-- /.card-body -->
     </div>
 </div>
+<div class="card-header py-1 px-3">
+    <div class="card card-secondary ">
+        <h3 class="card-title">Información de la Cirugía</h3>
+    </div>
+</div>
+
+<div class="form-group col-sm-12">
+            <!-- <select-diagnostico
+                label="Diagnostico"
+                v-model="diagnostico" >
+
+            </select-diagnostico> -->
+            @include('partes.panel_diagnosticos')
+</div>
+<!-- Otros Diagnosticos Field -->
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('otros_diagnosticos', 'Otros Diagnosticos:') !!}
+    {!! Form::textarea('otros_diagnosticos', null, ['class' => 'form-control','rows' => 2]) !!}
+</div>
 
 
 
 
 
 <div class="col-sm-12 mb-3">
-    <div class="card card-secondary ">
-        <div class="card-header py-1 px-3">
-            <h3 class="card-title">Información de la Cirugía</h3>
+    
+        
+            
 
-            <div class="card-tools">
+            <!-- <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
-            </div>
+            </div> -->
             <!-- /.card-tools -->
-        </div>
+      
         <!-- /.card-header -->
         <div class="card-body" >
             <div class="form-row" id="fieldsPartes">
@@ -393,13 +412,13 @@
 
 
                 <!-- Grupo Base Field -->
-                <div class="form-group col-sm-6">
+                <!-- <div class="form-group col-sm-6">
                     <select-grupo-base
                         label="Grupo Base"
                         v-model="grupo_base" >
 
                     </select-grupo-base>
-                </div>
+                </div> -->
 
                 <!-- Biopsia Field -->
                 <div class="form-group col-sm-6">
@@ -417,7 +436,7 @@
                 </div>
 
                 <!-- derivacion Field -->
-                <div class="form-group col-sm-2">
+                <!-- <div class="form-group col-sm-2">
 
                     <label for="">derivacion:</label>
                     <div class="text-lg">
@@ -433,39 +452,23 @@
                         <input type="hidden" name="derivacion" :value="derivacion ? 1 : 0">
                     </div>
 
-                </div>
+                </div> -->
 
-                <div class="form-group col-sm-4" v-show="derivacion">
+                <!-- <div class="form-group col-sm-4" v-show="derivacion">
                     <select-reparticion
                         label="Reparticion"
                         v-model="reparticion" >
 
                     </select-reparticion>
-                </div>
+                </div> -->
 
 
 
             </div>
 
-            <div class="form-row">
-                <div class="form-group col-sm-12">
-                    @include('partes.panel_contactos')
-                </div>
-            </div>
+           
         <!-- /.card-body -->
-        <div class="form-group col-sm-12">
-                    <!-- <select-diagnostico
-                        label="Diagnostico"
-                        v-model="diagnostico" >
-
-                    </select-diagnostico> -->
-                  @include('partes.panel_diagnosticos')
-        </div>
-        <!-- Otros Diagnosticos Field -->
-        <div class="form-group col-sm-12 col-lg-12">
-                    {!! Form::label('otros_diagnosticos', 'Otros Diagnosticos:') !!}
-                    {!! Form::textarea('otros_diagnosticos', null, ['class' => 'form-control','rows' => 2]) !!}
-                </div>
+        
     </div>
 </div>
 
