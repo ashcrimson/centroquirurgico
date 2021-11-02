@@ -11,7 +11,7 @@
                 <div class="col">
                     <h1>
                         @if($parte->esTemporal())
-                            {{__('Nueva Parte')}}
+                            {{__('Nuevo Parte')}}
                         @else
                             {{__('Editar Parte')}}
                         @endif

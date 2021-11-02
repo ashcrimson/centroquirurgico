@@ -461,6 +461,11 @@
                     </select-diagnostico> -->
                   @include('partes.panel_diagnosticos')
         </div>
+        <!-- Otros Diagnosticos Field -->
+        <div class="form-group col-sm-12 col-lg-12">
+                    {!! Form::label('otros_diagnosticos', 'Otros Diagnosticos:') !!}
+                    {!! Form::textarea('otros_diagnosticos', null, ['class' => 'form-control','rows' => 2]) !!}
+                </div>
     </div>
 </div>
 
