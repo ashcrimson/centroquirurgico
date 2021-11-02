@@ -95,16 +95,6 @@
                 </div>
 
 
-
-
-                <!-- Otros Diagnosticos Field -->
-                <div class="form-group col-sm-12 col-lg-12">
-                    {!! Form::label('otros_diagnosticos', 'Otros Diagnosticos:') !!}
-                    {!! Form::textarea('otros_diagnosticos', null, ['class' => 'form-control','rows' => 2]) !!}
-                </div>
-
-
-
                 <!-- Intervencion Field -->
                 <div class="form-group col-sm-12 col-lg-12">
                     <div class="card " >
@@ -402,13 +392,13 @@
                 <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
 
                 <!-- Preoperatorio Id Field -->
-                <div class="form-group col-sm-6">
+                <!-- <div class="form-group col-sm-6">
                     <select-preoperatorio
                         label="Ex Preoperatorios"
                         v-model="preoperatorio" >
 
                     </select-preoperatorio>
-                </div>
+                </div> -->
 
 
                 <!-- Grupo Base Field -->
