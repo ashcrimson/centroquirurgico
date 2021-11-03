@@ -1,11 +1,6 @@
 <!-- Run Field -->
-{!! Form::label('run', 'Run:') !!}
-{!! $paciente->run !!}<br>
-
-
-<!-- Dv Run Field -->
-{!! Form::label('dv_run', 'Dv Run:') !!}
-{!! $paciente->dv_run !!}<br>
+{!! Form::label('run', 'Rut Paciente:') !!}
+{!! $paciente->rut_completo !!}<br>
 
 
 <!-- Apellido Paterno Field -->
