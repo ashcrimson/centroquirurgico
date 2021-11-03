@@ -376,252 +376,253 @@
 
         </div>
     </div>
+</div>
 
-    @push('scripts')
-        <script>
+@push('scripts')
+    <script>
 
-            $(function () {
+        $(function () {
 
-                $("#select_tipo_cama").hide();
+            $("#select_tipo_cama").hide();
 
-                $("#nececidad_cama_upc").change(function (){
-                    validadNececidadCama();
-                });
-
-                function validadNececidadCama(){
-                    if ($("#nececidad_cama_upc").prop('checked')){
-                        $("#select_tipo_cama").show()
-                    }else {
-                        $("#select_tipo_cama").hide()
-                    }
-                }
-
+            $("#nececidad_cama_upc").change(function (){
                 validadNececidadCama();
+            });
 
-
-                $("#todos_si").change(function (){
-                    if ($(this).prop('checked')){
-                        $(".cambiar_todos").bootstrapToggle('on')
-                    }else {
-                        $(".cambiar_todos").bootstrapToggle('off')
-                    }
-                });
-
-
-                function validaTodosSi(){
-                    var elementosNoCehcked = 0;
-
-                    $(".cambiar_todos").each(function (element){
-                        if ($(this).prop('checked')===false){
-                            elementosNoCehcked ++;
-                        };
-                    })
-
-                    //si hay un elemento no checkeado
-                    if (elementosNoCehcked>0){
-                        $("#todos_si").bootstrapToggle('off')
-                    }else {
-                        $("#todos_si").bootstrapToggle('on')
-                    }
+            function validadNececidadCama(){
+                if ($("#nececidad_cama_upc").prop('checked')){
+                    $("#select_tipo_cama").show()
+                }else {
+                    $("#select_tipo_cama").hide()
                 }
+            }
 
-                // validaTodosSi();
-
-
-            })
+            validadNececidadCama();
 
 
+            $("#todos_si").change(function (){
+                if ($(this).prop('checked')){
+                    $(".cambiar_todos").bootstrapToggle('on')
+                }else {
+                    $(".cambiar_todos").bootstrapToggle('off')
+                }
+            });
 
-            new Vue({
-                el: '#fieldsPartes',
-                name: 'fieldsPartes',
-                created() {
-                    this.getIntervenciones();
+
+            function validaTodosSi(){
+                var elementosNoCehcked = 0;
+
+                $(".cambiar_todos").each(function (element){
+                    if ($(this).prop('checked')===false){
+                        elementosNoCehcked ++;
+                    };
+                })
+
+                //si hay un elemento no checkeado
+                if (elementosNoCehcked>0){
+                    $("#todos_si").bootstrapToggle('off')
+                }else {
+                    $("#todos_si").bootstrapToggle('on')
+                }
+            }
+
+            // validaTodosSi();
+
+
+        })
+
+
+
+        new Vue({
+            el: '#fieldsPartes',
+            name: 'fieldsPartes',
+            created() {
+                this.getIntervenciones();
+            },
+            data: {
+                cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
+
+                insumo_especifico: @json($parte->insumoEspecifico ?? App\Models\Insumoespecifico::find(old('insumo_especifico_id')) ?? null),
+
+                especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
+
+
+                grupo_base: @json($parte->grupoBase ?? App\Models\GrupoBase::find(old('grupo_base_id')) ?? null),
+
+                clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
+                clasificaciones: @json($parte->cirugiaTipo->clasificaciones ?? []),
+
+                preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
+
+                biopsia : @json($parte->biopsia ?? old('biopsia') ?? null),
+
+                biopsias : [
+                    'Externa',
+                    'Rápida',
+                    'Diferida',
+                    'Citometría de flujo',
+                    'No aplica',
+                ],
+
+                tiempo_quirurgico : @json($parte->tiempo_quirurgico ?? old('tiempo_quirurgico') ?? null),
+
+                tiempos : [30, 60, 90, 120, 150, 180, 210, 240, 270, 300],
+
+                lateralidad : @json(old('lateralidad') ?? null),
+
+                lateralidad_opciones : ["izquierda", "derecha", "bidireccional"],
+
+                intervenciones: @json(\App\Models\Intervencion::all() ?? []),
+                intervencion: null,
+
+
+                parte_intervenciones: [],
+                editedItem: {
+                    id : 0,
+                    parte_id: @json($parte->id),
                 },
-                data: {
-                    cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
-
-                    insumo_especifico: @json($parte->insumoEspecifico ?? App\Models\Insumoespecifico::find(old('insumo_especifico_id')) ?? null),
-
-                    especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
-
-
-                    grupo_base: @json($parte->grupoBase ?? App\Models\GrupoBase::find(old('grupo_base_id')) ?? null),
-
-                    clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
-                    clasificaciones: @json($parte->cirugiaTipo->clasificaciones ?? []),
-
-                    preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
-
-                    biopsia : @json($parte->biopsia ?? old('biopsia') ?? null),
-
-                    biopsias : [
-                        'Externa',
-                        'Rápida',
-                        'Diferida',
-                        'Citometría de flujo',
-                        'No aplica',
-                    ],
-
-                    tiempo_quirurgico : @json($parte->tiempo_quirurgico ?? old('tiempo_quirurgico') ?? null),
-
-                    tiempos : [30, 60, 90, 120, 150, 180, 210, 240, 270, 300],
-
-                    lateralidad : @json(old('lateralidad') ?? null),
-
-                    lateralidad_opciones : ["izquierda", "derecha", "bidireccional"],
-
-                    intervenciones: @json(\App\Models\Intervencion::all() ?? []),
-                    intervencion: null,
-
-
-                    parte_intervenciones: [],
-                    editedItem: {
-                        id : 0,
-                        parte_id: @json($parte->id),
-                    },
-                    defaultItem: {
-                        id : 0,
-                        parte_id: @json($parte->id),
-
-                    },
-                    itemElimina: {
-
-                    },
-
-                    loading: false,
-
+                defaultItem: {
+                    id : 0,
                     parte_id: @json($parte->id),
 
-
-                    derivacion: @json($parte->derivacion ?? null),
-
-                    convenio: @json($parte->convenio ?? null),
-                    reparticion: @json($parte->reparticion ?? null),
-                    tipo_cama_upc: @json($parte->tipo_cama_upc ?? null),
                 },
-                methods: {
-                    close () {
+                itemElimina: {
+
+                },
+
+                loading: false,
+
+                parte_id: @json($parte->id),
+
+
+                derivacion: @json($parte->derivacion ?? null),
+
+                convenio: @json($parte->convenio ?? null),
+                reparticion: @json($parte->reparticion ?? null),
+                tipo_cama_upc: @json($parte->tipo_cama_upc ?? null),
+            },
+            methods: {
+                close () {
+                    this.loading = false;
+                    setTimeout(() => {
+                        this.intervencion = null;
+                        this.editedItem = Object.assign({}, this.defaultItem);
+                    }, 300)
+                },
+                getId(item){
+                    if(item)
+                        return item.id;
+
+                    return null
+                },
+                editIntervencion (item) {
+                    this.intervencion = Object.assign({}, item.intervencion);
+                    this.editedItem = Object.assign({}, item);
+
+                },
+                async getIntervenciones() {
+                    const res = await  axios.get(route('api.parte_intervenciones.index',{parte_id: this.parte_id}));
+                    this.parte_intervenciones = res.data.data;
+                },
+                async saveIntervencion () {
+
+
+                    this.loading = true;
+
+
+
+                    try {
+
+                        this.editedItem.intervencion_id = this.getId(this.intervencion)
+                        const data = this.editedItem;
+
+                        console.log('data inter',data);
+
+                        if(this.editedItem.id === 0){
+
+                            var res = await axios.post(route('api.parte_intervenciones.store'),data);
+
+                        }else {
+
+                            var res = await axios.patch(route('api.parte_intervenciones.update',this.editedItem.id),data);
+
+                        }
+
+                        logI(res.data);
+
+                        iziTs(res.data.message);
+                        this.getIntervenciones();
+                        this.close();
+
+
+                    }catch (e) {
+                        notifyErrorApi(e);
                         this.loading = false;
-                        setTimeout(() => {
-                            this.intervencion = null;
-                            this.editedItem = Object.assign({}, this.defaultItem);
-                        }, 300)
-                    },
-                    getId(item){
-                        if(item)
-                            return item.id;
+                    }
 
-                        return null
-                    },
-                    editIntervencion (item) {
-                        this.intervencion = Object.assign({}, item.intervencion);
-                        this.editedItem = Object.assign({}, item);
+                },
+                async deleteIntervencion(item) {
 
-                    },
-                    async getIntervenciones() {
-                        const res = await  axios.get(route('api.parte_intervenciones.index',{parte_id: this.parte_id}));
-                        this.parte_intervenciones = res.data.data;
-                    },
-                    async saveIntervencion () {
+                    let confirm = await Swal.fire({
+                        title: '¿Estás seguro?',
+                        text: "¡No podrás revertir esto!",
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, elimínalo\n!'
+                    });
 
-
-                        this.loading = true;
-
-
-
-                        try {
-
-                            this.editedItem.intervencion_id = this.getId(this.intervencion)
-                            const data = this.editedItem;
-
-                            console.log('data inter',data);
-
-                            if(this.editedItem.id === 0){
-
-                                var res = await axios.post(route('api.parte_intervenciones.store'),data);
-
-                            }else {
-
-                                var res = await axios.patch(route('api.parte_intervenciones.update',this.editedItem.id),data);
-
-                            }
-
+                    if (confirm.isConfirmed){
+                        try{
+                            let res = await  axios.delete(route('api.parte_intervenciones.destroy',item.id))
                             logI(res.data);
 
                             iziTs(res.data.message);
-                            this.getIntervenciones();
-                            this.close();
+                            this.editIntervencion();
 
 
-                        }catch (e) {
+                        }catch (e){
                             notifyErrorApi(e);
-                            this.loading = false;
+                            this.itemElimina = {};
                         }
 
-                    },
-                    async deleteIntervencion(item) {
+                    }
 
-                        let confirm = await Swal.fire({
-                            title: '¿Estás seguro?',
-                            text: "¡No podrás revertir esto!",
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Si, elimínalo\n!'
-                        });
-
-                        if (confirm.isConfirmed){
-                            try{
-                                let res = await  axios.delete(route('api.parte_intervenciones.destroy',item.id))
-                                logI(res.data);
-
-                                iziTs(res.data.message);
-                                this.editIntervencion();
-
-
-                            }catch (e){
-                                notifyErrorApi(e);
-                                this.itemElimina = {};
-                            }
-
-                        }
-
-                        console.log("Confirmacion",confirm);
+                    console.log("Confirmacion",confirm);
+                }
+            },
+            watch: {
+                cirugia_tipo (tipo) {
+                    if (tipo){
+                        this.clasificaciones =tipo.clasificaciones
+                    }else{
+                        this.clasificaciones = [];
                     }
                 },
-                watch: {
-                    cirugia_tipo (tipo) {
-                        if (tipo){
-                            this.clasificaciones =tipo.clasificaciones
-                        }else{
-                            this.clasificaciones = [];
-                        }
-                    },
 
+            },
+            computed:{
+                esCirugiaMayor(){
+
+                    if (this.cirugia_tipo){
+                        if (this.cirugia_tipo.id=='{{\App\Models\CirugiaTipo::MAYOR}}'){
+                            return true;
+                        }
+                    }
+
+                    $("#cma").bootstrapToggle('off')
+                    return false;
                 },
-                computed:{
-                    esCirugiaMayor(){
+                textButtonSubmint () {
+                    if (this.loading){
+                        return this.editedItem.id === 0 ? 'Agregando...' : 'Actualizando...'
 
-                        if (this.cirugia_tipo){
-                            if (this.cirugia_tipo.id=='{{\App\Models\CirugiaTipo::MAYOR}}'){
-                                return true;
-                            }
-                        }
+                    }else {
+                        return this.editedItem.id === 0 ? 'Agregar' : 'Actualizar'
 
-                        $("#cma").bootstrapToggle('off')
-                        return false;
-                    },
-                    textButtonSubmint () {
-                        if (this.loading){
-                            return this.editedItem.id === 0 ? 'Agregando...' : 'Actualizando...'
-
-                        }else {
-                            return this.editedItem.id === 0 ? 'Agregar' : 'Actualizar'
-
-                        }
                     }
                 }
-            });
-        </script>
+            }
+        });
+    </script>
 @endpush
