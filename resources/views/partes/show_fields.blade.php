@@ -2,7 +2,7 @@
 
 
 <div class="col-12">
-    <div class="card card-outline card-info">
+    <div class="card card-secondary ">
         <div class="card-header py-1 px-3">
             <h3 class="card-title">Información Paciente</h3>
 
@@ -32,8 +32,8 @@
             <!-- /.card-tools -->
         </div>
         <!-- /.card-header -->
-        <div class="card-body" id="fieldsPartes">
-            <div class="form-row">
+        <div class="card-body" >
+            <div class="form-row" id="fieldsPartes">
 
 
                 <!-- Cirugia Tipo Id Field -->
@@ -75,14 +75,10 @@
                         {{ ($parte->cma ?? old('cma') ?? false) ? 'checked' : '' }}>
                 </div>
 
-                <div class="form-group col-sm-12">
-                    <select-diagnostico
-                        label="Diagnostico"
-                        v-model="diagnostico"
-                        :disabled="true"
-                    >
 
-                    </select-diagnostico>
+                <!-- /.card-body -->
+                <div class="form-group col-sm-12">
+                    <panel-diagnosticos-parte parte_id="@json($parte->id)" :disabled="true"></panel-diagnosticos-parte>
                 </div>
 
                 <!-- Otros Diagnosticos Field -->
@@ -145,26 +141,11 @@
                 <!-- Tiempo Quirurgico Field -->
                 <div class="form-group col-sm-4">
                     {!! Form::label('tiempo_quirurgico', 'Tiempo Quirurgico:') !!}
-                    {!!
-                        Form::select(
-                            'tiempo_quirurgico',
-                            [
-                                null => 'Seleccione uno...',
-                                30 => 30,
-                                60 => 60,
-                                90 => 90,
-                                120 => 120,
-                                150 => 150,
-                                180 => 180,
-                                210 => 210,
-                                240 => 240,
-                                270 => 270,
-                                300 => 300,
-                            ]
-                            , $parte->tiempo_quirurgico ?? null
-                            , ['id'=>'tiempo_quirurgico','class' => 'form-control','style'=>'width: 100%','readonly']
-                        )
-                    !!}
+
+                    <multiselect v-model="tiempo_quirurgico" :disabled="true" :options="tiempos"  placeholder="Seleccione uno...">
+                    </multiselect>
+                    <input type="hidden" name="tiempo_quirurgico" :value="tiempo_quirurgico">
+
                 </div>
 
                 <!-- Anestesia Sugerida Field -->
@@ -222,6 +203,16 @@
                                         {{ ($parte->nececidad_cama_upc ?? old('nececidad_cama_upc') ?? false) ? 'checked' : '' }}>
                                 </div>
 
+                                <div class="col-sm-3" id="select_tipo_cama">
+                                    {!! Form::label('tipo_cama_upc', 'Tipo Cama:') !!}<br>
+
+                                    <multiselect :disabled="true" v-model="tipo_cama_upc" :options='["UCIGEN", "UCICAR", "UCIM"]'  placeholder="Seleccione uno...">
+                                    </multiselect>
+
+                                    <input type="hidden" name="tipo_cama_upc" :value="tipo_cama_upc">
+
+                                </div>
+
 
                                 <!-- Prioridad Field -->
                                 <div class="col-sm-3">
@@ -262,21 +253,35 @@
                                         {{ ($parte->equipo_rayos ?? old('equipo_rayos') ?? false) ? 'checked' : '' }}>
                                 </div>
 
+                                <!-- Segunco Ojo Field -->
+                                <div class="col-sm-3">
+                                    <input type="hidden" name="segundo_ojo" value="0">
+                                    {!! Form::label('segundo_ojo', '2do Ojo:') !!}<br>
+                                    <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="segundo_ojo" id="segundo_ojo"
+                                           value="1"
+                                        {{ ($parte->segundo_ojo ?? old('segundo_ojo') ?? false) ? 'checked' : '' }}>
+                                </div>
+
 
                                 <!-- Insumos Especificos Field -->
-                                <div class="col-sm-3">
-                                    <input type="hidden" name="insumos_especificos" value="0">
-                                    {!! Form::label('insumos_especificos', 'Insumos Especificos:') !!}<br>
-                                    <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="insumos_especificos" id="insumos_especificos"
-                                           value="1"
-                                        {{ ($parte->insumos_especificos ?? old('insumos_especificos') ?? false) ? 'checked' : '' }}>
+                                <div class="form-group col-sm-4">
+                                    <select-insumo-especifico
+                                        label="Insumo Especifico"
+                                        v-model="insumo_especifico"
+                                        :disabled="true"
+                                    >
+
+                                    </select-insumo-especifico>
                                 </div>
+
                             </div>
 
                         </div>
                         <!-- /.card-body -->
                     </div>
                 </div>
+
+
 
                 <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
 
@@ -289,6 +294,16 @@
 
                     </select-preoperatorio>
                 </div>
+
+
+                <!-- Grupo Base Field -->
+                <!-- <div class="form-group col-sm-6">
+                    <select-grupo-base
+                        label="Grupo Base"
+                        v-model="grupo_base" >
+
+                    </select-grupo-base>
+                </div> -->
 
                 <!-- Biopsia Field -->
                 <div class="form-group col-sm-6">
@@ -305,333 +320,308 @@
                     {!! Form::textarea('instrumental', $parte->instrumental ?? '', ['class' => 'form-control','rows' => 2,'readonly']) !!}
                 </div>
 
-                @if($parte->estaAdmision() && auth()->user()->hasRole('Admision'))
-                <!-- Medicamentos Field -->
-                    <div class="form-group col-sm-6 col-lg-6">
-                        {!! Form::label('medicamentos', 'Medicamentos:') !!}
-                        {!! Form::textarea('medicamentos', null, ['class' => 'form-control','rows' => 2,'readonly']) !!}
+                <!-- Instrumental Field -->
+                <div class="form-group col-sm-6 col-lg-6">
+                    {!! Form::label('observaciones', 'Observaciones:') !!}
+                    {!! Form::textarea('observaciones', $parte->observaciones, ['class' => 'form-control','rows' => 2,'disabled']) !!}
+                </div>
+
+                <!-- Segunco Ojo Field -->
+                <div class="col-sm-6">
+                    <input type="hidden" name="consentimiento" value="0">
+
+                    <label for="">
+                        <a href="http://acreditacion.hospitalnaval.cl/index.php?option=com_content&view=article&id=50&Itemid=72&dir=JSROOT%2FConsentimientos/">
+                            <i class="fas fa-file" ></i></a>
+                        Consentimiento informado, firmado y archivado en ficha clínica:
+                    </label>
+                    <br>
+
+                    <input type="checkbox" disabled  data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="consentimiento" id="consentimiento"
+                           value="1"
+                        {{ ($parte->consentimiento ?? old('consentimiento') ?? false) ? 'checked' : '' }}>
+                </div>
+
+                <!-- derivacion Field -->
+                <!-- <div class="form-group col-sm-2">
+
+                    <label for="">derivacion:</label>
+                    <div class="text-lg">
+
+                        <toggle-button :sync="true"
+                                       :labels="{checked: 'Sí', unchecked: 'No'}"
+                                       v-model="derivacion"
+                                       :width="75"
+                                       :height="35"
+                                       :font-size="16"
+                        ></toggle-button>
+
+                        <input type="hidden" name="derivacion" :value="derivacion ? 1 : 0">
                     </div>
 
+                </div> -->
 
+                <!-- <div class="form-group col-sm-4" v-show="derivacion">
+                    <select-reparticion
+                        label="Reparticion"
+                        v-model="reparticion" >
 
-                    <!-- Observaciones Field -->
-                    <div class="form-group col-sm-12 col-lg-12">
-                        {!! Form::label('observaciones', 'Observaciones:') !!}
-                        {!! Form::textarea('observaciones', null, ['class' => 'form-control','rows' => 2,'readonly']) !!}
-                    </div>
-                @endcan
+                    </select-reparticion>
+                </div> -->
 
 
 
             </div>
+
+
         </div>
-        <!-- /.card-body -->
     </div>
-</div>
 
-@push('scripts')
-    <script>
+    @push('scripts')
+        <script>
 
-        $(function () {
-            $("#todos_si").change(function (){
-                if ($(this).prop('checked')){
-                    $(".cambiar_todos").bootstrapToggle('on')
-                }else {
-                    $(".cambiar_todos").bootstrapToggle('off')
-                }
-            });
+            $(function () {
 
+                $("#select_tipo_cama").hide();
 
-            function validaTodosSi(){
-                var elementosNoCehcked = 0;
+                $("#nececidad_cama_upc").change(function (){
+                    validadNececidadCama();
+                });
 
-                $(".cambiar_todos").each(function (element){
-                    if ($(this).prop('checked')===false){
-                        elementosNoCehcked ++;
-                    };
-                })
-
-                //si hay un elemento no checkeado
-                if (elementosNoCehcked>0){
-                    $("#todos_si").bootstrapToggle('off')
-                }else {
-                    $("#todos_si").bootstrapToggle('on')
-                }
-            }
-
-            // validaTodosSi();
-
-
-        })
-
-
-
-
-
-        new Vue({
-            el: '#fieldsPartes',
-            name: 'fieldsPartes',
-            created() {
-                this.getIntervenciones();
-            },
-            data: {
-                cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
-
-                insumo_especifico: @json($parte->insumoEspecifico ?? App\Models\Insumoespecifico::find(old('insumo_especifico_id')) ?? null),
-
-                especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
-
-                diagnostico: @json($parte->diagnostico ?? Diagnostico::find(old('diagnostico_id')) ?? null),
-
-                grupo_base: @json($parte->grupoBase ?? App\Models\GrupoBase::find(old('grupo_base_id')) ?? null),
-
-                clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
-                clasificaciones: @json($parte->cirugiaTipo->clasificaciones ?? []),
-
-                preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
-
-                biopsia : @json($parte->biopsia ?? old('biopsia') ?? null),
-
-                biopsias : [
-                    'Externa',
-                    'Rápida',
-                    'Diferida',
-                    'Citometría de flujo',
-                    'No aplica',
-                ],
-
-                tiempo_quirurgico : @json($parte->tiempo_quirurgico ?? old('tiempo_quirurgico') ?? null),
-
-                tiempos : [30, 60, 90, 120, 150, 180, 210, 240, 270, 300],
-
-                lateralidad : @json(old('lateralidad') ?? null),
-
-                lateralidad_opciones : ["izquierda", "derecha", "bidireccional"],
-
-                intervenciones: @json(\App\Models\Intervencion::all() ?? []),
-                intervencion: null,
-
-
-                parte_intervenciones: [],
-                editedItem: {
-                    id : 0,
-                    parte_id: @json($parte->id),
-                },
-                defaultItem: {
-                    id : 0,
-                    parte_id: @json($parte->id),
-
-                },
-                itemElimina: {
-
-                },
-
-                loading: false,
-
-                parte_id: @json($parte->id),
-
-
-                extrademanda: @json($parte->extrademanda ?? null),
-                derivacion: @json($parte->derivacion ?? null),
-                examenes_realizados: @json($parte->examenes_realizados ?? null),
-                control_preop_eu: @json($parte->control_preop_eu ?? null),
-                control_preop_medico: @json($parte->control_preop_medico ?? null),
-                control_preop_anestesista: @json($parte->control_preop_anestesista ?? null),
-
-                convenio: @json($parte->convenio ?? null),
-                reparticion: @json($parte->reparticion ?? null),
-            },
-            methods: {
-                close () {
-                    this.loading = false;
-                    setTimeout(() => {
-                        this.intervencion = null;
-                        this.editedItem = Object.assign({}, this.defaultItem);
-                    }, 300)
-                },
-                getId(item){
-                    if(item)
-                        return item.id;
-
-                    return null
-                },
-                editIntervencion (item) {
-                    this.intervencion = Object.assign({}, item.intervencion);
-                    this.editedItem = Object.assign({}, item);
-
-                },
-                async getIntervenciones() {
-                    const res = await  axios.get(route('api.parte_intervenciones.index',{parte_id: this.parte_id}));
-                    this.parte_intervenciones = res.data.data;
-                },
-                async saveIntervencion () {
-
-
-                    this.loading = true;
-
-
-
-                    try {
-
-                        this.editedItem.intervencion_id = this.getId(this.intervencion)
-                        const data = this.editedItem;
-
-                        console.log('data inter',data);
-
-                        if(this.editedItem.id === 0){
-
-                            var res = await axios.post(route('api.parte_intervenciones.store'),data);
-
-                        }else {
-
-                            var res = await axios.patch(route('api.parte_intervenciones.update',this.editedItem.id),data);
-
-                        }
-
-                        logI(res.data);
-
-                        iziTs(res.data.message);
-                        this.getIntervenciones();
-                        this.close();
-
-
-                    }catch (e) {
-                        notifyErrorApi(e);
-                        this.loading = false;
+                function validadNececidadCama(){
+                    if ($("#nececidad_cama_upc").prop('checked')){
+                        $("#select_tipo_cama").show()
+                    }else {
+                        $("#select_tipo_cama").hide()
                     }
+                }
 
+                validadNececidadCama();
+
+
+                $("#todos_si").change(function (){
+                    if ($(this).prop('checked')){
+                        $(".cambiar_todos").bootstrapToggle('on')
+                    }else {
+                        $(".cambiar_todos").bootstrapToggle('off')
+                    }
+                });
+
+
+                function validaTodosSi(){
+                    var elementosNoCehcked = 0;
+
+                    $(".cambiar_todos").each(function (element){
+                        if ($(this).prop('checked')===false){
+                            elementosNoCehcked ++;
+                        };
+                    })
+
+                    //si hay un elemento no checkeado
+                    if (elementosNoCehcked>0){
+                        $("#todos_si").bootstrapToggle('off')
+                    }else {
+                        $("#todos_si").bootstrapToggle('on')
+                    }
+                }
+
+                // validaTodosSi();
+
+
+            })
+
+
+
+            new Vue({
+                el: '#fieldsPartes',
+                name: 'fieldsPartes',
+                created() {
+                    this.getIntervenciones();
                 },
-                async deleteIntervencion(item) {
+                data: {
+                    cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
 
-                    let confirm = await Swal.fire({
-                        title: '¿Estás seguro?',
-                        text: "¡No podrás revertir esto!",
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Si, elimínalo\n!'
-                    });
+                    insumo_especifico: @json($parte->insumoEspecifico ?? App\Models\Insumoespecifico::find(old('insumo_especifico_id')) ?? null),
 
-                    if (confirm.isConfirmed){
-                        try{
-                            let res = await  axios.delete(route('api.parte_intervenciones.destroy',item.id))
+                    especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
+
+
+                    grupo_base: @json($parte->grupoBase ?? App\Models\GrupoBase::find(old('grupo_base_id')) ?? null),
+
+                    clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
+                    clasificaciones: @json($parte->cirugiaTipo->clasificaciones ?? []),
+
+                    preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
+
+                    biopsia : @json($parte->biopsia ?? old('biopsia') ?? null),
+
+                    biopsias : [
+                        'Externa',
+                        'Rápida',
+                        'Diferida',
+                        'Citometría de flujo',
+                        'No aplica',
+                    ],
+
+                    tiempo_quirurgico : @json($parte->tiempo_quirurgico ?? old('tiempo_quirurgico') ?? null),
+
+                    tiempos : [30, 60, 90, 120, 150, 180, 210, 240, 270, 300],
+
+                    lateralidad : @json(old('lateralidad') ?? null),
+
+                    lateralidad_opciones : ["izquierda", "derecha", "bidireccional"],
+
+                    intervenciones: @json(\App\Models\Intervencion::all() ?? []),
+                    intervencion: null,
+
+
+                    parte_intervenciones: [],
+                    editedItem: {
+                        id : 0,
+                        parte_id: @json($parte->id),
+                    },
+                    defaultItem: {
+                        id : 0,
+                        parte_id: @json($parte->id),
+
+                    },
+                    itemElimina: {
+
+                    },
+
+                    loading: false,
+
+                    parte_id: @json($parte->id),
+
+
+                    derivacion: @json($parte->derivacion ?? null),
+
+                    convenio: @json($parte->convenio ?? null),
+                    reparticion: @json($parte->reparticion ?? null),
+                    tipo_cama_upc: @json($parte->tipo_cama_upc ?? null),
+                },
+                methods: {
+                    close () {
+                        this.loading = false;
+                        setTimeout(() => {
+                            this.intervencion = null;
+                            this.editedItem = Object.assign({}, this.defaultItem);
+                        }, 300)
+                    },
+                    getId(item){
+                        if(item)
+                            return item.id;
+
+                        return null
+                    },
+                    editIntervencion (item) {
+                        this.intervencion = Object.assign({}, item.intervencion);
+                        this.editedItem = Object.assign({}, item);
+
+                    },
+                    async getIntervenciones() {
+                        const res = await  axios.get(route('api.parte_intervenciones.index',{parte_id: this.parte_id}));
+                        this.parte_intervenciones = res.data.data;
+                    },
+                    async saveIntervencion () {
+
+
+                        this.loading = true;
+
+
+
+                        try {
+
+                            this.editedItem.intervencion_id = this.getId(this.intervencion)
+                            const data = this.editedItem;
+
+                            console.log('data inter',data);
+
+                            if(this.editedItem.id === 0){
+
+                                var res = await axios.post(route('api.parte_intervenciones.store'),data);
+
+                            }else {
+
+                                var res = await axios.patch(route('api.parte_intervenciones.update',this.editedItem.id),data);
+
+                            }
+
                             logI(res.data);
 
                             iziTs(res.data.message);
-                            this.editIntervencion();
+                            this.getIntervenciones();
+                            this.close();
 
 
-                        }catch (e){
+                        }catch (e) {
                             notifyErrorApi(e);
-                            this.itemElimina = {};
+                            this.loading = false;
                         }
 
-                    }
+                    },
+                    async deleteIntervencion(item) {
 
-                    console.log("Confirmacion",confirm);
-                }
-            },
-            watch: {
-                cirugia_tipo (tipo) {
-                    if (tipo){
-                        this.clasificaciones =tipo.clasificaciones
-                    }else{
-                        this.clasificaciones = [];
+                        let confirm = await Swal.fire({
+                            title: '¿Estás seguro?',
+                            text: "¡No podrás revertir esto!",
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Si, elimínalo\n!'
+                        });
+
+                        if (confirm.isConfirmed){
+                            try{
+                                let res = await  axios.delete(route('api.parte_intervenciones.destroy',item.id))
+                                logI(res.data);
+
+                                iziTs(res.data.message);
+                                this.editIntervencion();
+
+
+                            }catch (e){
+                                notifyErrorApi(e);
+                                this.itemElimina = {};
+                            }
+
+                        }
+
+                        console.log("Confirmacion",confirm);
                     }
                 },
-
-            },
-            computed:{
-                esCirugiaMayor(){
-
-                    if (this.cirugia_tipo){
-                        if (this.cirugia_tipo.id=='{{\App\Models\CirugiaTipo::MAYOR}}'){
-                            return true;
+                watch: {
+                    cirugia_tipo (tipo) {
+                        if (tipo){
+                            this.clasificaciones =tipo.clasificaciones
+                        }else{
+                            this.clasificaciones = [];
                         }
-                    }
+                    },
 
-                    $("#cma").bootstrapToggle('off')
-                    return false;
                 },
-                textButtonSubmint () {
-                    if (this.loading){
-                        return this.editedItem.id === 0 ? 'Agregando...' : 'Actualizando...'
+                computed:{
+                    esCirugiaMayor(){
 
-                    }else {
-                        return this.editedItem.id === 0 ? 'Agregar' : 'Actualizar'
+                        if (this.cirugia_tipo){
+                            if (this.cirugia_tipo.id=='{{\App\Models\CirugiaTipo::MAYOR}}'){
+                                return true;
+                            }
+                        }
 
-                    }
-                }
-            }
-        });
-    </script>
-@endpush
+                        $("#cma").bootstrapToggle('off')
+                        return false;
+                    },
+                    textButtonSubmint () {
+                        if (this.loading){
+                            return this.editedItem.id === 0 ? 'Agregando...' : 'Actualizando...'
 
+                        }else {
+                            return this.editedItem.id === 0 ? 'Agregar' : 'Actualizar'
 
-
-
-
-
-
-@push('scripts')
-    <script>
-
-
-        new Vue({
-            el: '#fieldsPartes',
-            name: 'fieldsPartes',
-            created() {
-
-            },
-            data: {
-                cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
-
-                especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
-
-                diagnostico: @json($parte->diagnostico ?? Diagnostico::find(old('diagnostico_id')) ?? null),
-
-                intervencion: @json($parte->intervencion ?? Intervencion::find(old('intervencion_id')) ?? null),
-
-                clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
-                clasificaciones: @json($parte->cirugiaTipo->clasificaciones ?? []),
-
-                preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
-
-                biopsia : @json($parte->biopsia ?? old('biopcias') ?? null),
-
-                biopsias : [
-                    'Externa',
-                    'Rápida',
-                    'Diferida',
-                    'Citometría de flujo',
-                    'No aplica',
-                ]
-            },
-            methods: {
-
-            },
-            watch: {
-                cirugia_tipo (tipo) {
-                    if (tipo){
-                        this.clasificaciones =tipo.clasificaciones
-                    }else{
-                        this.clasificaciones = [];
-                    }
-                }
-            },
-            computed:{
-                esCirugiaMayor(){
-
-                    if (this.cirugia_tipo){
-                        if (this.cirugia_tipo.id=='{{\App\Models\CirugiaTipo::MAYOR}}'){
-                            return true;
                         }
                     }
-
-                    $("#cma").bootstrapToggle('off')
-                    return false;
                 }
-            }
-        });
-    </script>
+            });
+        </script>
 @endpush

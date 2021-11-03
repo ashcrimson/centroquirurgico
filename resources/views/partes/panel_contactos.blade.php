@@ -114,9 +114,9 @@
     <script>
 
 
-        var vmItem = new Vue({
+        new Vue({
             el: '#panel_contactos',
-            name: '#panel_contactos',
+            name: 'panel_contactos',
             created: function() {
                 this.getItems();
             },

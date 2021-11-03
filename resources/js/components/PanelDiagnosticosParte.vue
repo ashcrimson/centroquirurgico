@@ -13,8 +13,7 @@
 
         <div class="card-body p-0">
 
-            <div class="row">
-
+            <div class="row" v-show="!disabled">
                 <div class="col-12 p-3">
 
                     <div class="form-row">
@@ -51,7 +50,6 @@
                 <table class="table table-bordered table-sm table-striped mb-0">
                     <thead>
                     <tr>
-
                         <th>Diagnóstico</th>
                         <th>Actions</th>
                     </tr>
