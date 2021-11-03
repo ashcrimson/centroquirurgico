@@ -1,11 +1,13 @@
 <style>
     .timeline>div>.timeline-item>.timeline-header{
-        font-size:21px;
+        font-size:16px;
     }
     .timeline>div>.timeline-item>.time {
         font-size:16px;
         float:left;
-        margin-top:auto;
+        position: relative;
+        top: -4px;
+        color: #495057;
     }
 </style>
 <div id="bitacoras">
