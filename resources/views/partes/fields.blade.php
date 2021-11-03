@@ -76,6 +76,10 @@
                 </div>
 
 
+                <!-- /.card-body -->
+                <div class="form-group col-sm-12">
+                    <panel-diagnosticos-parte parte_id="@json($parte->id)"></panel-diagnosticos-parte>
+                </div>
 
 
                 <!-- Otros Diagnosticos Field -->
@@ -447,20 +451,7 @@
 
             </div>
 
-            <div class="form-row">
-                <div class="form-group col-sm-12">
-                    @include('partes.panel_contactos')
-                </div>
-            </div>
-        <!-- /.card-body -->
-        <div class="form-group col-sm-12">
-                    <!-- <select-diagnostico
-                        label="Diagnostico"
-                        v-model="diagnostico" >
 
-                    </select-diagnostico> -->
-                  @include('partes.panel_diagnosticos')
-        </div>
     </div>
 </div>
 

@@ -139,3 +139,7 @@ Vue.component('select-reparticion',SelectReparticion);
 
 import SelectGrupoBase from "./components/SelectGrupoBase";
 Vue.component('select-grupo-base',SelectGrupoBase);
+
+
+import PanelDiagnosticosParte from "./components/PanelDiagnosticosParte";
+Vue.component('panel-diagnosticos-parte',PanelDiagnosticosParte);

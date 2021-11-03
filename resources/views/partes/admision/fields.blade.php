@@ -192,6 +192,15 @@
         </div>
 
     </div>
+
+
+
+</div>
+
+<div class="form-row">
+    <div class="form-group col-sm-12">
+        @include('partes.panel_contactos')
+    </div>
 </div>
 
 @push('scripts')
