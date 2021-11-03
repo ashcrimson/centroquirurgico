@@ -254,7 +254,7 @@
                     <div class="card-body">
                         <div class="row">
                             <!-- Mamrcar todos como si -->
-                            <div class="col-sm-12">
+                            <!-- <div class="col-sm-12">
                                 {!! Form::label('toso_si', 'Marcar todos como sí:') !!}<br>
 
                                 <input type="checkbox"  data-toggle="toggle"
@@ -262,7 +262,7 @@
                                        data-style="ios" name="todos_si" id="todos_si"
                                        value="1">
 
-                            </div>
+                            </div> -->
 
                             <!-- Aislamiento Field -->
                             <div class="col-sm-3">
@@ -397,13 +397,13 @@
 
 
                 <!-- Grupo Base Field -->
-                <div class="form-group col-sm-6">
+                <!-- <div class="form-group col-sm-6">
                     <select-grupo-base
                         label="Grupo Base"
                         v-model="grupo_base" >
 
                     </select-grupo-base>
-                </div>
+                </div> -->
 
                 <!-- Biopsia Field -->
                 <div class="form-group col-sm-6">
@@ -420,8 +420,27 @@
                     {!! Form::textarea('instrumental', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
+                <!-- Instrumental Field -->
+                <div class="form-group col-sm-6 col-lg-6">
+                    {!! Form::label('observaciones', 'Observaciones:') !!}
+                    {!! Form::textarea('observaciones', null, ['class' => 'form-control','rows' => 2]) !!}
+                </div>
+
+                <!-- Segunco Ojo Field -->
+                <div class="col-sm-3">
+                    <input type="hidden" name="consentimiento" value="0">
+                    <a href="http://acreditacion.hospitalnaval.cl/index.php?option=com_content&view=article&id=50&Itemid=72&dir=JSROOT%2FConsentimientos/">
+                        <i class="fas fa-file" ></i></a>
+                    {!! Form::label('consentimiento', 'Consentimiento informado, firmado y archivado en ficha clínica:') !!}
+                    <br>
+
+                    <input type="checkbox"  data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="consentimiento" id="consentimiento"
+                            value="1"
+                        {{ ($parte->consentimiento ?? old('consentimiento') ?? false) ? 'checked' : '' }}>
+                </div>
+
                 <!-- derivacion Field -->
-                <div class="form-group col-sm-2">
+                <!-- <div class="form-group col-sm-2">
 
                     <label for="">derivacion:</label>
                     <div class="text-lg">
@@ -437,15 +456,15 @@
                         <input type="hidden" name="derivacion" :value="derivacion ? 1 : 0">
                     </div>
 
-                </div>
+                </div> -->
 
-                <div class="form-group col-sm-4" v-show="derivacion">
+                <!-- <div class="form-group col-sm-4" v-show="derivacion">
                     <select-reparticion
                         label="Reparticion"
                         v-model="reparticion" >
 
                     </select-reparticion>
-                </div>
+                </div> -->
 
 
 

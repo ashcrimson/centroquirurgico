@@ -70,6 +70,12 @@
             {!! Form::date('fecha_examenes', fechaEn($parte->fecha_examenes), ['id' => 'fecha_examenes','class' => 'form-control','id'=>'fecha_examenes']) !!}
         </div>
 
+        <div class="form-row">
+                <div class="form-group col-sm-12">
+                    @include('partes.panel_contactos')
+                </div>
+            </div>
+
         <!-- Control preop eu Field -->
         <div class="form-group col-sm-2">
 
@@ -89,6 +95,8 @@
 
         </div>
 
+        
+
         <div class="form-group col-sm-4" v-show="control_preop_eu">
             {!! Form::label('fecha_preop_eu', 'Fecha PreOp EU') !!}
 
@@ -96,9 +104,11 @@
 
         </div>
 
+        
+
         <!-- Control preop Medico Field -->
         <div class="form-group col-sm-2">
-
+ 
             <label for="">Control Preop Médico:</label>
             <div class="text-lg">
 
@@ -115,11 +125,15 @@
 
         </div>
 
+        
+
         <div class="form-group col-sm-4" v-show="control_preop_medico">
             {!! Form::label('fecha_preop_medico', 'Fecha PreOp Médico') !!}
             {!! Form::date('fecha_preop_medico', fechaEn($parte->fecha_preop_medico), ['id' => 'fecha_preop_medico','class' => 'form-control','id'=>'fecha_preop_medico']) !!}
 
         </div>
+
+        
 
         <!-- Control preop Antestesista Field -->
         <div class="form-group col-sm-2">
@@ -154,6 +168,8 @@
 
         </div>
 
+        
+
         <!-- Tiempo Quirurgico Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('user_ingresa', 'Cambio de Medico:') !!}
@@ -161,6 +177,8 @@
             </multiselect>
             <input type="hidden" name="user_ingresa" :value="medico ? medico.id : null">
         </div>
+
+        
 
 
         <!-- Sistema Salud Field -->
@@ -181,6 +199,8 @@
 
         </div>
 
+        
+
         <!-- Grupo Base Field -->
         <div class="form-group col-sm-4">
             <select-grupo-base
@@ -190,6 +210,8 @@
             </select-grupo-base>
 
         </div>
+
+        
 
     </div>
 

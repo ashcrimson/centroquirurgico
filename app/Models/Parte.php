@@ -136,6 +136,7 @@ class Parte extends Model
         'email',
         'segundo_ojo',
         'tipo_cama_upc',
+        'consentimiento'
     ];
 
     /**
@@ -186,6 +187,7 @@ class Parte extends Model
         'control_preop_medico' => 'boolean',
         'fecha_preop_medico' => 'datetime',
         'control_preop_anestesista' => 'boolean',
+        'consentimiento' => 'boolean',
         'fecha_preop_anestesista' => 'datetime',
         'instrumental' => 'string',
         'observaciones' => 'string',
