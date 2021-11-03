@@ -1,4 +1,13 @@
-
+<style>
+    .timeline>div>.timeline-item>.timeline-header{
+        font-size:21px;
+    }
+    .timeline>div>.timeline-item>.time {
+        font-size:16px;
+        float:left;
+        margin-top:auto;
+    }
+</style>
 <div id="bitacoras">
 
     <form @submit.prevent="save()">

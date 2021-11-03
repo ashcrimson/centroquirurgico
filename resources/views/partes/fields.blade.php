@@ -297,24 +297,7 @@
                             </div>
 
 
-                            <!-- Nececidad Cama Upc Field -->
-                            <div class="col-sm-3">
-                                <input type="hidden" name="nececidad_cama_upc" value="0">
-                                {!! Form::label('nececidad_cama_upc', 'Nececidad Cama Upc:') !!}<br>
-                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="nececidad_cama_upc" id="nececidad_cama_upc"
-                                       value="1"
-                                    {{ ($parte->nececidad_cama_upc ?? old('nececidad_cama_upc') ?? false) ? 'checked' : '' }}>
-                            </div>
-
-                            <div class="col-sm-3" id="select_tipo_cama">
-                                {!! Form::label('tipo_cama_upc', 'Tipo Cama:') !!}<br>
-
-                                <multiselect v-model="tipo_cama_upc" :options='["UCIGEN", "UCICAR", "UCIM"]'  placeholder="Seleccione uno...">
-                                </multiselect>
-
-                                <input type="hidden" name="tipo_cama_upc" :value="tipo_cama_upc">
-
-                            </div>
+                            
 
 
                             <!-- Prioridad Field -->
@@ -375,6 +358,25 @@
                                 </select-insumo-especifico>
                             </div>
 
+                            <!-- Nececidad Cama Upc Field -->
+                            <div class="col-sm-3">
+                                <input type="hidden" name="nececidad_cama_upc" value="0">
+                                {!! Form::label('nececidad_cama_upc', 'Necesidad Cama Upc:') !!}<br>
+                                <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="nececidad_cama_upc" id="nececidad_cama_upc"
+                                       value="1"
+                                    {{ ($parte->nececidad_cama_upc ?? old('nececidad_cama_upc') ?? false) ? 'checked' : '' }}>
+                            </div>
+
+                            <div class="col-sm-3" id="select_tipo_cama">
+                                {!! Form::label('tipo_cama_upc', 'Tipo Cama UPC:') !!}<br>
+
+                                <multiselect v-model="tipo_cama_upc" :options='["UCIGEN", "UCICAR", "UCIM"]'  placeholder="Seleccione uno...">
+                                </multiselect>
+
+                                <input type="hidden" name="tipo_cama_upc" :value="tipo_cama_upc">
+
+                            </div>
+
                         </div>
 
                     </div>
@@ -427,7 +429,7 @@
                 </div>
 
                 <!-- Segunco Ojo Field -->
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                     <input type="hidden" name="consentimiento" value="0">
                     <a href="http://acreditacion.hospitalnaval.cl/index.php?option=com_content&view=article&id=50&Itemid=72&dir=JSROOT%2FConsentimientos/">
                         <i class="fas fa-file" ></i></a>
