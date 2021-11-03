@@ -9,23 +9,8 @@
 
 
 <!-- Apellido Paterno Field -->
-{!! Form::label('apellido_paterno', 'Apellido Paterno:') !!}
-{!! $paciente->apellido_paterno !!}<br>
-
-
-<!-- Apellido Materno Field -->
-{!! Form::label('apellido_materno', 'Apellido Materno:') !!}
-{!! $paciente->apellido_materno !!}<br>
-
-
-<!-- Primer Nombre Field -->
-{!! Form::label('primer_nombre', 'Primer Nombre:') !!}
-{!! $paciente->primer_nombre !!}<br>
-
-
-<!-- Segundo Nombre Field -->
-{!! Form::label('segundo_nombre', 'Segundo Nombre:') !!}
-{!! $paciente->segundo_nombre !!}<br>
+{!! Form::label('nombre_paciente', 'Nombre Paciente:') !!}
+{!! $paciente->nombre_completo !!}<br>
 
 
 <!-- Fecha Nac Field -->
