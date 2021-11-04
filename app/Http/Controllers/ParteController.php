@@ -12,6 +12,7 @@ use App\Models\Parte;
 use App\Models\ParteEstado;
 use App\Http\Controllers\AppBaseController;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Response;
 
@@ -32,22 +33,28 @@ class ParteController extends AppBaseController
      * @param ParteDataTable $parteDataTable
      * @return Response
      */
-    public function index(ParteDataTable $parteDataTable)
+    public function index(ParteDataTable $parteDataTable,Request $request)
     {
         $scope = new ScopeParteDataTable();
 
-        $scope->estados = [
+        $idsEstadosDefecto = [
             ParteEstado::INGRESADA,
             ParteEstado::ENVIADA_ADMICION,
             ParteEstado::LISTA_ESPERA,
             ParteEstado::PROGRAMADO,
             ParteEstado::SUSPENDIDO,
+            ParteEstado::ACTIVACION,
             ParteEstado::ELIMINADO,
         ];
 
+        $scope->estados = $request->estados ?? $idsEstadosDefecto;
+        $scope->users = auth()->user()->id;
+
         $parteDataTable->addScope($scope);
 
-        return $parteDataTable->render('partes.index');
+        $estados = ParteEstado::whereIn('id',$idsEstadosDefecto)->get();
+
+        return $parteDataTable->render('partes.index',compact('estados'));
     }
 
 

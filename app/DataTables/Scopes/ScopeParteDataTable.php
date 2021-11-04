@@ -37,9 +37,9 @@ class ScopeParteDataTable implements DataTableScope
 
         if ($this->users){
             if (is_array($this->users)){
-                $query->whereIn('user_crea',$this->users);
+                $query->whereIn('user_ingresa',$this->users);
             }else{
-                $query->where('user_crea',$this->users);
+                $query->where('user_ingresa',$this->users);
             }
         }
 
