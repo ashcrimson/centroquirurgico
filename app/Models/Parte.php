@@ -399,7 +399,7 @@ class Parte extends Model
         return $this->hasMany(\App\Models\ParteDiagnostico::class, 'parte_id');
     }
 
-    
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -446,6 +446,9 @@ class Parte extends Model
 
     public function puedeEnviarAdmision()
     {
-        return $this->estado_id==ParteEstado::INGRESADA;
+        return in_array($this->estado_id,[
+            ParteEstado::TEMPORAL,
+            ParteEstado::INGRESADA,
+        ]);
     }
 }

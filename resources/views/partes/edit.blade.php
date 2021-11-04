@@ -54,7 +54,7 @@
 
                                 @if($parte->puedeEnviarAdmision())
                                 <button type="submit" class="btn btn-outline-primary ml-3" name="enviar_admin" value="1">
-                                    <i class="fa fa-plane"></i> Enviar Admisión
+                                    <i class="fa fa-paper-plane"></i> Guardar y Enviar
                                 </button>
                                 @endif
                             </div>

@@ -20,6 +20,7 @@ class EspecialidadesTableSeeder extends Seeder
         \DB::table('especialidades')->delete();
 
 
+        factory(Especialidad::class,1)->create(['nombre' => 'Oftalmología']);
         factory(Especialidad::class,1)->create(['nombre' => 'Cirugía General']);
         factory(Especialidad::class,1)->create(['nombre' => 'Vascular']);
         factory(Especialidad::class,1)->create(['nombre' => 'Neurocirugía']);

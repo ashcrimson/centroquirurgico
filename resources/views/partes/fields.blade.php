@@ -297,7 +297,7 @@
                             </div>
 
 
-                            
+
 
 
                             <!-- Prioridad Field -->
@@ -340,7 +340,7 @@
                             </div>
 
                             <!-- Segunco Ojo Field -->
-                            <div class="col-sm-3">
+                            <div class="col-sm-3" v-show="especialidad && especialidad.nombre=='Oftalmología'">
                                 <input type="hidden" name="segundo_ojo" value="0">
                                 {!! Form::label('segundo_ojo', '2do Ojo:') !!}<br>
                                 <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="segundo_ojo" id="segundo_ojo"

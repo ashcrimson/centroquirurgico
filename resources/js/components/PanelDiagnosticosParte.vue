@@ -48,20 +48,20 @@
 
             <div class="table-responsive mb-0">
                 <table class="table table-bordered table-sm table-striped mb-0">
-                    <thead>
+                    <thead v-show="!disabled">
                     <tr>
                         <th>Diagnóstico</th>
-                        <th>Actions</th>
+                        <th >Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-if="parte_diagnosticos.length == 0">
                         <td colspan="10" class="text-center">Ningún Registro agregado</td>
                     </tr>
-                    <tr v-for="det in parte_diagnosticos">
+                    <tr v-for="det in parte_diagnosticos" >
                         <td v-text="det.diagnostico.text"></td>
 
-                        <td  class="text-nowrap">
+                        <td  class="text-nowrap" v-show="!disabled">
                             <button type="button" @click="editItem(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >
                                 <i class="fa fa-edit"></i>
                             </button>

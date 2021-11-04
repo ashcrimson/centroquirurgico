@@ -45,14 +45,12 @@ class RoleSeeder extends Seeder
         $role= Role::create(["name" => "Admisión"]);
         $role->syncPermissions([
             'Ver Partes',
-            'Crear Partes',
             'Editar Partes Admisión',
             'Eliminar Partes',
         ]);
 
         $role->options()->sync([
             22, //partes admision
-            13, //Nueva parte
             14, //Pacientes
         ]);
 

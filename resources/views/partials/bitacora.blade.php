@@ -12,6 +12,8 @@
 </style>
 <div id="bitacoras">
 
+
+    @role('Admisión')
     <form @submit.prevent="save()">
 
         <div class="form-row ml-3">
@@ -39,7 +41,7 @@
         </div>
 
     </form>
-
+    @endrole
 
 
 
@@ -173,6 +175,7 @@
                     this.getItems();
                     iziTs(res.data.message);
                     this.loading = false;
+                    this.close();
 
 
                 }catch (e) {
@@ -180,7 +183,14 @@
                     this.loading = false;
                 }
 
-            }
+            },
+            close () {
+                this.loading = false;
+                setTimeout(() => {
+                    this.estado = null;
+                    this.editedItem = Object.assign({}, this.defaultItem);
+                }, 300)
+            },
         },
         computed: {
             textButtonSubmit () {

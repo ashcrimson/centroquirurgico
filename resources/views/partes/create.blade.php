@@ -42,6 +42,13 @@
                                 <button type="submit" class="btn btn-outline-success">
                                     <i class="fa fa-floppy-o"></i> Guardar
                                 </button>
+
+
+                                @if($parte->puedeEnviarAdmision())
+                                    <button type="submit" class="btn btn-outline-primary ml-3" name="enviar_admin" value="1">
+                                        <i class="fa fa-paper-plane"></i> Guardar y Enviar
+                                    </button>
+                                @endif
                             </div>
                         </div>
                     {!! Form::close() !!}

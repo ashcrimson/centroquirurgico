@@ -95,7 +95,6 @@
                             <tr>
                                 <th>intervencion</th>
                                 <th>Lateralidad</th>
-                                <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -105,15 +104,6 @@
                             <tr v-for="det in parte_intervenciones">
                                 <td v-text="det.intervencion.nombre"></td>
                                 <td v-text="det.lateralidad"></td>
-                                <td  class="text-nowrap">
-                                    <button type="button" @click="editIntervencion(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-
-                                    <button type="button" @click="deleteIntervencion(det)"  class='btn btn-outline-danger btn-sm' v-tooltip="'Eliminar'" >
-                                        <i class="fa fa-trash-alt"></i>
-                                    </button>
-                                </td>
                             </tr>
                             </tbody>
                         </table>
