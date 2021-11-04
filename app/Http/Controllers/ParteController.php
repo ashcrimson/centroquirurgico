@@ -11,6 +11,7 @@ use App\Models\Paciente;
 use App\Models\Parte;
 use App\Models\ParteEstado;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -35,6 +36,9 @@ class ParteController extends AppBaseController
      */
     public function index(ParteDataTable $parteDataTable,Request $request)
     {
+        if (auth()->user()->hasRole(Role::ADMISION)){
+            return redirect(route('admision.partes'));
+        }
         $scope = new ScopeParteDataTable();
 
         $idsEstadosDefecto = [

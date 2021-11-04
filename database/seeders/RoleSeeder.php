@@ -26,7 +26,7 @@ class RoleSeeder extends Seeder
         /**
          * @var Role $role
          */
-        $role= Role::create(["name" => "Medico"]);
+        $role= Role::create(["name" => "medico"]);
         $role->syncPermissions([
             'Ver Partes',
             'Crear Partes',
@@ -49,8 +49,9 @@ class RoleSeeder extends Seeder
             'Editar Partes Admisión',
             'Eliminar Partes',
         ]);
+
         $role->options()->sync([
-            12, //partes
+            22, //partes admision
             13, //Nueva parte
             14, //Pacientes
         ]);
