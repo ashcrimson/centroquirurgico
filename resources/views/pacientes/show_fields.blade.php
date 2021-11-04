@@ -10,7 +10,7 @@
 
 <!-- Fecha Nac Field -->
 {!! Form::label('fecha_nac', 'Fecha Nac:') !!}
-{!! $paciente->fecha_nac !!}<br>
+{!! fechaLtn($paciente->fecha_nac) !!}<br>
 
 
 <!-- Sexo Field -->
