@@ -431,11 +431,11 @@
                 <!-- Segunco Ojo Field -->
                 <div class="col-sm-6">
                     <input type="hidden" name="consentimiento" value="0">
-                    <a href="http://acreditacion.hospitalnaval.cl/index.php?option=com_content&view=article&id=50&Itemid=72&dir=JSROOT%2FConsentimientos/">
-                        <i class="fas fa-file" ></i></a>
+                    
                     {!! Form::label('consentimiento', 'Consentimiento informado, firmado y archivado en ficha clínica:') !!}
-                    <br>
-
+                  
+                    <a href="http://acreditacion.hospitalnaval.cl/index.php?option=com_content&view=article&id=50&Itemid=72&dir=JSROOT%2FConsentimientos/consentimientos">
+                        <i class="fas fa-file" style="font-size:20px;"></i></a>
                     <input type="checkbox"  data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="consentimiento" id="consentimiento"
                             value="1"
                         {{ ($parte->consentimiento ?? old('consentimiento') ?? false) ? 'checked' : '' }}>
