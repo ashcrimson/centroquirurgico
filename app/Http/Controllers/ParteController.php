@@ -36,6 +36,9 @@ class ParteController extends AppBaseController
      */
     public function index(ParteDataTable $parteDataTable,Request $request)
     {
+
+
+
         if (auth()->user()->hasRole(Role::ADMISION)){
             return redirect(route('admision.partes'));
         }

@@ -52,7 +52,7 @@ $factory->define(Parte::class, function (Faker $faker) {
             'Citometría de flujo',
             'No aplica',
         ]),
-        'user_ingresa' => User::role(['Medico','Admisión'])->get()->random()->id,
+        'user_ingresa' => User::role(['medico','Admisión'])->get()->random()->id,
         'estado_id' => ParteEstado::whereNotIn('id',[ParteEstado::TEMPORAL])->get()->random()->id,
         'pabellon_id' => null,
         'fecha_pabellon' => null,

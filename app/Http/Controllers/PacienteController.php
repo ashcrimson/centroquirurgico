@@ -184,6 +184,9 @@ class PacienteController extends AppBaseController
         if ($paciente){
 
             $paciente->setAttribute('sexo',$paciente->sexo ? 'M' : 'F');
+            $paciente->setAttribute('fecha_nac',fechaEn($paciente->fecha_nac));
+
+
 
             return  $this->sendResponse($paciente,"Paciente");
         }
