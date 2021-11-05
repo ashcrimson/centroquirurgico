@@ -1,5 +1,5 @@
 <!-- Medicamentos Field -->
-<div class="form-group col-sm-12">
+<!-- <div class="form-group col-sm-12">
     {!! Form::label('name', 'Medicamentos:') !!} <a class="success" data-toggle="modal" href="#modal-form-permissions" tabindex="1000">nuevo</a>
 
     {!!
@@ -10,7 +10,9 @@
             , ['class' => 'form-control duallistbox','multiple']
         )
     !!}
-</div>
+</div> -->
+
+<!-- /.card-body -->
 
 
 <div id="fieldsAdmision">
@@ -207,6 +209,10 @@
 
             </select-grupo-base>
 
+        </div>
+
+        <div class="form-group col-sm-12">
+            <panel-medicamentos-parte parte_id="@json($parte->id)"></panel-medicamentos-parte>
         </div>
 
 

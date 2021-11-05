@@ -125,6 +125,9 @@ Vue.component('select-intervencion', SelectIntervencion);
 import SelectDiagnostico from "./components/SelectDiagnostico";
 Vue.component('select-diagnostico', SelectDiagnostico);
 
+import SelectMedicamento from "./components/SelectMedicamento";
+Vue.component('select-medicamento', SelectMedicamento);
+
 import SelectInsumoEspecifico from "./components/SelectInsumoEspecifico";
 Vue.component('select-insumo-especifico', SelectInsumoEspecifico);
 
@@ -143,3 +146,6 @@ Vue.component('select-grupo-base',SelectGrupoBase);
 
 import PanelDiagnosticosParte from "./components/PanelDiagnosticosParte";
 Vue.component('panel-diagnosticos-parte',PanelDiagnosticosParte);
+
+import PanelMedicamentosParte from "./components/PanelMedicamentosParte";
+Vue.component('panel-medicamentos-parte',PanelMedicamentosParte);

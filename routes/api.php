@@ -36,6 +36,8 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
 
         Route::resource('diagnosticos', 'DiagnosticoAPIController');
 
+        Route::resource('medicamentos', 'MedicamentoAPIController');
+
         Route::resource('bitacoras', 'BitacoraAPIController');
 
         Route::resource('medicamentos', 'MedicamentoAPIController');
@@ -51,6 +53,8 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
         Route::resource('parte_intervenciones', 'ParteIntervencionAPIController');
 
         Route::resource('parte_diagnosticos', 'ParteDiagnosticoAPIController');
+
+        Route::resource('parte_medicamentos', 'ParteMedicamentoAPIController');
 
         Route::resource('sistema_saluds', 'SistemaSaludAPIController');
 
