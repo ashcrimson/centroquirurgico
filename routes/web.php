@@ -94,7 +94,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('parteContactos', 'ParteContactoController');
 
-
+    Route::resource('parentescos', 'ParentescoController');
     ///Colocar ariba de esta linea las rutas a proteger por autenticacion
 
 });

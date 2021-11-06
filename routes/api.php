@@ -60,6 +60,8 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
 
         Route::resource('reparticiones', 'ReparticionAPIController');
 
+        Route::resource('parentescos', 'ParentescoAPIController');
+
     });
 
 
