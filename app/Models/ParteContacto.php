@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class ParteContacto
  * @package App\Models
- * @version October 26, 2021, 9:45 pm CST
+ * @version November 6, 2021, 10:02 am CST
  *
  * @property \App\Models\ContactoTipo $tipo
  * @property \App\Models\Parte $parte
+ * @property \App\Models\Parentesco $parentesco
  * @property integer $tipo_id
  * @property integer $parte_id
- * @property string $numero
+ * @property integer $parentesco_id
  * @property string $nombre
- * @property string $parentesco
+ * @property string $numero
  */
 class ParteContacto extends Model
 {
@@ -34,9 +35,9 @@ class ParteContacto extends Model
     public $fillable = [
         'tipo_id',
         'parte_id',
-        'numero',
+        'parentesco_id',
         'nombre',
-        'parentesco'
+        'numero'
     ];
 
     /**
@@ -48,9 +49,9 @@ class ParteContacto extends Model
         'id' => 'integer',
         'tipo_id' => 'integer',
         'parte_id' => 'integer',
-        'numero' => 'string',
+        'parentesco_id' => 'integer',
         'nombre' => 'string',
-        'parentesco' => 'string'
+        'numero' => 'string'
     ];
 
     /**
@@ -59,11 +60,11 @@ class ParteContacto extends Model
      * @var array
      */
     public static $rules = [
-        'tipo_id' => 'required',
+        'tipo_id' => 'nullable',
         'parte_id' => 'required',
-        'numero' => 'required|string|max:255',
+        'parentesco_id' => 'required',
         'nombre' => 'required|string|max:255',
-        'parentesco' => 'required|string|max:255',
+        'numero' => 'required|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
@@ -83,5 +84,13 @@ class ParteContacto extends Model
     public function parte()
     {
         return $this->belongsTo(\App\Models\Parte::class, 'parte_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function parentesco()
+    {
+        return $this->belongsTo(\App\Models\Parentesco::class, 'parentesco_id');
     }
 }

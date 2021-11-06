@@ -10,10 +10,10 @@
     {!! Form::number('parte_id', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Numero Field -->
+<!-- Parentesco Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('numero', 'Numero:') !!}
-    {!! Form::text('numero', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::label('parentesco_id', 'Parentesco Id:') !!}
+    {!! Form::number('parentesco_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Nombre Field -->
@@ -22,8 +22,8 @@
     {!! Form::text('nombre', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
-<!-- Parentesco Field -->
+<!-- Numero Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('parentesco', 'Parentesco:') !!}
-    {!! Form::text('parentesco', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::label('numero', 'Numero:') !!}
+    {!! Form::text('numero', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
 </div>

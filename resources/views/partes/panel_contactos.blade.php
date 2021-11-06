@@ -20,11 +20,7 @@
 
 
                     <div class="form-group col-sm-6">
-                        <select-contacto-tipo
-                            label="Tipo"
-                            v-model="tipo_contacto" >
-
-                        </select-contacto-tipo>
+                        <select-parentesco label="Parentesco" v-model="select_parentesco"></select-parentesco>
                     </div>
 
                     <div class="form-group col-sm-6" style="padding: 0px; margin: 0px">
@@ -43,13 +39,6 @@
                                style="padding:20px;">
                     </div>
 
-                    <div class="form-group col-sm-6" style="padding: 0px; margin: 0px">
-
-
-                        <label for="vol">Parentesco:</label>
-                        <input class="form-control" type="text" @keypress.prevent.enter="save()" v-model="editedItem.parentesco"
-                               style="padding:20px;">
-                    </div>
 
 
                     <div class="form-group col-sm-4">
@@ -73,10 +62,9 @@
             <table class="table table-bordered table-sm table-striped mb-0">
                 <thead>
                 <tr>
-                    <th>Tipo</th>
-                    <th>Numero</th>
                     <th>Parentesco</th>
                     <th>Nombre</th>
+                    <th>Numero</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -85,10 +73,9 @@
                     <td colspan="10" class="text-center">Ningún Registro agregado</td>
                 </tr>
                 <tr v-for="det in parte_contactos">
-                    <td v-text="det.tipo.nombre"></td>
-                    <td v-text="det.numero"></td>
-                    <td v-text="det.parentesco"></td>
+                    <td v-text="det.parentesco.nombre"></td>
                     <td v-text="det.nombre"></td>
+                    <td v-text="det.numero"></td>
                     <td  class="text-nowrap">
                         <button type="button" @click="editItem(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >
                             <i class="fa fa-edit"></i>
@@ -129,16 +116,23 @@
                 editedItem: {
                     id : 0,
                     parte_id: @json($parte->id),
+                    parentesco_id: null,
+                    nombre: null,
+                    numero: null,
                 },
                 defaultItem: {
                     id : 0,
                     parte_id: @json($parte->id),
+                    parentesco_id: null,
+                    nombre: null,
+                    numero: null,
 
                 },
 
                 loading: false,
 
                 parte_id: @json($parte->id),
+                select_parentesco: null,
 
             },
             methods: {
@@ -161,6 +155,7 @@
                 },
                 close () {
                     this.loading = false;
+                    this.parentesco = null;
                     setTimeout(() => {
                         this.tipo_contacto = null;
                         this.editedItem = Object.assign({}, this.defaultItem);
@@ -173,8 +168,7 @@
 
 
                     try {
-
-                        this.editedItem.tipo_id = this.getId(this.tipo_contacto)
+                        this.editedItem.parentesco_id = this.getId(this.select_parentesco)
                         const data = this.editedItem;
 
                         console.log(data);

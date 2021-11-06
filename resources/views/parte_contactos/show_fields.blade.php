@@ -8,9 +8,9 @@
 {!! $parteContacto->parte_id !!}<br>
 
 
-<!-- Numero Field -->
-{!! Form::label('numero', 'Numero:') !!}
-{!! $parteContacto->numero !!}<br>
+<!-- Parentesco Id Field -->
+{!! Form::label('parentesco_id', 'Parentesco Id:') !!}
+{!! $parteContacto->parentesco_id !!}<br>
 
 
 <!-- Nombre Field -->
@@ -18,8 +18,8 @@
 {!! $parteContacto->nombre !!}<br>
 
 
-<!-- Parentesco Field -->
-{!! Form::label('parentesco', 'Parentesco:') !!}
-{!! $parteContacto->parentesco !!}<br>
+<!-- Numero Field -->
+{!! Form::label('numero', 'Numero:') !!}
+{!! $parteContacto->numero !!}<br>
 
 

@@ -25,7 +25,7 @@ class ParteContactoAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $query = ParteContacto::with(['tipo']);
+        $query = ParteContacto::with(['tipo','parentesco']);
 
         if ($request->get('skip')) {
             $query->skip($request->get('skip'));
