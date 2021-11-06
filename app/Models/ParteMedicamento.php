@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class ParteMedicamento
  * @package App\Models
- * @version October 27, 2021, 10:01 pm CST
+ * @version November 6, 2021, 11:27 am CST
  *
  * @property \App\Models\Medicamento $medicamento
  * @property \App\Models\Parte $parte

@@ -56,7 +56,7 @@
 
     export default {
 
-        name: 'select-reparticione',
+        name: 'select-reparticion',
         created() {
             this.item = this.value;
             this.getItems();
@@ -77,7 +77,7 @@
 
             name: {
               type: String,
-              default: 'reparticione_id'
+              default: 'reparticion_id'
             },
             label:{
                 type: String,
@@ -85,7 +85,7 @@
             },
             id:{
                 type: String,
-                default: 'modalSelectReparticione'
+                default: 'modalSelectReparticion'
             },
             disabled:{
                 type: Boolean,

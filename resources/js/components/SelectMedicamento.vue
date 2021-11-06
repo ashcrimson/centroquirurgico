@@ -5,7 +5,7 @@
             editar
         </a>
 
-        <multiselect v-model="item" :options="options" label="text" placeholder="Seleccione uno..." :disabled="disabled">
+        <multiselect v-model="item" :options="options" label="nombre" placeholder="Seleccione uno..." :disabled="disabled">
             <template  slot="noResult">
                 <a class="btn btn-sm btn-block btn-success" href="#" @click.prevent="newItem()">
                     <i class="fa fa-plus"></i> Nuevo

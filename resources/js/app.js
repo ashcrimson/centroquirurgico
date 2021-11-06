@@ -144,5 +144,11 @@ Vue.component('select-grupo-base',SelectGrupoBase);
 import PanelDiagnosticosParte from "./components/PanelDiagnosticosParte";
 Vue.component('panel-diagnosticos-parte',PanelDiagnosticosParte);
 
+import PanelMedicamentosParte from "./components/PanelMedicamentosParte";
+Vue.component('panel-medicamentos-parte',PanelMedicamentosParte);
+
 import SelectParentesco from "./components/SelectParentesco";
 Vue.component('select-parentesco',SelectParentesco);
+
+import SelectMedicamento from "./components/SelectMedicamento";
+Vue.component('select-medicamento')

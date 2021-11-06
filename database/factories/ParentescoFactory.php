@@ -7,10 +7,29 @@ use Faker\Generator as Faker;
 
 $factory->define(Parentesco::class, function (Faker $faker) {
 
+
+    $nombres =[
+        "Touma",
+        "Sora",
+        "Cloud",
+        "Hayate",
+        "Sousuke",
+        "Tomoya",
+        "Koyomi",
+        "Yuri",
+        "Kyousuke",
+        "Kyo",
+        "Goku",
+        "Gohan",
+        "Pikoro",
+        "Kira",
+        "Crilin",
+        "Vulma"
+    ];
+
     return [
-        'nombre' => $this->faker->word,
-        'created_at' => $this->faker->date('Y-m-d H:i:s'),
-        'updated_at' => $this->faker->date('Y-m-d H:i:s'),
-        'deleted_at' => $this->faker->date('Y-m-d H:i:s')
+        'nombre' => $faker->randomElement($nombres),
+        'created_at' => $faker->date('Y-m-d H:i:s'),
+        'updated_at' => $faker->date('Y-m-d H:i:s'),
     ];
 });

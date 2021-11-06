@@ -250,6 +250,33 @@
 
         </div>
 
+        <!-- derivacion Field -->
+        <div class="form-group col-sm-2">
+
+            <label for="">derivacion:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="derivacion"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="derivacion" :value="derivacion ? 1 : 0">
+            </div>
+
+        </div>
+
+        <div class="form-group col-sm-4" v-show="derivacion">
+            <select-reparticion
+                label="Reparticion"
+                v-model="reparticion" >
+
+            </select-reparticion>
+        </div>
+
         <div class="form-group col-sm-12">
             <panel-medicamentos-parte parte_id="@json($parte->id)"></panel-medicamentos-parte>
         </div>
@@ -288,12 +315,15 @@
             control_preop_anestesista: @json($parte->control_preop_anestesista ?? null),
 
             convenio: @json($parte->convenio ?? null),
-            reparticion: @json($parte->reparticion ?? null),
             titular_carga: @json($parte->titular_carga ?? null),
 
 
             prioridad_administrativa: @json($parte->prioridad_administrativa ?? false),
             prioridad_clinica: @json($parte->prioridad_clinica ?? false),
+
+            derivacion: @json($parte->derivacion ?? null),
+            reparticion: @json($parte->reparticion ?? null),
+
 
         },
         methods: {

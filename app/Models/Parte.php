@@ -379,13 +379,6 @@ class Parte extends Model
         return $this->hasMany(\App\Models\Bitacora::class, 'parte_id');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     **/
-    public function medicamentos()
-    {
-        return $this->belongsToMany(\App\Models\Medicamento::class, 'medicamento_parte');
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

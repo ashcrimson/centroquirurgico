@@ -59,7 +59,7 @@
                         <td colspan="10" class="text-center">Ningún Registro agregado</td>
                     </tr>
                     <tr v-for="det in parte_medicamentos" >
-                        <td v-text="det.medicamento.text"></td>
+                        <td v-text="det.medicamento.nombre"></td>
 
                         <td  class="text-nowrap" v-show="!disabled">
                             <button type="button" @click="editItem(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >
@@ -136,14 +136,14 @@ export default {
         },
         editItem (item) {
             console.log('edit ',item)
-            this.nombre = Object.assign({}, item.tipo);
+            this.medicamento = item.medicamento;
             this.editedItem = Object.assign({}, item);
 
         },
         close () {
             this.loading = false;
             setTimeout(() => {
-                this.nombre = null;
+                this.medicamento = null;
                 this.editedItem = Object.assign({}, this.defaultItem);
             }, 300)
         },

@@ -270,7 +270,7 @@
 
 
 
-               
+
 
                 <!-- Preoperatorio Id Field -->
                 <div class="form-group col-sm-6">
@@ -329,32 +329,7 @@
                         {{ ($parte->consentimiento ?? old('consentimiento') ?? false) ? 'checked' : '' }}>
                 </div>
 
-                <!-- derivacion Field -->
-                <!-- <div class="form-group col-sm-2">
 
-                    <label for="">derivacion:</label>
-                    <div class="text-lg">
-
-                        <toggle-button :sync="true"
-                                       :labels="{checked: 'Sí', unchecked: 'No'}"
-                                       v-model="derivacion"
-                                       :width="75"
-                                       :height="35"
-                                       :font-size="16"
-                        ></toggle-button>
-
-                        <input type="hidden" name="derivacion" :value="derivacion ? 1 : 0">
-                    </div>
-
-                </div> -->
-
-                <!-- <div class="form-group col-sm-4" v-show="derivacion">
-                    <select-reparticion
-                        label="Reparticion"
-                        v-model="reparticion" >
-
-                    </select-reparticion>
-                </div> -->
 
 
 
@@ -481,11 +456,7 @@
 
                 parte_id: @json($parte->id),
 
-
-                derivacion: @json($parte->derivacion ?? null),
-
                 convenio: @json($parte->convenio ?? null),
-                reparticion: @json($parte->reparticion ?? null),
                 tipo_cama_upc: @json($parte->tipo_cama_upc ?? null),
             },
             methods: {
