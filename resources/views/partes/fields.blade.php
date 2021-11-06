@@ -377,6 +377,16 @@
 
                             </div>
 
+                            <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
+
+                            <div class="col-sm-3">
+                                <input type="hidden" name="cancer" value="0">
+                                {!! Form::label('cancer', 'Cancer:') !!}<br>
+                                <input type="checkbox"  data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="cancer" id="cancer"
+                                       value="1"
+                                    {{ ($parte->cancer ?? old('cancer') ?? false) ? 'checked' : '' }}>
+                            </div>
+
                         </div>
 
                     </div>
@@ -431,9 +441,9 @@
                 <!-- Segunco Ojo Field -->
                 <div class="col-sm-6">
                     <input type="hidden" name="consentimiento" value="0">
-                    
+
                     {!! Form::label('consentimiento', 'Consentimiento informado, firmado y archivado en ficha clínica:') !!}
-                  
+
                     <a href="http://acreditacion.hospitalnaval.cl/index.php?option=com_content&view=article&id=50&Itemid=72&dir=JSROOT%2FConsentimientos/consentimientos">
                         <i class="fas fa-file" style="font-size:20px;"></i></a>
                     <input type="checkbox"  data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="consentimiento" id="consentimiento"

@@ -139,6 +139,7 @@ class Parte extends Model
         'consentimiento',
         'prioridad_administrativa',
         'prioridad_clinica',
+        'cancer',
     ];
 
     /**

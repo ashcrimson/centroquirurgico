@@ -12,6 +12,9 @@
 {!! Form::label('fecha_nac', 'Fecha Nac:') !!}
 {!! fechaLtn($paciente->fecha_nac) !!}<br>
 
+{!! Form::label('fecha_nac', 'Edad:') !!}
+{!! $paciente->edad !!}<br>
+
 
 <!-- Sexo Field -->
 {!! Form::label('sexo', 'Sexo:') !!}

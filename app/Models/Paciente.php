@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
@@ -127,5 +128,12 @@ class Paciente extends Model
     public function getRutCompletoAttribute()
     {
         return $this->run.'-'.$this->dv_run;
+    }
+
+    public function getEdadAttribute()
+    {
+        $fecha = Carbon::parse(fechaEn($this->fecha_nac));
+
+        return $fecha->diffInYears(Carbon::now());
     }
 }

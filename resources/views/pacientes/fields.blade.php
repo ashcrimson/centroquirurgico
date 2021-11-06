@@ -58,7 +58,13 @@
     <!-- Fecha Nac Field -->
     <div class="form-group col-sm-3">
         {!! Form::label('fecha_nac', 'Fecha Nac:') !!}
-        {!! Form::date('fecha_nac', null, ['id' => 'fecha_nac','class' => 'form-control','id'=>'fecha_nac']) !!}
+        {!! Form::date('fecha_nac', null, ['v-model' => 'fecha_nac','id' => 'fecha_nac','class' => 'form-control','id'=>'fecha_nac']) !!}
+    </div>
+
+
+    <div class="form-group col-sm-3">
+        <label for="">Edad</label>
+        <input type="text" class="form-control" readonly v-model="edad" value="0">
     </div>
 
 
@@ -103,10 +109,12 @@
         el: '#paciente-fields',
         name: 'paciente-fields',
         created() {
-
+            this.calcularEdad(this.fecha_nac);
         },
         data: {
             loading : false,
+            fecha_nac : @json($parte->fecha_nac ?? null),
+            edad : 0,
         },
         methods: {
             async getDatosPaciente(){
@@ -158,6 +166,17 @@
                     logW(e);
                     alertWarning('Rut No Encontrado');
                     this.loading = false;
+                }
+            },
+            calcularEdad(fecha){
+                var years = moment().diff(fecha, 'years',false);
+                this.edad = years;
+            }
+        },
+        watch:{
+            fecha_nac (fecha){
+                if (fecha){
+                    this.calcularEdad(fecha)
                 }
             }
         }
