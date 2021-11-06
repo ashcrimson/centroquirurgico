@@ -180,17 +180,9 @@
         <div class="form-group col-sm-4">
             {!! Form::label('sistemasalud_id', 'Sistema Salud:') !!}
             <br>
-            <select class="form-control" name="sistemasalud_id">
-
-                @foreach(App\Models\SistemaSalud::get() as $sistemasalud)
-
-                    <option value="{{ $sistemasalud->id }}" >
-                        {{ $sistemasalud->nombre }}
-                    </option>
-
-                @endforeach
-
-            </select>
+            <multiselect v-model="sistema" :options="sistemas" label="nombre"  placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="sistemasalud_id" :value="sistema ? sistema.id : null">
 
         </div>
 
@@ -229,6 +221,8 @@
         data: {
             medico : @json($parte->userIngresa ?? null),
             medicos: @json(\App\Models\User::role('medico')->get()),
+            sistema : @json($parte->sistemaSalud ?? null),
+            sistemas: @json(App\Models\SistemaSalud::get() ?? []),
 
             grupo_base: @json($parte->grupoBase ?? null),
             extrademanda: @json($parte->extrademanda ?? null),
