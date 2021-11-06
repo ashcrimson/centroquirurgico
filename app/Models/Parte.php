@@ -140,6 +140,7 @@ class Parte extends Model
         'prioridad_administrativa',
         'prioridad_clinica',
         'cancer',
+        'titular_carga',
     ];
 
     /**

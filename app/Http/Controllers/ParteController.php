@@ -55,7 +55,7 @@ class ParteController extends AppBaseController
         ];
 
         $scope->estados = $request->estados ?? $idsEstadosDefecto;
-        $scope->users = auth()->user()->id;
+//        $scope->users = auth()->user()->id;
 
         $parteDataTable->addScope($scope);
 

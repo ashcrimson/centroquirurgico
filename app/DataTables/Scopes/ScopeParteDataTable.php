@@ -12,6 +12,8 @@ class ScopeParteDataTable implements DataTableScope
     public $users;
     public $pacientes;
     public $medicos;
+    public $prioridad_clinica;
+    public $prioridad_administrativa;
     public $del;
     public $al;
 
@@ -21,6 +23,8 @@ class ScopeParteDataTable implements DataTableScope
         $this->estados = request()->estados ?? null;
         $this->pacientes = request()->pacientes ?? null;
         $this->medicos = request()->medicos ?? null;
+        $this->prioridad_administrativa = request()->prioridad_administrativa ?? null;
+        $this->prioridad_clinica = request()->prioridad_clinica ?? null;
         $this->del = request()->del ?? null;
         $this->al = request()->al ?? null;
     }
@@ -74,6 +78,14 @@ class ScopeParteDataTable implements DataTableScope
             }else{
                 $query->where('user_crea',$this->medicos);
             }
+        }
+
+        if ($this->prioridad_administrativa){
+            $query->where('prioridad_administrativa',1);
+        }
+
+        if ($this->prioridad_clinica){
+            $query->where('prioridad_clinica',1);
         }
 
         if ($this->del && $this->al){

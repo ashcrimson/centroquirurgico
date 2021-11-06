@@ -230,6 +230,14 @@
 
         </div>
 
+        <div class="form-group col-sm-3">
+            <label for="">Categoría</label>
+            <br>
+            <multiselect v-model="titular_carga" :options="['Sí mismo','Carga']"  placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="titular_carga" :value="titular_carga ? titular_carga : null">
+
+        </div>
 
 
         <!-- Grupo Base Field -->
@@ -281,6 +289,7 @@
 
             convenio: @json($parte->convenio ?? null),
             reparticion: @json($parte->reparticion ?? null),
+            titular_carga: @json($parte->titular_carga ?? null),
 
 
             prioridad_administrativa: @json($parte->prioridad_administrativa ?? false),

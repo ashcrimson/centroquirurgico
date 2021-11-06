@@ -32,6 +32,42 @@
             <input type="hidden" name="estados" :value="estado ? estado.id : null">
         </div>
 
+        <div class="form-group col-sm-3">
+
+            <label for="">Prioridad administrativa:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="prioridad_administrativa"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="prioridad_administrativa" :value="prioridad_administrativa ? 1 : 0">
+            </div>
+
+        </div>
+
+        <div class="form-group col-sm-3">
+
+            <label for="">Prioridad clínica:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="prioridad_clinica"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="prioridad_clinica" :value="prioridad_clinica ? 1 : 0">
+            </div>
+
+        </div>
+
         <div class="form-group col-sm-2">
             <label for="">&nbsp;</label>
             <div>
@@ -69,13 +105,15 @@
 
         new Vue({
             el: '#formFiltersDatatables',
-            name: 'fromFiltersSolicitudes',
+            name: 'fromFiltersPartes',
             created() {
 
             },
             data: {
                 estados : @json($estados ?? []),
                 estado: null,
+                prioridad_clinica: false,
+                prioridad_administrativa: false,
 
                 users : @json(\App\Models\User::role([\App\Models\Role::MEDICO])->get() ?? []),
                 user: null,
