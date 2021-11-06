@@ -1,7 +1,7 @@
 <template>
     <div>
         <label v-text="label+':'"></label>
-        <a href="#" v-if="item" @click.prevent="editItem(item)">
+        <a href="#" v-if="item" @click.prevent="editItem(item)" v-show="!disabled">
             editar
         </a>
 
@@ -11,7 +11,7 @@
                     <i class="fa fa-plus"></i> Nuevo
                 </a>
             </template >
-        </multiselect> 
+        </multiselect>
 
 
         <input type="hidden" :name="name" :value="getId(item)">
@@ -29,14 +29,14 @@
                         </button>
                     </div>
                     <form @submit.prevent="save">
-                        <div class="modal-body"> 
+                        <div class="modal-body">
                             <div class="form-row">
-                                
+
                                 <div class="form-group col-sm-6">
                                     <label >Nombre <span  class="text-danger">*</span></label>
                                     <input type="text" class="form-control" v-model="editedItem.nombre" >
                                 </div>
- 
+
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -163,7 +163,7 @@ export default {
 
                 }
 
-                logI(res.data); 
+                logI(res.data);
 
                 const item  = res.data.data;
 
