@@ -136,7 +136,9 @@ class Parte extends Model
         'email',
         'segundo_ojo',
         'tipo_cama_upc',
-        'consentimiento'
+        'consentimiento',
+        'prioridad_administrativa',
+        'prioridad_clinica',
     ];
 
     /**

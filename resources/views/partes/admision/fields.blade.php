@@ -65,7 +65,7 @@
             </div>
 
         </div>
-    
+
 
         <div class="form-group col-sm-3" v-show="examenes_realizados">
             {!! Form::label('fecha_examenes', 'Fecha examenes realizados') !!}
@@ -103,7 +103,7 @@
 
         </div>
 
-    
+
 
         <!-- Control preop Medico Field -->
         <div class="form-group col-sm-3">
@@ -123,7 +123,6 @@
             </div>
 
         </div>
-
 
 
         <div class="form-group col-sm-3" v-show="control_preop_medico">
@@ -158,8 +157,48 @@
             {!! Form::date('fecha_preop_anestesista', fechaEn($parte->fecha_preop_anestesista), ['id' => 'fecha_preop_anestesista','class' => 'form-control','id'=>'fecha_preop_anestesista']) !!}
 
         </div>
+
+
+        <!-- Prioridad administrativa -->
+        <div class="form-group col-sm-3">
+
+            <label for="">Prioridad administrativa:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="prioridad_administrativa"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="prioridad_administrativa" :value="prioridad_administrativa ? 1 : 0">
+            </div>
+
+        </div>
+
+        <!-- Prioridad clínica -->
+        <div class="form-group col-sm-3">
+
+            <label for="">Prioridad clínica:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="prioridad_clinica"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="prioridad_clinica" :value="prioridad_clinica ? 1 : 0">
+            </div>
+
+        </div>
+
     </div>
-    
+
     <div class="row">
         <!-- Correo Electrónico -->
         <div class="form-group col-sm-3">
@@ -242,6 +281,10 @@
 
             convenio: @json($parte->convenio ?? null),
             reparticion: @json($parte->reparticion ?? null),
+
+
+            prioridad_administrativa: @json($parte->prioridad_administrativa ?? false),
+            prioridad_clinica: @json($parte->prioridad_clinica ?? false),
 
         },
         methods: {
