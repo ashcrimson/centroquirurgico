@@ -12,8 +12,6 @@
     "use strict";
 
     $.fn.fileinputLocales['da'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'fil',
         filePlural: 'filer',
         browseLabel: 'Browse &hellip;',
@@ -112,4 +110,4 @@
             close: 'Luk detaljeret visning'
         }
     };
-}));
+})(window.jQuery);
