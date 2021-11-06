@@ -1,6 +1,3 @@
-
-
-
 <div class="col-12">
     <div class="card card-secondary ">
         <div class="card-header py-1 px-3">
@@ -273,7 +270,7 @@
 
 
 
-                <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
+               
 
                 <!-- Preoperatorio Id Field -->
                 <div class="form-group col-sm-6">
@@ -366,7 +363,7 @@
 
         </div>
     </div>
-</div>
+
 
 @push('scripts')
     <script>

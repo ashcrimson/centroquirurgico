@@ -1,5 +1,5 @@
 <!-- Medicamentos Field -->
-<div class="form-group col-sm-12">
+<!-- <div class="form-group col-sm-12">
     {!! Form::label('name', 'Medicamentos:') !!} <a class="success" data-toggle="modal" href="#modal-form-permissions" tabindex="1000">nuevo</a>
 
     {!!
@@ -10,7 +10,9 @@
             , ['class' => 'form-control duallistbox','multiple']
         )
     !!}
-</div>
+</div> -->
+
+<!-- /.card-body -->
 
 
 <div id="fieldsAdmision">
@@ -19,9 +21,9 @@
 
 
         <!-- extrademanda Field -->
-        <div class="form-group col-sm-2">
+        <div class="form-group col-sm-3">
 
-            <label for="">extrademanda:</label>
+            <label for="">Extrademanda:</label>
             <div class="text-lg">
 
                 <toggle-button :sync="true"
@@ -37,7 +39,7 @@
 
         </div>
 
-        <div class="form-group col-sm-4" v-show="extrademanda">
+        <div class="form-group col-sm-3" v-show="extrademanda">
             <select-convenio
                 label="Convenio"
                 v-model="convenio" >
@@ -46,9 +48,9 @@
         </div>
 
         <!-- Examenes Realizados Field -->
-        <div class="form-group col-sm-2">
+        <div class="form-group col-sm-3">
 
-            <label for="">Examenes Realizados:</label>
+            <label for="">Exámenes Realizados:</label>
             <div class="text-lg">
 
                 <toggle-button :sync="true"
@@ -63,16 +65,18 @@
             </div>
 
         </div>
+    
 
-        <div class="form-group col-sm-4" v-show="examenes_realizados">
+        <div class="form-group col-sm-3" v-show="examenes_realizados">
             {!! Form::label('fecha_examenes', 'Fecha examenes realizados') !!}
 
             {!! Form::date('fecha_examenes', fechaEn($parte->fecha_examenes), ['id' => 'fecha_examenes','class' => 'form-control','id'=>'fecha_examenes']) !!}
         </div>
 
-
+    </div>
+    <div class="row">
         <!-- Control preop eu Field -->
-        <div class="form-group col-sm-2">
+        <div class="form-group col-sm-3">
 
             <label for="">Control Preop EU:</label>
             <div class="text-lg">
@@ -92,17 +96,17 @@
 
 
 
-        <div class="form-group col-sm-4" v-show="control_preop_eu">
+        <div class="form-group col-sm-3" v-show="control_preop_eu">
             {!! Form::label('fecha_preop_eu', 'Fecha PreOp EU') !!}
 
             {!! Form::date('fecha_preop_eu', fechaEn($parte->fecha_preop_eu), ['id' => 'fecha_preop_eu','class' => 'form-control','id'=>'fecha_preop_eu']) !!}
 
         </div>
 
-
+    
 
         <!-- Control preop Medico Field -->
-        <div class="form-group col-sm-2">
+        <div class="form-group col-sm-3">
 
             <label for="">Control Preop Médico:</label>
             <div class="text-lg">
@@ -122,16 +126,16 @@
 
 
 
-        <div class="form-group col-sm-4" v-show="control_preop_medico">
+        <div class="form-group col-sm-3" v-show="control_preop_medico">
             {!! Form::label('fecha_preop_medico', 'Fecha PreOp Médico') !!}
             {!! Form::date('fecha_preop_medico', fechaEn($parte->fecha_preop_medico), ['id' => 'fecha_preop_medico','class' => 'form-control','id'=>'fecha_preop_medico']) !!}
 
         </div>
 
-
-
+    </div>
+    <div class="row">
         <!-- Control preop Antestesista Field -->
-        <div class="form-group col-sm-2">
+        <div class="form-group col-sm-3">
 
             <label for="">Control Preop Anestesista:</label>
             <div class="text-lg">
@@ -149,15 +153,16 @@
 
         </div>
 
-        <div class="form-group col-sm-4" v-show="control_preop_anestesista">
+        <div class="form-group col-sm-3" v-show="control_preop_anestesista">
             {!! Form::label('fecha_preop_anestesista', 'Fecha PreOp Anestesista') !!}
             {!! Form::date('fecha_preop_anestesista', fechaEn($parte->fecha_preop_anestesista), ['id' => 'fecha_preop_anestesista','class' => 'form-control','id'=>'fecha_preop_anestesista']) !!}
 
         </div>
     </div>
+    
     <div class="row">
         <!-- Correo Electrónico -->
-        <div class="form-group col-sm-4">
+        <div class="form-group col-sm-3">
             {!! Form::label('email', 'Correo Electrónico:') !!}
             {!! Form::email('email', null, ['id' => 'email','class' => 'form-control']) !!}
 
@@ -166,8 +171,8 @@
 
 
         <!-- Tiempo Quirurgico Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('user_ingresa', 'Cambio de Medico:') !!}
+        <div class="form-group col-sm-3">
+            {!! Form::label('user_ingresa', 'Cambio de Médico:') !!}
             <multiselect v-model="medico" :options="medicos" label="name"  placeholder="Seleccione uno...">
             </multiselect>
             <input type="hidden" name="user_ingresa" :value="medico ? medico.id : null">
@@ -177,7 +182,7 @@
 
 
         <!-- Sistema Salud Field -->
-        <div class="form-group col-sm-4">
+        <div class="form-group col-sm-3">
             {!! Form::label('sistemasalud_id', 'Sistema Salud:') !!}
             <br>
             <multiselect v-model="sistema" :options="sistemas" label="nombre"  placeholder="Seleccione uno...">
@@ -189,13 +194,17 @@
 
 
         <!-- Grupo Base Field -->
-        <div class="form-group col-sm-4">
+        <div class="form-group col-sm-3">
             <select-grupo-base
                 label="Grupo Base"
                 v-model="grupo_base" >
 
             </select-grupo-base>
 
+        </div>
+
+        <div class="form-group col-sm-12">
+            <panel-medicamentos-parte parte_id="@json($parte->id)"></panel-medicamentos-parte>
         </div>
 
 
