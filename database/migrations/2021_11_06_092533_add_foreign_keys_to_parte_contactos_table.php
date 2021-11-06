@@ -16,6 +16,7 @@ class AddForeignKeysToParteContactosTable extends Migration
         Schema::table('parte_contactos', function (Blueprint $table) {
             $table->foreign('tipo_id', 'fk_parte_contactos1')->references('id')->on('contacto_tipos');
             $table->foreign('parte_id', 'fk_parte_contactos2')->references('id')->on('partes');
+            $table->foreign('parentesco_id', 'fk_parte_contactos_parentescos1')->references('id')->on('parentescos')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 
@@ -29,6 +30,7 @@ class AddForeignKeysToParteContactosTable extends Migration
         Schema::table('parte_contactos', function (Blueprint $table) {
             $table->dropForeign('fk_parte_contactos1');
             $table->dropForeign('fk_parte_contactos2');
+            $table->dropForeign('fk_parte_contactos_parentescos1');
         });
     }
 }
