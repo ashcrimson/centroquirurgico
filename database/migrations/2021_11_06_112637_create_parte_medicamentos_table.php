@@ -15,8 +15,8 @@ class CreateParteMedicamentosTable extends Migration
     {
         Schema::create('parte_medicamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('parte_id')->index('fk_parte_medicamentos_partes1_idx');
-            $table->unsignedBigInteger('medicamento_id')->index('fk_parte_medicamentos_medicamentos1_idx');
+            $table->unsignedBigInteger('parte_id')->index('fk_parte_medicamentos_idx');
+            $table->unsignedBigInteger('medicamento_id')->index('fk_parte_medicamentos1_idx');
             $table->timestamps();
             $table->softDeletes();
         });

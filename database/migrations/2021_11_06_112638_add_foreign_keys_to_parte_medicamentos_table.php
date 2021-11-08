@@ -14,8 +14,8 @@ class AddForeignKeysToParteMedicamentosTable extends Migration
     public function up()
     {
         Schema::table('parte_medicamentos', function (Blueprint $table) {
-            $table->foreign('medicamento_id', 'fk_parte_medicamentos_medicamentos1')->references('id')->on('medicamentos')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('parte_id', 'fk_parte_medicamentos_partes1')->references('id')->on('partes')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign('medicamento_id', 'fk_parte_medicamentos1')->references('id')->on('medicamentos');
+            $table->foreign('parte_id', 'fk_parte_medicamentos2')->references('id')->on('partes');
         });
     }
 
@@ -27,8 +27,8 @@ class AddForeignKeysToParteMedicamentosTable extends Migration
     public function down()
     {
         Schema::table('parte_medicamentos', function (Blueprint $table) {
-            $table->dropForeign('fk_parte_medicamentos_medicamentos1');
-            $table->dropForeign('fk_parte_medicamentos_partes1');
+            $table->dropForeign('fk_parte_medicamentos1');
+            $table->dropForeign('fk_parte_medicamentos2');
         });
     }
 }
