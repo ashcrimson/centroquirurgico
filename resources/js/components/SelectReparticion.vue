@@ -1,9 +1,9 @@
 <template>
     <div>
         <label v-text="label+':'"></label>
-        <a href="#" v-if="item" @click.prevent="editItem(item)" v-show="!disabled">
+        <!-- <a href="#" v-if="item" @click.prevent="editItem(item)" v-show="!disabled">
             editar
-        </a>
+        </a> -->
 
         <multiselect v-model="item" :options="options" label="nombre" placeholder="Seleccione uno..." :disabled="disabled">
             <template  slot="noResult">
