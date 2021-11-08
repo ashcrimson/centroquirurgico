@@ -126,7 +126,7 @@
 
                                             {!! Form::label('lateralidad', 'Lateralidad:') !!}
 
-                                            <multiselect v-model="editedItem.lateralidad" :options='["izquierda", "derecha", "bidireccional"]'  placeholder="Seleccione uno...">
+                                            <multiselect v-model="editedItem.lateralidad" :options='["izquierda", "derecha", "bilateral", "no aplica"]'  placeholder="Seleccione uno...">
                                             </multiselect>
 
 
