@@ -179,7 +179,7 @@
         </div>
 
         <!-- Prioridad clínica -->
-        <div class="form-group col-sm-3">
+        <!-- <div class="form-group col-sm-3">
 
             <label for="">Prioridad clínica:</label>
             <div class="text-lg">
@@ -195,7 +195,7 @@
                 <input type="hidden" name="prioridad_clinica" :value="prioridad_clinica ? 1 : 0">
             </div>
 
-        </div>
+        </div> -->
 
     </div>
 
