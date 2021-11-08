@@ -174,11 +174,11 @@
             }
         },
         watch:{
-            fecha_nac (fecha){
-                if (fecha){
-                    this.calcularEdad(fecha)
-                }
-            }
+            // fecha_nac (fecha){
+            //     if (fecha){
+            //         this.calcularEdad(fecha)
+            //     }
+            // }
         }
     });
 </script>
