@@ -146,7 +146,8 @@
                         $("#apellido_materno").val(paciente.apellido_materno);
                         $("#primer_nombre").val(paciente.primer_nombre);
                         $("#segundo_nombre").val(paciente.segundo_nombre);
-                        $("#fecha_nac").val(paciente.fecha_nac);
+                        // $("#fecha_nac").val(paciente.fecha_nac);
+                        this.fecha_nac = paciente.fecha_nac;
 
                         if (paciente.sexo=='M'){
                             $('#sexo').bootstrapToggle('on')
@@ -169,8 +170,10 @@
                 }
             },
             calcularEdad(fecha){
-                var years = moment().diff(fecha, 'years',false);
-                this.edad = years;
+                if (fecha){
+                    var years = moment().diff(fecha, 'years',false);
+                    this.edad = years;
+                }
             }
         },
         watch:{
