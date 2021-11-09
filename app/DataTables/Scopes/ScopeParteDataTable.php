@@ -85,7 +85,7 @@ class ScopeParteDataTable implements DataTableScope
         }
 
         if ($this->prioridad_clinica){
-            $query->where('prioridad_clinica',1);
+            $query->where('prioridad',1);
         }
 
         if ($this->del && $this->al){

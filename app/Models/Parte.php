@@ -138,7 +138,6 @@ class Parte extends Model
         'tipo_cama_upc',
         'consentimiento',
         'prioridad_administrativa',
-        'prioridad_clinica',
         'cancer',
         'titular_carga',
     ];

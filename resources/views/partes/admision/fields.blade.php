@@ -319,7 +319,6 @@
 
 
             prioridad_administrativa: @json($parte->prioridad_administrativa ?? false),
-            prioridad_clinica: @json($parte->prioridad_clinica ?? false),
 
             derivacion: @json($parte->derivacion ?? null),
             reparticion: @json($parte->reparticion ?? null),

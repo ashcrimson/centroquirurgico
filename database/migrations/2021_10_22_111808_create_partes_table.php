@@ -38,7 +38,6 @@ class CreatePartesTable extends Migration
             $table->tinyInteger('equipo_rayos')->nullable();
             $table->tinyInteger('segundo_ojo')->nullable();
             $table->tinyInteger('prioridad_administrativa')->nullable();
-            $table->tinyInteger('prioridad_clinica')->nullable();
             $table->tinyInteger('cancer')->nullable();
             $table->unsignedBigInteger('sistema_salud_id')->nullable()->index('fk_partes_sistema_salud1_idx');
             $table->enum('titular_carga',['Sí mismo','Carga'])->nullable();

@@ -57,13 +57,13 @@
 
                 <toggle-button :sync="true"
                                :labels="{checked: 'Sí', unchecked: 'No'}"
-                               v-model="prioridad_clinica"
+                               v-model="prioridad"
                                :width="75"
                                :height="35"
                                :font-size="16"
                 ></toggle-button>
 
-                <input type="hidden" name="prioridad_clinica" :value="prioridad_clinica ? 1 : 0">
+                <input type="hidden" name="prioridad" :value="prioridad ? 1 : 0">
             </div>
 
         </div>
@@ -112,7 +112,7 @@
             data: {
                 estados : @json($estados ?? []),
                 estado: null,
-                prioridad_clinica: false,
+                prioridad: false,
                 prioridad_administrativa: false,
 
                 users : @json(\App\Models\User::role([\App\Models\Role::MEDICO])->get() ?? []),
