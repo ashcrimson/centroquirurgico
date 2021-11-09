@@ -21,13 +21,15 @@
 @endcan
 
 @can('Eliminar Partes')
-<a href="#" onclick="deleteItemDt(this)" data-id="{{$id}}" data-toggle="tooltip" title="Eliminar" class='btn btn-outline-danger btn-sm'>
-    <i class="fa fa-trash-alt"></i>
-</a>
+    @if($parte->puedeEliminar())
+        <a href="#" onclick="deleteItemDt(this)" data-id="{{$id}}" data-toggle="tooltip" title="Eliminar" class='btn btn-outline-danger btn-sm'>
+            <i class="fa fa-trash-alt"></i>
+        </a>
 
 
-<form action="{{ route('partes.destroy', $id)}}" method="POST" id="delete-form{{$id}}">
-    @method('DELETE')
-    @csrf
-</form>
+        <form action="{{ route('partes.destroy', $id)}}" method="POST" id="delete-form{{$id}}">
+            @method('DELETE')
+            @csrf
+        </form>
+    @endif
 @endcan

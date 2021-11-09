@@ -447,4 +447,13 @@ class Parte extends Model
             ParteEstado::INGRESADA,
         ]);
     }
+
+    public function puedeEliminar()
+    {
+
+        return in_array($this->estado_id,[
+            ParteEstado::TEMPORAL,
+            ParteEstado::INGRESADA,
+        ]);
+    }
 }
