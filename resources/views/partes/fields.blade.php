@@ -78,7 +78,7 @@
 
                 <!-- /.card-body -->
                 <div class="form-group col-sm-12">
-                    <panel-medicamentos-parte parte_id="@json($parte->id)"></panel-medicamentos-parte>
+                    <panel-diagnosticos-parte parte_id="@json($parte->id)"></panel-diagnosticos-parte>
                 </div>
 
 
