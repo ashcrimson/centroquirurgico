@@ -71,6 +71,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('partes/{parte}/edit', 'ParteAdmisionController@edit')->name('partes.edit');
         Route::patch('partes/{parte}/edit', 'ParteAdmisionController@update')->name('partes.update');
         Route::get('partes/bitacora/store/{parte}', 'ParteController@bitacoraStore')->name('bitacora.store');
+        Route::get('partes/lista/espera', 'ParteAdmisionController@listaEspera')->name('partes.lista.espera');
     });
 
     Route::resource('intervenciones', 'IntervencionController');

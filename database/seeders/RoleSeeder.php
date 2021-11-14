@@ -51,6 +51,7 @@ class RoleSeeder extends Seeder
         $role->options()->sync([
             22, //partes admision
             14, //Pacientes
+            29, //Medicamentos
         ]);
 
 

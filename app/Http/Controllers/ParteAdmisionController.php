@@ -15,26 +15,42 @@ class ParteAdmisionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ParteDataTable $parteDataTable)
+    public function index(ParteDataTable $parteDataTable,Request $request)
     {
         $scope = new ScopeParteDataTable();
 
         $idsEstadosDefecto = [
             ParteEstado::ENVIADA_ADMICION,
-            ParteEstado::LISTA_ESPERA,
             ParteEstado::PROGRAMADO,
             ParteEstado::SUSPENDIDO,
             ParteEstado::ACTIVACION,
             ParteEstado::ELIMINADO,
         ];
 
-        $scope->estados = $idsEstadosDefecto;
+        $scope->estados = $request->estados ?? $idsEstadosDefecto;
 
         $parteDataTable->addScope($scope);
 
         $estados = ParteEstado::whereIn('id',$idsEstadosDefecto)->get();
 
         return $parteDataTable->render('partes.admision.index',compact('estados'));
+    }
+
+    public function listaEspera(ParteDataTable $parteDataTable,Request $request)
+    {
+        $scope = new ScopeParteDataTable();
+
+        $idsEstadosDefecto = [
+            ParteEstado::LISTA_ESPERA,
+        ];
+
+        $scope->estados = $request->estados ?? $idsEstadosDefecto;
+
+        $parteDataTable->addScope($scope);
+
+        $estados = ParteEstado::whereIn('id',$idsEstadosDefecto)->get();
+
+        return $parteDataTable->render('partes.admision.lista_espera',compact('estados'));
     }
 
 
@@ -79,7 +95,12 @@ class ParteAdmisionController extends Controller
             return redirect(route('partes.index'));
         }
 
+        if ($request->lista_espera){
 
+            $request->merge([
+                'estado_id' => ParteEstado::LISTA_ESPERA
+            ]);
+        }
 
         $parte->fill($request->all());
 
