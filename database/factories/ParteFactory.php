@@ -20,6 +20,9 @@ use Faker\Generator as Faker;
 $factory->define(Parte::class, function (Faker $faker) {
 
     $fechaParte = \Carbon\Carbon::now()->subDays(rand(1,4));
+
+    $estado = $faker->randomElement([ParteEstado::INGRESADA,ParteEstado::ENVIADA_ADMICION,ParteEstado::LISTA_ESPERA]);
+    $fechaInscripcion = $estado==ParteEstado::LISTA_ESPERA ? \Carbon\Carbon::now()->addDays(rand(15,30)) : null;
     return [
         'paciente_id' => Paciente::all()->random()->id,
         'cirugia_tipo_id' => CirugiaTipo::all()->random()->id,
@@ -52,11 +55,12 @@ $factory->define(Parte::class, function (Faker $faker) {
             'Citometría de flujo',
             'No aplica',
         ]),
-        'user_ingresa' => User::role(['medico','Admisión'])->get()->random()->id,
-        'estado_id' => ParteEstado::whereNotIn('id',[ParteEstado::TEMPORAL])->get()->random()->id,
+        'user_ingresa' => User::role(['medico'])->get()->random()->id,
+        'estado_id' => $estado,
         'pabellon_id' => null,
         'fecha_pabellon' => null,
         'fecha_digitacion' => null,
+        'fecha_inscripcion' => $fechaInscripcion,
         'extrademanda' => $faker->boolean,
         'convenio_id' => \App\Models\Convenio::all()->random()->id,
         'derivacion' => $faker->boolean,

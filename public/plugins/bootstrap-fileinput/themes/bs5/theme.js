@@ -1,5 +1,5 @@
 /*!
- * bootstrap-fileinput v5.2.6
+ * bootstrap-fileinput v5.2.2
  * http://plugins.krajee.com/file-input
  *
  * Bootstrap 5.x icon theme configuration for bootstrap-fileinput. Requires bootstrap 5.x icons CSS to be loaded.
@@ -11,16 +11,7 @@
  * Licensed under the BSD-3-Clause
  * https://github.com/kartik-v/bootstrap-fileinput/blob/master/LICENSE.md
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'],factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     'use strict';
     $.fn.fileinputBsVersion = '5.x.x';
     $.fn.fileinputThemes.bs5 = {
@@ -41,8 +32,8 @@
             fileIcon: '<i class="bi-file-earmark-arrow-up"></i>'
         },
         previewZoomButtonIcons: {
-            prev: '<i class="bi-chevron-left"></i>',
-            next: '<i class="bi-chevron-right"></i>',
+            prev: '<i class="bi-caret-left-fill"></i>',
+            next: '<i class="bi-caret-right-fill"></i>',
             toggleheader: '<i class="bi-arrows-expand"></i>',
             fullscreen: '<i class="bi-arrows-fullscreen"></i>',
             borderless: '<i class="bi-arrows-angle-expand"></i>',
@@ -56,4 +47,4 @@
         uploadIcon: '<i class="bi-upload"></i>',
         msgValidationErrorIcon: '<i class="bi-exclamation-circle-fill"></i> '
     };
-}));
+})(window.jQuery);

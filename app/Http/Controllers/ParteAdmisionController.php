@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ParteDataTable;
+use App\DataTables\ParteListaEsperaDataTable;
 use App\DataTables\Scopes\ScopeParteDataTable;
 use App\Models\Parte;
 use App\Models\ParteEstado;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ParteAdmisionController extends Controller
@@ -36,7 +38,7 @@ class ParteAdmisionController extends Controller
         return $parteDataTable->render('partes.admision.index',compact('estados'));
     }
 
-    public function listaEspera(ParteDataTable $parteDataTable,Request $request)
+    public function listaEspera(ParteListaEsperaDataTable $parteDataTable,Request $request)
     {
         $scope = new ScopeParteDataTable();
 
@@ -45,6 +47,7 @@ class ParteAdmisionController extends Controller
         ];
 
         $scope->estados = $request->estados ?? $idsEstadosDefecto;
+        $scope->lista_espera = true;
 
         $parteDataTable->addScope($scope);
 
@@ -98,7 +101,8 @@ class ParteAdmisionController extends Controller
         if ($request->lista_espera){
 
             $request->merge([
-                'estado_id' => ParteEstado::LISTA_ESPERA
+                'estado_id' => ParteEstado::LISTA_ESPERA,
+                'fecha_inscripcion' => Carbon::now()
             ]);
         }
 

@@ -54,6 +54,7 @@ class CreatePartesTable extends Migration
             $table->unsignedBigInteger('reparticion_id')->nullable()->index('fk_partes_reparticiones1_idx');
             $table->dateTime('fecha_pabellon')->nullable();
             $table->dateTime('fecha_digitacion')->nullable();
+            $table->dateTime('fecha_inscripcion')->nullable();
             $table->tinyInteger('examenes_realizados')->nullable();
             $table->dateTime('fecha_examenes')->nullable();
             $table->tinyInteger('control_preop_eu')->nullable();

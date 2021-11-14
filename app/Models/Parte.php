@@ -62,6 +62,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $reparticion_id
  * @property string|\Carbon\Carbon $fecha_pabellon
  * @property string|\Carbon\Carbon $fecha_digitacion
+ * @property string|\Carbon\Carbon $fecha_inscripcion
  * @property boolean $examenes_realizados
  * @property string|\Carbon\Carbon $fecha_examenes
  * @property boolean $control_preop_eu
@@ -123,6 +124,7 @@ class Parte extends Model
         'reparticion_id',
         'fecha_pabellon',
         'fecha_digitacion',
+        'fecha_inscripcion',
         'examenes_realizados',
         'fecha_examenes',
         'control_preop_eu',
@@ -183,6 +185,7 @@ class Parte extends Model
         'reparticion_id' => 'integer',
         'fecha_pabellon' => 'datetime',
         'fecha_digitacion' => 'datetime',
+        'fecha_inscripcion' => 'datetime',
         'examenes_realizados' => 'boolean',
         'fecha_examenes' => 'datetime',
         'control_preop_eu' => 'boolean',

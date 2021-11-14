@@ -16,6 +16,7 @@ class ScopeParteDataTable implements DataTableScope
     public $prioridad_administrativa;
     public $del;
     public $al;
+    public $lista_espera;
 
 
     public function __construct()
@@ -27,6 +28,7 @@ class ScopeParteDataTable implements DataTableScope
         $this->prioridad_clinica = request()->prioridad_clinica ?? null;
         $this->del = request()->del ?? null;
         $this->al = request()->al ?? null;
+        $this->lista_espera = request()->lista_espera ?? false;
     }
 
 
@@ -93,7 +95,13 @@ class ScopeParteDataTable implements DataTableScope
             $del = Carbon::parse($this->del);
             $al = Carbon::parse($this->al)->addDay();
 
-            $query->whereBetween('created_at',[$del,$al]);
+            if ($this->lista_espera){
+
+                $query->whereBetween('fecha_inscripcion',[$del,$al]);
+            }else{
+
+                $query->whereBetween('created_at',[$del,$al]);
+            }
         }
     }
 }

@@ -31,18 +31,20 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            {!! Form::model($user, ['route' => ['users.menuStore', $user->id], 'method' => 'patch']) !!}
+                            {!! Form::model($user, ['route' => ['users.menuStore', $user->id], 'method' => 'patch','class' => 'wait-on-submit']) !!}
 
                                 <div class="form-row">
 
                                     <div class="form-group col-sm-12">
                                         <div id="tree"></div>
+
+                                        <input type="hidden" name="options" id="options">
+
                                     </div>
 
                                     <div class="form-group col-sm-12">
 
-                                        <input type="hidden" name="options" id="options">
-                                        <button type="button" id="#btnSave"  class="btn btn-outline-success">Guardar</button>
+                                        <button type="submit"  class="btn btn-outline-success">Guardar</button>
                                         <a href="{!! route('users.index') !!}" class="btn btn-outline-secondary">Cancelar</a>
                                     </div>
 
@@ -67,7 +69,7 @@
             var tree = $('#tree').tree({
                 primaryKey: 'id',
                 uiLibrary: 'bootstrap4',
-                dataSource: "{{route('api.options.index')}}?parentes=1&no_dev=1",
+                dataSource: "{{route('api.options.index')}}?parentes=1",
                 checkboxes: true
             }).on('checkboxChange', function (e, $node, record, state) {
                 var checkedIds = tree.getCheckedNodes();
@@ -78,7 +80,7 @@
             tree.on('dataBound', function() {
 
                 @foreach($user->options as $op)
-                    tree.check(tree.getNodeById('{{$op->id}}'));
+                tree.check(tree.getNodeById('{{$op->id}}'));
                 @endforeach
             })
 
