@@ -78,7 +78,7 @@
 
                 <!-- /.card-body -->
                 <div class="form-group col-sm-12">
-                    <panel-medicamentos-parte parte_id="@json($parte->id)"></panel-medicamentos-parte>
+                    <panel-diagnosticos-parte parte_id="@json($parte->id)"></panel-diagnosticos-parte>
                 </div>
 
 
@@ -241,9 +241,17 @@
                 </div>
 
                 <!-- Anestesia Sugerida Field -->
-                <div class="form-group col-sm-12">
+                <!-- <div class="form-group col-sm-12">
                     {!! Form::label('anestesia_sugerida', 'Anestesia Sugerida:') !!}
                     {!! Form::text('anestesia_sugerida', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
+                </div> -->
+
+                <div class="form-group col-sm-6">
+                    {!! Form::label('anestesia_sugerida', 'Anestesia Sugerida:') !!}
+                    <!-- Clasificacion Id Field -->
+                    <multiselect v-model="anestesia_sugerida" :options="anestesia_sugeridas"  placeholder="Seleccione uno...">
+                    </multiselect>
+                    <input type="hidden" name="anestesia_sugerida" :value="anestesia_sugerida">
                 </div>
 
 
@@ -570,6 +578,18 @@
                 'Diferida',
                 'Citometría de flujo',
                 'No aplica',
+            ],
+
+            anestesia_sugerida : @json($parte->anestesia_sugerida ?? old('anestesia_sugerida') ?? null),
+
+            anestesia_sugeridas : [
+                'Cuidados anestésicos monitorizados',
+                'Anestesia local por cirujano',
+                'Sedación',
+                'Bloqueo de nervio periférico (plexo)',
+                'Anestesia Neuroaxial (Espinal, Epidural)',
+                'Anestesia General',
+                'Anestesia General + CEC'
             ],
 
             tiempo_quirurgico : @json($parte->tiempo_quirurgico ?? old('tiempo_quirurgico') ?? null),

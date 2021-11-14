@@ -136,10 +136,14 @@
                 </div>
 
                 <!-- Anestesia Sugerida Field -->
-                <div class="form-group col-sm-12">
+                <div class="form-group col-sm-6">
                     {!! Form::label('anestesia_sugerida', 'Anestesia Sugerida:') !!}
-                    {!! Form::text('anestesia_sugerida', $parte->otros_diagnosticos ?? '', ['class' => 'form-control','maxlength' => 255,'readonly']) !!}
+                    <!-- Clasificacion Id Field -->
+                    <multiselect v-model="anestesia_sugerida" :options="anestesia_sugeridas"  placeholder="Seleccione uno..." :disabled="true">
+                    </multiselect>
+                    <input type="hidden" name="anestesia_sugerida" :value="anestesia_sugerida">
                 </div>
+
 
 
                 <div class="form-group col-sm-12">
@@ -338,7 +342,7 @@
 
         </div>
     </div>
-
+ 
 </div>
 
 @push('scripts')
@@ -356,7 +360,7 @@
                 if ($("#nececidad_cama_upc").prop('checked')){
                     $("#select_tipo_cama").show()
                 }else {
-                    $("#select_tipo_cama").hide()
+                    $("#select_tipo_cama").hide() 
                 }
             }
 
@@ -408,7 +412,7 @@
                 insumo_especifico: @json($parte->insumoEspecifico ?? App\Models\Insumoespecifico::find(old('insumo_especifico_id')) ?? null),
 
                 especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
-
+ 
 
                 grupo_base: @json($parte->grupoBase ?? App\Models\GrupoBase::find(old('grupo_base_id')) ?? null),
 
@@ -424,7 +428,19 @@
                     'Rápida',
                     'Diferida',
                     'Citometría de flujo',
-                    'No aplica',
+                    'No aplica', 
+                ],
+
+                anestesia_sugerida : @json($parte->anestesia_sugerida ?? old('anestesia_sugerida') ?? null),
+
+                anestesia_sugeridas : [
+                    'Cuidados anestésicos monitorizados',
+                    'Anestesia local por cirujano',
+                    'Sedación',
+                    'Bloqueo de nervio periférico (plexo)',
+                    'Anestesia Neuroaxial (Espinal, Epidural)',
+                    'Anestesia General',
+                    'Anestesia General + CEC'
                 ],
 
                 tiempo_quirurgico : @json($parte->tiempo_quirurgico ?? old('tiempo_quirurgico') ?? null),
