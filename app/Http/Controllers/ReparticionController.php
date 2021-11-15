@@ -30,7 +30,7 @@ class ReparticionController extends AppBaseController
      */
     public function index(ReparticionDataTable $reparticionDataTable)
     {
-        return $reparticionDataTable->render('reparticiones.index');
+        return $reparticionDataTable->render('reparticions.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class ReparticionController extends AppBaseController
      */
     public function create()
     {
-        return view('reparticiones.create');
+        return view('reparticions.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class ReparticionController extends AppBaseController
 
         Flash::success('Reparticion guardado exitosamente.');
 
-        return redirect(route('reparticiones.index'));
+        return redirect(route('reparticions.index'));
     }
 
     /**
@@ -77,10 +77,10 @@ class ReparticionController extends AppBaseController
         if (empty($reparticion)) {
             Flash::error('Reparticion no encontrado');
 
-            return redirect(route('reparticiones.index'));
+            return redirect(route('reparticions.index'));
         }
 
-        return view('reparticiones.show')->with('reparticion', $reparticion);
+        return view('reparticions.show')->with('reparticion', $reparticion);
     }
 
     /**
@@ -98,10 +98,10 @@ class ReparticionController extends AppBaseController
         if (empty($reparticion)) {
             Flash::error('Reparticion no encontrado');
 
-            return redirect(route('reparticiones.index'));
+            return redirect(route('reparticions.index'));
         }
 
-        return view('reparticiones.edit')->with('reparticion', $reparticion);
+        return view('reparticions.edit')->with('reparticion', $reparticion);
     }
 
     /**
@@ -120,7 +120,7 @@ class ReparticionController extends AppBaseController
         if (empty($reparticion)) {
             Flash::error('Reparticion no encontrado');
 
-            return redirect(route('reparticiones.index'));
+            return redirect(route('reparticions.index'));
         }
 
         $reparticion->fill($request->all());
@@ -128,7 +128,7 @@ class ReparticionController extends AppBaseController
 
         Flash::success('Reparticion actualizado con éxito.');
 
-        return redirect(route('reparticiones.index'));
+        return redirect(route('reparticions.index'));
     }
 
     /**
@@ -148,13 +148,13 @@ class ReparticionController extends AppBaseController
         if (empty($reparticion)) {
             Flash::error('Reparticion no encontrado');
 
-            return redirect(route('reparticiones.index'));
+            return redirect(route('reparticions.index'));
         }
 
         $reparticion->delete();
 
         Flash::success('Reparticion deleted successfully.');
 
-        return redirect(route('reparticiones.index'));
+        return redirect(route('reparticions.index'));
     }
 }

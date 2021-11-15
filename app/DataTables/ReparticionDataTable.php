@@ -23,7 +23,7 @@ class ReparticionDataTable extends DataTable
 
                  $id = $reparticion->id;
 
-                 return view('reparticiones.datatables_actions',compact('reparticion','id'))->render();
+                 return view('reparticions.datatables_actions',compact('reparticion','id'))->render();
              })
              ->editColumn('id',function (Reparticion $reparticion){
 
@@ -108,6 +108,6 @@ class ReparticionDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'reparticionesdatatable_' . time();
+        return 'reparticionsdatatable_' . time();
     }
 }

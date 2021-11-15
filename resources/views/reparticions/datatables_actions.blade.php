@@ -1,11 +1,11 @@
 @can('Ver reparticiones')
-<a href="{{ route('reparticiones.show', $id) }}" data-toggle="tooltip" title="Ver" class='btn btn-default btn-sm'>
+<a href="{{ route('reparticions.show', $id) }}" data-toggle="tooltip" title="Ver" class='btn btn-default btn-sm'>
     <i class="fa fa-eye"></i>
 </a>
 @endcan
 
 @can('Editar reparticiones')
-<a href="{{ route('reparticiones.edit', $id) }}" data-toggle="tooltip" title="Editar" class='btn btn-outline-info btn-sm'>
+<a href="{{ route('reparticions.edit', $id) }}" data-toggle="tooltip" title="Editar" class='btn btn-outline-info btn-sm'>
     <i class="fa fa-edit"></i>
 </a>
 @endcan
@@ -16,7 +16,7 @@
 </a>
 
 
-<form action="{{ route('reparticiones.destroy', $id)}}" method="POST" id="delete-form{{$id}}">
+<form action="{{ route('reparticions.destroy', $id)}}" method="POST" id="delete-form{{$id}}">
     @method('DELETE')
     @csrf
 </form>

@@ -87,7 +87,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('insumoEspecificos', 'InsumoEspecificoController');
 
-    Route::resource('reparticiones', 'ReparticionController');
+    Route::resource('reparticions', 'ReparticionController');
 
     Route::resource('sistemaSalud', 'SistemaSaludController');
 

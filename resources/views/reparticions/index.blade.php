@@ -15,7 +15,7 @@
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item">
                             <a class="btn btn-outline-success"
-                                href="{!! route('reparticiones.create') !!}">
+                                href="{!! route('reparticions.create') !!}">
                                 <i class="fa fa-plus"></i>
                                 <span class="d-none d-sm-inline">{{__('New')}}</span>
                             </a>
@@ -35,7 +35,7 @@
             <div class="clearfix"></div>
             <div class="card card-primary">
                 <div class="card-body">
-                        @include('reparticiones.table')
+                        @include('reparticions.table')
                 </div>
             </div>
             <div class="text-center">
