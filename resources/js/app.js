@@ -152,3 +152,9 @@ Vue.component('select-parentesco',SelectParentesco);
 
 import SelectMedicamento from "./components/SelectMedicamento";
 Vue.component('select-medicamento')
+
+import SelectExamen from "./components/SelectExamen";
+Vue.component('select-examen',SelectExamen)
+
+import PanelExamenesParte from "./components/PanelExamenesParte";
+Vue.component('panel-examens-parte',PanelExamenesParte)

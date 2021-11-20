@@ -17,6 +17,9 @@ class CreateParteExamenesTable extends Migration
             $table->integer('id')->primary();
             $table->unsignedBigInteger('parte_id')->index('fk_parte_examenes_idx1');
             $table->unsignedBigInteger('examen_id')->index('fk_parte_examenes_idx2');
+            $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

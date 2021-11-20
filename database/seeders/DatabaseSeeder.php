@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ConveniosTableSeeder::class);
         $this->call(MedicamentosTableSeeder::class);
         $this->call(ParentescosTableSeeder::class);
+        $this->call(ExamenesTableSeeder::class);
 
 
         if (app()->environment()=='local'){
