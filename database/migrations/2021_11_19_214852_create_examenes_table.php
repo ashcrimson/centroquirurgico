@@ -15,7 +15,7 @@ class CreateExamenesTable extends Migration
     {
         Schema::create('examenes', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('nombre')->unique();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -19,7 +19,7 @@ class ParteExamen extends Model
     use SoftDeletes;
 
     public $table = 'parte_examenes';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -59,7 +59,7 @@ class ParteExamen extends Model
      **/
     public function examen()
     {
-        return $this->belongsTo(\App\Models\Examene::class, 'examen_id');
+        return $this->belongsTo(\App\Models\Examen::class, 'examen_id');
     }
 
     /**

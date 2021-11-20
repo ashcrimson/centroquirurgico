@@ -19,14 +19,14 @@ class ExamenesTableSeeder extends Seeder
 
         \DB::table('examenes')->delete();
 
-        factory(Examen::class,1)->create(['name' => 'Hemograma VHS']);
-        factory(Examen::class,1)->create(['name' => 'Glicemia']);
-        factory(Examen::class,1)->create(['name' => 'Uremia']);
-        factory(Examen::class,1)->create(['name' => 'Orina completa']);
-        factory(Examen::class,1)->create(['name' => 'Protrombina']);
-        factory(Examen::class,1)->create(['name' => 'TTPK']);
-        factory(Examen::class,1)->create(['name' => 'Electrocardiograma']);
-        factory(Examen::class,1)->create(['name' => 'Hematocrito']);
+        factory(Examen::class,1)->create(['nombre' => 'Hemograma VHS']);
+        factory(Examen::class,1)->create(['nombre' => 'Glicemia']);
+        factory(Examen::class,1)->create(['nombre' => 'Uremia']);
+        factory(Examen::class,1)->create(['nombre' => 'Orina completa']);
+        factory(Examen::class,1)->create(['nombre' => 'Protrombina']);
+        factory(Examen::class,1)->create(['nombre' => 'TTPK']);
+        factory(Examen::class,1)->create(['nombre' => 'Electrocardiograma']);
+        factory(Examen::class,1)->create(['nombre' => 'Hematocrito']);
 
     }
 }

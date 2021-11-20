@@ -14,7 +14,7 @@ class CreateParteExamenesTable extends Migration
     public function up()
     {
         Schema::create('parte_examenes', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->unsignedBigInteger('parte_id')->index('fk_parte_examenes_idx1');
             $table->unsignedBigInteger('examen_id')->index('fk_parte_examenes_idx2');
             $table->timestamps();

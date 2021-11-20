@@ -17,7 +17,7 @@ class Examen extends Model
     use SoftDeletes;
 
     public $table = 'examenes';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -27,7 +27,7 @@ class Examen extends Model
 
 
     public $fillable = [
-        'name'
+        'nombre'
     ];
 
     /**
@@ -37,7 +37,7 @@ class Examen extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string'
+        'nombre' => 'string'
     ];
 
     /**
@@ -46,7 +46,7 @@ class Examen extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required|string|max:255',
+        'nombre' => 'required|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
@@ -57,6 +57,6 @@ class Examen extends Model
      **/
     public function parteExamenes()
     {
-        return $this->hasMany(\App\Models\ParteExamene::class, 'examen_id');
+        return $this->hasMany(\App\Models\ParteExamen::class, 'examen_id');
     }
 }
