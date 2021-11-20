@@ -66,6 +66,8 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
 
         Route::resource('parentescos', 'ParentescoAPIController');
 
+        Route::resource('parte_examenes', 'ParteExamenAPIController');
+        Route::resource('examenes', 'ExamenAPIController');
     });
 
 

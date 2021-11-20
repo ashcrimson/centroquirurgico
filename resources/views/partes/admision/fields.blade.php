@@ -271,7 +271,7 @@
 
         <div class="form-group col-sm-4" v-show="derivacion">
             <select-reparticion
-                label="Reparticion"
+                label="Institución"
                 v-model="reparticion" >
 
             </select-reparticion>
@@ -279,6 +279,10 @@
 
         <div class="form-group col-sm-12">
             <panel-medicamentos-parte parte_id="@json($parte->id)"></panel-medicamentos-parte>
+        </div>
+
+        <div class="form-group col-sm-12">
+            <panel-examens-parte parte_id="@json($parte->id)"></panel-examens-parte>
         </div>
 
 
