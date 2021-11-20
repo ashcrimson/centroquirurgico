@@ -12,7 +12,7 @@ $factory->define(Reparticion::class, function (Faker $faker) use ($autoIncrement
     $autoIncrement->next();
 
     return [
-        'nombre' => "Reparticion - ".$autoIncrement->current(),
+        'nombre' => "Institución - ".$autoIncrement->current(),
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s'),
 

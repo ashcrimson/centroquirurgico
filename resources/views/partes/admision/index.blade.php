@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title_page',__('Partes'))
+@section('title_page',__('Partes Admisión'))
 
 @section('content')
 
@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Partes</h1>
+                    <h1>Partes Admisión</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-right">

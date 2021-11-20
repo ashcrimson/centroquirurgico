@@ -271,7 +271,7 @@
 
         <div class="form-group col-sm-4" v-show="derivacion">
             <select-reparticion
-                label="Reparticion"
+                label="Institución"
                 v-model="reparticion" >
 
             </select-reparticion>
