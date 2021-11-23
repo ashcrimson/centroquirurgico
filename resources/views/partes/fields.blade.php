@@ -191,24 +191,7 @@
 
                 </div>
 
-                <!-- Lateralidad Field -->
-                <!-- <div class="form-group col-sm-4">
-                    {!! Form::label('lateralidad', 'Lateralidad:') !!}
-                    {!!
-                        Form::select(
-                            'lateralidad',
-                            [
-                                null => 'Seleccione uno...',
-                                'Izquierda' => 'Izquierda',
-                                'Derecha'=> 'Derecha',
-                                'Bilateral' => 'Bilateral',
-                                'No_Aplica' => 'No Aplica',
-                            ]
-                            , null
-                            , ['id'=>'lateralidad','class' => 'form-control','style'=>'width: 100%']
-                        )
-                    !!}
-                </div> -->
+
 
 
                 <!-- Otras Intervenciones Field -->

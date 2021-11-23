@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $nombre
  */
 class GrupoBase extends Model
-{
+{  
     use SoftDeletes;
 
     public $table = 'grupo_base';
@@ -51,6 +51,14 @@ class GrupoBase extends Model
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
     ];
+
+        /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function especialidad()
+    {
+        return $this->belongsToMany(\App\Models\especialidad::class, 'especialidad_grupobase');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

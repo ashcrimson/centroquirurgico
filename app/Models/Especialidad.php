@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Especialidad
- * @package App\Models
+ * @package App\Models 
  * @version October 13, 2021, 1:16 pm CST
  *
  * @property \Illuminate\Database\Eloquent\Collection $partes
@@ -51,6 +51,14 @@ class Especialidad extends Model
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
     ];
+
+        /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function grupoBases()
+    {
+        return $this->belongsToMany(\App\Models\Especialidad::class, 'especialidad_grupobase');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
