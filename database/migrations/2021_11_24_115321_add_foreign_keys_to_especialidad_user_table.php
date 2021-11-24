@@ -14,8 +14,8 @@ class AddForeignKeysToEspecialidadUserTable extends Migration
     public function up()
     {
         Schema::table('especialidad_user', function (Blueprint $table) {
-            $table->foreign('especialidade_id', 'fk_especialidades_has_users_especialidades1')->references('id')->on('especialidades')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('user_id', 'fk_especialidades_has_users_users1')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign('especialidad_id', 'fk_especialidad_user1')->references('id')->on('especialidades');
+            $table->foreign('user_id', 'fk_especialidad_user2')->references('id')->on('users');
         });
     }
 
@@ -27,8 +27,8 @@ class AddForeignKeysToEspecialidadUserTable extends Migration
     public function down()
     {
         Schema::table('especialidad_user', function (Blueprint $table) {
-            $table->dropForeign('fk_especialidades_has_users_especialidades1');
-            $table->dropForeign('fk_especialidades_has_users_users1');
+            $table->dropForeign('fk_especialidad_user1');
+            $table->dropForeign('fk_especialidad_user2');
         });
     }
 }
