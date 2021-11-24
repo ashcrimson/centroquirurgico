@@ -13,7 +13,7 @@ $factory->define(GrupoBase::class, function (Faker $faker) use ($autoIncrement) 
     $autoIncrement->next();
 
     return [
-        'nombre' => "Grupo Base - ".$autoIncrement->current(),
+        'nombre' => "Patología - ".$autoIncrement->current(),
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s'),
 

@@ -243,7 +243,7 @@
         <!-- Grupo Base Field -->
         <div class="form-group col-sm-3">
             <select-grupo-base
-                label="Grupo Base"
+                label="Patología"
                 v-model="grupo_base" >
 
             </select-grupo-base>
