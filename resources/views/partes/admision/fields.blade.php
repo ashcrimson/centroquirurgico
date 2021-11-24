@@ -311,7 +311,7 @@
             sistema : @json($parte->sistemaSalud ?? null),
             sistemas: @json(App\Models\SistemaSalud::get() ?? []),
 
-            grupo_base: @json($parte->grupoBase ?? null),
+            grupo_base: @json($parte->especialidad->GrupoBase ?? []),
             extrademanda: @json($parte->extrademanda ?? null),
             examenes_realizados: @json($parte->examenes_realizados ?? null),
             control_preop_eu: @json($parte->control_preop_eu ?? null),
