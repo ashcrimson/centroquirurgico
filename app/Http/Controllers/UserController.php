@@ -197,6 +197,9 @@ class UserController extends AppBaseController
             $user->syncRoles($roles);
             $user->syncPermissions($permissions);
 
+            $user->especialidades()->sync($request->especialidades ?? []);
+
+
         } catch (Exception $exception) {
             DB::rollBack();
 

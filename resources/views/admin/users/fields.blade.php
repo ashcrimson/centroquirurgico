@@ -34,6 +34,9 @@
 
 
 
+
+
+
 <div class="form-group col-sm-12">
     {!! Form::label('name', 'Roles:') !!}
     <a class="success" data-toggle="modal" href="#modal-form-roles" tabindex="1000">nuevo</a>
@@ -60,3 +63,18 @@
         )
     !!}
 </div>
+
+
+@if($user->hasRole('medico'))
+    <div class="form-group col-sm-12">
+        {!! Form::label('name', 'Especialidades:') !!}
+        {!!
+            Form::select(
+                'especialidades[]',
+                select(\App\Models\Especialidad::class,'nombre','id',null)
+                , null
+                , ['id'=>'especialidades','class' => 'form-control duallistbox','multiple']
+            )
+        !!}
+    </div>
+@endif
