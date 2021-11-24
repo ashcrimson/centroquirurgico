@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Especialidad
- * @package App\Models 
- * @version October 13, 2021, 1:16 pm CST
+ * @package App\Models
+ * @version November 24, 2021, 2:18 pm CST
  *
+ * @property \Illuminate\Database\Eloquent\Collection $patologias
+ * @property \Illuminate\Database\Eloquent\Collection $medicos
  * @property \Illuminate\Database\Eloquent\Collection $partes
  * @property string $nombre
  */
@@ -17,7 +19,7 @@ class Especialidad extends Model
     use SoftDeletes;
 
     public $table = 'especialidades';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -52,12 +54,20 @@ class Especialidad extends Model
         'deleted_at' => 'nullable'
     ];
 
-        /**
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      **/
-    public function grupoBases()
+    public function patologias()
     {
-        return $this->belongsToMany(\App\Models\Especialidad::class, 'especialidad_grupobase');
+        return $this->belongsToMany(\App\Models\GrupoBase::class, 'especialidad_grupo_base');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function medicos()
+    {
+        return $this->belongsToMany(\App\Models\User::class, 'especialidad_user');
     }
 
     /**

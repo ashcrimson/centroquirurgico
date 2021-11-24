@@ -57,6 +57,8 @@ class EspecialidadController extends AppBaseController
         /** @var Especialidad $especialidad */
         $especialidad = Especialidad::create($input);
 
+        $especialidad->patologias()->sync($request->patologias ?? []);
+
         Flash::success('Especialidad guardado exitosamente.');
 
         return redirect(route('especialidades.index'));
@@ -125,6 +127,8 @@ class EspecialidadController extends AppBaseController
 
         $especialidad->fill($request->all());
         $especialidad->save();
+
+        $especialidad->patologias()->sync($request->patologias ?? []);
 
         Flash::success('Especialidad actualizado con éxito.');
 

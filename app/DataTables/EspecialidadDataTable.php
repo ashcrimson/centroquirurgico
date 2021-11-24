@@ -25,6 +25,9 @@ class EspecialidadDataTable extends DataTable
 
                  return view('especialidades.datatables_actions',compact('especialidad','id'))->render();
              })
+           ->editColumn('patologias',function (Especialidad $especialidad){
+               return implode(', ',$especialidad->patologias->pluck('nombre')->toArray());
+           })
              ->editColumn('id',function (Especialidad $especialidad){
 
                  return $especialidad->id;
@@ -45,7 +48,7 @@ class EspecialidadDataTable extends DataTable
      */
     public function query(Especialidad $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('patologias');
     }
 
     /**
@@ -97,7 +100,9 @@ class EspecialidadDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('nombre')
+            Column::make('id'),
+            Column::make('nombre'),
+            Column::make('patologías')->name('patologias')->data('patologias')
         ];
     }
 
