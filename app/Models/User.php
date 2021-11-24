@@ -16,19 +16,23 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * Class User
  * @package App\Models
- * @version January 28, 2020, 1:44 pm CST
+ * @version November 24, 2021, 12:09 pm CST
  *
- * @property \Illuminate\Database\Eloquent\Collection options
- * @property string username
- * @property string name
- * @property string email
- * @property string|\Carbon\Carbon email_verified_at
- * @property string password
+ * @property \Illuminate\Database\Eloquent\Collection $bitacoras
+ * @property \Illuminate\Database\Eloquent\Collection $especialidades
+ * @property \Illuminate\Database\Eloquent\Collection $options
+ * @property \Illuminate\Database\Eloquent\Collection $partes
+ * @property \Illuminate\Database\Eloquent\Collection $option1s
+ * @property string $username
+ * @property string $name
+ * @property string $email
+ * @property string|\Carbon\Carbon $email_verified_at
+ * @property string $password
+ * @property string $provider
+ * @property string $provider_uid
+ * @property string $remember_token
  * @property string thumb
  * @property string img
- * @property string provider
- * @property string provider_uid
- * @property string remember_token
  */
 class User extends Authenticatable implements  MustVerifyEmail,HasMedia
 {
@@ -129,5 +133,31 @@ class User extends Authenticatable implements  MustVerifyEmail,HasMedia
         return $allOptions;
     }
 
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function bitacoras()
+    {
+        return $this->hasMany(\App\Models\Bitacora::class, 'user_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function especialidades()
+    {
+        return $this->belongsToMany(\App\Models\Especialidad::class, 'especialidad_user');
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function partes()
+    {
+        return $this->hasMany(\App\Models\Parte::class, 'user_ingresa');
+    }
 
 }
