@@ -243,8 +243,10 @@
         <!-- Grupo Base Field -->
         <div class="form-group col-sm-3">
             <select-grupo-base
-                label="Patología"
-                v-model="grupo_base" >
+                label="Grupo Base"
+                v-model="patologia"
+                :items="patologias"
+            >
 
             </select-grupo-base>
 
@@ -311,7 +313,8 @@
             sistema : @json($parte->sistemaSalud ?? null),
             sistemas: @json(App\Models\SistemaSalud::get() ?? []),
 
-            grupo_base: @json($parte->especialidad->GrupoBase ?? []),
+            patologias: @json($parte->userIngresa->patologias ?? []),
+            patologia: @json($parte->grupoBase ?? null),
             extrademanda: @json($parte->extrademanda ?? null),
             examenes_realizados: @json($parte->examenes_realizados ?? null),
             control_preop_eu: @json($parte->control_preop_eu ?? null),
@@ -331,6 +334,17 @@
         },
         methods: {
 
+        },
+        watch: {
+            medico (medico) {
+                this.patologia = null;
+                console.log('cambio medico',medico)
+                if (medico){
+                    this.patologias = medico.patologias;
+                }else {
+                    this.patologias = [];
+                }
+            }
         }
     });
 </script>

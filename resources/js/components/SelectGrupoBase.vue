@@ -198,8 +198,11 @@ export default {
             return this.editedItem.id === 0 ? 'Nuevo '+ this.label : 'Editar '+ this.label
         },
         options(){
+
+            return this.items;
+
             if (this.items.length > 0){
-                return this.items
+                // return this.items
             }else {
                 return this.items_api;
             }

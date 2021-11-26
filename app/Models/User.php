@@ -67,6 +67,8 @@ class User extends Authenticatable implements  MustVerifyEmail,HasMedia
 
     protected $with = ['options.children'];
 
+    protected $appends = ['patologias'];
+
     public function getImgAttribute()
     {
         $media = $this->getMedia('avatars')->last();
@@ -158,6 +160,17 @@ class User extends Authenticatable implements  MustVerifyEmail,HasMedia
     public function partes()
     {
         return $this->hasMany(\App\Models\Parte::class, 'user_ingresa');
+    }
+
+    public function getPatologiasAttribute()
+    {
+        $patologias = collect();
+
+        foreach ($this->especialidades as $index => $especialidad) {
+            $patologias = $patologias->merge($especialidad->patologias);
+        }
+
+        return $patologias;
     }
 
 }
