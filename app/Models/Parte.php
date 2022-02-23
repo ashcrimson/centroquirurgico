@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Parte
  * @package App\Models
- * @version October 22, 2021, 11:37 am CST
+ * @version February 22, 2022, 12:37 pm CST
  *
  * @property \App\Models\CirugiaTipo $cirugiaTipo
  * @property \App\Models\Clasificacion $clasificacion
@@ -25,9 +25,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \App\Models\SistemaSalud $sistemaSalud
  * @property \App\Models\User $userIngresa
  * @property \Illuminate\Database\Eloquent\Collection $bitacoras
- * @property \Illuminate\Database\Eloquent\Collection $medicamentos
  * @property \Illuminate\Database\Eloquent\Collection $parteContactos
+ * @property \Illuminate\Database\Eloquent\Collection $parteDiagnosticos
+ * @property \Illuminate\Database\Eloquent\Collection $parteExamenes
  * @property \Illuminate\Database\Eloquent\Collection $parteIntervenciones
+ * @property \Illuminate\Database\Eloquent\Collection $parteMedicamentos
  * @property integer $paciente_id
  * @property integer $cirugia_tipo_id
  * @property integer $especialidad_id
@@ -44,11 +46,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property boolean $alergia_latex
  * @property boolean $usuario_taco
  * @property boolean $nececidad_cama_upc
+ * @property string $tipo_cama_upc
  * @property boolean $prioridad
  * @property boolean $necesita_donante_sangre
  * @property boolean $evaluacion_preanestesica
  * @property boolean $equipo_rayos
+ * @property boolean $segundo_ojo
+ * @property boolean $prioridad_administrativa
+ * @property boolean $cancer
  * @property integer $sistema_salud_id
+ * @property string $titular_carga
  * @property integer $preoperatorio_id
  * @property integer $grupo_base_id
  * @property integer $insumo_especifico_id
@@ -67,10 +74,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|\Carbon\Carbon $fecha_examenes
  * @property boolean $control_preop_eu
  * @property string|\Carbon\Carbon $fecha_preop_eu
+ * @property string|\Carbon\Carbon $fecha_preop_eu_valida
  * @property boolean $control_preop_medico
  * @property string|\Carbon\Carbon $fecha_preop_medico
+ * @property string|\Carbon\Carbon $fecha_preop_medico_valida
  * @property boolean $control_preop_anestesista
  * @property string|\Carbon\Carbon $fecha_preop_anestesista
+ * @property string|\Carbon\Carbon $fecha_preop_anestesista_valida
+ * @property boolean $consentimiento
  * @property string $instrumental
  * @property string $observaciones
  * @property string $email
@@ -106,11 +117,16 @@ class Parte extends Model
         'alergia_latex',
         'usuario_taco',
         'nececidad_cama_upc',
+        'tipo_cama_upc',
         'prioridad',
         'necesita_donante_sangre',
         'evaluacion_preanestesica',
         'equipo_rayos',
+        'segundo_ojo',
+        'prioridad_administrativa',
+        'cancer',
         'sistema_salud_id',
+        'titular_carga',
         'preoperatorio_id',
         'grupo_base_id',
         'insumo_especifico_id',
@@ -129,19 +145,17 @@ class Parte extends Model
         'fecha_examenes',
         'control_preop_eu',
         'fecha_preop_eu',
+        'fecha_preop_eu_valida',
         'control_preop_medico',
         'fecha_preop_medico',
+        'fecha_preop_medico_valida',
         'control_preop_anestesista',
         'fecha_preop_anestesista',
+        'fecha_preop_anestesista_valida',
+        'consentimiento',
         'instrumental',
         'observaciones',
-        'email',
-        'segundo_ojo',
-        'tipo_cama_upc',
-        'consentimiento',
-        'prioridad_administrativa',
-        'cancer',
-        'titular_carga',
+        'email'
     ];
 
     /**
@@ -167,6 +181,7 @@ class Parte extends Model
         'alergia_latex' => 'boolean',
         'usuario_taco' => 'boolean',
         'nececidad_cama_upc' => 'boolean',
+        'tipo_cama_upc' => 'string',
         'prioridad' => 'boolean',
         'necesita_donante_sangre' => 'boolean',
         'evaluacion_preanestesica' => 'boolean',
@@ -190,11 +205,14 @@ class Parte extends Model
         'fecha_examenes' => 'datetime',
         'control_preop_eu' => 'boolean',
         'fecha_preop_eu' => 'datetime',
+        'fecha_preop_eu_valida' => 'datetime',
         'control_preop_medico' => 'boolean',
         'fecha_preop_medico' => 'datetime',
+        'fecha_preop_medico_valida' => 'datetime',
         'control_preop_anestesista' => 'boolean',
-        'consentimiento' => 'boolean',
         'fecha_preop_anestesista' => 'datetime',
+        'fecha_preop_anestesista_valida' => 'datetime',
+        'consentimiento' => 'boolean',
         'instrumental' => 'string',
         'observaciones' => 'string',
         'email' => 'string'

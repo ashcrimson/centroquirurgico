@@ -17,6 +17,9 @@ class ScopeParteDataTable implements DataTableScope
     public $del;
     public $al;
     public $lista_espera;
+    public $preop_anestesista;
+    public $preop_eu;
+    public $preop_medico;
 
 
     public function __construct()
@@ -84,6 +87,21 @@ class ScopeParteDataTable implements DataTableScope
 
         if ($this->prioridad_administrativa){
             $query->where('prioridad_administrativa',1);
+        }
+
+        if ($this->preop_anestesista){
+            $query->whereNull('fecha_preop_anestesista_valida')
+            ->where('control_preop_eu',1);
+        }
+
+        if ($this->preop_eu){
+            $query->whereNull('fecha_preop_eu_valida')
+            ->where('control_preop_medico',1);
+        }
+
+        if ($this->preop_medico){
+            $query->whereNull('fecha_preop_medico_valida')
+            ->where('control_preop_anestesista',1);
         }
 
         if ($this->prioridad_clinica){

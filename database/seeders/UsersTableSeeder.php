@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
             "name" => "Developer",
             "password" => bcrypt("admin")
         ])->each(function (User $user){
-            $user->syncRoles([Role::DEVELOPER]);
+            $user->syncRoles([Role::DEVELOPER,Role::PREOP_ANESTESISTA,Role::PREOP_EU,Role::PREOP_MEDICO]);
             $user->options()->sync(Option::pluck('id')->toArray());
             $user->shortcuts()->sync([3,4,5,6]);
         });
@@ -90,6 +90,39 @@ class UsersTableSeeder extends Seeder
                 "password" => bcrypt("123")
             ])->each(function (User $user){
                 $user->syncRoles(Role::ADMISION);
+//            $user->shortcuts()->sync([3,4,5,6]);
+
+            });
+
+            User::factory(1)->create([
+
+                "username" => "PREOP ANESTESISTA",
+                "name" => "PREOP ANESTESISTA",
+                "password" => bcrypt("123")
+            ])->each(function (User $user){
+                $user->syncRoles(Role::PREOP_ANESTESISTA);
+//            $user->shortcuts()->sync([3,4,5,6]);
+
+            });
+
+            User::factory(1)->create([
+
+                "username" => "PREOP EU",
+                "name" => "PREOP EU",
+                "password" => bcrypt("123")
+            ])->each(function (User $user){
+                $user->syncRoles(Role::PREOP_EU);
+//            $user->shortcuts()->sync([3,4,5,6]);
+
+            });
+
+            User::factory(1)->create([
+
+                "username" => "PREOP MÉDICO",
+                "name" => "PREOP MÉDICO",
+                "password" => bcrypt("123")
+            ])->each(function (User $user){
+                $user->syncRoles(Role::PREOP_MEDICO);
 //            $user->shortcuts()->sync([3,4,5,6]);
 
             });

@@ -28,6 +28,10 @@ class Role extends \Spatie\Permission\Models\Role
     const ADMIN =       3;
     const MEDICO =      4;
     const ADMISION =    5;
+    const PREOP_ANESTESISTA =    6;
+    const PREOP_EU =    7;
+    const PREOP_MEDICO =    8;
+
 
     protected $dates = ['deleted_at'];
 

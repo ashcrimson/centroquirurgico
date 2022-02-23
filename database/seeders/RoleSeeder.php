@@ -39,6 +39,7 @@ class RoleSeeder extends Seeder
             14, //Pacientes
         ]);
 
+
         /**
          * @var Role $role
          */
@@ -54,6 +55,39 @@ class RoleSeeder extends Seeder
             29, //Medicamentos
         ]);
 
+
+        /**
+         * @var Role $role
+         */
+        $role= Role::create(["name" => "PreOp Anestesista"]);
+        $role->syncPermissions([
+            'Ver Partes',
+        ]);
+        $role->options()->sync([
+            31, //partes
+        ]);
+
+        /**
+         * @var Role $role
+         */
+        $role= Role::create(["name" => "PreOp EU"]);
+        $role->syncPermissions([
+            'Ver Partes',
+        ]);
+        $role->options()->sync([
+            31, //partes
+        ]);
+
+        /**
+         * @var Role $role
+         */
+        $role= Role::create(["name" => "PreOp Médico"]);
+        $role->syncPermissions([
+            'Ver Partes',
+        ]);
+        $role->options()->sync([
+            31, //partes
+        ]);
 
 
 

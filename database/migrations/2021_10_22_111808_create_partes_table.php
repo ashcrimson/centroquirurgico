@@ -57,13 +57,20 @@ class CreatePartesTable extends Migration
             $table->dateTime('fecha_inscripcion')->nullable();
             $table->tinyInteger('examenes_realizados')->nullable();
             $table->dateTime('fecha_examenes')->nullable();
+
             $table->tinyInteger('control_preop_eu')->nullable();
             $table->dateTime('fecha_preop_eu')->nullable();
+            $table->dateTime('fecha_preop_eu_valida')->nullable();
+
             $table->tinyInteger('control_preop_medico')->nullable();
             $table->dateTime('fecha_preop_medico')->nullable();
+            $table->dateTime('fecha_preop_medico_valida')->nullable();
+
             $table->tinyInteger('control_preop_anestesista')->nullable();
-            $table->tinyInteger('consentimiento')->nullable();
             $table->dateTime('fecha_preop_anestesista')->nullable();
+            $table->dateTime('fecha_preop_anestesista_valida')->nullable();
+
+            $table->tinyInteger('consentimiento')->nullable();
             $table->text('instrumental')->nullable();
             $table->text('observaciones')->nullable();
             $table->text('email')->nullable();

@@ -64,6 +64,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('clasificaciones', 'ClasificacionController');
 
+    Route::get('partes/valida/preop/{tipo}/{parte}', 'ParteController@validarPreopStore')->name('partes.validar.store');
+    Route::get('partes/validar', 'ParteController@validarPreop')->name('partes.validar.index');
     Route::resource('partes', 'ParteController');
 
     Route::group(['prefix' => 'admision','as' => 'admision.'],function (){

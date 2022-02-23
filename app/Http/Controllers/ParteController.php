@@ -42,6 +42,11 @@ class ParteController extends AppBaseController
         if (auth()->user()->hasRole(Role::ADMISION)){
             return redirect(route('admision.partes'));
         }
+
+        if (auth()->user()->hasAnyRole(Role::PREOP_MEDICO,Role::PREOP_EU,Role::PREOP_ANESTESISTA)){
+            return redirect(route('partes.validar.index'));
+        }
+
         $scope = new ScopeParteDataTable();
 
         $idsEstadosDefecto = [
@@ -302,4 +307,51 @@ class ParteController extends AppBaseController
     }
 
 
+    public function validarPreop(ParteDataTable $dataTable)
+    {
+        $scope = new ScopeParteDataTable();
+
+        if (auth()->user()->hasRole(Role::PREOP_ANESTESISTA)){
+
+            $scope->preop_anestesista = 1;
+        }
+
+        if (auth()->user()->hasRole(Role::PREOP_EU)){
+
+            $scope->preop_eu = 1;
+        }
+
+        if (auth()->user()->hasRole(Role::PREOP_MEDICO)){
+
+            $scope->preop_medico = 1;
+        }
+
+        $dataTable->addScope($scope);
+
+        return $dataTable->render('partes.index');
+    }
+
+    public function validarPreopStore($tipo,Parte $parte)
+    {
+
+
+        switch ($tipo){
+            case 'anestesia':
+                $parte->fecha_preop_anestesista_valida = Carbon::now();
+                break;
+            case 'eu':
+                $parte->fecha_preop_eu_valida = Carbon::now();
+                break;
+            case 'medico':
+                $parte->fecha_preop_medico_valida = Carbon::now();
+                break;
+        }
+
+        $parte->save();
+
+        flash('Parte validada')->success();
+
+        return redirect(route('partes.validar.index'));
+
+    }
 }
