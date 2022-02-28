@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ParteAdmisionDataTable;
 use App\DataTables\ParteDataTable;
 use App\DataTables\ParteListaEsperaDataTable;
 use App\DataTables\Scopes\ScopeParteDataTable;
@@ -17,7 +18,7 @@ class ParteAdmisionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ParteDataTable $parteDataTable,Request $request)
+    public function index(ParteAdmisionDataTable $parteDataTable,Request $request)
     {
         $scope = new ScopeParteDataTable();
 
