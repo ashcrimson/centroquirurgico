@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ParteDataTable;
+use App\DataTables\ParteValidaDataTable;
 use App\DataTables\Scopes\ScopeParteDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateParteRequest;
@@ -307,7 +308,7 @@ class ParteController extends AppBaseController
     }
 
 
-    public function validarPreop(ParteDataTable $dataTable)
+    public function validarPreop(ParteValidaDataTable $dataTable)
     {
         $scope = new ScopeParteDataTable();
 
