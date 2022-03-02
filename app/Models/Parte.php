@@ -477,4 +477,10 @@ class Parte extends Model
             ParteEstado::INGRESADA,
         ]);
     }
+
+    public function preopsValidados()
+    {
+        return $this->fecha_preop_eu_valida && $this->fecha_preop_anestesista_valida && $this->fecha_preop_medico_valida;
+    }
+
 }

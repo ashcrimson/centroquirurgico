@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#modalExPreopsValidados{{$parte->id}}">
+<button type="button" class="btn btn-{{$parte->preopsValidados() ? 'success' : 'outline-secondary'}} btn-sm" data-toggle="modal" data-target="#modalExPreopsValidados{{$parte->id}}">
     Preops
 </button>
 
