@@ -173,4 +173,19 @@ class User extends Authenticatable implements  MustVerifyEmail,HasMedia
         return $patologias;
     }
 
+
+    public function validoParte(Parte $parte)
+    {
+        if($this->hasRole(Role::PREOP_ANESTESISTA) && $parte->fecha_preop_anestesista_valida){
+            return true;
+        }
+        if($this->hasRole(Role::PREOP_EU) && $parte->fecha_preop_eu_valida){
+            return true;
+        }
+        if($this->hasRole(Role::PREOP_MEDICO) && $parte->fecha_preop_medico_valida){
+            return true;
+        }
+
+        return false;
+    }
 }

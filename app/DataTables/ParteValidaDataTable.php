@@ -53,13 +53,7 @@ class ParteValidaDataTable extends DataTable
                     $user = auth()->user();
 
 
-                    if($user->hasRole(Role::PREOP_ANESTESISTA) && $parte->fecha_preop_anestesista_valida){
-                        return 'background-color: #99E066';
-                    }
-                    if($user->hasRole(Role::PREOP_EU) && $parte->fecha_preop_eu_valida){
-                        return 'background-color: #99E066';
-                    }
-                    if($user->hasRole(Role::PREOP_MEDICO) && $parte->fecha_preop_medico_valida){
+                    if($user->validoParte($parte)){
                         return 'background-color: #99E066';
                     }
 
