@@ -27,9 +27,14 @@
                             </select-examen>
                         </div>
 
+                        <div class="form-group col-sm-3">
+                            <label for="">Fecha Realiza:</label>
+                            <input type="date" class="form-control" v-model="editedItem.fecha_realiza">
+                        </div>
 
 
-                        <div class="form-group col-sm-4">
+
+                        <div class="form-group col-sm-3">
                             <label for="peep">&nbsp;</label>
                             <div>
                                 <button type="button" class="btn btn-success" @click.prevent="save()">
@@ -51,6 +56,7 @@
                     <thead v-show="!disabled">
                     <tr>
                         <th>Examen</th>
+                        <th>Fecha Realiza</th>
                         <th >Actions</th>
                     </tr>
                     </thead>
@@ -60,6 +66,7 @@
                     </tr>
                     <tr v-for="det in parte_examens" >
                         <td v-text="det.examen.nombre"></td>
+                        <td v-text="det.fecha_realiza_ltn"></td>
 
                         <td  class="text-nowrap" v-show="!disabled">
                             <button type="button" @click="editItem(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >

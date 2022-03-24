@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
@@ -9,10 +10,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  * @version November 19, 2021, 9:51 pm CST
  *
- * @property \App\Models\Examene $examen
+ * @property \App\Models\Examen $examen
  * @property \App\Models\Parte $parte
  * @property integer $parte_id
  * @property integer $examen_id
+ * @property Carbon $fecha_realiza
  */
 class ParteExamen extends Model
 {
@@ -26,11 +28,13 @@ class ParteExamen extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected $appends = ['fecha_realiza_ltn'];
 
 
     public $fillable = [
         'parte_id',
-        'examen_id'
+        'examen_id',
+        'fecha_realiza'
     ];
 
     /**
@@ -41,7 +45,8 @@ class ParteExamen extends Model
     protected $casts = [
         'id' => 'integer',
         'parte_id' => 'integer',
-        'examen_id' => 'integer'
+        'examen_id' => 'integer',
+        'fecha_realiza' => 'date:Y-m-d'
     ];
 
     /**
@@ -68,5 +73,10 @@ class ParteExamen extends Model
     public function parte()
     {
         return $this->belongsTo(\App\Models\Parte::class, 'parte_id');
+    }
+
+    public function getFechaRealizaLtnAttribute()
+    {
+        return $this->fecha_realiza->format('d/m/Y');
     }
 }
