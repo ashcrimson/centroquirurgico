@@ -77,6 +77,10 @@ class ParteExamen extends Model
 
     public function getFechaRealizaLtnAttribute()
     {
-        return $this->fecha_realiza->format('d/m/Y');
+        if($this->fecha_realiza){
+            return $this->fecha_realiza->format('d/m/Y');
+        }
+
+        return  null;
     }
 }
