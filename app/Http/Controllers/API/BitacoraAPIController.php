@@ -77,7 +77,14 @@ class BitacoraAPIController extends AppBaseController
                  */
                 $estado = ParteEstado::find($parte->estado_id);
 
-                $titulo = "Cambio condición a: ". $estado->nombre;
+                if ($estado->id == ParteEstado::PROGRAMADO){
+                    $titulo = "Cambio condición a: ". $estado->nombre.", Con fecha: ".fechaLtn($request->fecha);
+
+                }else{
+                    $titulo = "Cambio condición a: ". $estado->nombre;
+
+                }
+
             }
 
             $request->merge([

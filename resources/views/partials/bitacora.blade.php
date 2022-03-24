@@ -25,11 +25,18 @@
                 </multiselect>
             </div>
 
+
+            <div class="form-group col-sm-3" v-show="estadoProgramado">
+                {!! Form::label('fecha', 'Fecha:') !!}
+                {!! Form::date('fecha', null, ['v-model' => 'editedItem.fecha','class' => 'form-control','rows' => 2]) !!}
+            </div>
+
             <!-- Observaciones Field -->
             <div class="form-group col-sm-10 col-lg-10">
                 {!! Form::label('observaciones', 'Observaciones:') !!}
                 {!! Form::textarea('observaciones', null, ['v-model' => 'editedItem.descripcion','class' => 'form-control','rows' => 2]) !!}
             </div>
+
             <div class="form-group col-sm-2 col-lg-2">
                 <label for="">&nbsp;</label>
                 <div>
@@ -199,6 +206,15 @@
                 }
 
                 return this.editedItem.id === 0 ? 'Agregar ' : 'Editar ';
+            },
+            estadoProgramado(){
+
+                if (this.estado){
+                    return this.estado.id == @json(\App\Models\ParteEstado::PROGRAMADO)
+
+                }
+
+                return false
             }
         },
         watch: {
