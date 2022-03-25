@@ -1,7 +1,7 @@
 <template>
     <div class="card " >
         <div class="card-header py-0 px-1">
-            <h3 class="card-title">Examens</h3>
+            <h3 class="card-title">Examenes</h3>
 
             <div class="card-tools">
 
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group col-sm-3">
-                            <label for="">Fecha Realiza:</label>
+                            <label for="">Fecha Realizado:</label>
                             <input type="date" class="form-control" v-model="editedItem.fecha_realiza">
                         </div>
 
@@ -56,8 +56,8 @@
                     <thead v-show="!disabled">
                     <tr>
                         <th>Examen</th>
-                        <th>Fecha Realiza</th>
-                        <th >Actions</th>
+                        <th>Fecha Realizado</th>
+                        <th>Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
