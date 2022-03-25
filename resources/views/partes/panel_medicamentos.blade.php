@@ -53,7 +53,7 @@
                     <th>Numero</th>
                     <th>Parentesco</th>
                     <th>Nombre</th>
-                    <th>Actions</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
