@@ -31,4 +31,11 @@ class UpdateParteRequest extends FormRequest
 
         return $rules;
     }
+
+    public function messages()
+    {
+        return [
+            'cancer.required' => 'El campo Cancer o Sospecha de Cancer es obligatorio.',
+        ];
+    }
 }

@@ -20,6 +20,9 @@ class ScopeParteDataTable implements DataTableScope
     public $preop_anestesista;
     public $preop_eu;
     public $preop_medico;
+    public $rut_paciente;
+    public $tipo_cirugia_id;
+    public $grupo_base_id;
 
 
     public function __construct()
@@ -116,13 +119,27 @@ class ScopeParteDataTable implements DataTableScope
             $del = Carbon::parse($this->del);
             $al = Carbon::parse($this->al)->addDay();
 
-            if ($this->lista_espera){
+//            if ($this->lista_espera){
 
                 $query->whereBetween('fecha_inscripcion',[$del,$al]);
-            }else{
+//            }else{
 
-                $query->whereBetween('created_at',[$del,$al]);
-            }
+//                $query->whereBetween('created_at',[$del,$al]);
+//            }
+        }
+
+        if ($this->rut_paciente) {
+            $query->whereHas('paciente',function ($q){
+                $q->where('run',$this->rut_paciente);
+            });
+        }
+
+        if ($this->tipo_cirugia_id) {
+            $query->where('cirugia_tipo_id', $this->tipo_cirugia_id);
+        }
+
+        if ($this->grupo_base_id) {
+            $query->where('grupo_base_id', $this->grupo_base_id);
         }
     }
 }

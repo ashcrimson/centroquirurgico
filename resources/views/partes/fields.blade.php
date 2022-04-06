@@ -371,11 +371,14 @@
                             <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
 
                             <div class="col-sm-3">
-                                <input type="hidden" name="cancer" value="0">
-                                {!! Form::label('cancer', 'Cancer:') !!}<br>
-                                <input type="checkbox"  data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="cancer" id="cancer"
-                                       value="1"
-                                    {{ ($parte->cancer ?? old('cancer') ?? false) ? 'checked' : '' }}>
+{{--                                <input type="hidden" name="cancer" value="0">--}}
+                                {!! Form::label('cancer', 'Cáncer o Sospecha de Cáncer:') !!}<br>
+{{--                                <input type="checkbox"  data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="cancer" id="cancer"--}}
+{{--                                       value="1"--}}
+{{--                                    {{ ($parte->cancer ?? old('cancer') ?? false) ? 'checked' : '' }}>--}}
+                                <multiselect v-model="cancerOptionSelect" :options='cancerOptions' label="nombre" placeholder="Seleccione uno..." >
+                                </multiselect>
+                                <input type="hidden" name="cancer" :value="cancerOptionSelectVal">
                             </div>
 
                         </div>
@@ -486,7 +489,7 @@
 
         $("#nececidad_cama_upc").change(function (){
             validadNececidadCama();
-        }); 
+        });
 
         function validadNececidadCama(){
             if ($("#nececidad_cama_upc").prop('checked')){
@@ -537,6 +540,8 @@
         name: 'fieldsPartes',
         created() {
             this.getIntervenciones();
+
+            this.cancerOptionSelectVal;
         },
         data: {
             cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
@@ -612,6 +617,18 @@
             convenio: @json($parte->convenio ?? null),
             reparticion: @json($parte->reparticion ?? null),
             tipo_cama_upc: @json($parte->tipo_cama_upc ?? null),
+
+            cancerOptions: [
+                {
+                    val: 1,
+                    nombre: 'SI'
+                },
+                {
+                    val: 2,
+                    nombre: 'NO'
+                },
+            ],
+            cancerOptionSelect: null,
         },
         methods: {
             close () {
@@ -712,7 +729,7 @@
                 }
             },
 
-        }, 
+        },
         computed:{
             esCirugiaMayor(){
 
@@ -733,6 +750,12 @@
                     return this.editedItem.id === 0 ? 'Agregar' : 'Actualizar'
 
                 }
+            },
+            cancerOptionSelectVal() {
+                if (this.cancerOptionSelect) {
+                    return this.cancerOptionSelect.val;
+                }
+                return null;
             }
         }
     });

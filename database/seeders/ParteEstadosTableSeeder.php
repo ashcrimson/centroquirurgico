@@ -16,19 +16,18 @@ class ParteEstadosTableSeeder extends Seeder
     public function run()
     {
 
+//        \DB::table('parte_estados')->delete();
 
-        \DB::table('parte_estados')->delete();
+//        factory(ParteEstado::class,1)->create(['siglas' => 'TP','nombre' => 'Temporal']);
+//        factory(ParteEstado::class,1)->create(['siglas' => 'IG','nombre' => 'Ingresada']);
+//        factory(ParteEstado::class,1)->create(['siglas' => 'EA','nombre' => 'Enviada Admisión']);
+//        factory(ParteEstado::class,1)->create(['siglas' => 'LE','nombre' => 'Inscrito en lista de espera']);
+//        factory(ParteEstado::class,1)->create(['siglas' => 'PR','nombre' => 'Programado']);
+//        factory(ParteEstado::class,1)->create(['siglas' => 'SU','nombre' => 'Suspendido']);
+//        factory(ParteEstado::class,1)->create(['siglas' => 'AC','nombre' => 'Activación']);
+//        factory(ParteEstado::class,1)->create(['siglas' => 'EL','nombre' => 'Eliminado']);
 
-
-        factory(ParteEstado::class,1)->create(['siglas' => 'TP','nombre' => 'Temporal']);
-        factory(ParteEstado::class,1)->create(['siglas' => 'IG','nombre' => 'Ingresada']);
-        factory(ParteEstado::class,1)->create(['siglas' => 'EA','nombre' => 'Enviada Admisión']);
-        factory(ParteEstado::class,1)->create(['siglas' => 'LE','nombre' => 'Inscrito en lista de espera']);
-        factory(ParteEstado::class,1)->create(['siglas' => 'PR','nombre' => 'Programado']);
-        factory(ParteEstado::class,1)->create(['siglas' => 'SU','nombre' => 'Suspendido']);
-        factory(ParteEstado::class,1)->create(['siglas' => 'AC','nombre' => 'Activación']);
-        factory(ParteEstado::class,1)->create(['siglas' => 'EL','nombre' => 'Eliminado']);
-
+        ParteEstado::where('nombre', 'Activación')->update(['nombre' => 'Activado']);
 
     }
 }

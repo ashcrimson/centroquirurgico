@@ -268,7 +268,8 @@ class Parte extends Model
         'email' => 'nullable|string',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
-        'deleted_at' => 'nullable'
+        'deleted_at' => 'nullable',
+        'cancer' => 'required'
     ];
 
     /**
