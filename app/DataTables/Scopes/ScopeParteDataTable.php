@@ -134,7 +134,7 @@ class ScopeParteDataTable implements DataTableScope
 //            }
         }
 
-        if ($this->delListEspera && $this->alListEspera){
+        if ($this->delListEspera && $this->alListEspera) {
 
             $del = Carbon::parse($this->delListEspera);
             $al = Carbon::parse($this->alListEspera)->addDay();

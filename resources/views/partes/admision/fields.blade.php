@@ -325,7 +325,7 @@
             titular_carga: @json($parte->titular_carga ?? null),
 
 
-            prioridad_administrativa: @json($parte->prioridad_administrativa ?? false),
+            prioridad_administrativa: @json($parte->prioridad_administrativa ? true : false),
 
             derivacion: @json($parte->derivacion ?? null),
             reparticion: @json($parte->reparticion ?? null),

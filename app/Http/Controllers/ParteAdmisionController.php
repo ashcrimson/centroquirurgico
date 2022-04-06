@@ -45,10 +45,15 @@ class ParteAdmisionController extends Controller
 
         $idsEstadosDefecto = [
             ParteEstado::LISTA_ESPERA,
+            ParteEstado::PROGRAMADO,
+            ParteEstado::SUSPENDIDO,
         ];
 
         $scope->estados = $request->estados ?? $idsEstadosDefecto;
         $scope->lista_espera = true;
+        $scope->rut_paciente = $request->rut_paciente ?? null;
+        $scope->tipo_cirugia_id = $request->tipo_cirugia_id ?? null;
+        $scope->grupo_base_id = $request->grupo_base_id ?? null;
 
         $parteDataTable->addScope($scope);
 

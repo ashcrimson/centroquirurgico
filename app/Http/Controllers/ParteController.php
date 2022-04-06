@@ -63,6 +63,7 @@ class ParteController extends AppBaseController
         $scope->estados = $request->estados ?? $idsEstadosDefecto;
         $scope->users = auth()->user()->id;
         $scope->del = $request->del ?? null;
+        $scope->al = $request->al ?? null;
         $scope->rut_paciente = $request->rut_paciente ?? null;
         $scope->tipo_cirugia_id = $request->tipo_cirugia_id ?? null;
         $scope->grupo_base_id = $request->grupo_base_id ?? null;
@@ -331,6 +332,11 @@ class ParteController extends AppBaseController
 
             $scope->preop_medico = 1;
         }
+
+        $scope->rut_paciente = $request->rut_paciente ?? null;
+        $scope->tipo_cirugia_id = $request->tipo_cirugia_id ?? null;
+        $scope->grupo_base_id = $request->grupo_base_id ?? null;
+        $scope->prioridad_clinica = $request->prioridad ?? null;
 
         $dataTable->addScope($scope);
 
