@@ -15,7 +15,7 @@ class ParteListaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ParteDataTable $parteDataTable)
+    public function index(ParteDataTable $parteDataTable,Request $request)
     {
         $scope = new ScopeParteDataTable();
 
@@ -29,6 +29,8 @@ class ParteListaController extends Controller
         ];
 
         $scope->estados = $idsEstadosDefecto;
+        $scope->delListEspera = $request->del ?? null;
+        $scope->alListEspera = $request->al ?? null;
 
         $parteDataTable->addScope($scope);
 

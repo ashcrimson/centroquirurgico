@@ -16,6 +16,8 @@ class ScopeParteDataTable implements DataTableScope
     public $prioridad_administrativa;
     public $del;
     public $al;
+    public $delListEspera;
+    public $alListEspera;
     public $lista_espera;
     public $preop_anestesista;
     public $preop_eu;
@@ -114,6 +116,10 @@ class ScopeParteDataTable implements DataTableScope
             $query->where('prioridad',1);
         }
 
+        if ($this->lista_espera){
+            $query->whereNotNull('fecha_inscripcion');
+        }
+
         if ($this->del && $this->al){
 
             $del = Carbon::parse($this->del);
@@ -121,8 +127,22 @@ class ScopeParteDataTable implements DataTableScope
 
 //            if ($this->lista_espera){
 
+//                $query->whereBetween('fecha_inscripcion',[$del,$al]);
+//            } else {
+
+                $query->whereBetween('created_at',[$del,$al]);
+//            }
+        }
+
+        if ($this->delListEspera && $this->alListEspera){
+
+            $del = Carbon::parse($this->delListEspera);
+            $al = Carbon::parse($this->alListEspera)->addDay();
+
+//            if ($this->lista_espera){
+
                 $query->whereBetween('fecha_inscripcion',[$del,$al]);
-//            }else{
+//            } else {
 
 //                $query->whereBetween('created_at',[$del,$al]);
 //            }
