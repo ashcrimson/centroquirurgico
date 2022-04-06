@@ -78,7 +78,7 @@ class ParteAdmisionDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            ->addAction(['title' => 'Acciones','width' => '120px', 'printable' => false])
             ->ajax([
                 'data' => "function(data) { formatDataDataTables($('#formFiltersDatatables').serializeArray(), data);   }"
             ])
