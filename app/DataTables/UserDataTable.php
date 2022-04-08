@@ -54,7 +54,7 @@ class UserDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '15%', 'printable' => false])
+            ->addAction(['title' => 'Acciones','width' => '15%', 'printable' => false])
             ->parameters([
                 'dom'     => 'Bfltrip',
                 'order'   => [[1, 'asc']],

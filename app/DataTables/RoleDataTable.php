@@ -46,7 +46,7 @@ class RoleDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            ->addAction(['title' => 'Acciones','width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'     => 'Bfltrip',
                 'order'   => [[0, 'desc']],
