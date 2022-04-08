@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Parte;
 use App\Models\ParteEstado;
 use Illuminate\Database\Seeder;
 
@@ -27,7 +28,9 @@ class ParteEstadosTableSeeder extends Seeder
 //        factory(ParteEstado::class,1)->create(['siglas' => 'AC','nombre' => 'Activación']);
 //        factory(ParteEstado::class,1)->create(['siglas' => 'EL','nombre' => 'Eliminado']);
 
-        ParteEstado::where('nombre', 'Activación')->update(['nombre' => 'Activado']);
+//        ParteEstado::where('nombre', 'Activación')->update(['nombre' => 'Activado']);
+
+        ParteEstado::firstOrCreate(['nombre' => 'Operado']);
 
     }
 }
