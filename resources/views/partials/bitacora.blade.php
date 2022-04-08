@@ -4,8 +4,8 @@
     }
     .timeline>div>.timeline-item>.time {
         font-size:16px;
-        float:left;
-        position: relative;
+        /*float:left;*/
+        /*position: relative;*/
         top: -4px;
         color: #495057;
     }
@@ -63,6 +63,7 @@
                             <i class="fas fa-clock"></i>
                             <span v-text="item.creado_el"></span>
                         </span>
+
                         <h3 class="timeline-header">
                             <a href="#">
                                 <span v-text="item.user.name"></span>
