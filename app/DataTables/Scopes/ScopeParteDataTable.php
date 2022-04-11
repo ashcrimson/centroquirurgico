@@ -95,19 +95,19 @@ class ScopeParteDataTable implements DataTableScope
         }
 
         if ($this->preop_anestesista){
-            $query->where('control_preop_eu',1);
+            $query->where('control_preop_anestesista',1);
 //            ->whereNull('fecha_preop_anestesista_valida')
 
         }
 
         if ($this->preop_eu){
-            $query->where('control_preop_medico',1);
+            $query->where('control_preop_eu',1);
 //            ->whereNull('fecha_preop_eu_valida')
 
         }
 
         if ($this->preop_medico){
-            $query->where('control_preop_anestesista',1);
+            $query->where('control_preop_medico',1);
 //            ->whereNull('fecha_preop_medico_valida')
 
         }
