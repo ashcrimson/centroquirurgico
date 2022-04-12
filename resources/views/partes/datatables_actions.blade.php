@@ -7,19 +7,48 @@
             </a>
         </div>
         <div class="modal fade" id="modalFormValidaPreOpAnestesista{{$id}}">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Validar PreOp Anestesista</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
-                    <div class="modal-body">
-                        Seguro que desea validar?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                        <a href="{{route('partes.validar.store',['anestesia',$id])}}" type="button" class="btn btn-primary">Sí</a>
-                    </div>
+                    <form method="GET" action="{{ route('partes.validar.store', ['anestesia',$id]) }}" role="form" >
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-row col-sm-12">
+
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('indicaciones_preop_anestesista', 'Indicaciones:') !!}
+                                    <textarea class="form-control" name="indicaciones_preop_anestesista" rows="2" cols="2" required></textarea>
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('consentimiento_preop_anestesista', 'Consentimiento informado, firmado y archivado:') !!}
+                                    <select name="consentimiento_preop_anestesista" id="consentimiento_preop_anestesista" class="form-control" required >
+                                        <option value="">Selecciona...</option>
+                                        <option value="1" @if(old('consentimiento_preop_anestesista') == '1') selected @endif>SI</option>
+                                        <option value="0" @if(old('consentimiento_preop_anestesista') == '0') selected @endif>NO</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('pase_preop_anestesista', 'Pase:') !!}
+                                    <select name="pase_preop_anestesista" id="pase_preop_anestesista" class="form-control" required >
+                                        <option value="">Selecciona...</option>
+                                        <option value="1" @if(old('pase_preop_anestesista') == '1') selected @endif>SI</option>
+                                        <option value="0" @if(old('pase_preop_anestesista') == '0') selected @endif>NO</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+{{--                            href="{{route('partes.validar.store',['anestesia',$id])}}"--}}
+                            <button type="submit" class="btn btn-primary">Sí</button>
+                        </div>
+                    </form>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
@@ -34,19 +63,48 @@
             </a>
         </div>
         <div class="modal fade" id="modalFormValidaPreOpEU{{$id}}">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Validar PreOp EU</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
-                    <div class="modal-body">
-                        Seguro que desea validar?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                        <a href="{{route('partes.validar.store',['eu',$id])}}" type="button" class="btn btn-primary">Sí</a>
-                    </div>
+                    <form method="GET" action="{{route('partes.validar.store',['eu',$id])}}" role="form" >
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-row col-sm-12">
+
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('indicaciones_preop_eu', 'Indicaciones:') !!}
+                                    <textarea class="form-control" name="indicaciones_preop_eu" rows="2" cols="2" required></textarea>
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('consentimiento_preop_eu', 'Consentimiento informado, firmado y archivado:') !!}
+                                    <select name="consentimiento_preop_eu" id="consentimiento_preop_eu" class="form-control" required >
+                                        <option value="">Selecciona...</option>
+                                        <option value="1" @if(old('consentimiento_preop_eu') == '1') selected @endif>SI</option>
+                                        <option value="0" @if(old('consentimiento_preop_eu') == '0') selected @endif>NO</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('pase_preop_eu', 'Pase:') !!}
+                                    <select name="pase_preop_eu" id="pase_preop_eu" class="form-control" required >
+                                        <option value="">Selecciona...</option>
+                                        <option value="1" @if(old('pase_preop_eu') == '1') selected @endif>SI</option>
+                                        <option value="0" @if(old('pase_preop_eu') == '0') selected @endif>NO</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+{{--                            href="{{route('partes.validar.store',['eu',$id])}}"--}}
+                            <button type="submit" class="btn btn-primary">Sí</button>
+                        </div>
+                    </form>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
@@ -61,19 +119,48 @@
             </a>
         </div>
         <div class="modal fade" id="modalFormValidaPreOpMedico{{$id}}">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Validar PreOp Médico</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
-                    <div class="modal-body">
-                        Seguro que desea validar?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                        <a href="{{route('partes.validar.store',['medico',$id])}}" type="button" class="btn btn-primary">Sí</a>
-                    </div>
+                    <form method="GET" action="{{route('partes.validar.store',['medico',$id])}}" role="form" >
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-row col-sm-12">
+
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('indicaciones_preop_medico', 'Indicaciones:') !!}
+                                    <textarea class="form-control" name="indicaciones_preop_medico" rows="2" cols="2" required></textarea>
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('consentimiento_preop_medico', 'Consentimiento informado, firmado y archivado:') !!}
+                                    <select name="consentimiento_preop_medico" id="consentimiento_preop_medico" class="form-control" required >
+                                        <option value="">Selecciona...</option>
+                                        <option value="1" @if(old('consentimiento_preop_medico') == '1') selected @endif>SI</option>
+                                        <option value="0" @if(old('consentimiento_preop_medico') == '0') selected @endif>NO</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('pase_preop_medico', 'Pase:') !!}
+                                    <select name="pase_preop_medico" id="pase_preop_medico" class="form-control" required >
+                                        <option value="">Selecciona...</option>
+                                        <option value="1" @if(old('pase_preop_medico') == '1') selected @endif>SI</option>
+                                        <option value="0" @if(old('pase_preop_medico') == '0') selected @endif>NO</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+{{--                            href="{{route('partes.validar.store',['medico',$id])}}"--}}
+                            <button type="submit" class="btn btn-primary">Sí</button>
+                        </div>
+                    </form>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->

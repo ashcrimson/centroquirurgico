@@ -346,16 +346,24 @@ class ParteController extends AppBaseController
     public function validarPreopStore($tipo,Parte $parte)
     {
 
-
         switch ($tipo){
             case 'anestesia':
                 $parte->fecha_preop_anestesista_valida = Carbon::now();
+                $parte->indicaciones_preop_anestesista = request()->get('indicaciones_preop_anestesista') ?? null;
+                $parte->consentimiento_preop_anestesista = request()->get('consentimiento_preop_anestesista') ?? null;
+                $parte->pase_preop_anestesista = request()->get('pase_preop_anestesista') ?? null;
                 break;
             case 'eu':
                 $parte->fecha_preop_eu_valida = Carbon::now();
+                $parte->indicaciones_preop_eu = request()->get('indicaciones_preop_eu') ?? null;
+                $parte->consentimiento_preop_eu = request()->get('consentimiento_preop_eu') ?? null;
+                $parte->pase_preop_eu = request()->get('pase_preop_eu') ?? null;
                 break;
             case 'medico':
                 $parte->fecha_preop_medico_valida = Carbon::now();
+                $parte->indicaciones_preop_medico = request()->get('indicaciones_preop_medico') ?? null;
+                $parte->consentimiento_preop_medico = request()->get('consentimiento_preop_medico') ?? null;
+                $parte->pase_preop_medico = request()->get('pase_preop_medico') ?? null;
                 break;
         }
 

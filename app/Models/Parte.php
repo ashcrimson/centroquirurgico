@@ -85,6 +85,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $instrumental
  * @property string $observaciones
  * @property string $email
+ * @property boolean $consentimiento_preop_anestesista
+ * @property boolean $pase_preop_anestesista
+ * @property string $indicaciones_preop_anestesista
+ * @property boolean $consentimiento_preop_medico
+ * @property boolean $pase_preop_medico
+ * @property string $indicaciones_preop_medico
+ * @property boolean $consentimiento_preop_eu
+ * @property boolean $pase_preop_eu
+ * @property string $indicaciones_preop_eu
  */
 class Parte extends Model
 {
@@ -95,10 +104,7 @@ class Parte extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
     protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'paciente_id',
@@ -155,7 +161,16 @@ class Parte extends Model
         'consentimiento',
         'instrumental',
         'observaciones',
-        'email'
+        'email',
+        'consentimiento_preop_anestesista',
+        'pase_preop_anestesista',
+        'indicaciones_preop_anestesista',
+        'consentimiento_preop_medico',
+        'pase_preop_medico',
+        'indicaciones_preop_medico',
+        'consentimiento_preop_eu',
+        'pase_preop_eu',
+        'indicaciones_preop_eu',
     ];
 
     /**
