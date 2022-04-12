@@ -14,7 +14,7 @@ class AddFieldsToPartesTable extends Migration
     public function up()
     {
         Schema::table('partes', function (Blueprint $table) {
-            $table->boolean('consentimiento_preop_anestesista')->nullable();
+            $table->boolean('consentimiento_preop_anestesis')->nullable();
             $table->boolean('pase_preop_anestesista')->nullable();
             $table->string('indicaciones_preop_anestesista', 245)->nullable();
 
@@ -36,7 +36,7 @@ class AddFieldsToPartesTable extends Migration
     public function down()
     {
         Schema::table('partes', function (Blueprint $table) {
-            $table->dropColumn('consentimiento_preop_anestesista');
+            $table->dropColumn('consentimiento_preop_anestesis');
             $table->dropColumn('pase_preop_anestesista');
             $table->dropColumn('indicaciones_preop_anestesista');
             $table->dropColumn('consentimiento_preop_medico');

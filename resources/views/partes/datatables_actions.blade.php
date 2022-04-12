@@ -24,11 +24,11 @@
                                 </div>
 
                                 <div class="form-group col-sm-6">
-                                    {!! Form::label('consentimiento_preop_anestesista', 'Consentimiento informado, firmado y archivado:') !!}
-                                    <select name="consentimiento_preop_anestesista" id="consentimiento_preop_anestesista" class="form-control" required >
+                                    {!! Form::label('consentimiento_preop_anestesis', 'Consentimiento informado, firmado y archivado:') !!}
+                                    <select name="consentimiento_preop_anestesis" id="consentimiento_preop_anestesis" class="form-control" required >
                                         <option value="">Selecciona...</option>
-                                        <option value="1" @if(old('consentimiento_preop_anestesista') == '1') selected @endif>SI</option>
-                                        <option value="0" @if(old('consentimiento_preop_anestesista') == '0') selected @endif>NO</option>
+                                        <option value="1" @if(old('consentimiento_preop_anestesis') == '1') selected @endif>SI</option>
+                                        <option value="0" @if(old('consentimiento_preop_anestesis') == '0') selected @endif>NO</option>
                                     </select>
                                 </div>
 

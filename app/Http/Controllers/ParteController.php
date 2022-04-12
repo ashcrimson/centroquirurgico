@@ -350,7 +350,7 @@ class ParteController extends AppBaseController
             case 'anestesia':
                 $parte->fecha_preop_anestesista_valida = Carbon::now();
                 $parte->indicaciones_preop_anestesista = request()->get('indicaciones_preop_anestesista') ?? null;
-                $parte->consentimiento_preop_anestesista = request()->get('consentimiento_preop_anestesista') ?? null;
+                $parte->consentimiento_preop_anestesis = request()->get('consentimiento_preop_anestesis') ?? null;
                 $parte->pase_preop_anestesista = request()->get('pase_preop_anestesista') ?? null;
                 break;
             case 'eu':

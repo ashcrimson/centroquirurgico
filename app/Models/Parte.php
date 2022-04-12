@@ -85,7 +85,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $instrumental
  * @property string $observaciones
  * @property string $email
- * @property boolean $consentimiento_preop_anestesista
+ * @property boolean $consentimiento_preop_anestesis
  * @property boolean $pase_preop_anestesista
  * @property string $indicaciones_preop_anestesista
  * @property boolean $consentimiento_preop_medico
@@ -162,7 +162,7 @@ class Parte extends Model
         'instrumental',
         'observaciones',
         'email',
-        'consentimiento_preop_anestesista',
+        'consentimiento_preop_anestesis',
         'pase_preop_anestesista',
         'indicaciones_preop_anestesista',
         'consentimiento_preop_medico',

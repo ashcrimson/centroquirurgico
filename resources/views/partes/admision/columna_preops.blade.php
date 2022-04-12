@@ -44,7 +44,7 @@
                                     @if(!is_null($parte->fecha_preop_anestesista_valida))
                                         <tr>
                                             <td>{{ $parte->indicaciones_preop_anestesista }}</td>
-                                            <td>{{ $parte->consentimiento_preop_anestesista == 1 ? 'SI' : 'NO' }}</td>
+                                            <td>{{ $parte->consentimiento_preop_anestesis == 1 ? 'SI' : 'NO' }}</td>
                                             <td>{{ $parte->pase_preop_anestesista == 1 ? 'SI' : 'NO' }}</td>
                                         </tr>
                                     @endif
