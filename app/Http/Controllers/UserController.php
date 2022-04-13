@@ -48,7 +48,10 @@ class UserController extends AppBaseController
      */
     public function create()
     {
-        return view('admin.users.create');
+
+        $user = auth()->user();
+
+        return view('admin.users.create', compact('user'));
     }
 
     /**
