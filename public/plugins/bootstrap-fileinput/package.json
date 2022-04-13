@@ -1,4 +1,11 @@
 {
+  "_args": [
+    [
+      "bootstrap-fileinput@5.2.6",
+      "C:\\laragon\\www\\centroqx"
+    ]
+  ],
+  "_development": true,
   "_from": "bootstrap-fileinput@5.2.6",
   "_id": "bootstrap-fileinput@5.2.6",
   "_inBundle": false,
@@ -16,20 +23,17 @@
     "fetchSpec": "5.2.6"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/bootstrap-fileinput/-/bootstrap-fileinput-5.2.6.tgz",
-  "_shasum": "9518692f62939b9a7c714a3812dc4659032fd75c",
-  "_spec": "bootstrap-fileinput@5.2.6",
-  "_where": "C:\\laragon\\www\\centroqx2",
+  "_spec": "5.2.6",
+  "_where": "C:\\laragon\\www\\centroqx",
   "authors": [
     "Kartik Visweswaran <kartikv2@gmail.com>"
   ],
   "bugs": {
     "url": "https://github.com/kartik-v/bootstrap-fileinput/issues"
   },
-  "bundleDependencies": false,
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/bootstrap-fileinput"
@@ -39,7 +43,6 @@
     "jquery": ">= 1.9.0",
     "opencollective-postinstall": "^2.0.2"
   },
-  "deprecated": false,
   "description": "An enhanced HTML 5 file input for Bootstrap 5.x, 4.x, and 3.x with file preview, multiple selection, ajax uploads, and more features.",
   "homepage": "https://github.com/kartik-v/bootstrap-fileinput",
   "keywords": [
