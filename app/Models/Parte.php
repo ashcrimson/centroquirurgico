@@ -81,6 +81,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property boolean $control_preop_anestesista
  * @property string|\Carbon\Carbon $fecha_preop_anestesista
  * @property string|\Carbon\Carbon $fecha_preop_anestesista_valida
+ * @property boolean $control_banco_sangre
+ * @property string|\Carbon\Carbon $fecha_banco_sangre
+ * @property string|\Carbon\Carbon $fecha_banco_sangre_valida
  * @property boolean $consentimiento
  * @property string $instrumental
  * @property string $observaciones
@@ -94,6 +97,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property boolean $consentimiento_preop_eu
  * @property boolean $pase_preop_eu
  * @property string $indicaciones_preop_eu
+ * @property integer $cantidad_donantes
+ * @property boolean $pase_banco_sagre
  */
 class Parte extends Model
 {
@@ -171,6 +176,11 @@ class Parte extends Model
         'consentimiento_preop_eu',
         'pase_preop_eu',
         'indicaciones_preop_eu',
+        'control_banco_sangre',
+        'fecha_banco_sangre',
+        'fecha_banco_sangre_valida',
+        'cantidad_donantes',
+        'pase_banco_sagre',
     ];
 
     /**
@@ -230,7 +240,12 @@ class Parte extends Model
         'consentimiento' => 'boolean',
         'instrumental' => 'string',
         'observaciones' => 'string',
-        'email' => 'string'
+        'email' => 'string',
+        'control_banco_sangre' => 'boolean',
+        'fecha_banco_sangre' => 'datetime',
+        'fecha_banco_sangre_valida' => 'datetime',
+        'cantidad_donantes' => 'integer',
+        'pase_banco_sagre' => 'boolean',
     ];
 
     /**
@@ -284,7 +299,12 @@ class Parte extends Model
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable',
-        'cancer' => 'required'
+        'cancer' => 'required',
+        'control_banco_sangre' => 'nullable',
+        'fecha_banco_sangre' => 'nullable',
+        'fecha_banco_sangre_valida' => 'nullable',
+        'cantidad_donantes' => 'nullable',
+        'pase_banco_sagre' => 'nullable',
     ];
 
     /**

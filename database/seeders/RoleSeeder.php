@@ -89,8 +89,5 @@ class RoleSeeder extends Seeder
             31, //partes
         ]);
 
-
-
-
     }
 }

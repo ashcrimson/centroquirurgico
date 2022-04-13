@@ -44,7 +44,8 @@ class ParteController extends AppBaseController
             return redirect(route('admision.partes'));
         }
 
-        if (auth()->user()->hasAnyRole(Role::PREOP_MEDICO,Role::PREOP_EU,Role::PREOP_ANESTESISTA)){
+        if (auth()->user()->hasAnyRole(Role::PREOP_MEDICO,Role::PREOP_EU,Role::PREOP_ANESTESISTA
+            ,Role::BANCO_SANGRE)){
             return redirect(route('partes.validar.index'));
         }
 
@@ -333,6 +334,11 @@ class ParteController extends AppBaseController
             $scope->preop_medico = 1;
         }
 
+        if (auth()->user()->hasRole(Role::BANCO_SANGRE)){
+
+            $scope->banco_sangre = 1;
+        }
+
         $scope->rut_paciente = $request->rut_paciente ?? null;
         $scope->tipo_cirugia_id = $request->tipo_cirugia_id ?? null;
         $scope->grupo_base_id = $request->grupo_base_id ?? null;
@@ -364,6 +370,11 @@ class ParteController extends AppBaseController
                 $parte->indicaciones_preop_medico = request()->get('indicaciones_preop_medico') ?? null;
                 $parte->consentimiento_preop_medico = request()->get('consentimiento_preop_medico') ?? null;
                 $parte->pase_preop_medico = request()->get('pase_preop_medico') ?? null;
+                break;
+            case 'banco_sangre':
+                $parte->fecha_banco_sangre_valida = Carbon::now();
+                $parte->cantidad_donantes = request()->get('cantidad_donantes') ?? null;
+                $parte->pase_banco_sagre = request()->get('pase_banco_sagre') ?? null;
                 break;
         }
 

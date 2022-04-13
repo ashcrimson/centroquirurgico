@@ -25,6 +25,7 @@ class ScopeParteDataTable implements DataTableScope
     public $rut_paciente;
     public $tipo_cirugia_id;
     public $grupo_base_id;
+    public $banco_sangre;
 
 
     public function __construct()
@@ -109,6 +110,11 @@ class ScopeParteDataTable implements DataTableScope
         if ($this->preop_medico){
             $query->where('control_preop_medico',1);
 //            ->whereNull('fecha_preop_medico_valida')
+
+        }
+
+        if ($this->banco_sangre){
+            $query->where('control_banco_sangre', 1);
 
         }
 

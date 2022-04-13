@@ -47,9 +47,19 @@
                                 Anestesista
                             </span>
                         @endif
+                        <br>
+                        @if($parte->pase_banco_sagre == 0 && !is_null($parte->fecha_banco_sangre_valida))
+                            <span class="badge badge-danger">
+                                Banco Sangre
+                            </span>
+                        @else
+                            <span class="badge {{is_null($parte->fecha_banco_sangre_valida) ? 'badge-secondary' : 'badge-success'}}">
+                                Banco Sangre
+                            </span>
+                        @endif
 
                         @if(!is_null($parte->fecha_preop_eu_valida) || !is_null($parte->fecha_preop_medico_valida)
-                            || !is_null($parte->fecha_preop_anestesista_valida))
+                            || !is_null($parte->fecha_preop_anestesista_valida || !is_null($parte->fecha_banco_sangre_valida)))
                             <table class="table table-condensed table-hover table-bordered " >
                                 <thead>
                                 <tr>
@@ -78,6 +88,13 @@
                                             <td>{{ $parte->indicaciones_preop_medico }}</td>
                                             <td>{{ $parte->consentimiento_preop_medico == 1 ? 'SI' : 'NO' }}</td>
                                             <td>{{ $parte->pase_preop_medico == 1 ? 'SI' : 'NO' }}</td>
+                                        </tr>
+                                    @endif
+                                    @if(!is_null($parte->fecha_banco_sangre_valida))
+                                        <tr>
+                                            <td>Donantes: {{ $parte->cantidad_donantes }}</td>
+                                            <td></td>
+                                            <td>{{ $parte->pase_banco_sagre == 1 ? 'SI' : 'NO' }}</td>
                                         </tr>
                                     @endif
                                 </tbody>

@@ -93,6 +93,9 @@ class ParteValidaDataTable extends DataTable
         if($user->hasRole(Role::PREOP_MEDICO) ){
             $campoFecha = 'fecha_preop_medico_valida';
         }
+        if($user->hasRole(Role::BANCO_SANGRE) ){
+            $campoFecha = 'fecha_banco_sangre_valida';
+        }
 
         return $model->newQuery()->orderBy($campoFecha)->with(['paciente', 'especialidad', 'preoperatorio', 'estado','grupoBase']);
     }

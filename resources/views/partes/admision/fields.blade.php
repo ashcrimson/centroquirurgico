@@ -200,6 +200,33 @@
     </div>
 
     <div class="row">
+
+        <!-- Banco Sangre -->
+        <div class="form-group col-sm-3">
+            <label for="">Control Banco Sangre:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="control_banco_sangre"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="control_banco_sangre" :value="control_banco_sangre ? 1 : 0">
+            </div>
+        </div>
+
+        <div class="form-group col-sm-3" v-show="control_banco_sangre">
+            {!! Form::label('fecha_banco_sangre', 'Fecha Banco Sangre') !!}
+            {!! Form::date('fecha_banco_sangre', fechaEn($parte->fecha_banco_sangre), ['id' => 'fecha_banco_sangre','class' => 'form-control','id'=>'fecha_banco_sangre']) !!}
+
+        </div>
+
+    </div>
+
+    <div class="row">
         <!-- Correo Electrónico -->
         <div class="form-group col-sm-3">
             {!! Form::label('email', 'Correo Electrónico:') !!}
@@ -320,6 +347,7 @@
             control_preop_eu: @json($parte->control_preop_eu ?? null),
             control_preop_medico: @json($parte->control_preop_medico ?? null),
             control_preop_anestesista: @json($parte->control_preop_anestesista ?? null),
+            control_banco_sangre: @json($parte->control_banco_sangre ?? null),
 
             convenio: @json($parte->convenio ?? null),
             titular_carga: @json($parte->titular_carga ?? null),

@@ -167,6 +167,53 @@
     @endif
 @endrole
 
+@role('Banco de Sangre')
+    @if(!$parte->fecha_banco_sangre_valida)
+        <div data-toggle="tooltip" title="Valida Banco Sangre">
+            <a class="btn btn-outline-success btn-sm" data-toggle="modal" href="#modalFormValidabancoSangre{{$id}}">
+                <i class="fa fa-check"></i>
+            </a>
+        </div>
+        <div class="modal fade" id="modalFormValidabancoSangre{{$id}}">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Validar Banco Sangre</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <form method="GET" action="{{route('partes.validar.store',['banco_sangre',$id])}}" role="form" >
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-row col-sm-12">
+
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('cantidad_donantes', 'Cantidad Donantes:') !!}
+                                    <input type="number" class="form-control" name="cantidad_donantes" required >
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('pase_banco_sagre', 'Pase:') !!}
+                                    <select name="pase_banco_sagre" id="pase_banco_sagre" class="form-control" required >
+                                        <option value="">Selecciona...</option>
+                                        <option value="1" @if(old('pase_banco_sagre') == '1') selected @endif>SI</option>
+                                        <option value="0" @if(old('pase_banco_sagre') == '0') selected @endif>NO</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                            {{--                            href="{{route('partes.validar.store',['medico',$id])}}"--}}
+                            <button type="submit" class="btn btn-primary">Sí</button>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    @endif
+@endrole
+
 @can('Ver Partes')
 <a href="{{ route('partes.show', $id) }}" data-toggle="tooltip" title="Ver" class='btn btn-default btn-sm'>
     <i class="fa fa-eye"></i>

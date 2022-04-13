@@ -185,6 +185,9 @@ class User extends Authenticatable implements  MustVerifyEmail,HasMedia
         if($this->hasRole(Role::PREOP_MEDICO) && $parte->fecha_preop_medico_valida){
             return true;
         }
+        if($this->hasRole(Role::BANCO_SANGRE) && $parte->fecha_banco_sangre_valida){
+            return true;
+        }
 
         return false;
     }
