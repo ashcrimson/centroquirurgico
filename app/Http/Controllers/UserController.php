@@ -63,14 +63,16 @@ class UserController extends AppBaseController
      */
     public function store(CreateUserRequest $request)
     {
-        $input = $request->all();
+        $request->merge([
+            "password" => bcrypt($request->get('password')),
+        ]);
 
         try {
             DB::beginTransaction();
 
 
             /** @var User $user */
-            $user = User::create($input);
+            $user = User::create($request->all());
 
             if ($request->hasFile('avatar')){
                 $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');

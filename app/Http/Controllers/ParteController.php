@@ -38,8 +38,6 @@ class ParteController extends AppBaseController
     public function index(ParteDataTable $parteDataTable,Request $request)
     {
 
-
-
         if (auth()->user()->hasRole(Role::ADMISION)){
             return redirect(route('admision.partes'));
         }
@@ -335,7 +333,6 @@ class ParteController extends AppBaseController
         }
 
         if (auth()->user()->hasRole(Role::BANCO_SANGRE)){
-
             $scope->banco_sangre = 1;
         }
 

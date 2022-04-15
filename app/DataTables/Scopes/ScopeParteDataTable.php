@@ -115,7 +115,6 @@ class ScopeParteDataTable implements DataTableScope
 
         if ($this->banco_sangre){
             $query->where('control_banco_sangre', 1);
-
         }
 
         if ($this->prioridad_clinica){
