@@ -31,6 +31,7 @@ class ParteEstado extends Model
     const SUSPENDIDO =          6;
     const ACTIVACION =          7;
     const ELIMINADO =           8;
+    const OPERADO =           21;
 
 
     protected $dates = ['deleted_at'];

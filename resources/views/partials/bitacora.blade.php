@@ -211,7 +211,7 @@
             estadoProgramado(){
 
                 if (this.estado){
-                    return this.estado.id == @json(\App\Models\ParteEstado::PROGRAMADO)
+                    return this.estado.id == @json(\App\Models\ParteEstado::PROGRAMADO) || this.estado.id == @json(\App\Models\ParteEstado::OPERADO)
 
                 }
 
