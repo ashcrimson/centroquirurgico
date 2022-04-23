@@ -27,6 +27,7 @@ class ScopeParteDataTable implements DataTableScope
     public $grupo_base_id;
     public $banco_sangre;
     public $examen_realizado;
+    public $tiene_cancer;
 
 
     public function __construct()
@@ -170,6 +171,13 @@ class ScopeParteDataTable implements DataTableScope
 
         if ($this->examen_realizado) {
             $query->where('examenes_realizados', 1);
+        }
+
+        if ($this->tiene_cancer == 1) {
+            $query->where('cancer', 1);
+        }
+        if ($this->tiene_cancer == 2) {
+            $query->where('cancer', 0);
         }
     }
 }

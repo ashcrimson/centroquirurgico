@@ -32,6 +32,13 @@
         </div>
 
         <div class="form-group col-sm-3">
+            {!! Form::label('tiene_cancer', 'Tiene Cancer:') !!}
+            <multiselect v-model="tiene_cancer" :options="select_tiene_cancer" label="nombre" placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="tiene_cancer" :value="tiene_cancer ? tiene_cancer.id : null">
+        </div>
+
+        <div class="form-group col-sm-3">
             <label for="">Exámenes Realizado:</label>
             <div class="text-lg">
 
@@ -134,7 +141,8 @@
                 user: null,
 
                 examen_realizado: null,
-                select_examen_realizado: [
+                tiene_cancer: null,
+                select_tiene_cancer: [
                     {
                         id: 1,
                         nombre: 'SI'
