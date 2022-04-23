@@ -31,6 +31,7 @@ class ParteAdmisionController extends Controller
         ];
 
         $scope->estados = $request->estados ?? $idsEstadosDefecto;
+        $scope->examen_realizado = $request->get('examen_realizado') ?? null;
 
         $parteDataTable->addScope($scope);
 

@@ -32,6 +32,22 @@
         </div>
 
         <div class="form-group col-sm-3">
+            <label for="">Exámenes Realizado:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="examen_realizado"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="examen_realizado" :value="examen_realizado ? 1 : 0">
+            </div>
+        </div>
+
+        <div class="form-group col-sm-3">
 
             <label for="">Prioridad administrativa:</label>
             <div class="text-lg">
@@ -117,6 +133,17 @@
                 users : @json(\App\Models\User::role([\App\Models\Role::MEDICO])->get() ?? []),
                 user: null,
 
+                examen_realizado: null,
+                select_examen_realizado: [
+                    {
+                        id: 1,
+                        nombre: 'SI'
+                    },
+                    {
+                        id: 2,
+                        nombre: 'NO'
+                    },
+                ]
 
             },
             methods: {
