@@ -63,6 +63,7 @@
                             <table class="table table-condensed table-hover table-bordered " >
                                 <thead>
                                 <tr>
+                                    <th>Tipo Examen</th>
                                     <th>Indicaciones</th>
                                     <th>Consentimiento</th>
                                     <th>Pase</th>
@@ -71,6 +72,17 @@
                                 <tbody>
                                     @if(!is_null($parte->fecha_preop_anestesista_valida))
                                         <tr>
+                                            <td>
+                                                @if($parte->pase_preop_anestesista == 0 && !is_null($parte->fecha_preop_anestesista_valida))
+                                                    <span class="badge badge-danger">
+                                                        Anestesista
+                                                    </span>
+                                                @else
+                                                    <span class="badge {{is_null($parte->fecha_preop_anestesista_valida) ? 'badge-secondary' : 'badge-success'}}">
+                                                        Anestesista
+                                                    </span>
+                                                @endif
+                                            </td>
                                             <td>{{ $parte->indicaciones_preop_anestesista }}</td>
                                             <td>{{ $parte->consentimiento_preop_anestesis == 1 ? 'SI' : 'NO' }}</td>
                                             <td>{{ $parte->pase_preop_anestesista == 1 ? 'SI' : 'NO' }}</td>
@@ -78,6 +90,17 @@
                                     @endif
                                     @if(!is_null($parte->fecha_preop_eu_valida))
                                         <tr>
+                                            <td>
+                                                @if($parte->pase_preop_eu == 0 && !is_null($parte->fecha_preop_eu_valida))
+                                                    <span class="badge badge-danger">
+                                                        EU
+                                                    </span>
+                                                @else
+                                                    <span class="badge {{is_null($parte->fecha_preop_eu_valida) ? 'badge-secondary' : 'badge-success'}}">
+                                                        EU
+                                                    </span>
+                                                @endif
+                                            </td>
                                             <td>{{ $parte->indicaciones_preop_eu }}</td>
                                             <td>{{ $parte->consentimiento_preop_eu == 1 ? 'SI' : 'NO' }}</td>
                                             <td>{{ $parte->pase_preop_eu == 1 ? 'SI' : 'NO' }}</td>
@@ -85,6 +108,17 @@
                                     @endif
                                     @if(!is_null($parte->fecha_preop_medico_valida))
                                         <tr>
+                                            <td>
+                                                @if($parte->pase_preop_medico == 0 && !is_null($parte->fecha_preop_medico_valida))
+                                                    <span class="badge badge-danger">
+                                                        Medico
+                                                    </span>
+                                                @else
+                                                    <span class="badge {{is_null($parte->fecha_preop_medico_valida) ? 'badge-secondary' : 'badge-success'}}">
+                                                        Medico
+                                                    </span>
+                                                @endif
+                                            </td>
                                             <td>{{ $parte->indicaciones_preop_medico }}</td>
                                             <td>{{ $parte->consentimiento_preop_medico == 1 ? 'SI' : 'NO' }}</td>
                                             <td>{{ $parte->pase_preop_medico == 1 ? 'SI' : 'NO' }}</td>
@@ -92,6 +126,17 @@
                                     @endif
                                     @if(!is_null($parte->fecha_banco_sangre_valida))
                                         <tr>
+                                            <td>
+                                                @if($parte->pase_banco_sagre == 0 && !is_null($parte->fecha_banco_sangre_valida))
+                                                    <span class="badge badge-danger">
+                                                        Banco Sangre
+                                                    </span>
+                                                @else
+                                                    <span class="badge {{is_null($parte->fecha_banco_sangre_valida) ? 'badge-secondary' : 'badge-success'}}">
+                                                        Banco Sangre
+                                                    </span>
+                                                @endif
+                                            </td>
                                             <td>Donantes: {{ $parte->cantidad_donantes }}</td>
                                             <td></td>
                                             <td>{{ $parte->pase_banco_sagre == 1 ? 'SI' : 'NO' }}</td>
