@@ -54,6 +54,7 @@ class ParteAdmisionController extends Controller
             ParteEstado::ACTIVACION,
             ParteEstado::ELIMINADO,
             ParteEstado::OPERADO,
+            ParteEstado::POR_ACTIVAR,
         ];
 
         $scope->estados = $request->estados ?? $idsEstadosDefecto;
