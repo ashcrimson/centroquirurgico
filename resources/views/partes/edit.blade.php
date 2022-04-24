@@ -36,7 +36,7 @@
             <div class="card">
                 <div class="card-body">
 
-                   {!! Form::model($parte, ['route' => ['partes.update', $parte->id], 'method' => 'patch','class' => 'wait-on-submit']) !!}
+                   {!! Form::model($parte, ['route' => ['partes.update', $parte->id], 'method' => 'patch','class' => 'wait-on-submit', 'id' => 'guardarEnviarFormEdit']) !!}
                         <div class="form-row">
 
                             @include('partes.fields')
@@ -53,7 +53,7 @@
 
 
                                 @if($parte->puedeEnviarAdmision())
-                                <button type="submit" class="btn btn-outline-primary ml-3" name="enviar_admin" value="1">
+                                <button type="button" onclick="confirmarGuardarEnviar()" class="btn btn-outline-primary ml-3" name="enviar_admin" value="1">
                                     <i class="fa fa-paper-plane"></i> Guardar y Enviar
                                 </button>
                                 @endif
@@ -61,9 +61,61 @@
                         </div>
 
                    {!! Form::close() !!}
+
+                    <div class="modal fade" id="modalForm" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog " role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="modelTitleId">
+                                        Guardar y Enviar a Admisión
+                                    </h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        ¿Estás seguro de guardar y enviar a Admisión?
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        Cerrar
+                                    </button>
+                                    <button type="button" class="btn btn-danger" onclick="guardarEnviar()">
+                                        Guardar Y Enviar Admisión
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 
 @endsection
+
+@push('scripts')
+    <script>
+
+        function confirmarGuardarEnviar() {
+            $('#modalForm').modal('show');
+        }
+
+        function guardarEnviar() {
+            Swal.fire({
+                title: 'Espera por favor...',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                timerProgressBar: true,
+            });
+
+            Swal.showLoading();
+
+            document.getElementById("guardarEnviarFormEdit").submit();
+        }
+
+    </script>
+@endpush
