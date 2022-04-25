@@ -76,6 +76,8 @@
                                 <div class="modal-body">
                                     <div class="row">
                                         ¿Estás seguro de guardar y enviar a Admisión?
+                                        <br>
+                                        Indique al paciente que se dirija a admisión
                                     </div>
                                 </div>
                                 <div class="modal-footer">
