@@ -53,7 +53,7 @@
 
 
                                 @if($parte->puedeEnviarAdmision())
-                                <button type="button" onclick="confirmarGuardarEnviar()" class="btn btn-outline-primary ml-3" name="enviar_admin" value="1">
+                                <button type="button" onclick="confirmarGuardarEnviar()" class="btn btn-outline-primary ml-3">
                                     <i class="fa fa-paper-plane"></i> Guardar y Enviar
                                 </button>
                                 @endif
@@ -84,7 +84,7 @@
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                         Cerrar
                                     </button>
-                                    <button type="button" class="btn btn-danger" onclick="guardarEnviar()">
+                                    <button type="submit" class="btn btn-danger" onclick="guardarEnviar()" name="enviar_admin" id="enviar_admin" value="1">
                                         Guardar Y Enviar Admisión
                                     </button>
                                 </div>
@@ -116,7 +116,9 @@
 
             Swal.showLoading();
 
-            document.getElementById("guardarEnviarFormEdit").submit();
+            // $("#enviar_admin").val(1);
+            //
+            // document.getElementById("guardarEnviarFormEdit").submit();
         }
 
     </script>

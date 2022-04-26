@@ -71,7 +71,6 @@ class ParteAdmisionController extends Controller
         return $parteDataTable->render('partes.admision.lista_espera',compact('estados'));
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
