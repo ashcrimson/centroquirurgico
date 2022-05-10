@@ -39,6 +39,13 @@
         </div>
 
         <div class="form-group col-sm-3">
+            {!! Form::label('especialidad_id', 'Especialidades:') !!}
+            <multiselect v-model="especialidad" :options="especialidades" label="nombre" placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="especialidad_id" id="especialidad_id" :value="especialidadId">
+        </div>
+
+        <div class="form-group col-sm-3">
             <label for="">Exámenes Realizado:</label>
             <div class="text-lg">
 
@@ -85,7 +92,7 @@
                                :font-size="16"
                 ></toggle-button>
 
-                <input type="hidden" name="prioridad" :value="prioridad ? 1 : 0">
+                <input type="hidden" name="prioridad_clinica" :value="prioridad ? 1 : 0">
             </div>
 
         </div>
@@ -130,6 +137,8 @@
             name: 'fromFiltersPartes',
             created() {
 
+                this.especialidadId;
+
             },
             data: {
                 estados : @json($estados ?? []),
@@ -151,14 +160,22 @@
                         id: 2,
                         nombre: 'NO'
                     },
-                ]
+                ],
+
+                especialidades: @json(\App\Models\Especialidad::all() ?? []),
+                especialidad: null,
 
             },
             methods: {
 
             },
             computed:{
-
+                especialidadId() {
+                    if (this.especialidad) {
+                        return this.especialidad.id;
+                    }
+                    return null;
+                }
             }
         });
     </script>

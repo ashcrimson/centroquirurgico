@@ -28,18 +28,21 @@ class ScopeParteDataTable implements DataTableScope
     public $banco_sangre;
     public $examen_realizado;
     public $tiene_cancer;
-
+    public $especialidad_id;
 
     public function __construct()
     {
         $this->estados = request()->estados ?? null;
         $this->pacientes = request()->pacientes ?? null;
-        $this->medicos = request()->medicos ?? null;
+        $this->medicos = request()->users ?? null;
         $this->prioridad_administrativa = request()->prioridad_administrativa ?? null;
         $this->prioridad_clinica = request()->prioridad_clinica ?? null;
         $this->del = request()->del ?? null;
         $this->al = request()->al ?? null;
         $this->lista_espera = request()->lista_espera ?? false;
+        $this->especialidad_id = request()->especialidad_id ?? false;
+        $this->tiene_cancer = request()->tiene_cancer ?? false;
+        $this->rut_paciente = request()->rut_paciente ?? false;
     }
 
 
@@ -61,14 +64,9 @@ class ScopeParteDataTable implements DataTableScope
         }
 
         if ($this->estados){
-
             if (is_array($this->estados)){
-
-
-                    $query->whereIn('estado_id',$this->estados);
-
+                $query->whereIn('estado_id',$this->estados);
             }else{
-
                 $query->where('estado_id',$this->estados);
             }
         }
@@ -87,9 +85,9 @@ class ScopeParteDataTable implements DataTableScope
 
         if ($this->medicos){
             if (is_array($this->medicos)){
-                $query->whereIn('user_crea',$this->medicos);
+                $query->whereIn('user_ingresa',$this->medicos);
             }else{
-                $query->where('user_crea',$this->medicos);
+                $query->where('user_ingresa',$this->medicos);
             }
         }
 
@@ -99,20 +97,14 @@ class ScopeParteDataTable implements DataTableScope
 
         if ($this->preop_anestesista){
             $query->where('control_preop_anestesista',1);
-//            ->whereNull('fecha_preop_anestesista_valida')
-
         }
 
         if ($this->preop_eu){
             $query->where('control_preop_eu',1);
-//            ->whereNull('fecha_preop_eu_valida')
-
         }
 
         if ($this->preop_medico){
             $query->where('control_preop_medico',1);
-//            ->whereNull('fecha_preop_medico_valida')
-
         }
 
         if ($this->banco_sangre){
@@ -145,9 +137,7 @@ class ScopeParteDataTable implements DataTableScope
 
             $del = Carbon::parse($this->delListEspera);
             $al = Carbon::parse($this->alListEspera)->addDay();
-
 //            if ($this->lista_espera){
-
                 $query->whereBetween('fecha_inscripcion',[$del,$al]);
 //            } else {
 
@@ -176,8 +166,13 @@ class ScopeParteDataTable implements DataTableScope
         if ($this->tiene_cancer == '1') {
             $query->where('cancer', 1);
         }
+
         if ($this->tiene_cancer == '2') {
             $query->where('cancer', 0);
+        }
+
+        if ($this->especialidad_id) {
+            $query->where('especialidad_id', $this->especialidad_id);
         }
     }
 }

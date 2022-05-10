@@ -75,7 +75,6 @@ class ParteController extends AppBaseController
         return $parteDataTable->render('partes.index',compact('estados'));
     }
 
-
     /**
      * Show the form for creating a new Parte.
      *
@@ -310,26 +309,19 @@ class ParteController extends AppBaseController
         return $sol;
     }
 
-
-    public function validarPreop(ParteValidaDataTable $dataTable)
+    public function validarPreop(ParteValidaDataTable $dataTable, Request $request)
     {
         $scope = new ScopeParteDataTable();
 
         if (auth()->user()->hasRole(Role::PREOP_ANESTESISTA)){
-
             $scope->preop_anestesista = 1;
         }
-
         if (auth()->user()->hasRole(Role::PREOP_EU)){
-
             $scope->preop_eu = 1;
         }
-
         if (auth()->user()->hasRole(Role::PREOP_MEDICO)){
-
             $scope->preop_medico = 1;
         }
-
         if (auth()->user()->hasRole(Role::BANCO_SANGRE)){
             $scope->banco_sangre = 1;
         }
@@ -338,6 +330,7 @@ class ParteController extends AppBaseController
         $scope->tipo_cirugia_id = $request->tipo_cirugia_id ?? null;
         $scope->grupo_base_id = $request->grupo_base_id ?? null;
         $scope->prioridad_clinica = $request->prioridad ?? null;
+        $scope->especialidad_id = $request->especialidad_id ?? null;
 
         $dataTable->addScope($scope);
 

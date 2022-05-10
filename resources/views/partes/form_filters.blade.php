@@ -70,6 +70,13 @@
 {{--        </div>--}}
 
         <div class="form-group col-sm-3">
+            {!! Form::label('especialidad_id', 'Especialidades:') !!}
+            <multiselect v-model="especialidad" :options="especialidades" label="nombre" placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="especialidad_id" :value="especialidad ? especialidad.id : null">
+        </div>
+
+        <div class="form-group col-sm-3">
 
             <label for="">Prioridad clínica:</label>
             <div class="text-lg">
@@ -142,6 +149,9 @@
 
                 grupoBases: @json(\App\Models\GrupoBase::all() ?? []),
                 grupoBase: null,
+
+                especialidades: @json(\App\Models\Especialidad::all() ?? []),
+                especialidad: null,
             },
             methods: {
 
