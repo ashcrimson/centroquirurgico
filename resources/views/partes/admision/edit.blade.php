@@ -58,9 +58,9 @@
                                             Cancelar
                                         </a>
                                         &nbsp;
-                                        <button type="submit" class="btn btn-outline-success">
-                                            <i class="fa fa-floppy-o"></i> Guardar
-                                        </button>
+{{--                                        <button type="submit" class="btn btn-outline-success">--}}
+{{--                                            <i class="fa fa-floppy-o"></i> Guardar--}}
+{{--                                        </button>--}}
 
                                         <button type="submit" class="btn btn-outline-primary ml-2" value="1" name="lista_espera">
                                             <i class="fa fa-floppy-o"></i> Ingresar a lista de espera
