@@ -97,6 +97,13 @@
 
         </div>
 
+        <div class="form-group col-sm-3">
+            {!! Form::label('grupo_base_id', 'Grupo Base:') !!}
+            <multiselect v-model="grupobase" :options="grupobases" label="nombre" placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="grupo_base_id" id="grupo_base_id" :value="grupoBaseId">
+        </div>
+
         <div class="form-group col-sm-2">
             <label for="">&nbsp;</label>
             <div>
@@ -138,6 +145,7 @@
             created() {
 
                 this.especialidadId;
+                this.grupoBaseId;
 
             },
             data: {
@@ -165,6 +173,9 @@
                 especialidades: @json(\App\Models\Especialidad::all() ?? []),
                 especialidad: null,
 
+                grupobases: @json(\App\Models\GrupoBase::all() ?? []),
+                grupobase: null,
+
             },
             methods: {
 
@@ -173,6 +184,12 @@
                 especialidadId() {
                     if (this.especialidad) {
                         return this.especialidad.id;
+                    }
+                    return null;
+                },
+                grupoBaseId() {
+                    if (this.grupobase) {
+                        return this.grupobase.id;
                     }
                     return null;
                 }
