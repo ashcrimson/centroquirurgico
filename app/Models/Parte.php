@@ -181,6 +181,8 @@ class Parte extends Model
         'fecha_banco_sangre_valida',
         'cantidad_donantes',
         'pase_banco_sagre',
+        'evaluacion_especialidad',
+        'indique_especialidad',
     ];
 
     /**
