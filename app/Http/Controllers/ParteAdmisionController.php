@@ -33,6 +33,7 @@ class ParteAdmisionController extends Controller
         $scope->estados = $request->estados ?? $idsEstadosDefecto;
         $scope->examen_realizado = $request->get('examen_realizado') ?? null;
         $scope->grupo_base_id = $request->get('grupo_base_id') ?? null;
+        $scope->tipo_cirugia_id = $request->get('tipo_cirugia_id') ?? null;
 
         $parteDataTable->addScope($scope);
 

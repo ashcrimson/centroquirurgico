@@ -104,6 +104,13 @@
             <input type="hidden" name="grupo_base_id" id="grupo_base_id" :value="grupoBaseId">
         </div>
 
+        <div class="form-group col-sm-3">
+            {!! Form::label('tipo_cirugia_id', 'Tipo Cirugía:') !!}
+            <multiselect v-model="cirugiaTipo" :options="cirugiaTipos" label="nombre" placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="tipo_cirugia_id" id="tipo_cirugia_id" :value="cirugiaTipoId">
+        </div>
+
         <div class="form-group col-sm-2">
             <label for="">&nbsp;</label>
             <div>
@@ -146,6 +153,7 @@
 
                 this.especialidadId;
                 this.grupoBaseId;
+                this.cirugiaTipoId;
 
             },
             data: {
@@ -176,6 +184,9 @@
                 grupobases: @json(\App\Models\GrupoBase::all() ?? []),
                 grupobase: null,
 
+                cirugiaTipos: @json(\App\Models\CirugiaTipo::all() ?? []),
+                cirugiaTipo: null,
+
             },
             methods: {
 
@@ -192,7 +203,13 @@
                         return this.grupobase.id;
                     }
                     return null;
-                }
+                },
+                cirugiaTipoId() {
+                    if (this.cirugiaTipo) {
+                        return this.cirugiaTipo.id;
+                    }
+                    return null;
+                },
             }
         });
     </script>
