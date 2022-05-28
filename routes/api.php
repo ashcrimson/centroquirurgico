@@ -60,7 +60,7 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
 
         Route::resource('convenios', 'ConvenioAPIController');
 
-        Route::resource('parte_intervenciones', 'ParteIntervencionAPIController');
+//        Route::resource('parte_intervenciones', 'ParteIntervencionAPIController');
 
         Route::resource('reparticiones', 'ReparticionAPIController');
 
@@ -68,12 +68,11 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
 
         Route::resource('parte_examenes', 'ParteExamenAPIController');
         Route::resource('examenes', 'ExamenAPIController');
+
+        Route::resource('intervenciones_news', 'IntervencionesNewAPIController');
     });
 
 
 
 
 });
-
-
-Route::resource('intervenciones_news', 'IntervencionesNewAPIController');

@@ -35,7 +35,7 @@ class ParteIntervencionAPIController extends AppBaseController
         }
 
         if ($request->parte_id){
-            $query->where('parte_id',$request->parte_id);
+            $query->where('parte_id',$request->parte_id)->with(['intervencionNew']);
         }
 
         $parteIntervenciones = $query->get();

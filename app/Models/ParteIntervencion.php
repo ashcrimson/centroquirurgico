@@ -32,7 +32,8 @@ class ParteIntervencion extends Model
     public $fillable = [
         'parte_id',
         'intervencion_id',
-        'lateralidad'
+        'lateralidad',
+        'intervencion_new_id',
     ];
 
     /**
@@ -44,6 +45,7 @@ class ParteIntervencion extends Model
         'id' => 'integer',
         'parte_id' => 'integer',
         'intervencion_id' => 'integer',
+        'intervencion_new_id' => 'integer',
         'lateralidad' => 'string'
     ];
 
@@ -54,7 +56,8 @@ class ParteIntervencion extends Model
      */
     public static $rules = [
         'parte_id' => 'required',
-        'intervencion_id' => 'required',
+        'intervencion_id' => 'nullable',
+        'intervencion_new_id' => 'nullable',
         'lateralidad' => 'nullable|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
@@ -67,6 +70,14 @@ class ParteIntervencion extends Model
     public function intervencion()
     {
         return $this->belongsTo(\App\Models\Intervencion::class, 'intervencion_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function intervencionNew()
+    {
+        return $this->belongsTo(\App\Models\IntervencionesNew::class, 'intervencion_new_id');
     }
 
     /**

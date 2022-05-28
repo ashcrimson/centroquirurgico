@@ -115,9 +115,9 @@
 
                                         <div class="form-group col-sm-6">
                                             <select-intervencion
-                                                :items="intervenciones"
+                                                :items="intervencionesNew"
                                                 label="Intervencion"
-                                                v-model="intervencion">
+                                                v-model="intervencionNew">
 
                                             </select-intervencion>
                                         </div>
@@ -166,7 +166,9 @@
                                         <td colspan="10" class="text-center">Ningún Registro agregado</td>
                                     </tr>
                                     <tr v-for="det in parte_intervenciones">
-                                        <td v-text="det.intervencion.nombre"></td>
+                                        <td>
+                                            <span v-if="det.intervencion_new" v-text="det.intervencion_new.text"></span>
+                                        </td>
                                         <td v-text="det.lateralidad"></td>
                                         <td  class="text-nowrap">
                                             <button type="button" @click="editIntervencion(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >
@@ -619,6 +621,8 @@
             intervenciones: @json(\App\Models\Intervencion::all() ?? []),
             intervencion: null,
 
+            intervencionesNew: @json(\App\Models\IntervencionesNew::all() ?? []),
+            intervencionNew: null,
 
             parte_intervenciones: [],
             editedItem: {
@@ -675,6 +679,7 @@
                 this.loading = false;
                 setTimeout(() => {
                     this.intervencion = null;
+                    this.intervencionNew = null;
                     this.editedItem = Object.assign({}, this.defaultItem);
                 }, 300)
             },
@@ -685,7 +690,8 @@
                 return null
             },
             editIntervencion (item) {
-                this.intervencion = Object.assign({}, item.intervencion);
+                // this.intervencion = Object.assign({}, item.intervencion);
+                this.intervencionNew = Object.assign({}, item.intervencion_new);
                 this.editedItem = Object.assign({}, item);
 
             },
@@ -695,14 +701,11 @@
             },
             async saveIntervencion () {
 
-
                 this.loading = true;
-
-
 
                 try {
 
-                    this.editedItem.intervencion_id = this.getId(this.intervencion)
+                    this.editedItem.intervencion_new_id = this.getId(this.intervencionNew)
                     const data = this.editedItem;
 
                     console.log('data inter',data);
@@ -747,7 +750,7 @@
                         logI(res.data);
 
                         iziTs(res.data.message);
-                        this.editIntervencion();
+                        this.getIntervenciones();
 
 
                     }catch (e){

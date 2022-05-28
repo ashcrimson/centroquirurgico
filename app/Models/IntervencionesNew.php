@@ -18,14 +18,16 @@ class IntervencionesNew extends Model
     use SoftDeletes;
 
     public $table = 'intervenciones_new';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
 
     protected $dates = ['deleted_at'];
 
-
+    protected $appends = [
+        'text'
+    ];
 
     public $fillable = [
         'cod_prest',
@@ -59,5 +61,8 @@ class IntervencionesNew extends Model
         'deleted_at' => 'nullable'
     ];
 
-    
+    public function getTextAttribute(){
+        return $this->cod_prest.' / '.$this->descripcion;
+    }
+
 }
