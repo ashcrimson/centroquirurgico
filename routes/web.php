@@ -103,6 +103,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('examens', 'ExamenController');
 
+    Route::resource('intervencionesNews', 'IntervencionesNewController');
+
     ///Colocar ariba de esta linea las rutas a proteger por autenticacion
 
 });
