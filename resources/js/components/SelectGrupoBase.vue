@@ -199,10 +199,8 @@ export default {
         },
         options(){
 
-            return this.items;
-
             if (this.items.length > 0){
-                // return this.items
+                return this.items
             }else {
                 return this.items_api;
             }

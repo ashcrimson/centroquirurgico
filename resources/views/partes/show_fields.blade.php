@@ -288,13 +288,14 @@
 
 
                 <!-- Grupo Base Field -->
-                <!-- <div class="form-group col-sm-6">
+                <div class="form-group col-sm-6">
                     <select-grupo-base
                         label="Grupo Base"
-                        v-model="grupo_base" >
+                        v-model="grupo_base"
+                        :disabled="true">
 
                     </select-grupo-base>
-                </div> -->
+                </div>
 
                 <!-- Biopsia Field -->
                 <div class="form-group col-sm-6">
@@ -342,7 +343,7 @@
 
         </div>
     </div>
- 
+
 </div>
 
 @push('scripts')
@@ -360,7 +361,7 @@
                 if ($("#nececidad_cama_upc").prop('checked')){
                     $("#select_tipo_cama").show()
                 }else {
-                    $("#select_tipo_cama").hide() 
+                    $("#select_tipo_cama").hide()
                 }
             }
 
@@ -412,7 +413,7 @@
                 insumo_especifico: @json($parte->insumoEspecifico ?? App\Models\Insumoespecifico::find(old('insumo_especifico_id')) ?? null),
 
                 especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
- 
+
 
                 grupo_base: @json($parte->grupoBase ?? App\Models\GrupoBase::find(old('grupo_base_id')) ?? null),
 
@@ -428,7 +429,7 @@
                     'Rápida',
                     'Diferida',
                     'Citometría de flujo',
-                    'No aplica', 
+                    'No aplica',
                 ],
 
                 anestesia_sugerida : @json($parte->anestesia_sugerida ?? old('anestesia_sugerida') ?? null),

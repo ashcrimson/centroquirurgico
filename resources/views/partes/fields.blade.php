@@ -413,13 +413,13 @@
 
 
                 <!-- Grupo Base Field -->
-                <!-- <div class="form-group col-sm-6">
+                <div class="form-group col-sm-6">
                     <select-grupo-base
                         label="Grupo Base"
                         v-model="grupo_base" >
 
                     </select-grupo-base>
-                </div> -->
+                </div>
 
                 <!-- Biopsia Field -->
                 <div class="form-group col-sm-6">
@@ -558,7 +558,7 @@
 
             if (@json($parte->cancer) == 1) {
                 this.cancerOptionSelect = this.cancerOptions[0];
-            } else {
+            }else {
                 this.cancerOptionSelect = this.cancerOptions[1];
             }
 
@@ -581,7 +581,7 @@
 
 
             grupo_base: @json($parte->grupoBase ?? App\Models\GrupoBase::find(old('grupo_base_id')) ?? null),
-            grupo_base: @json($parte->especialidad->GrupoBase ?? []),
+            {{--grupo_base: @json($parte->especialidad->GrupoBase ?? []),--}}
 
             clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
             clasificaciones: @json($parte->cirugiaTipo->clasificaciones ?? []),
@@ -781,8 +781,7 @@
                         $("#indique_especialidad").prop('required', false);
                     }
                 } else {
-                    console.log('entro else')
-                    $("#indique_especialidad").hide()
+                    $("#div_indique_especialidad").hide()
                     $("#indique_especialidad").prop('required', false);
                 }
             }
