@@ -556,9 +556,11 @@
             this.cancerOptionSelectVal;
             this.evaluacionEspecialidadSelectVal;
 
+            console.log(@json($parte->cancer))
+
             if (@json($parte->cancer) == 1) {
                 this.cancerOptionSelect = this.cancerOptions[0];
-            }else {
+            } else if (@json($parte->cancer) == 0) {
                 this.cancerOptionSelect = this.cancerOptions[1];
             }
 
@@ -566,7 +568,7 @@
                 this.evaluacionEspecialidadSelect = this.evaluacionEspecialidadOptions[0];
                 $("#div_indique_especialidad").show()
                 $("#indique_especialidad").prop('required', true);
-            } else {
+            } else if (@json($parte->evaluacion_especialidad) == 0) {
                 this.evaluacionEspecialidadSelect = this.evaluacionEspecialidadOptions[1];
                 $("#div_indique_especialidad").hide()
                 $("#indique_especialidad").prop('required', false);
@@ -659,7 +661,7 @@
                     nombre: 'NO'
                 },
             ],
-            cancerOptionSelect: @json($parte->cancer == 1 ? 1 : 0),
+            cancerOptionSelect: null,
 
             evaluacionEspecialidadOptions: [
                 {
