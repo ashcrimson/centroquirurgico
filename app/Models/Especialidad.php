@@ -29,7 +29,8 @@ class Especialidad extends Model
 
 
     public $fillable = [
-        'nombre'
+        'nombre',
+        'codigo_especialidad'
     ];
 
     /**
@@ -39,7 +40,8 @@ class Especialidad extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'nombre' => 'string'
+        'nombre' => 'string',
+        'codigo_especialidad' => 'string',
     ];
 
     /**
@@ -49,6 +51,7 @@ class Especialidad extends Model
      */
     public static $rules = [
         'nombre' => 'required|string|max:255',
+        'codigo_especialidad' => 'nullable|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'

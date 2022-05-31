@@ -4,6 +4,11 @@
     {!! Form::text('nombre', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
+<div class="form-group col-sm-6">
+    {!! Form::label('codigo_especialidad', 'Codigo Especialidad:') !!}
+    {!! Form::text('codigo_especialidad', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255,'maxlength' => 255]) !!}
+</div>
+
 
 <div class="form-group col-sm-12">
     {!! Form::label('name', 'Grupos base:') !!}
