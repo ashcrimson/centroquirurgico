@@ -34,6 +34,8 @@ class ParteAdmisionController extends Controller
         $scope->examen_realizado = $request->get('examen_realizado') ?? null;
         $scope->grupo_base_id = $request->get('grupo_base_id') ?? null;
         $scope->tipo_cirugia_id = $request->get('tipo_cirugia_id') ?? null;
+        $scope->del = $request->del ?? null;
+        $scope->al = $request->al ?? null;
 
         $parteDataTable->addScope($scope);
 
@@ -66,6 +68,8 @@ class ParteAdmisionController extends Controller
         $scope->grupo_base_id = $request->grupo_base_id ?? null;
         $scope->tiene_cancer = $request->get('tiene_cancer') ?? null;
         $scope->especialidad_id = $request->especialidad_id ?? null;
+        $scope->delListEspera = $request->del ?? null;
+        $scope->alListEspera = $request->al ?? null;
 
         $parteDataTable->addScope($scope);
 

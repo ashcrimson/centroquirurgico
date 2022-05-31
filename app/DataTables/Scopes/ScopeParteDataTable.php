@@ -37,8 +37,8 @@ class ScopeParteDataTable implements DataTableScope
         $this->medicos = request()->users ?? null;
         $this->prioridad_administrativa = request()->prioridad_administrativa ?? null;
         $this->prioridad_clinica = request()->prioridad_clinica ?? null;
-        $this->del = request()->del ?? null;
-        $this->al = request()->al ?? null;
+//        $this->del = request()->del ?? null;
+//        $this->al = request()->al ?? null;
         $this->lista_espera = request()->lista_espera ?? false;
         $this->especialidad_id = request()->especialidad_id ?? false;
         $this->tiene_cancer = request()->tiene_cancer ?? false;
