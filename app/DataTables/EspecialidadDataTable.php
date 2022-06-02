@@ -102,7 +102,8 @@ class EspecialidadDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('nombre'),
-            Column::make('patologías')->name('patologias')->data('patologias')
+            Column::make('patologías')->name('patologias')->data('patologias'),
+            Column::make('codigo_especialidad')->name('codigo_especialidad')->data('codigo_especialidad')
         ];
     }
 
