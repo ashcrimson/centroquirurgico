@@ -36,7 +36,7 @@
             <div class="card">
                 <div class="card-body">
 
-                   {!! Form::model($parte, ['route' => ['partes.update', $parte->id], 'method' => 'patch','class' => 'wait-on-submit', 'id' => 'guardarEnviarFormEdit']) !!}
+                   {!! Form::model($parte, ['route' => ['partes.update', $parte->id], 'method' => 'patch','class' => '', 'id' => 'guardarEnviarFormEdit']) !!}
                         <div class="form-row">
 
                             @include('partes.fields')
@@ -115,11 +115,75 @@
             });
 
             Swal.showLoading();
-
-            // $("#enviar_admin").val(1);
-            //
-            // document.getElementById("guardarEnviarFormEdit").submit();
         }
+
+        $("#guardarEnviarFormEdit").submit(function (e) {
+
+            if (!$("input[name='cirugia_tipo_id']").val()) {
+                Swal.close('true');
+                iziTe('El Campo Tipo Cirugía es requerido!');
+                return false;
+            }
+
+            if (!$("input[name='especialidad_id']").val()) {
+                Swal.close('true');
+                iziTe('El Campo Especialidad es requerido!');
+                return false;
+            }
+
+            if (!$("input[name='tiempo_quirurgico']").val()) {
+                Swal.close('true');
+                iziTe('El Campo Tiempo Quirúrgico es requerido!');
+                return false;
+            }
+
+            if (!$("input[name='anestesia_sugerida']").val()) {
+                Swal.close('true');
+                iziTe('El Campo Anestesia Sugerida es requerido!');
+                return false;
+            }
+
+            if ($('input[name=nececidad_cama_upc]:checked').length == 1) {
+                if (!$("input[name='tipo_cama_upc']").val()) {
+                    Swal.close('true');
+                    iziTe('El Campo Tipo Cama UPC es requerido!');
+                    return false;
+                }
+            }
+
+            if (!$("input[name='cancer']").val()) {
+                Swal.close('true');
+                iziTe('El Campo Cáncer o Sospecha de Cáncer es requerido!');
+                return false;
+            }
+
+            if (!$("input[name='preoperatorio_id']").val()) {
+                Swal.close('true');
+                iziTe('El Campo Ex Preoperatorios es requerido!');
+                return false;
+            }
+
+            if (!$("input[name='grupo_base_id']").val()) {
+                Swal.close('true');
+                iziTe('El Campo Grupo Base es requerido!');
+                return false;
+            }
+
+            if (!$("input[name='biopsia']").val()) {
+                Swal.close('true');
+                iziTe('El Campo Biopsias es requerido!');
+                return false;
+            }
+
+            if ($('input[name=consentimiento]:checked').length == 0) {
+                Swal.close('true');
+                iziTe('El Campo Consentimiento informado, firmado y archivado en ficha clínica es requerido!');
+                return false;
+            }
+
+            guardarEnviar();
+
+        });
 
     </script>
 @endpush

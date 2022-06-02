@@ -21,7 +21,7 @@
 
                         <div class="form-group col-sm-6">
                             <select-diagnostico
-                                label="Diagnostico"
+                                label="Diagnóstico"
                                 v-model="diagnostico" >
 
                             </select-diagnostico>

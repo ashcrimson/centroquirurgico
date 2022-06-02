@@ -217,7 +217,7 @@
 
                 <!-- Tiempo Quirurgico Field -->
                 <div class="form-group col-sm-4">
-                    {!! Form::label('tiempo_quirurgico', 'Tiempo Quirurgico:') !!}
+                    {!! Form::label('tiempo_quirurgico', 'Tiempo Quirúrgico:') !!}
 
                     <multiselect v-model="tiempo_quirurgico" :options="tiempos"  placeholder="Seleccione uno...">
                     </multiselect>
@@ -560,7 +560,7 @@
 
             if (@json($parte->cancer) == 1) {
                 this.cancerOptionSelect = this.cancerOptions[0];
-            } else if (@json($parte->cancer) == 0) {
+            } else if (@json($parte->cancer) == 2) {
                 this.cancerOptionSelect = this.cancerOptions[1];
             }
 
@@ -568,7 +568,7 @@
                 this.evaluacionEspecialidadSelect = this.evaluacionEspecialidadOptions[0];
                 $("#div_indique_especialidad").show()
                 $("#indique_especialidad").prop('required', true);
-            } else if (@json($parte->evaluacion_especialidad) == 0) {
+            } else if (@json($parte->evaluacion_especialidad) == 2) {
                 this.evaluacionEspecialidadSelect = this.evaluacionEspecialidadOptions[1];
                 $("#div_indique_especialidad").hide()
                 $("#indique_especialidad").prop('required', false);
@@ -582,15 +582,15 @@
             especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
 
 
-            grupo_base: @json($parte->grupoBase ?? App\Models\GrupoBase::find(old('grupo_base_id')) ?? null),
+            grupo_base: @json(App\Models\GrupoBase::find(old('grupo_base_id')) ?? $parte->grupoBase ?? null),
             {{--grupo_base: @json($parte->especialidad->GrupoBase ?? []),--}}
 
             clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
             clasificaciones: @json($parte->cirugiaTipo->clasificaciones ?? []),
 
-            preoperatorio: @json($parte->preoperatorio ?? Preoperatorio::find(old('preoperatorio_id')) ?? null),
+            preoperatorio: @json(Preoperatorio::find(old('preoperatorio_id')) ?? $parte->preoperatorio ?? null),
 
-            biopsia : @json($parte->biopsia ?? old('biopsia') ?? null),
+            biopsia : @json(old('biopsia') ?? $parte->biopsia ?? null),
 
             biopsias : [
                 'Externa',
@@ -649,7 +649,7 @@
 
             convenio: @json($parte->convenio ?? null),
             reparticion: @json($parte->reparticion ?? null),
-            tipo_cama_upc: @json($parte->tipo_cama_upc ?? null),
+            tipo_cama_upc: @json(old('tipo_cama_upc') ?? $parte->tipo_cama_upc ?? null),
 
             cancerOptions: [
                 {

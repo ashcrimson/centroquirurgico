@@ -67,12 +67,11 @@
         <input type="text" class="form-control" readonly v-model="edad" value="0">
     </div>
 
-
     <div class="form-group col-sm-3">
         {!! Form::label('sexo', 'Sexo:') !!}<br>
         <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="M" data-off="F" data-style="ios" name="sexo" id="sexo"
                value="1"
-            {{($rema->sexo ?? null)=="M" || ($paciente->sexo ?? null)=="M"  ? 'checked' : '' }}>
+            {{($rema->sexo ?? null)=="M" || ($paciente->sexo ?? $parte->paciente->sexo ?? null)=="M"  ? 'checked' : '' }}>
     </div>
 
 
@@ -110,6 +109,10 @@
         name: 'paciente-fields',
         created() {
             this.calcularEdad(this.fecha_nac);
+
+            if (@json('fecha_nac')) {
+                this.calcularEdad(this.fecha_nac);
+            }
         },
         data: {
             loading : false,
