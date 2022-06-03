@@ -66,7 +66,8 @@ class ParteListaEsperaDataTable extends DataTable
      */
     public function query(Parte $model)
     {
-        return $model->newQuery()->with(['paciente', 'especialidad','userIngresa', 'preoperatorio', 'estado','grupoBase']);
+        return $model->newQuery()->with(['paciente', 'especialidad','userIngresa', 'preoperatorio', 'estado','grupoBase',
+            'intervencion']);
     }
 
     /**
@@ -131,23 +132,25 @@ class ParteListaEsperaDataTable extends DataTable
 
         return [
 
-            Column::make('id')->data('id')->name('partes.id'),
+//            Column::make('id')->data('id')->name('partes.id'),
 
-
-            Column::make('rut')->name('paciente.run')->data('paciente.run'),
+            Column::make('run')->name('paciente.run')->data('paciente.run'),
 
             Column::make('paciente')->name('paciente.nombre_completo')->data('paciente.nombre_completo')
                 ->searchable(false)->orderable(false),
 
-
-            Column::make('medico')->name('userIngresa.name')->data('user_ingresa.name')
-                ->searchable(false)->orderable(false),
-
             Column::make('fecha_inscripcion'),
 
+            Column::make('especialidad')->data('especialidad.nombre')->name('especialidad.nombre'),
+
             Column::make('Días espera')->data('dias_espera')->orderable(false)->searchable(false),
+
+//            Column::make('intervencion')->data('intervencion.nombre')->name('intervencion.nombre'),
+
             Column::make('estado')->data('estado.nombre')->name('estado.nombre'),
 
+//            Column::make('medico')->name('userIngresa.name')->data('user_ingresa.name')
+//                ->searchable(false)->orderable(false),
 
             Column::make('paciente.apellido_paterno')
                 ->visible(false)

@@ -158,3 +158,6 @@ Vue.component('select-examen',SelectExamen)
 
 import PanelExamenesParte from "./components/PanelExamenesParte";
 Vue.component('panel-examens-parte',PanelExamenesParte)
+
+import PanelInsumoEspecificoParte from "./components/PanelInsumoEspecificoParte";
+Vue.component('panel-insumo-parte', PanelInsumoEspecificoParte);

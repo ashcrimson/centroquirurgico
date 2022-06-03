@@ -88,7 +88,14 @@
                     {!! Form::textarea('otros_diagnosticos', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
+                <div class="form-group col-sm-12">
+                    <panel-insumo-parte parte_id="@json($parte->id)"></panel-insumo-parte>
+                </div>
 
+                <div class="form-group col-sm-12 col-lg-12">
+                    {!! Form::label('otros_insumos', 'Otros Insumos:') !!}
+                    {!! Form::textarea('otros_insumos', null, ['class' => 'form-control','rows' => 2]) !!}
+                </div>
 
                 <!-- Intervencion Field -->
                 <div class="form-group col-sm-12 col-lg-12">
@@ -380,7 +387,7 @@
                             </div>
 
                             <div class="col-sm-3">
-                                {!! Form::label('evaluacion_especialidad', 'Evaluacion de Especialidad:') !!}<br>
+                                {!! Form::label('evaluacion_especialidad', 'Interconsulta Pre-QX:') !!}<br>
                                 <multiselect v-model="evaluacionEspecialidadSelect" :options='evaluacionEspecialidadOptions' v-model="evaluacionEspecialidadSelect" label="nombre" placeholder="Seleccione uno..." >
                                 </multiselect>
                                 <input type="hidden" name="evaluacion_especialidad" :value="evaluacionEspecialidadSelectVal">

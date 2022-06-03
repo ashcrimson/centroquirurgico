@@ -138,13 +138,14 @@ export default {
             console.log('edit ',item)
             this.nombre = Object.assign({}, item.tipo);
             this.editedItem = Object.assign({}, item);
-
+            this.diagnostico = item.diagnostico;
         },
         close () {
             this.loading = false;
             setTimeout(() => {
                 this.nombre = null;
                 this.editedItem = Object.assign({}, this.defaultItem);
+                this.diagnostico = null;
             }, 300)
         },
         async save () {

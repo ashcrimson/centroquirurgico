@@ -70,6 +70,8 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
         Route::resource('examenes', 'ExamenAPIController');
 
         Route::resource('intervenciones_news', 'IntervencionesNewAPIController');
+
+        Route::resource('parte_insumo_especificos', 'ParteInsumoEspecificoAPIController');
     });
 
 

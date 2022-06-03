@@ -183,6 +183,7 @@ class Parte extends Model
         'pase_banco_sagre',
         'evaluacion_especialidad',
         'indique_especialidad',
+        'otros_insumos',
     ];
 
     /**
@@ -248,6 +249,7 @@ class Parte extends Model
         'fecha_banco_sangre_valida' => 'datetime',
         'cantidad_donantes' => 'integer',
         'pase_banco_sagre' => 'boolean',
+        'otros_insumos' => 'string',
     ];
 
     /**
@@ -307,6 +309,7 @@ class Parte extends Model
         'fecha_banco_sangre_valida' => 'nullable',
         'cantidad_donantes' => 'nullable',
         'pase_banco_sagre' => 'nullable',
+        'otros_insumos' => 'nullable',
     ];
 
     /**
