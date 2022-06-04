@@ -31,7 +31,6 @@ class ParteListaEsperaDataTable extends DataTable
                 return $parte->paciente->nombre_completo;
 
             })
-
             ->editColumn('fecha_inscripcion',function (Parte $parte){
 
                 return $parte->fecha_inscripcion->format('d/m/Y');
@@ -41,11 +40,7 @@ class ParteListaEsperaDataTable extends DataTable
 
                 return $parte->id;
 
-                //se debe crear la vista modal_detalles
-                //return view('partes.modal_detalles',compact('parte'))->render();
-
             })
-
             ->editColumn('dias_espera',function (Parte $parte){
 
                 $fechaIs = $parte->fecha_inscripcion;
@@ -54,7 +49,16 @@ class ParteListaEsperaDataTable extends DataTable
                 return $fechaIs->diffInDays($hoy);
 
             })
-            ->rawColumns(['action','id']);
+            ->editColumn('intervenciones', function (Parte $parte) {
+
+//                $intervenciones = [];
+//                foreach ($parte->parteIntervenciones()->with(['intervencionNew'])->get() as $intervencion) {
+////                    array_push($intervenciones, $intervencion->intervencionNew->descripcion);
+//                }
+//                return $intervenciones;
+                return tagsParteintervenciones($parte->parteIntervenciones);
+            })
+            ->rawColumns(['action','id','intervenciones']);
 
     }
 
@@ -67,7 +71,7 @@ class ParteListaEsperaDataTable extends DataTable
     public function query(Parte $model)
     {
         return $model->newQuery()->with(['paciente', 'especialidad','userIngresa', 'preoperatorio', 'estado','grupoBase',
-            'intervencion']);
+            'intervencion','parteIntervenciones.intervencionNew']);
     }
 
     /**
@@ -132,7 +136,7 @@ class ParteListaEsperaDataTable extends DataTable
 
         return [
 
-//            Column::make('id')->data('id')->name('partes.id'),
+            Column::make('id')->data('id')->name('partes.id'),
 
             Column::make('run')->name('paciente.run')->data('paciente.run'),
 
@@ -145,7 +149,8 @@ class ParteListaEsperaDataTable extends DataTable
 
             Column::make('Días espera')->data('dias_espera')->orderable(false)->searchable(false),
 
-//            Column::make('intervencion')->data('intervencion.nombre')->name('intervencion.nombre'),
+            Column::make('intervenciones')->data('intervenciones')->name('intervenciones')
+                ->searchable(false)->orderable(false),
 
             Column::make('estado')->data('estado.nombre')->name('estado.nombre'),
 

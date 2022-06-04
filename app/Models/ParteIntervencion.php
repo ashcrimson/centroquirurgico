@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  * @version October 22, 2021, 11:34 am CST
  *
- * @property \App\Models\Intervencione $intervencion
+// * @property \App\Models\Intervencione $intervencion
+ * @property \App\Models\IntervencionesNew $intervencionNew
  * @property \App\Models\Parte $parte
  * @property integer $parte_id
  * @property integer $intervencion_id

@@ -93,6 +93,12 @@ class ParteAdmisionController extends Controller
             return redirect(route('partes.index'));
         }
 
+        $intervenciones = [];
+        foreach ($parte->parteIntervenciones()->with(['intervencionNew'])->get() as $intervencion) {
+                    array_push($intervenciones, $intervencion->intervencionNew->descripcion);
+        }
+        return $intervenciones;
+
         return view('partes.admision.edit')->with('parte', $parte);
     }
 

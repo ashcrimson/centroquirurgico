@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Collection;
 use App\Extenciones\NumeroALetras;
 
 
@@ -299,4 +300,30 @@ function autoIncrementFaker()
     for ($i = 0; $i < 1000; $i++) {
         yield $i;
     }
+}
+
+function tags(Collection $collection,$label = 'nombre',$color ='primary'){
+
+    $datos = $collection->pluck($label)->toArray();
+    $res = '';
+
+    foreach($datos as $tag){
+        $res.="<span class='badge badge-$color'>{$tag}</span> ";
+    }
+
+    return $res;
+
+}
+
+function tagsParteintervenciones(Collection $collection, $color ='primary'){
+
+    $datos = $collection->pluck('intervencionNew.descripcion')->toArray();
+    $res = '';
+
+    foreach($datos as $tag){
+        $res.="<span class='badge badge-$color'>{$tag}</span> ";
+    }
+
+    return $res;
+
 }

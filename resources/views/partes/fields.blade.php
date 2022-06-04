@@ -350,13 +350,13 @@
 
 
                             <!-- Insumos Especificos Field -->
-                            <div class="form-group col-sm-4">
-                                <select-insumo-especifico
-                                    label="Insumo Especifico"
-                                    v-model="insumo_especifico" >
+{{--                            <div class="form-group col-sm-4">--}}
+{{--                                <select-insumo-especifico--}}
+{{--                                    label="Insumo Especifico"--}}
+{{--                                    v-model="insumo_especifico" >--}}
 
-                                </select-insumo-especifico>
-                            </div>
+{{--                                </select-insumo-especifico>--}}
+{{--                            </div>--}}
 
                             <!-- Nececidad Cama Upc Field -->
                             <div class="col-sm-3">
