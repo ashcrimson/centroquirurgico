@@ -72,6 +72,8 @@ Route::group(['as'=>'api.','namespace' => 'API'], function () {
         Route::resource('intervenciones_news', 'IntervencionesNewAPIController');
 
         Route::resource('parte_insumo_especificos', 'ParteInsumoEspecificoAPIController');
+
+        Route::resource('especialidad_subs', 'EspecialidadSubAPIController');
     });
 
 

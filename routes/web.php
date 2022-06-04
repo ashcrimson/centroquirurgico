@@ -105,6 +105,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('intervencionesNews', 'IntervencionesNewController');
 
+    Route::resource('especialidadSubs', 'EspecialidadSubController');
+
     ///Colocar ariba de esta linea las rutas a proteger por autenticacion
 
 });
