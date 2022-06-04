@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @version November 24, 2021, 2:18 pm CST
  *
  * @property \Illuminate\Database\Eloquent\Collection $patologias
+ * @property \Illuminate\Database\Eloquent\Collection $subEspecialidades
  * @property \Illuminate\Database\Eloquent\Collection $medicos
  * @property \Illuminate\Database\Eloquent\Collection $partes
  * @property string $nombre
@@ -80,4 +81,13 @@ class Especialidad extends Model
     {
         return $this->hasMany(\App\Models\Parte::class, 'especialidad_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function subEspecialidades()
+    {
+        return $this->hasMany(\App\Models\EspecialidadSub::class, 'especialidad_id', 'id');
+    }
+
 }

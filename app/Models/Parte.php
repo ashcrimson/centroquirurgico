@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \App\Models\Convenio $convenio
  * @property \App\Models\Diagnostico $diagnostico
  * @property \App\Models\Especialidad $especialidad
+ * @property \App\Models\EspecialidadSub $subEspecialidad
  * @property \App\Models\GrupoBase $grupoBase
  * @property \App\Models\InsumoEspecifico $insumoEspecifico
  * @property \App\Models\Intervencion $intervencion
@@ -33,6 +34,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $paciente_id
  * @property integer $cirugia_tipo_id
  * @property integer $especialidad_id
+ * @property integer $sub_especialidad_id
  * @property integer $diagnostico_id
  * @property string $otros_diagnosticos
  * @property integer $intervencion_id
@@ -184,6 +186,7 @@ class Parte extends Model
         'evaluacion_especialidad',
         'indique_especialidad',
         'otros_insumos',
+        'sub_especialidad_id',
     ];
 
     /**
@@ -250,6 +253,7 @@ class Parte extends Model
         'cantidad_donantes' => 'integer',
         'pase_banco_sagre' => 'boolean',
         'otros_insumos' => 'string',
+        'sub_especialidad_id' => 'integer',
     ];
 
     /**
@@ -310,6 +314,7 @@ class Parte extends Model
         'cantidad_donantes' => 'nullable',
         'pase_banco_sagre' => 'nullable',
         'otros_insumos' => 'nullable',
+        'sub_especialidad_id' => 'nullable',
     ];
 
     /**
@@ -350,6 +355,14 @@ class Parte extends Model
     public function especialidad()
     {
         return $this->belongsTo(\App\Models\Especialidad::class, 'especialidad_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function subEspecialidad()
+    {
+        return $this->belongsTo(\App\Models\EspecialidadSub::class, 'sub_especialidad_id');
     }
 
     /**

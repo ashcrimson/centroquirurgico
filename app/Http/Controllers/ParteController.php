@@ -159,7 +159,7 @@ class ParteController extends AppBaseController
     public function edit($id)
     {
         /** @var Parte $parte */
-        $parte = Parte::find($id);
+        $parte = Parte::with(['subEspecialidad'])->find($id);
 
         if (!$parte->esTemporal()){
             $parte = $this->addAttributos($parte);

@@ -3,7 +3,6 @@
     <!-- Especialidad Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('especialidad_id', 'Especialidad:') !!}
-{{--        {!! Form::number('especialidad_id', null, ['class' => 'form-control']) !!}--}}
         <multiselect v-model="especialidad" :options="especialidades" label="nombre" placeholder="Seleccione uno..." >
         </multiselect>
         <input type="hidden" name="especialidad_id" :value="getId(especialidad)">

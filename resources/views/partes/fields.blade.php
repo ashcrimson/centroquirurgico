@@ -58,6 +58,13 @@
                     </select-especialidad>
                 </div>
 
+                <div class="form-group col-sm-4">
+                    {!! Form::label('especialidad_id', 'Sub-Especialidad:') !!}
+                    <multiselect v-model="subEspecialidad" :options="subEspecialidades" label="nombre" placeholder="Seleccione uno..." >
+                    </multiselect>
+                    <input type="hidden" name="sub_especialidad_id" :value="getSubEspecialidaId(subEspecialidad)">
+                </div>
+
                 <!-- Cma Field -->
                 <div class="form-group col-sm-4" >
                     {!! Form::label('cma', 'Cma:') !!}
@@ -682,6 +689,9 @@
             ],
             evaluacionEspecialidadSelect: null,
 
+            subEspecialidades: [],
+            subEspecialidad: @json($parte->subEspecialidad ?? \App\Models\EspecialidadSub::find(old(''))),
+
         },
         methods: {
             close () {
@@ -770,7 +780,13 @@
                 }
 
                 console.log("Confirmacion",confirm);
-            }
+            },
+            getSubEspecialidaId(item) {
+                if(item)
+                    return item.id;
+
+                return null
+            },
         },
         watch: {
             cirugia_tipo (tipo) {
@@ -792,6 +808,15 @@
                 } else {
                     $("#div_indique_especialidad").hide()
                     $("#indique_especialidad").prop('required', false);
+                }
+            },
+            especialidad(val) {
+                if (val) {
+                    if (val.sub_especialidades) {
+                        this.subEspecialidades = val.sub_especialidades;
+                    } else {
+                        this.subEspecialidades = [];
+                    }
                 }
             }
         },
