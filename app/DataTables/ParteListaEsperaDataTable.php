@@ -41,6 +41,11 @@ class ParteListaEsperaDataTable extends DataTable
                 return $parte->id;
 
             })
+            ->editColumn('Preops',function (Parte $parte){
+
+                return view('partes.admision.columna_preops',compact('parte'));
+
+            })
             ->editColumn('dias_espera',function (Parte $parte){
 
                 $fechaIs = $parte->fecha_inscripcion;
@@ -153,6 +158,7 @@ class ParteListaEsperaDataTable extends DataTable
                 ->searchable(false)->orderable(false),
 
             Column::make('estado')->data('estado.nombre')->name('estado.nombre'),
+            Column::make('Preops')->searchable(false)->orderable(false),
 
 //            Column::make('medico')->name('userIngresa.name')->data('user_ingresa.name')
 //                ->searchable(false)->orderable(false),
