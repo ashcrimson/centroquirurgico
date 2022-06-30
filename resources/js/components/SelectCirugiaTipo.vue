@@ -5,7 +5,8 @@
             editar
         </a> -->
 
-        <multiselect v-model="item" :options="options" label="nombre" placeholder="Seleccione uno..." :disabled="disabled">
+        <multiselect v-model="item" :options="options" label="nombre" placeholder="Seleccione uno..." :disabled="disabled"
+                     ref="multiselect">
             <template  slot="noResult">
                 <a class="btn btn-sm btn-block btn-success" href="#" @click.prevent="newItem()">
                     <i class="fa fa-plus"></i> Nuevo
@@ -210,10 +211,18 @@
             value(val){
                 this.item = val;
             }
-        }
+        },
 
     }
 </script>
+<style scoped>
+    /*.multiselect {*/
+    /*    border-color: #dc3545;*/
+    /*    border-style: solid;*/
+    /*    border-width: 1px;*/
+    /*    border-radius: 5px;*/
+    /*}*/
+</style>
 
 
 

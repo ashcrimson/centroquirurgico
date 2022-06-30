@@ -119,60 +119,135 @@
 
         $("#guardarEnviarFormEdit").submit(function (e) {
 
+
             if (!$("input[name='cirugia_tipo_id']").val()) {
+
+                // fieldsPartes.$refs.selectTipoCirugia.$refs.multiselect.$el.focus();
+                let multiselectTipoCirugia = fieldsPartes.$refs.selectTipoCirugia.$refs.multiselect.$el;
+                multiselectTipoCirugia.classList.add('error-multi-select');
+                multiselectTipoCirugia.scrollIntoView();
+
                 Swal.close('true');
                 iziTe('El Campo Tipo Cirugía es requerido!');
                 return false;
+            } else {
+                let multiselectTipoCirugia = fieldsPartes.$refs.selectTipoCirugia.$refs.multiselect.$el;
+                multiselectTipoCirugia.classList.remove('error-multi-select');
             }
 
             if (!$("input[name='especialidad_id']").val()) {
+
+                let multiselectEspecialidad = fieldsPartes.$refs.selectEspecialidad.$refs.multiselect.$el;
+                multiselectEspecialidad.classList.add('error-multi-select');
+                multiselectEspecialidad.scrollIntoView();
+
                 Swal.close('true');
                 iziTe('El Campo Especialidad es requerido!');
                 return false;
+            } else {
+                let multiselectEspecialidad = fieldsPartes.$refs.selectEspecialidad.$refs.multiselect.$el;
+                multiselectEspecialidad.classList.remove('error-multi-select');
             }
 
             if (!$("input[name='tiempo_quirurgico']").val()) {
+
+                // fieldsPartes.$refs.multiselectTiempoQuirurgico.$el.focus();
+                let multiselectTiempoQuirurgico = fieldsPartes.$refs.multiselectTiempoQuirurgico.$el;
+                multiselectTiempoQuirurgico.classList.add('error-multi-select');
+                multiselectTiempoQuirurgico.scrollIntoView();
+
                 Swal.close('true');
                 iziTe('El Campo Tiempo Quirúrgico es requerido!');
                 return false;
+            } else {
+                let multiselectTiempoQuirurgico = fieldsPartes.$refs.multiselectTiempoQuirurgico.$el;
+                multiselectTiempoQuirurgico.classList.remove('error-multi-select');
             }
 
             if (!$("input[name='anestesia_sugerida']").val()) {
+
+                let multiselectAnestesiaSugerida = fieldsPartes.$refs.multiselectAnestesiaSugerida.$el;
+                multiselectAnestesiaSugerida.classList.add('error-multi-select');
+                multiselectAnestesiaSugerida.scrollIntoView();
+
                 Swal.close('true');
                 iziTe('El Campo Anestesia Sugerida es requerido!');
                 return false;
+            } else {
+                let multiselectAnestesiaSugerida = fieldsPartes.$refs.multiselectAnestesiaSugerida.$el;
+                multiselectAnestesiaSugerida.classList.remove('error-multi-select');
             }
 
             if ($('input[name=nececidad_cama_upc]:checked').length == 1) {
                 if (!$("input[name='tipo_cama_upc']").val()) {
+
+                    let multiselectTipoCamaUpc = fieldsPartes.$refs.multiselectTipoCamaUpc.$el;
+                    multiselectTipoCamaUpc.classList.add('error-multi-select');
+                    multiselectTipoCamaUpc.scrollIntoView();
+
                     Swal.close('true');
                     iziTe('El Campo Tipo Cama UPC es requerido!');
                     return false;
+                } else {
+                    let multiselectTipoCamaUpc = fieldsPartes.$refs.multiselectTipoCamaUpc.$el;
+                    multiselectTipoCamaUpc.classList.remove('error-multi-select');
                 }
             }
 
             if (!$("input[name='cancer']").val()) {
+
+                let multiselectCancerSospechaCancer = fieldsPartes.$refs.multiselectCancerSospechaCancer.$el;
+                multiselectCancerSospechaCancer.classList.add('error-multi-select');
+                multiselectCancerSospechaCancer.scrollIntoView();
+
                 Swal.close('true');
                 iziTe('El Campo Cáncer o Sospecha de Cáncer es requerido!');
                 return false;
+            } else {
+                let multiselectCancerSospechaCancer = fieldsPartes.$refs.multiselectCancerSospechaCancer.$el;
+                multiselectCancerSospechaCancer.classList.remove('error-multi-select');
             }
 
             if (!$("input[name='preoperatorio_id']").val()) {
+
+                let multiselectPreoperatorio = fieldsPartes.$refs.selectPreoperatorio.$refs.multiselect.$el;
+                multiselectPreoperatorio.classList.add('error-multi-select');
+                multiselectPreoperatorio.scrollIntoView();
+
                 Swal.close('true');
                 iziTe('El Campo Ex Preoperatorios es requerido!');
                 return false;
+            } else {
+                let multiselectPreoperatorio = fieldsPartes.$refs.selectPreoperatorio.$refs.multiselect.$el;
+                multiselectPreoperatorio.classList.remove('error-multi-select');
             }
 
             if (!$("input[name='grupo_base_id']").val()) {
+
+                let multiselectGrupoBase = fieldsPartes.$refs.selectGrupoBase.$refs.multiselect.$el;
+                multiselectGrupoBase.classList.add('error-multi-select');
+                multiselectGrupoBase.scrollIntoView();
+
                 Swal.close('true');
                 iziTe('El Campo Grupo Base es requerido!');
                 return false;
+            } else {
+                let multiselectGrupoBase = fieldsPartes.$refs.selectGrupoBase.$refs.multiselect.$el;
+                multiselectGrupoBase.classList.remove('error-multi-select');
             }
 
             if (!$("input[name='biopsia']").val()) {
+
+                let multiselectBiopsias = fieldsPartes.$refs.multiselectBiopsias.$el;
+                multiselectBiopsias.classList.add('error-multi-select');
+                multiselectBiopsias.scrollIntoView();
+
                 Swal.close('true');
                 iziTe('El Campo Biopsias es requerido!');
                 return false;
+            } else {
+                let multiselectBiopsias = fieldsPartes.$refs.multiselectBiopsias.$el;
+                multiselectBiopsias.classList.remove('error-multi-select');
             }
 
             if ($('input[name=consentimiento]:checked').length == 0) {

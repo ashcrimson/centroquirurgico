@@ -41,10 +41,11 @@
 
 
                 <!-- Cirugia Tipo Id Field -->
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-4" id="divTipoCirugia">
                     <select-cirugia-tipo
                         label="Tipo Cirugía"
-                        v-model="cirugia_tipo" >
+                        v-model="cirugia_tipo"
+                        ref="selectTipoCirugia">
 
                     </select-cirugia-tipo>
                 </div>
@@ -53,7 +54,8 @@
                 <div class="form-group col-sm-4">
                     <select-especialidad
                         label="Especialidad"
-                        v-model="especialidad" >
+                        v-model="especialidad"
+                        ref="selectEspecialidad">
 
                     </select-especialidad>
                 </div>
@@ -233,7 +235,7 @@
                 <div class="form-group col-sm-4">
                     {!! Form::label('tiempo_quirurgico', 'Tiempo Quirúrgico:') !!}
 
-                    <multiselect v-model="tiempo_quirurgico" :options="tiempos"  placeholder="Seleccione uno...">
+                    <multiselect v-model="tiempo_quirurgico" :options="tiempos"  placeholder="Seleccione uno..." ref="multiselectTiempoQuirurgico">
                     </multiselect>
                     <input type="hidden" name="tiempo_quirurgico" :value="tiempo_quirurgico">
 
@@ -248,7 +250,7 @@
                 <div class="form-group col-sm-6">
                     {!! Form::label('anestesia_sugerida', 'Anestesia Sugerida:') !!}
                     <!-- Clasificacion Id Field -->
-                    <multiselect v-model="anestesia_sugerida" :options="anestesia_sugeridas"  placeholder="Seleccione uno...">
+                    <multiselect v-model="anestesia_sugerida" :options="anestesia_sugeridas"  placeholder="Seleccione uno..." ref="multiselectAnestesiaSugerida">
                     </multiselect>
                     <input type="hidden" name="anestesia_sugerida" :value="anestesia_sugerida">
                 </div>
@@ -377,7 +379,8 @@
                             <div class="col-sm-3" id="select_tipo_cama">
                                 {!! Form::label('tipo_cama_upc', 'Tipo Cama UPC:') !!}<br>
 
-                                <multiselect v-model="tipo_cama_upc" :options='["UCIGEN", "UCICAR", "UCIM"]'  placeholder="Seleccione uno...">
+                                <multiselect v-model="tipo_cama_upc" :options='["UCIGEN", "UCICAR", "UCIM"]'  placeholder="Seleccione uno..."
+                                             ref="multiselectTipoCamaUpc">
                                 </multiselect>
 
                                 <input type="hidden" name="tipo_cama_upc" :value="tipo_cama_upc">
@@ -388,7 +391,8 @@
 
                             <div class="col-sm-3">
                                 {!! Form::label('cancer', 'Cáncer o Sospecha de Cáncer:') !!}<br>
-                                <multiselect v-model="cancerOptionSelect" :options='cancerOptions' label="nombre" placeholder="Seleccione uno..." >
+                                <multiselect v-model="cancerOptionSelect" :options='cancerOptions' label="nombre" placeholder="Seleccione uno..."
+                                             ref="multiselectCancerSospechaCancer">
                                 </multiselect>
                                 <input type="hidden" name="cancer" :value="cancerOptionSelectVal">
                             </div>
@@ -420,7 +424,7 @@
                 <div class="form-group col-sm-6">
                     <select-preoperatorio
                         label="Ex Preoperatorios"
-                        v-model="preoperatorio" >
+                        v-model="preoperatorio" ref="selectPreoperatorio" >
 
                     </select-preoperatorio>
                 </div>
@@ -430,7 +434,7 @@
                 <div class="form-group col-sm-6">
                     <select-grupo-base
                         label="Grupo Base"
-                        v-model="grupo_base" >
+                        v-model="grupo_base" ref="selectGrupoBase" >
 
                     </select-grupo-base>
                 </div>
@@ -439,7 +443,7 @@
                 <div class="form-group col-sm-6">
                     {!! Form::label('biopsia', 'Biopsias:') !!}
                     <!-- Clasificacion Id Field -->
-                    <multiselect v-model="biopsia" :options="biopsias"  placeholder="Seleccione uno...">
+                    <multiselect v-model="biopsia" :options="biopsias"  placeholder="Seleccione uno..." ref="multiselectBiopsias">
                     </multiselect>
                     <input type="hidden" name="biopsia" :value="biopsia">
                 </div>
@@ -464,11 +468,13 @@
 
                     <a href="http://acreditacion.hospitalnaval.cl/index.php?option=com_content&view=article&id=50&Itemid=72&dir=JSROOT%2FConsentimientos/consentimientos">
                         <i class="fas fa-file" style="font-size:20px;"></i></a>
-                    <input type="checkbox"  data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="consentimiento" id="consentimiento"
+                    <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="consentimiento" id="consentimiento"
                             value="1"
                         {{ ($parte->consentimiento ?? old('consentimiento') ?? false) ? 'checked' : '' }}>
                 </div>
+3191-1003-se19
 
+                ABASTECIMIENTO DE LA BODEGA DE FÁRMACOS 001, OC N°206215 (VINCULADA), HORARIO DE BODEGA DE LUNES A JUEVES 08:00 A 14:00 HRS. LA ORDEN DE COMPRA DEBE SER ACEPTADA EN EL PORTAL, DE LO CONTRARIO SE SOLICITARÁ SU RECHAZO (Art.63 Reg.Ley 19.886). \"PARA CONSULTAS  SOBRE EL PAGO DE ESTE COMPROMISO, EFECTUARLAS  A pagoproveedoreshnv@sanidadnaval.cl, fonos 32-2573113 y 32-2573810\". EL NO CUMPLIMIENTO DEL REQUERIMIENTO EN LA FECHA DE ENTREGA ESTIPULADA EN LA ORDEN DE COMPRA, DARÁ ORIGEN AL COBRO DE MULTAS. “ORDEN DE COMPRA INGRESADA AL KARDEX DEL PRESENTE CONTRATO.\r\n\r\n
                 <!-- derivacion Field -->
                 <!-- <div class="form-group col-sm-2">
 
@@ -556,9 +562,7 @@
 
     })
 
-
-
-    new Vue({
+    const fieldsPartes = new Vue({
         el: '#fieldsPartes',
         name: 'fieldsPartes',
         created() {
@@ -857,4 +861,14 @@
         }
     });
 </script>
+@endpush
+@push('css')
+    <style>
+        .error-multi-select {
+            border-color: #dc3545;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 5px;
+        }
+    </style>
 @endpush
