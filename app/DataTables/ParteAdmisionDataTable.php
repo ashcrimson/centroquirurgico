@@ -43,7 +43,7 @@ class ParteAdmisionDataTable extends DataTable
             })
             ->editColumn('created_at',function (Parte $parte){
 
-                return $parte->created_at->format('d/m/Y');
+                return $parte->created_at;
 
             })
             ->editColumn('id',function (Parte $parte){
