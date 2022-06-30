@@ -69,7 +69,7 @@
 
                 <!-- Cma Field -->
                 <div class="form-group col-sm-4" >
-                    {!! Form::label('cma', 'Cma:') !!}
+                    {!! Form::label('cma', 'CMA:') !!}
                     <span v-show="cirugia_tipo && !esCirugiaMayor " class="text-muted">No aplica par el tipo de cirugia</span>
                     <br>
 
@@ -93,7 +93,7 @@
 
                 <!-- Otros Diagnosticos Field -->
                 <div class="form-group col-sm-12 col-lg-12">
-                    {!! Form::label('otros_diagnosticos', 'Otros Diagnosticos:') !!}
+                    {!! Form::label('otros_diagnosticos', 'Otros Diagnósticos:') !!}
                     {!! Form::textarea('otros_diagnosticos', null, ['class' => 'form-control','rows' => 2]) !!}
                 </div>
 
@@ -132,7 +132,7 @@
                                         <div class="form-group col-sm-6">
                                             <select-intervencion
                                                 :items="intervencionesNew"
-                                                label="Intervencion"
+                                                label="Intervención"
                                                 v-model="intervencionNew">
 
                                             </select-intervencion>
@@ -172,9 +172,9 @@
                                 <table class="table table-bordered table-sm table-striped mb-0">
                                     <thead>
                                     <tr>
-                                        <th>intervencion</th>
+                                        <th>Intervención</th>
                                         <th>Lateralidad</th>
-                                        <th>Actions</th>
+                                        <th>Acciones</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -332,7 +332,7 @@
                             <!-- Evaluacion Preanestesica Field -->
                             <div class="col-sm-3">
                                 <input type="hidden" name="evaluacion_preanestesica" value="0">
-                                {!! Form::label('evaluacion_preanestesica', 'Evaluacion Preanestesica:') !!}<br>
+                                {!! Form::label('evaluacion_preanestesica', 'Evaluación Preanestésica:') !!}<br>
                                 <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="evaluacion_preanestesica" id="evaluacion_preanestesica"
                                        value="1"
                                     {{ ($parte->evaluacion_preanestesica ?? old('evaluacion_preanestesica') ?? false) ? 'checked' : '' }}>
@@ -361,7 +361,7 @@
                             <!-- Insumos Especificos Field -->
 {{--                            <div class="form-group col-sm-4">--}}
 {{--                                <select-insumo-especifico--}}
-{{--                                    label="Insumo Especifico"--}}
+{{--                                    label="Insumo Específico"--}}
 {{--                                    v-model="insumo_especifico" >--}}
 
 {{--                                </select-insumo-especifico>--}}
