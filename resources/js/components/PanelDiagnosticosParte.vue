@@ -1,7 +1,7 @@
 <template>
     <div class="card " >
         <div class="card-header py-0 px-1">
-            <h3 class="card-title">Diagnósticos</h3>
+<!--            <h3 class="card-title">Diagnósticos</h3>-->
 
             <div class="card-tools">
 
@@ -50,7 +50,7 @@
                 <table class="table table-bordered table-sm table-striped mb-0">
                     <thead v-show="!disabled">
                     <tr>
-                        <th>Diagnóstico</th>
+                        <th>Diagnósticos Agregados</th>
                         <th >Actions</th>
                     </tr>
                     </thead>
