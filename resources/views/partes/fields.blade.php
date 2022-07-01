@@ -472,9 +472,7 @@
                             value="1"
                         {{ ($parte->consentimiento ?? old('consentimiento') ?? false) ? 'checked' : '' }}>
                 </div>
-3191-1003-se19
-
-                ABASTECIMIENTO DE LA BODEGA DE FÁRMACOS 001, OC N°206215 (VINCULADA), HORARIO DE BODEGA DE LUNES A JUEVES 08:00 A 14:00 HRS. LA ORDEN DE COMPRA DEBE SER ACEPTADA EN EL PORTAL, DE LO CONTRARIO SE SOLICITARÁ SU RECHAZO (Art.63 Reg.Ley 19.886). \"PARA CONSULTAS  SOBRE EL PAGO DE ESTE COMPROMISO, EFECTUARLAS  A pagoproveedoreshnv@sanidadnaval.cl, fonos 32-2573113 y 32-2573810\". EL NO CUMPLIMIENTO DEL REQUERIMIENTO EN LA FECHA DE ENTREGA ESTIPULADA EN LA ORDEN DE COMPRA, DARÁ ORIGEN AL COBRO DE MULTAS. “ORDEN DE COMPRA INGRESADA AL KARDEX DEL PRESENTE CONTRATO.\r\n\r\n
+3191-1003-s
                 <!-- derivacion Field -->
                 <!-- <div class="form-group col-sm-2">
 
@@ -725,6 +723,12 @@
             async saveIntervencion () {
 
                 this.loading = true;
+
+                if (!this.editedItem.lateralidad) {
+                    iziTe('El campo Lateralidad es requerido!');
+                    this.loading = false;
+                    return;
+                }
 
                 try {
 
