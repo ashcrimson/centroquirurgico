@@ -129,7 +129,7 @@
                                     <div class="form-row">
 
 
-                                        <div class="form-group col-sm-6">
+                                        <div class="form-group col-sm-4">
                                             <select-intervencion
                                                 :items="intervencionesNew"
                                                 label="Intervención"
@@ -138,7 +138,7 @@
                                             </select-intervencion>
                                         </div>
 
-                                        <div class="form-group col-sm-6" >
+                                        <div class="form-group col-sm-4" >
 
                                             {!! Form::label('lateralidad', 'Lateralidad:') !!}
 
@@ -148,8 +148,7 @@
 
                                         </div>
 
-
-                                        <div class="form-group col-sm-2">
+                                        <div class="form-group col-sm-4" >
                                             <label for="peep">&nbsp;</label>
                                             <div>
                                                 <button type="button" class="btn btn-success" @click.prevent="saveIntervencion()">
