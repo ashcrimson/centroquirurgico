@@ -727,6 +727,7 @@
                 if (!this.editedItem.lateralidad) {
                     iziTe('El campo Lateralidad es requerido!');
                     this.loading = false;
+                    this.close();
                     return;
                 }
 
@@ -734,6 +735,7 @@
                 if (parte_intervencion_repetida) {
                     iziTe('La intervencion ya se encuentra agregada!');
                     this.loading = false;
+                    this.close();
                     return;
                 }
 
