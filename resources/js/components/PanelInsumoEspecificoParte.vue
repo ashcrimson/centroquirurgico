@@ -51,7 +51,7 @@
                     <thead v-show="!disabled">
                     <tr>
                         <th>Insumo</th>
-                        <th >Actions</th>
+                        <th >Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
