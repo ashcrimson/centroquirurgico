@@ -178,10 +178,11 @@
                     },
                 ],
 
-                especialidades: @json(\App\Models\Especialidad::all() ?? []),
+                especialidades: @json(\App\Models\Especialidad::with(['patologias'])->get() ?? []),
                 especialidad: null,
 
-                grupobases: @json(\App\Models\GrupoBase::all() ?? []),
+                {{--grupobases: @json(\App\Models\GrupoBase::all() ?? []),--}}
+                grupobases: [],
                 grupobase: null,
 
                 cirugiaTipos: @json(\App\Models\CirugiaTipo::all() ?? []),
@@ -210,6 +211,19 @@
                     }
                     return null;
                 },
+            },
+            watch: {
+                especialidad(val) {
+                    if (val) {
+                        if (val.patologias) {
+                            this.grupobases = val.patologias;
+                        } else {
+                            this.grupobases = [];
+                        }
+                    } else {
+                        this.grupobases = [];
+                    }
+                }
             }
         });
     </script>
