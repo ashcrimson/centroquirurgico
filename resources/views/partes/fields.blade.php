@@ -730,6 +730,13 @@
                     return;
                 }
 
+                let parte_intervencion_repetida = this.parte_intervenciones.find(obj => obj.intervencion_new_id == this.intervencionNew.id);
+                if (parte_intervencion_repetida) {
+                    iziTe('La intervencion ya se encuentra agregada!');
+                    this.loading = false;
+                    return;
+                }
+
                 try {
 
                     this.editedItem.intervencion_new_id = this.getId(this.intervencionNew)
