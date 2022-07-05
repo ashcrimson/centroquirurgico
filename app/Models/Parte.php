@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Database\Eloquent\Collection $parteDiagnosticos
  * @property \Illuminate\Database\Eloquent\Collection $parteExamenes
  * @property \Illuminate\Database\Eloquent\Collection $parteIntervenciones
+ * @property \Illuminate\Database\Eloquent\Collection $parteInsumoEspecificos
  * @property \Illuminate\Database\Eloquent\Collection $parteMedicamentos
  * @property integer $paciente_id
  * @property integer $cirugia_tipo_id
@@ -476,6 +477,14 @@ class Parte extends Model
     public function parteIntervenciones()
     {
         return $this->hasMany(\App\Models\ParteIntervencion::class, 'parte_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function parteInsumoEspecificos()
+    {
+        return $this->hasMany(\App\Models\ParteInsumoEspecifico::class, 'parte_id');
     }
 
     public function estaAdmision()

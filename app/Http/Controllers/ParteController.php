@@ -159,7 +159,20 @@ class ParteController extends AppBaseController
     public function edit($id)
     {
         /** @var Parte $parte */
-        $parte = Parte::with(['subEspecialidad'])->find($id);
+        $parte = Parte::with(['subEspecialidad','parteDiagnosticos','parteIntervenciones','parteInsumoEspecificos'])->find($id);
+
+        if ($parte->estado_id == ParteEstado::TEMPORAL) {
+            if ($parte->parteDiagnosticos->isNotEmpty()) {
+
+                $parte->parteDiagnosticos()->forceDelete();
+            }
+            if ($parte->parteInsumoEspecificos->isNotEmpty()) {
+                $parte->parteInsumoEspecificos()->forceDelete();
+            }
+            if ($parte->parteIntervenciones->isNotEmpty()) {
+                $parte->parteIntervenciones()->forceDelete();
+            }
+        }
 
         if (!$parte->esTemporal()){
             $parte = $this->addAttributos($parte);
