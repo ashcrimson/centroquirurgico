@@ -348,7 +348,7 @@
                             </div>
 
                             <!-- Segunco Ojo Field -->
-                            <div class="col-sm-3" v-show="especialidad && especialidad.nombre=='Oftalmología'">
+                            <div class="col-sm-3" v-show="mostrar2doOjo">
                                 <input type="hidden" name="segundo_ojo" value="0">
                                 {!! Form::label('segundo_ojo', '2do Ojo:') !!}<br>
                                 <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="segundo_ojo" id="segundo_ojo"
@@ -571,8 +571,6 @@
             this.cancerOptionSelectVal;
             this.evaluacionEspecialidadSelectVal;
 
-            console.log(@json($parte->cancer))
-
             if (@json($parte->cancer) == 1) {
                 this.cancerOptionSelect = this.cancerOptions[0];
             } else if (@json($parte->cancer) == 2) {
@@ -743,8 +741,6 @@
                     this.editedItem.intervencion_new_id = this.getId(this.intervencionNew)
                     const data = this.editedItem;
 
-                    console.log('data inter',data);
-
                     if(this.editedItem.id === 0){
 
                         var res = await axios.post(route('api.parte_intervenciones.store'),data);
@@ -868,8 +864,18 @@
                     return this.evaluacionEspecialidadSelect.val;
                 }
                 return null;
+            },
+            mostrar2doOjo() {
+                if (this.especialidad) {
+                    if (this.especialidad.nombre == 'Oftalmología') {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
             }
-
         }
     });
 </script>
