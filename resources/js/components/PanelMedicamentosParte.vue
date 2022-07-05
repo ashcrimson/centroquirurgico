@@ -51,7 +51,7 @@
                     <thead v-show="!disabled">
                     <tr>
                         <th>Medicamento</th>
-                        <th >Actions</th>
+                        <th >Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
