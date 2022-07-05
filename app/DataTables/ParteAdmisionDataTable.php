@@ -54,22 +54,22 @@ class ParteAdmisionDataTable extends DataTable
                 //return view('partes.modal_detalles',compact('parte'))->render();
 
             })
-            ->rawColumns(['action','id'])
-            ->setRowAttr([
-                'style' => function(Parte $parte){
-
-                    $fecha_actual = Carbon::now();
-                    $diferencia = Carbon::parse($parte->fecha_examenes)->diffInDays($fecha_actual);
-                    $attr = null;
-                    if ($diferencia > 180) {
-                        $attr = 'background-color: #F30000';
-                    }
-                    if ($diferencia < 180) {
-                        $attr = 'background-color: #99E066';
-                    }
-                    return $attr;
-                }
-            ]);
+            ->rawColumns(['action','id']);
+//            ->setRowAttr([
+//                'style' => function(Parte $parte){
+//
+//                    $fecha_actual = Carbon::now();
+//                    $diferencia = Carbon::parse($parte->fecha_examenes)->diffInDays($fecha_actual);
+//                    $attr = null;
+//                    if ($diferencia > 180) {
+//                        $attr = 'background-color: #F30000';
+//                    }
+//                    if ($diferencia < 180) {
+//                        $attr = 'background-color: #99E066';
+//                    }
+//                    return $attr;
+//                }
+//            ]);
 
     }
 

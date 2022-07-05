@@ -43,7 +43,17 @@ class ParteListaEsperaDataTable extends DataTable
             })
             ->editColumn('Preops',function (Parte $parte){
 
-                return view('partes.admision.columna_preops',compact('parte'));
+                    $fecha_actual = Carbon::now();
+                    $diferencia = Carbon::parse($parte->fecha_examenes)->diffInDays($fecha_actual);
+                    $attr = null;
+                    if ($diferencia > 180) {
+                        $attr = '#F30000';
+                    }
+                    if ($diferencia < 180) {
+                        $attr = '#99E066';
+                    }
+
+                return view('partes.admision.columna_preops',compact('parte','attr','diferencia'));
 
             })
             ->editColumn('dias_espera',function (Parte $parte){

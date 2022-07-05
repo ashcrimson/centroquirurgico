@@ -1,7 +1,9 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-{{$parte->preopsValidados() ? 'success' : 'outline-secondary'}} btn-sm" data-toggle="modal" data-target="#modalExPreopsValidados{{$parte->id}}">
-    Preops
-</button>
+<div @if(routeIs('admision.partes.lista.espera')) style='background-color: {{$attr}};' @endif >
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-{{$parte->preopsValidados() ? 'success' : 'outline-secondary'}} btn-sm" data-toggle="modal" data-target="#modalExPreopsValidados{{$parte->id}}">
+        Preops
+    </button>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="modalExPreopsValidados{{$parte->id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
