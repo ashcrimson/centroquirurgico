@@ -300,7 +300,7 @@
 
         <div class="form-group col-sm-4" v-show="derivacion">
             <select-reparticion
-                label="Institución"
+                label="Centro Derivador"
                 v-model="reparticion" >
 
             </select-reparticion>
