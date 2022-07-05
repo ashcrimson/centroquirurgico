@@ -37,8 +37,8 @@ class OptionsRoleAdmisionSeeder extends Seeder
             26,
             27,
             28,
-            32,
-            33,
+//            32,
+//            33,
         ]);
 
     }
