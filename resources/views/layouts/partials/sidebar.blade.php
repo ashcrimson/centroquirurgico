@@ -15,7 +15,8 @@
                 <img src="{{Auth::user()->img}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-               <!--  <a href="{{route('profile')}}" class="d-block">{{ Auth::user()->name }} </a> -->
+{{--              href="#"  {{route('profile')}}--}}
+               <a  class="d-block">{{ Auth::user()->name }} </a>
             </div>
         </div>
 
