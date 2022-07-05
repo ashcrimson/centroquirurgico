@@ -18,44 +18,51 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col">
-                        @if($parte->pase_preop_eu == 0 && !is_null($parte->fecha_preop_eu_valida))
+                        @if($parte->control_preop_eu != 0)
+{{--                            && !is_null($parte->fecha_preop_eu_valida)--}}
                             <span class="badge badge-danger">
                                 EU
                             </span>
-                        @else
-                            <span class="badge {{is_null($parte->fecha_preop_eu_valida) ? 'badge-secondary' : 'badge-success'}}">
-                                EU
-                            </span>
+                            <br>
+{{--                        @else--}}
+{{--                            <span class="badge {{is_null($parte->fecha_preop_eu_valida) ? 'badge-secondary' : 'badge-success'}}">--}}
+{{--                                EU--}}
+{{--                            </span>--}}
                         @endif
-                        <br>
-                        @if($parte->pase_preop_medico == 0 && !is_null($parte->fecha_preop_medico_valida))
+
+                        @if($parte->control_preop_medico != 0 )
+{{--                                && !is_null($parte->fecha_preop_medico_valida)--}}
                             <span class="badge badge-danger">
                                 Medico
                             </span>
-                        @else
-                            <span class="badge {{is_null($parte->fecha_preop_medico_valida) ? 'badge-secondary' : 'badge-success'}}">
-                                Medico
-                            </span>
+                            <br>
+{{--                        @else--}}
+{{--                            <span class="badge {{is_null($parte->fecha_preop_medico_valida) ? 'badge-secondary' : 'badge-success'}}">--}}
+{{--                                Medico--}}
+{{--                            </span>--}}
                         @endif
-                        <br>
-                        @if($parte->pase_preop_anestesista == 0 && !is_null($parte->fecha_preop_anestesista_valida))
+
+                        @if($parte->control_preop_anestesista != 0)
+{{--                                && !is_null($parte->fecha_preop_anestesista_valida)--}}
                             <span class="badge badge-danger">
                                 Anestesista
                             </span>
-                        @else
-                            <span class="badge {{is_null($parte->fecha_preop_anestesista_valida) ? 'badge-secondary' : 'badge-success'}}">
-                                Anestesista
-                            </span>
+                            <br>
+{{--                        @else--}}
+{{--                            <span class="badge {{is_null($parte->fecha_preop_anestesista_valida) ? 'badge-secondary' : 'badge-success'}}">--}}
+{{--                                Anestesista--}}
+{{--                            </span>--}}
                         @endif
-                        <br>
-                        @if($parte->pase_banco_sagre == 0 && !is_null($parte->fecha_banco_sangre_valida))
+
+                        @if($parte->control_banco_sangre != 0)
+{{--                                && !is_null($parte->fecha_banco_sangre_valida)--}}
                             <span class="badge badge-danger">
                                 Banco Sangre
                             </span>
-                        @else
-                            <span class="badge {{is_null($parte->fecha_banco_sangre_valida) ? 'badge-secondary' : 'badge-success'}}">
-                                Banco Sangre
-                            </span>
+{{--                        @else--}}
+{{--                            <span class="badge {{is_null($parte->fecha_banco_sangre_valida) ? 'badge-secondary' : 'badge-success'}}">--}}
+{{--                                Banco Sangre--}}
+{{--                            </span>--}}
                         @endif
 
                         @if(!is_null($parte->fecha_preop_eu_valida) || !is_null($parte->fecha_preop_medico_valida)

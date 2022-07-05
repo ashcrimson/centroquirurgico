@@ -471,7 +471,7 @@
                             value="1"
                         {{ ($parte->consentimiento ?? old('consentimiento') ?? false) ? 'checked' : '' }}>
                 </div>
-3191-1003-s
+
                 <!-- derivacion Field -->
                 <!-- <div class="form-group col-sm-2">
 
