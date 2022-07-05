@@ -84,6 +84,15 @@
                     {!! Form::textarea('otros_diagnosticos', $parte->otros_diagnosticos ?? null, ['class' => 'form-control','rows' => 2,'readonly']) !!}
                 </div>
 
+                <div class="form-group col-sm-12">
+                    <panel-insumo-parte parte_id="@json($parte->id)" :disabled="true"></panel-insumo-parte>
+                </div>
+
+                <div class="form-group col-sm-12 col-lg-12">
+                    {!! Form::label('otros_insumos', 'Otros Insumos:') !!}
+                    {!! Form::textarea('otros_insumos', null, ['class' => 'form-control','rows' => 2, 'disabled']) !!}
+                </div>
+
                 <!-- Intervencion Field -->
                 <div class="form-group col-sm-12 col-lg-12">
                     <div class="table-responsive mb-0">
