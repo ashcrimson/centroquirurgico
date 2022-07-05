@@ -69,10 +69,10 @@ class PermissionSeeder extends Seeder
             Permission::firstOrCreate(['name' => 'Editar Condiciones']);
             Permission::firstOrCreate(['name' => 'Eliminar Condiciones']);
 
-            Permission::firstOrCreate(['name' => 'Ver Convenios']);
-            Permission::firstOrCreate(['name' => 'Crear Convenios']);
-            Permission::firstOrCreate(['name' => 'Editar Convenios']);
-            Permission::firstOrCreate(['name' => 'Eliminar Convenios']);
+            Permission::firstOrCreate(['name' => 'Ver Convenios',]);
+            Permission::firstOrCreate(['name' => 'Crear Convenios',]);
+            Permission::firstOrCreate(['name' => 'Editar Convenios',]);
+            Permission::firstOrCreate(['name' => 'Eliminar Convenios',]);
 
             Permission::firstOrCreate(['name' => 'Ver Diagnosticos']);
             Permission::firstOrCreate(['name' => 'Crear Diagnosticos']);
@@ -113,6 +113,31 @@ class PermissionSeeder extends Seeder
             Permission::firstOrCreate(['name' => 'Crear Parte Intervencions']);
             Permission::firstOrCreate(['name' => 'Editar Parte Intervencions']);
             Permission::firstOrCreate(['name' => 'Eliminar Parte Intervencions']);
+
+            Permission::firstOrCreate(['name' => 'Ver Intervenciones News']);
+            Permission::firstOrCreate(['name' => 'Crear Intervenciones News']);
+            Permission::firstOrCreate(['name' => 'Editar Intervenciones News']);
+            Permission::firstOrCreate(['name' => 'Eliminar Intervenciones News']);
+
+            Permission::firstOrCreate(['name' => 'Ver Especialidad Subs']);
+            Permission::firstOrCreate(['name' => 'Crear Especialidad Subs']);
+            Permission::firstOrCreate(['name' => 'Editar Especialidad Subs']);
+            Permission::firstOrCreate(['name' => 'Eliminar Especialidad Subs']);
+
+            Permission::firstOrCreate(['name' => 'Ver Contacto Tipos']);
+            Permission::firstOrCreate(['name' => 'Crear Contacto Tipos']);
+            Permission::firstOrCreate(['name' => 'Editar Contacto Tipos']);
+            Permission::firstOrCreate(['name' => 'Eliminar Contacto Tipos']);
+
+            Permission::firstOrCreate(['name' => 'Ver Sistema Saluds']);
+            Permission::firstOrCreate(['name' => 'Crear Sistema Saluds']);
+            Permission::firstOrCreate(['name' => 'Editar Sistema Saluds']);
+            Permission::firstOrCreate(['name' => 'Eliminar Sistema Saluds']);
+
+            Permission::firstOrCreate(['name' => 'Ver Preoperatorios']);
+            Permission::firstOrCreate(['name' => 'Crear Preoperatorios']);
+            Permission::firstOrCreate(['name' => 'Editar Preoperatorios']);
+            Permission::firstOrCreate(['name' => 'Eliminar Preoperatorios']);
 
         }
 
