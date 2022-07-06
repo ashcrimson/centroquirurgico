@@ -53,7 +53,7 @@ class ParteListaEsperaDataTable extends DataTable
                         $attr = '#99E066';
                     }
 
-                return view('partes.admision.columna_preops',compact('parte','attr','diferencia'));
+                return view('partes.admision.columna_preops',compact('parte','attr'));
 
             })
             ->editColumn('dias_espera',function (Parte $parte){

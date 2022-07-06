@@ -77,7 +77,9 @@
                                     <div class="row">
                                         ¿Estás seguro de guardar y enviar a Admisión?
                                         <br>
-                                        Indique al paciente que se dirija a admisión
+                                        Indique al paciente que se dirija a admisión.
+                                        <br>
+                                        Horarios Atención: Lunes a Viernes desde 7:45 a 17:00 hrs.
                                     </div>
                                 </div>
                                 <div class="modal-footer">
