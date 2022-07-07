@@ -228,11 +228,11 @@
     @endif
 @endcan
 
-
+@role('Admisión')
     <a href="{{ route('admision.partes.edit', $id) }}" data-toggle="tooltip" title="Editar" class='btn btn-outline-info btn-sm'>
         <i class="fa fa-edit"></i>
     </a>
-
+@endrole
 
 @can('Eliminar Partes')
     @if($parte->puedeEliminar())
