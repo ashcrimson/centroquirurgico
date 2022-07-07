@@ -3,7 +3,7 @@
         font-size:16px;
     }
     .timeline>div>.timeline-item>.time {
-        font-size:16px;
+        font-size:18px;
         /*float:left;*/
         /*position: relative;*/
         top: -4px;
@@ -59,12 +59,13 @@
                 <div>
                     <i class="fas fa-user bg-green"></i>
                     <div class="timeline-item">
-                        <span class="time">
-                            <i class="fas fa-clock"></i>
-                            <span v-text="item.creado_el"></span>
-                        </span>
 
                         <h3 class="timeline-header">
+                            <span class="time">
+                                <i class="fas fa-clock"></i>
+                                <span v-text="item.creado_el"></span>
+                            </span>
+
                             <a href="#">
                                 <span v-text="item.user.name"></span>
                             </a>
