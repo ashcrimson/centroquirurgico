@@ -867,7 +867,7 @@
             },
             mostrar2doOjo() {
                 if (this.especialidad) {
-                    if (this.especialidad.nombre == 'Oftalmología') {
+                    if (this.especialidad.nombre == 'OFTALMOLOGIA GENERAL') {
                         return true;
                     } else {
                         return false;
