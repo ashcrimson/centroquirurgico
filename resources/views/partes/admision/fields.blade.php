@@ -257,7 +257,7 @@
 
         </div>
 
-        <div class="form-group col-sm-3">
+        <div class="form-group col-sm-3" v-show="mostrarCategoria">
             <label for="">Categoría</label>
             <br>
             <multiselect v-model="titular_carga" :options="['Sí mismo','Carga']"  placeholder="Seleccione uno...">
@@ -362,6 +362,15 @@
         },
         methods: {
 
+        },
+        computed: {
+            mostrarCategoria() {
+                if (this.sistema) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         },
         watch: {
             medico (medico) {
