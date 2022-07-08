@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Parte;
+use App\Traits\ParteListaEsperaTrait;
 use Carbon\Carbon;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -10,6 +11,9 @@ use Yajra\DataTables\EloquentDataTable;
 
 class ParteListaEsperaDataTable extends DataTable
 {
+
+    use ParteListaEsperaTrait;
+
     /**
      * Build DataTable class.
      *
@@ -45,13 +49,15 @@ class ParteListaEsperaDataTable extends DataTable
 
                     $fecha_actual = Carbon::now();
                     $diferencia = Carbon::parse($parte->fecha_examenes)->diffInDays($fecha_actual);
-                    $attr = null;
-                    if ($diferencia > 180) {
-                        $attr = '#F30000';
-                    }
-                    if ($diferencia < 180) {
-                        $attr = '#99E066';
-                    }
+
+//                    if ($diferencia > 180) {
+//                        $attr = '#F30000';
+//                    }
+//                    if ($diferencia < 180) {
+//                        $attr = '#99E066';
+//                    }
+
+                    $attr = $this->validarPreopColor($parte);
 
                 return view('partes.admision.columna_preops',compact('parte','attr'));
 
