@@ -268,7 +268,7 @@
 
 
         <!-- Grupo Base Field -->
-        <div class="form-group col-sm-3">
+        <!-- <div class="form-group col-sm-3">
             <select-grupo-base
                 label="Grupo Base"
                 v-model="patologia"
@@ -277,7 +277,7 @@
 
             </select-grupo-base>
 
-        </div>
+        </div> -->
 
         <!-- derivacion Field -->
         <div class="form-group col-sm-2">
