@@ -1,6 +1,6 @@
 
 @role('PreOp Anestesista')
-    @if(!$parte->fecha_preop_anestesista_valida)
+    @if(!$parte->fecha_preop_anestesista_valida || $parte->pase_preop_anestesista != 1)
         <div data-toggle="tooltip" title="Valida PreOp Anestesista">
             <a class="btn btn-outline-success btn-sm" data-toggle="modal" href="#modalFormValidaPreOpAnestesista{{$id}}">
                 <i class="fa fa-check-circle"></i>
@@ -56,7 +56,7 @@
 @endrole
 
 @role('PreOp EU')
-    @if(!$parte->fecha_preop_eu_valida)
+    @if(!$parte->fecha_preop_eu_valida || $parte->pase_preop_eu != 1)
         <div data-toggle="tooltip" title="Valida PreOp EU">
             <a class="btn btn-outline-success btn-sm" data-toggle="modal" href="#modalFormValidaPreOpEU{{$id}}">
                 <i class="fa fa-clipboard-check"></i>
@@ -112,7 +112,7 @@
 @endrole
 
 @role('PreOp Médico')
-    @if(!$parte->fecha_preop_medico_valida)
+    @if(!$parte->fecha_preop_medico_valida || $parte->pase_preop_medico != 1)
         <div data-toggle="tooltip" title="Valida PreOp Médico">
             <a class="btn btn-outline-success btn-sm" data-toggle="modal" href="#modalFormValidaPreOpMedico{{$id}}">
                 <i class="fa fa-check"></i>
@@ -168,7 +168,7 @@
 @endrole
 
 @role('Banco de Sangre')
-    @if(!$parte->fecha_banco_sangre_valida)
+    @if(!$parte->fecha_banco_sangre_valida || $parte->pase_banco_sagre)
         <div data-toggle="tooltip" title="Valida Banco Sangre">
             <a class="btn btn-outline-success btn-sm" data-toggle="modal" href="#modalFormValidabancoSangre{{$id}}">
                 <i class="fa fa-check"></i>
