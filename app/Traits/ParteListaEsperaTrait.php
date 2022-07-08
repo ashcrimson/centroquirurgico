@@ -52,6 +52,24 @@ trait ParteListaEsperaTrait
             }
         }
 
+        if ($parte->control_preop_medico) {
+            if ($parte->pase_preop_medico) {
+                $attr = '#99E066';
+            }
+        }
+
+        if ($parte->control_preop_anestesista) {
+            if ($parte->pase_preop_anestesista) {
+                $attr = '#99E066';
+            }
+        }
+
+        if ($parte->control_preop_eu) {
+            if ($parte->pase_preop_eu) {
+                $attr = '#99E066';
+            }
+        }
+
         return $attr;
 
     }
