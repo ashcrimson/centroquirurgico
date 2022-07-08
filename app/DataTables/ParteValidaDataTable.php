@@ -44,21 +44,21 @@ class ParteValidaDataTable extends DataTable
                 return $parte->created_at;
 
             })
-            ->setRowAttr([
-                'style' => function(Parte $parte){
-
-                    /**
-                     * @var User $user
-                     */
-                    $user = auth()->user();
-
-
-                    if($user->validoParte($parte)){
-                        return 'background-color: #99E066';
-                    }
-
-                }
-            ])
+//            ->setRowAttr([
+//                'style' => function(Parte $parte){
+//
+//                    /**
+//                     * @var User $user
+//                     */
+//                    $user = auth()->user();
+//
+//
+//                    if($user->validoParte($parte)){
+//                        return 'background-color: #99E066';
+//                    }
+//
+//                }
+//            ])
             ->editColumn('id',function (Parte $parte){
 
                 return $parte->id;
