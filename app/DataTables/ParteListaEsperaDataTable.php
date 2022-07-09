@@ -47,8 +47,8 @@ class ParteListaEsperaDataTable extends DataTable
             })
             ->editColumn('Preops',function (Parte $parte){
 
-                    $fecha_actual = Carbon::now();
-                    $diferencia = Carbon::parse($parte->fecha_examenes)->diffInDays($fecha_actual);
+//                    $fecha_actual = Carbon::now();
+//                    $diferencia = Carbon::parse($parte->fecha_examenes)->diffInDays($fecha_actual);
 
 //                    if ($diferencia > 180) {
 //                        $attr = '#F30000';
