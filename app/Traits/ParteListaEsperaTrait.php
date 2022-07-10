@@ -20,6 +20,32 @@ trait ParteListaEsperaTrait
             }
         }
 
+        if ($parte->control_preop_eu && $parte->control_preop_anestesista && $parte->control_preop_medico &&
+            !$parte->control_banco_sangre) {
+            if ($parte->pase_preop_eu == "1" && $parte->pase_preop_anestesista == "1" && $parte->pase_preop_medico == "1" &&
+                !$parte->pase_banco_sagre == "1") {
+                $attr = '#99E066';
+            }
+        } else if ($parte->control_preop_eu && $parte->control_preop_anestesista && !$parte->control_preop_medico &&
+            $parte->control_banco_sangre) {
+            if ($parte->pase_preop_eu == "1" && $parte->pase_preop_anestesista == "1" && !$parte->pase_preop_medico == "1" &&
+                $parte->pase_banco_sagre == "1") {
+                $attr = '#99E066';
+            }
+        } else if ($parte->control_preop_eu && !$parte->control_preop_anestesista && $parte->control_preop_medico &&
+            $parte->control_banco_sangre) {
+            if ($parte->pase_preop_eu == "1" && !$parte->pase_preop_anestesista == "1" && $parte->pase_preop_medico == "1" &&
+                $parte->pase_banco_sagre == "1") {
+                $attr = '#99E066';
+            }
+        } else if (!$parte->control_preop_eu && $parte->control_preop_anestesista && $parte->control_preop_medico &&
+            $parte->control_banco_sangre) {
+            if (!$parte->pase_preop_eu == "1" && $parte->pase_preop_anestesista == "1" && $parte->pase_preop_medico == "1" &&
+                $parte->pase_banco_sagre == "1") {
+                $attr = '#99E066';
+            }
+        }
+
         if ($parte->control_preop_eu && $parte->control_preop_anestesista && !$parte->control_preop_medico &&
             !$parte->control_banco_sangre) {
             if ($parte->pase_preop_eu == "1" && $parte->pase_preop_anestesista == "1" && $parte->pase_preop_medico != "1" &&
