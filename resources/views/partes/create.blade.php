@@ -31,7 +31,7 @@
                     {!! Form::open(['route' => 'partes.store','class' => 'wait-on-submit']) !!}
                         <div class="form-row">
 
-                            @include('partes.fields')
+                            @include('partes.fields_create')
 
                             <!-- Submit Field -->
                             <div class="form-group col-sm-12 text-right">
@@ -40,15 +40,13 @@
                                 </a>
                                 &nbsp;
                                 <button type="submit" class="btn btn-outline-success">
-                                    <i class="fa fa-floppy-o"></i> Guardar
+                                    <i class="fa fa-floppy-o"></i> Crear Parte
                                 </button>
 
 
-                                @if($parte->puedeEnviarAdmision())
-                                    <button type="submit" class="btn btn-outline-primary ml-3" name="enviar_admin" value="1">
-                                        <i class="fa fa-paper-plane"></i> Guardar y Enviar
-                                    </button>
-                                @endif
+{{--                                <button type="submit" class="btn btn-outline-primary ml-3" name="enviar_admin" value="1">--}}
+{{--                                    <i class="fa fa-paper-plane"></i> Guardar y Enviar--}}
+{{--                                </button>--}}
                             </div>
                         </div>
                     {!! Form::close() !!}
