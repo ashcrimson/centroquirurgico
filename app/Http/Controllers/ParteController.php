@@ -83,10 +83,11 @@ class ParteController extends AppBaseController
     public function create()
     {
 
+//        $parte = $this->getParteTemporal();
+//        return redirect(route('partes.edit',$parte->id));
 
-        $parte = $this->getParteTemporal();
+        return  view('partes.create');
 
-        return redirect(route('partes.edit',$parte->id));
     }
 
     /**
@@ -100,6 +101,7 @@ class ParteController extends AppBaseController
     {
 
         try {
+
             DB::beginTransaction();
 
             $paciente = $this->creaOactualizaPaciente($request);
@@ -113,8 +115,6 @@ class ParteController extends AppBaseController
             /** @var Parte $parte */
             $parte = Parte::create($request->all());
 
-
-
         } catch (Exception $exception) {
             DB::rollBack();
 
@@ -125,7 +125,7 @@ class ParteController extends AppBaseController
 
         flash()->success('Parte guardado exitosamente.');
 
-        return redirect(route('partes.index'));
+        return redirect( route('partes.edit',$parte->id) );
     }
 
     /**

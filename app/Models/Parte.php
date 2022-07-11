@@ -319,6 +319,67 @@ class Parte extends Model
     ];
 
     /**
+     * Validation rules Create
+     *
+     * @var array
+     */
+    public static $rulesCreate = [
+        'cirugia_tipo_id' => 'nullable',
+        'especialidad_id' => 'nullable',
+        'diagnostico_id' => 'nullable',
+        'otros_diagnosticos' => 'nullable|string',
+        'intervencion_id' => 'nullable',
+        'lateralidad' => 'nullable|string|max:255',
+        'otras_intervenciones' => 'nullable|string',
+        'cma' => 'nullable|boolean',
+        'clasificacion_id' => 'nullable',
+        'tiempo_quirurgico' => 'nullable|integer',
+        'anestesia_sugerida' => 'nullable|string|max:255',
+        'aislamiento' => 'nullable|boolean',
+        'alergia_latex' => 'nullable|boolean',
+        'usuario_taco' => 'nullable|boolean',
+        'nececidad_cama_upc' => 'nullable|boolean',
+        'prioridad' => 'nullable|boolean',
+        'necesita_donante_sangre' => 'nullable|boolean',
+        'evaluacion_preanestesica' => 'nullable|boolean',
+        'equipo_rayos' => 'nullable|boolean',
+        'sistema_salud_id' => 'nullable',
+        'preoperatorio_id' => 'nullable',
+        'grupo_base_id' => 'nullable',
+        'insumo_especifico_id' => 'nullable',
+        'biopsia' => 'nullable|string|max:255',
+        'pabellon_id' => 'nullable|integer',
+        'extrademanda' => 'nullable|boolean',
+        'convenio_id' => 'nullable',
+        'derivacion' => 'nullable|boolean',
+        'reparticion_id' => 'nullable',
+        'fecha_pabellon' => 'nullable',
+        'fecha_digitacion' => 'nullable',
+        'examenes_realizados' => 'nullable|boolean',
+        'fecha_examenes' => 'nullable',
+        'control_preop_eu' => 'nullable|boolean',
+        'fecha_preop_eu' => 'nullable',
+        'control_preop_medico' => 'nullable|boolean',
+        'fecha_preop_medico' => 'nullable',
+        'control_preop_anestesista' => 'nullable|boolean',
+        'fecha_preop_anestesista' => 'nullable',
+        'instrumental' => 'nullable|string',
+        'observaciones' => 'nullable|string',
+        'email' => 'nullable|string',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable',
+        'deleted_at' => 'nullable',
+        'cancer' => 'nullable',
+        'control_banco_sangre' => 'nullable',
+        'fecha_banco_sangre' => 'nullable',
+        'fecha_banco_sangre_valida' => 'nullable',
+        'cantidad_donantes' => 'nullable',
+        'pase_banco_sagre' => 'nullable',
+        'otros_insumos' => 'nullable',
+        'sub_especialidad_id' => 'nullable',
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
     public function cirugiaTipo()
