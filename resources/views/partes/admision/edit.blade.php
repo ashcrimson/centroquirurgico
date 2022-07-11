@@ -63,7 +63,7 @@
 {{--                                        </button>--}}
 
                                         <button type="submit" class="btn btn-outline-primary ml-2" value="1" name="lista_espera">
-                                            <i class="fa fa-floppy-o"></i> Ingresar a lista de espera
+                                            <i class="fa fa-floppy-o"></i> @if($parte->estado_id == \App\Models\ParteEstado::LISTA_ESPERA) Guardar @else Ingresar a lista de espera @endif
                                         </button>
 
                                     </div>
