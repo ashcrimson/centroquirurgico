@@ -123,7 +123,7 @@ class ParteController extends AppBaseController
 
         DB::commit();
 
-        flash()->success('Parte guardado exitosamente.');
+//        flash()->success('Parte guardado exitosamente.');
 
         return redirect( route('partes.edit',$parte->id) );
     }
