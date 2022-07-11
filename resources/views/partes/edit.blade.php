@@ -121,7 +121,6 @@
 
         $("#guardarEnviarFormEdit").submit(function (e) {
 
-
             if (!$("input[name='cirugia_tipo_id']").val()) {
 
                 // fieldsPartes.$refs.selectTipoCirugia.$refs.multiselect.$el.focus();
@@ -255,6 +254,16 @@
             if ($('input[name=consentimiento]:checked').length == 0) {
                 Swal.close('true');
                 iziTe('El Campo Consentimiento informado, firmado y archivado en ficha clínica es requerido!');
+                return false;
+            }
+
+            if (fieldsPartes.parte_intervenciones.length == 0) {
+
+                let multiselectIntervencion = fieldsPartes.$refs.multiselectIntervencion.$el;
+                multiselectIntervencion.scrollIntoView();
+
+                Swal.close('true');
+                iziTe('Las Intervenciones son requeridas!');
                 return false;
             }
 

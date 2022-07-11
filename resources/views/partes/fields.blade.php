@@ -133,7 +133,8 @@
                                             <select-intervencion
                                                 :items="intervencionesNew"
                                                 label="Intervención"
-                                                v-model="intervencionNew">
+                                                v-model="intervencionNew"
+                                                ref="multiselectIntervencion">
 
                                             </select-intervencion>
                                         </div>
