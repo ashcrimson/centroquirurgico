@@ -60,9 +60,7 @@
                             </div>
                         </div>
 
-                   {!! Form::close() !!}
-
-                    <div class="modal fade" id="modalForm" data-backdrop="static" data-keyboard="false">
+                        <div class="modal fade" id="modalForm" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog " role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -93,6 +91,8 @@
                             </div>
                         </div>
                     </div>
+
+                   {!! Form::close() !!}
 
                 </div>
             </div>
@@ -275,6 +275,12 @@
                 iziTe('Las Intervenciones son requeridas!');
                 return false;
             }
+
+            var input = $("<input>")
+                .attr("type", "hidden")
+                .attr("id", "inputEnviar_admin")
+                .attr("name", "enviar_admin").val("1");
+            $('#guardarEnviarFormEdit').append(input);
 
             $("#guardarEnviarFormEdit").submit();
 
