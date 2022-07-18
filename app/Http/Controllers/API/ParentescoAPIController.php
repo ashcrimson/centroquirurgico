@@ -34,7 +34,7 @@ class ParentescoAPIController extends AppBaseController
             $query->limit($request->get('limit'));
         }
 
-        $parentescos = $query->get();
+        $parentescos = $query->orderBy('id')->get();
 
         return $this->sendResponse($parentescos->toArray(), 'Parentescos retrieved successfully');
     }
