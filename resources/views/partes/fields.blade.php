@@ -433,7 +433,7 @@
                 <!-- Grupo Base Field -->
                 <div class="form-group col-sm-6">
                     {!! Form::label('biopsia', 'Grupo Base:') !!}
-                    <multiselect v-model="grupo_base" :options="grupo_bases" label="nombre"  placeholder="Seleccione uno..." ref="multiselectBiopsias">
+                    <multiselect v-model="grupo_base" :options="grupo_bases" label="nombre"  placeholder="Seleccione uno..." ref="multiselectGrupoBase">
                     </multiselect>
                     <input type="hidden" name="grupo_base_id" :value="grupo_base ? grupo_base.id : null">
 {{--                    <select-grupo-base--}}

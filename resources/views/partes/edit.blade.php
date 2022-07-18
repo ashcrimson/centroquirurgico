@@ -86,7 +86,7 @@
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                         Cerrar
                                     </button>
-                                    <button type="submit" class="btn btn-danger" onclick="guardarEnviar()" name="enviar_admin" id="enviar_admin" value="1">
+                                    <button type="button" class="btn btn-danger" onclick="guardarEnviar()" name="enviar_admin" id="enviar_admin" value="1">
                                         Guardar Y Enviar Admisión
                                     </button>
                                 </div>
@@ -117,9 +117,6 @@
             });
 
             Swal.showLoading();
-        }
-
-        $("#guardarEnviarFormEdit").submit(function (e) {
 
             if (!$("input[name='cirugia_tipo_id']").val()) {
 
@@ -128,6 +125,7 @@
                 multiselectTipoCirugia.classList.add('error-multi-select');
                 multiselectTipoCirugia.scrollIntoView();
 
+                $('#modalForm').modal('hide');
                 Swal.close('true');
                 iziTe('El Campo Tipo Cirugía es requerido!');
                 return false;
@@ -142,6 +140,7 @@
                 multiselectEspecialidad.classList.add('error-multi-select');
                 multiselectEspecialidad.scrollIntoView();
 
+                $('#modalForm').modal('hide');
                 Swal.close('true');
                 iziTe('El Campo Especialidad es requerido!');
                 return false;
@@ -157,6 +156,7 @@
                 multiselectTiempoQuirurgico.classList.add('error-multi-select');
                 multiselectTiempoQuirurgico.scrollIntoView();
 
+                $('#modalForm').modal('hide');
                 Swal.close('true');
                 iziTe('El Campo Tiempo Quirúrgico es requerido!');
                 return false;
@@ -171,6 +171,7 @@
                 multiselectAnestesiaSugerida.classList.add('error-multi-select');
                 multiselectAnestesiaSugerida.scrollIntoView();
 
+                $('#modalForm').modal('hide');
                 Swal.close('true');
                 iziTe('El Campo Anestesia Sugerida es requerido!');
                 return false;
@@ -186,6 +187,7 @@
                     multiselectTipoCamaUpc.classList.add('error-multi-select');
                     multiselectTipoCamaUpc.scrollIntoView();
 
+                    $('#modalForm').modal('hide');
                     Swal.close('true');
                     iziTe('El Campo Tipo Cama UPC es requerido!');
                     return false;
@@ -201,6 +203,7 @@
                 multiselectCancerSospechaCancer.classList.add('error-multi-select');
                 multiselectCancerSospechaCancer.scrollIntoView();
 
+                $('#modalForm').modal('hide');
                 Swal.close('true');
                 iziTe('El Campo Cáncer o Sospecha de Cáncer es requerido!');
                 return false;
@@ -215,6 +218,7 @@
                 multiselectPreoperatorio.classList.add('error-multi-select');
                 multiselectPreoperatorio.scrollIntoView();
 
+                $('#modalForm').modal('hide');
                 Swal.close('true');
                 iziTe('El Campo Ex Preoperatorios es requerido!');
                 return false;
@@ -225,15 +229,16 @@
 
             if (!$("input[name='grupo_base_id']").val()) {
 
-                let multiselectGrupoBase = fieldsPartes.$refs.selectGrupoBase.$refs.multiselect.$el;
+                let multiselectGrupoBase = fieldsPartes.$refs.multiselectGrupoBase.$el;
                 multiselectGrupoBase.classList.add('error-multi-select');
                 multiselectGrupoBase.scrollIntoView();
 
+                $('#modalForm').modal('hide');
                 Swal.close('true');
                 iziTe('El Campo Grupo Base es requerido!');
                 return false;
             } else {
-                let multiselectGrupoBase = fieldsPartes.$refs.selectGrupoBase.$refs.multiselect.$el;
+                let multiselectGrupoBase = fieldsPartes.$refs.multiselectGrupoBase.$el;
                 multiselectGrupoBase.classList.remove('error-multi-select');
             }
 
@@ -243,6 +248,7 @@
                 multiselectBiopsias.classList.add('error-multi-select');
                 multiselectBiopsias.scrollIntoView();
 
+                $('#modalForm').modal('hide');
                 Swal.close('true');
                 iziTe('El Campo Biopsias es requerido!');
                 return false;
@@ -252,6 +258,8 @@
             }
 
             if ($('input[name=consentimiento]:checked').length == 0) {
+
+                $('#modalForm').modal('hide');
                 Swal.close('true');
                 iziTe('El Campo Consentimiento informado, firmado y archivado en ficha clínica es requerido!');
                 return false;
@@ -262,12 +270,26 @@
                 let multiselectIntervencion = fieldsPartes.$refs.multiselectIntervencion.$el;
                 multiselectIntervencion.scrollIntoView();
 
+                $('#modalForm').modal('hide');
                 Swal.close('true');
                 iziTe('Las Intervenciones son requeridas!');
                 return false;
             }
 
-            guardarEnviar();
+            $("#guardarEnviarFormEdit").submit();
+
+        }
+
+        $("#guardarEnviarFormEdit").submit(function (e) {
+
+            Swal.fire({
+                title: 'Espera por favor...',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                timerProgressBar: true,
+            });
+
+            Swal.showLoading();
 
         });
 
