@@ -90,7 +90,7 @@
 
                 <div class="form-group col-sm-12 col-lg-12">
                     {!! Form::label('otros_insumos', 'Otros Insumos:') !!}
-                    {!! Form::textarea('otros_insumos', null, ['class' => 'form-control','rows' => 2, 'disabled']) !!}
+                    {!! Form::textarea('otros_insumos', $parte->otros_insumos, ['class' => 'form-control','rows' => 2, 'disabled']) !!}
                 </div>
 
                 <!-- Intervencion Field -->
@@ -264,15 +264,15 @@
 
 
                                 <!-- Insumos Especificos Field -->
-                                <div class="form-group col-sm-4">
-                                    <select-insumo-especifico
-                                        label="Insumo Especifico"
-                                        v-model="insumo_especifico"
-                                        :disabled="true"
-                                    >
+{{--                                <div class="form-group col-sm-4">--}}
+{{--                                    <select-insumo-especifico--}}
+{{--                                        label="Insumo Especifico"--}}
+{{--                                        v-model="insumo_especifico"--}}
+{{--                                        :disabled="true"--}}
+{{--                                    >--}}
 
-                                    </select-insumo-especifico>
-                                </div>
+{{--                                    </select-insumo-especifico>--}}
+{{--                                </div>--}}
 
                             </div>
 
