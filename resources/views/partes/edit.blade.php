@@ -227,20 +227,20 @@
                 multiselectPreoperatorio.classList.remove('error-multi-select');
             }
 
-            if (!$("input[name='grupo_base_id']").val()) {
+            // if (!$("input[name='grupo_base_id']").val()) {
 
-                let multiselectGrupoBase = fieldsPartes.$refs.multiselectGrupoBase.$el;
-                multiselectGrupoBase.classList.add('error-multi-select');
-                multiselectGrupoBase.scrollIntoView();
+            //     let multiselectGrupoBase = fieldsPartes.$refs.multiselectGrupoBase.$el;
+            //     multiselectGrupoBase.classList.add('error-multi-select');
+            //     multiselectGrupoBase.scrollIntoView();
 
-                $('#modalForm').modal('hide');
-                Swal.close('true');
-                iziTe('El Campo Grupo Base es requerido!');
-                return false;
-            } else {
-                let multiselectGrupoBase = fieldsPartes.$refs.multiselectGrupoBase.$el;
-                multiselectGrupoBase.classList.remove('error-multi-select');
-            }
+            //     $('#modalForm').modal('hide');
+            //     Swal.close('true');
+            //     iziTe('El Campo Grupo Base es requerido!');
+            //     return false;
+            // } else {
+            //     let multiselectGrupoBase = fieldsPartes.$refs.multiselectGrupoBase.$el;
+            //     multiselectGrupoBase.classList.remove('error-multi-select');
+            // }
 
             if (!$("input[name='biopsia']").val()) {
 
