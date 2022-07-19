@@ -90,7 +90,7 @@
 
                 <div class="form-group col-sm-12 col-lg-12">
                     {!! Form::label('otros_insumos', 'Otros Insumos:') !!}
-                    {!! Form::textarea('otros_insumos', null, ['class' => 'form-control','rows' => 2, 'disabled']) !!}
+                    {!! Form::textarea('otros_insumos', $parte->otros_insumos, ['class' => 'form-control','rows' => 2, 'disabled']) !!}
                 </div>
 
                 <!-- Intervencion Field -->
@@ -262,17 +262,37 @@
                                         {{ ($parte->segundo_ojo ?? old('segundo_ojo') ?? false) ? 'checked' : '' }}>
                                 </div>
 
+                                <div class="col-sm-3">
+                                    {!! Form::label('cancer', 'Cáncer o Sospecha de Cáncer:') !!}<br>
+                                    <multiselect v-model="cancerOptionSelect" :options='cancerOptions' label="nombre" placeholder="Seleccione uno..."
+                                                 ref="multiselectCancerSospechaCancer" disabled>
+                                    </multiselect>
+                                    <input type="hidden" name="cancer" :value="cancerOptionSelectVal">
+                                </div>
+
+                                <div class="col-sm-3">
+                                    {!! Form::label('evaluacion_especialidad', 'Interconsulta Pre-QX:') !!}<br>
+                                    <multiselect v-model="evaluacionEspecialidadSelect" :options='evaluacionEspecialidadOptions' v-model="evaluacionEspecialidadSelect" label="nombre" placeholder="Seleccione uno..." disabled >
+                                    </multiselect>
+                                    <input type="hidden" name="evaluacion_especialidad" :value="evaluacionEspecialidadSelectVal">
+                                </div>
+
+                                <div class="col-sm-4" id="div_indique_especialidad">
+                                    {!! Form::label('indique_especialidad', 'Indique Especialidad:') !!}<br>
+                                    <textarea class="form-control" cols="2" rows="2" name="indique_especialidad" id="indique_especialidad" disabled>{{ $parte->indique_especialidad ?? null }}</textarea>
+                                </div>
+
 
                                 <!-- Insumos Especificos Field -->
-                                <div class="form-group col-sm-4">
-                                    <select-insumo-especifico
-                                        label="Insumo Especifico"
-                                        v-model="insumo_especifico"
-                                        :disabled="true"
-                                    >
+{{--                                <div class="form-group col-sm-4">--}}
+{{--                                    <select-insumo-especifico--}}
+{{--                                        label="Insumo Especifico"--}}
+{{--                                        v-model="insumo_especifico"--}}
+{{--                                        :disabled="true"--}}
+{{--                                    >--}}
 
-                                    </select-insumo-especifico>
-                                </div>
+{{--                                    </select-insumo-especifico>--}}
+{{--                                </div>--}}
 
                             </div>
 
@@ -415,6 +435,25 @@
             name: 'fieldsPartes',
             created() {
                 this.getIntervenciones();
+
+                this.cancerOptionSelectVal;
+                this.evaluacionEspecialidadSelectVal;
+
+                if (@json($parte->cancer) == 1) {
+                    this.cancerOptionSelect = this.cancerOptions[0];
+                } else if (@json($parte->cancer) == 2) {
+                    this.cancerOptionSelect = this.cancerOptions[1];
+                }
+
+                if (@json($parte->evaluacion_especialidad) == 1) {
+                    this.evaluacionEspecialidadSelect = this.evaluacionEspecialidadOptions[0];
+                    $("#div_indique_especialidad").show()
+                    $("#indique_especialidad").prop('required', true);
+                } else if (@json($parte->evaluacion_especialidad) == 2) {
+                    this.evaluacionEspecialidadSelect = this.evaluacionEspecialidadOptions[1];
+                    $("#div_indique_especialidad").hide()
+                    $("#indique_especialidad").prop('required', false);
+                }
             },
             data: {
                 cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
@@ -485,6 +524,29 @@
 
                 convenio: @json($parte->convenio ?? null),
                 tipo_cama_upc: @json($parte->tipo_cama_upc ?? null),
+
+                cancerOptions: [
+                    {
+                        val: 1,
+                        nombre: 'SI'
+                    },
+                    {
+                        val: 2,
+                        nombre: 'NO'
+                    },
+                ],
+                cancerOptionSelect: null,
+                evaluacionEspecialidadOptions: [
+                    {
+                        val: 1,
+                        nombre: 'SI'
+                    },
+                    {
+                        val: 2,
+                        nombre: 'NO'
+                    },
+                ],
+                evaluacionEspecialidadSelect: null,
             },
             methods: {
                 close () {
@@ -584,7 +646,20 @@
                         this.clasificaciones = [];
                     }
                 },
-
+                evaluacionEspecialidadSelect(val) {
+                    if (val) {
+                        if (val.val == 1) {
+                            $("#div_indique_especialidad").show()
+                            $("#indique_especialidad").prop('required', true);
+                        } else if (val.val == 2) {
+                            $("#div_indique_especialidad").hide()
+                            $("#indique_especialidad").prop('required', false);
+                        }
+                    } else {
+                        $("#div_indique_especialidad").hide()
+                        $("#indique_especialidad").prop('required', false);
+                    }
+                },
             },
             computed:{
                 esCirugiaMayor(){
@@ -606,7 +681,19 @@
                         return this.editedItem.id === 0 ? 'Agregar' : 'Actualizar'
 
                     }
-                }
+                },
+                cancerOptionSelectVal() {
+                    if (this.cancerOptionSelect) {
+                        return this.cancerOptionSelect.val;
+                    }
+                    return null;
+                },
+                evaluacionEspecialidadSelectVal() {
+                    if (this.evaluacionEspecialidadSelect) {
+                        return this.evaluacionEspecialidadSelect.val;
+                    }
+                    return null;
+                },
             }
         });
     </script>

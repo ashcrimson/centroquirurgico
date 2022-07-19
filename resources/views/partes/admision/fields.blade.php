@@ -203,7 +203,7 @@
 
         <!-- Banco Sangre -->
         <div class="form-group col-sm-3">
-            <label for="">Control Banco Sangre:</label>
+            <label for="">Banco Sangre:</label>
             <div class="text-lg">
 
                 <toggle-button :sync="true"

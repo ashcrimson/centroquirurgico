@@ -63,7 +63,7 @@ class Especialidad extends Model
      **/
     public function patologias()
     {
-        return $this->belongsToMany(\App\Models\GrupoBase::class, 'especialidad_grupo_base');
+        return $this->belongsToMany(\App\Models\GrupoBase::class, 'especialidad_grupo_base', 'grupo_base_id', 'especialidad_id');
     }
 
     /**

@@ -195,7 +195,7 @@ class ParteController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateParteRequest $request)
+    public function update($id, Request $request)
     {
 
         /** @var Parte $parte */
