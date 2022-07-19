@@ -108,7 +108,9 @@
                                 <td colspan="10" class="text-center">Ningún Registro agregado</td>
                             </tr>
                             <tr v-for="det in parte_intervenciones">
-                                <td v-text="det.intervencion.nombre"></td>
+                                <td>
+                                    <span v-if="det.intervencion_new" v-text="det.intervencion_new.text"></span>
+                                </td>
                                 <td v-text="det.lateralidad"></td>
                             </tr>
                             </tbody>
@@ -570,6 +572,7 @@
                 async getIntervenciones() {
                     const res = await  axios.get(route('api.parte_intervenciones.index',{parte_id: this.parte_id}));
                     this.parte_intervenciones = res.data.data;
+                    console.log(this.parte_intervenciones)
                 },
                 async saveIntervencion () {
 
