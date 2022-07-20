@@ -100,6 +100,10 @@ class ParteController extends AppBaseController
     public function store(CreateParteRequest $request)
     {
 
+        if (!$request->get('run')) {
+            return redirect()->back()->withErrors(['El campo RUN es requerido!'])->withInput();
+        }
+
         try {
 
             DB::beginTransaction();
