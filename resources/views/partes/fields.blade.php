@@ -874,7 +874,9 @@
             },
             mostrar2doOjo() {
                 if (this.especialidad) {
-                    if (this.especialidad.nombre == 'OFTALMOLOGIA GENERAL') {
+                    console.log(this.especialidad.id)
+                    if (this.especialidad.id == 21) {
+                        console.log('entro if')
                         return true;
                     } else {
                         return false;
