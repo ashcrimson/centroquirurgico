@@ -256,7 +256,7 @@
                                 </div>
 
                                 <!-- Segunco Ojo Field -->
-                                <div class="col-sm-3">
+                                <div class="col-sm-3" v-show="mostrar2doOjo">
                                     <input type="hidden" name="segundo_ojo" value="0">
                                     {!! Form::label('segundo_ojo', '2do Ojo:') !!}<br>
                                     <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="segundo_ojo" id="segundo_ojo"
@@ -696,6 +696,19 @@
                         return this.evaluacionEspecialidadSelect.val;
                     }
                     return null;
+                },
+                mostrar2doOjo() {
+                    if (this.especialidad) {
+                        console.log(this.especialidad.id)
+                        if (this.especialidad.id == 11) {
+                            console.log('entro if')
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
                 },
             }
         });
