@@ -354,8 +354,8 @@
                     <input type="hidden" name="consentimiento" value="0">
 
                     <label for="">
-                        <a href="http://acreditacion.hospitalnaval.cl/index.php?option=com_content&view=article&id=50&Itemid=72&dir=JSROOT%2FConsentimientos/">
-                            <i class="fas fa-file" ></i></a>
+{{--                        <a href="http://acreditacion.hospitalnaval.cl/index.php?option=com_content&view=article&id=50&Itemid=72&dir=JSROOT%2FConsentimientos/">--}}
+{{--                            <i class="fas fa-file" ></i></a>--}}
                         Consentimiento informado, firmado y archivado en ficha clínica:
                     </label>
                     <br>
