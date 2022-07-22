@@ -31,6 +31,11 @@ class ParteAdmisionDataTable extends DataTable
                 return $parte->paciente->nombre_completo;
 
             })
+            ->editColumn('rut',function (Parte $parte){
+
+                return $parte->paciente->rut_completo;
+
+            })
             ->editColumn('paciente.fecha_nac',function (Parte $parte){
 
                 return $parte->paciente->fecha_nac->format('d/m/Y');
@@ -54,7 +59,16 @@ class ParteAdmisionDataTable extends DataTable
                 //return view('partes.modal_detalles',compact('parte'))->render();
 
             })
-            ->rawColumns(['action','id']);
+            ->editColumn('medico', function (Parte $parte) {
+                return $parte->userIngresa->name ?? '';
+            })
+            ->editColumn('edad', function (Parte $parte) {
+                return $parte->paciente->edad;
+            })
+            ->editColumn('especialidad', function (Parte $parte) {
+                return tags($parte->userIngresa->especialidades);
+            })
+            ->rawColumns(['action','id','especialidad']);
 //            ->setRowAttr([
 //                'style' => function(Parte $parte){
 //
@@ -81,7 +95,7 @@ class ParteAdmisionDataTable extends DataTable
      */
     public function query(Parte $model)
     {
-        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado','grupoBase']);
+        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado','grupoBase', 'userIngresa']);
     }
 
     /**
@@ -149,16 +163,18 @@ class ParteAdmisionDataTable extends DataTable
             Column::make('id')->data('id')->name('partes.id'),
 
 
-            Column::make('rut')->name('paciente.run')->data('paciente.run'),
+            Column::make('rut')->name('rut')->data('rut')->searchable(false)->orderable(false),
 
             Column::make('paciente')->name('paciente.nombre_completo')->data('paciente.nombre_completo')
                 ->searchable(false)->orderable(false),
 
-            Column::make('fecha_nac')->data('paciente.fecha_nac')->name('paciente.fecha_nac'),
+//            Column::make('fecha_nac')->data('paciente.fecha_nac')->name('paciente.fecha_nac'),
+            Column::make('edad')->data('edad')->name('edad')->searchable(false)->orderable(false),
             Column::make('Fecha Parte')->name('created_at')->data('created_at'),
-            Column::make('Preops')->searchable(false)->orderable(false),
-
-            Column::make('estado')->data('estado.nombre')->name('estado.nombre'),
+//            Column::make('Preops')->searchable(false)->orderable(false),
+            Column::make('medico')->data('user_ingresa.name')->name('userIngresa.name'),
+//            Column::make('estado')->data('estado.nombre')->name('estado.nombre'),
+            Column::make('especialidad')->searchable(false)->orderable(false),
 
             Column::make('paciente.apellido_paterno')
                 ->visible(false)
