@@ -282,7 +282,7 @@
         <!-- derivacion Field -->
         <div class="form-group col-sm-2">
 
-            <label for="">derivacion:</label>
+            <label for="">derivación:</label>
             <div class="text-lg">
 
                 <toggle-button :sync="true"
