@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @property \Illuminate\Database\Eloquent\Collection $partes
  * @property string $nombre
+ * @property string $text_completo
  * @property integer $suspension_dias
  */
 class Medicamento extends Model
@@ -25,7 +26,7 @@ class Medicamento extends Model
 
     protected $dates = ['deleted_at'];
 
-
+    protected $appends = ['text_completo'];
 
     public $fillable = [
         'nombre',
@@ -62,5 +63,10 @@ class Medicamento extends Model
     public function partes()
     {
         return $this->belongsToMany(\App\Models\Parte::class, 'medicamento_parte');
+    }
+
+    public function getTextCompletoAttribute()
+    {
+        return $this->nombre.' - Suspensión '. ($this->suspension_dias ?? 0) . ' (días)';
     }
 }
