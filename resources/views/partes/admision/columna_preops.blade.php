@@ -75,7 +75,6 @@
                                 <tr>
                                     <th>Tipo Examen</th>
                                     <th>Indicaciones</th>
-                                    <th>Consentimiento</th>
                                     <th>Pase</th>
                                 </tr>
                                 </thead>
@@ -94,7 +93,6 @@
                                                 @endif
                                             </td>
                                             <td>{{ $parte->indicaciones_preop_anestesista }}</td>
-                                            <td>{{ $parte->consentimiento_preop_anestesis == 1 ? 'SI' : 'NO' }}</td>
                                             <td>{{ $parte->pase_preop_anestesista == 1 ? 'SI' : 'NO' }}</td>
                                         </tr>
                                     @endif
@@ -112,7 +110,6 @@
                                                 @endif
                                             </td>
                                             <td>{{ $parte->indicaciones_preop_eu }}</td>
-                                            <td>{{ $parte->consentimiento_preop_eu == 1 ? 'SI' : 'NO' }}</td>
                                             <td>{{ $parte->pase_preop_eu == 1 ? 'SI' : 'NO' }}</td>
                                         </tr>
                                     @endif
@@ -130,7 +127,6 @@
                                                 @endif
                                             </td>
                                             <td>{{ $parte->indicaciones_preop_medico }}</td>
-                                            <td>{{ $parte->consentimiento_preop_medico == 1 ? 'SI' : 'NO' }}</td>
                                             <td>{{ $parte->pase_preop_medico == 1 ? 'SI' : 'NO' }}</td>
                                         </tr>
                                     @endif
