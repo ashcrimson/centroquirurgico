@@ -26,7 +26,7 @@
     <!-- Dv Run Field -->
     <div class="form-group col-sm-2">
         {!! Form::label('dv_run', 'Dv Run:') !!}
-        {!! Form::text('dv_run', null, ['id' => 'dv_run','class' => 'form-control','maxlength' => 1]) !!}
+        {!! Form::text('dv_run', null, ['id' => 'dv_run','class' => 'form-control','maxlength' => 1,'disabled']) !!}
     </div>
 
     <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
