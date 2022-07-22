@@ -23,14 +23,14 @@
                                     <textarea class="form-control" name="indicaciones_preop_anestesista" rows="2" cols="2" required></textarea>
                                 </div>
 
-                                <div class="form-group col-sm-6">
-                                    {!! Form::label('consentimiento_preop_anestesis', 'Consentimiento informado, firmado y archivado:') !!}
-                                    <select name="consentimiento_preop_anestesis" id="consentimiento_preop_anestesis" class="form-control" required >
-                                        <option value="">Selecciona...</option>
-                                        <option value="1" @if(old('consentimiento_preop_anestesis') == '1') selected @endif>SI</option>
-                                        <option value="0" @if(old('consentimiento_preop_anestesis') == '0') selected @endif>NO</option>
-                                    </select>
-                                </div>
+{{--                                <div class="form-group col-sm-6">--}}
+{{--                                    {!! Form::label('consentimiento_preop_anestesis', 'Consentimiento informado, firmado y archivado:') !!}--}}
+{{--                                    <select name="consentimiento_preop_anestesis" id="consentimiento_preop_anestesis" class="form-control" required >--}}
+{{--                                        <option value="">Selecciona...</option>--}}
+{{--                                        <option value="1" @if(old('consentimiento_preop_anestesis') == '1') selected @endif>SI</option>--}}
+{{--                                        <option value="0" @if(old('consentimiento_preop_anestesis') == '0') selected @endif>NO</option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
 
                                 <div class="form-group col-sm-6">
                                     {!! Form::label('pase_preop_anestesista', 'Pase:') !!}
@@ -79,14 +79,14 @@
                                     <textarea class="form-control" name="indicaciones_preop_eu" rows="2" cols="2" required></textarea>
                                 </div>
 
-                                <div class="form-group col-sm-6">
-                                    {!! Form::label('consentimiento_preop_eu', 'Consentimiento informado, firmado y archivado:') !!}
-                                    <select name="consentimiento_preop_eu" id="consentimiento_preop_eu" class="form-control" required >
-                                        <option value="">Selecciona...</option>
-                                        <option value="1" @if(old('consentimiento_preop_eu') == '1') selected @endif>SI</option>
-                                        <option value="0" @if(old('consentimiento_preop_eu') == '0') selected @endif>NO</option>
-                                    </select>
-                                </div>
+{{--                                <div class="form-group col-sm-6">--}}
+{{--                                    {!! Form::label('consentimiento_preop_eu', 'Consentimiento informado, firmado y archivado:') !!}--}}
+{{--                                    <select name="consentimiento_preop_eu" id="consentimiento_preop_eu" class="form-control" required >--}}
+{{--                                        <option value="">Selecciona...</option>--}}
+{{--                                        <option value="1" @if(old('consentimiento_preop_eu') == '1') selected @endif>SI</option>--}}
+{{--                                        <option value="0" @if(old('consentimiento_preop_eu') == '0') selected @endif>NO</option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
 
                                 <div class="form-group col-sm-6">
                                     {!! Form::label('pase_preop_eu', 'Pase:') !!}
@@ -135,14 +135,14 @@
                                     <textarea class="form-control" name="indicaciones_preop_medico" rows="2" cols="2" required></textarea>
                                 </div>
 
-                                <div class="form-group col-sm-6">
-                                    {!! Form::label('consentimiento_preop_medico', 'Consentimiento informado, firmado y archivado:') !!}
-                                    <select name="consentimiento_preop_medico" id="consentimiento_preop_medico" class="form-control" required >
-                                        <option value="">Selecciona...</option>
-                                        <option value="1" @if(old('consentimiento_preop_medico') == '1') selected @endif>SI</option>
-                                        <option value="0" @if(old('consentimiento_preop_medico') == '0') selected @endif>NO</option>
-                                    </select>
-                                </div>
+{{--                                <div class="form-group col-sm-6">--}}
+{{--                                    {!! Form::label('consentimiento_preop_medico', 'Consentimiento informado, firmado y archivado:') !!}--}}
+{{--                                    <select name="consentimiento_preop_medico" id="consentimiento_preop_medico" class="form-control" required >--}}
+{{--                                        <option value="">Selecciona...</option>--}}
+{{--                                        <option value="1" @if(old('consentimiento_preop_medico') == '1') selected @endif>SI</option>--}}
+{{--                                        <option value="0" @if(old('consentimiento_preop_medico') == '0') selected @endif>NO</option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
 
                                 <div class="form-group col-sm-6">
                                     {!! Form::label('pase_preop_medico', 'Pase:') !!}
