@@ -92,7 +92,7 @@ class ParteListaEsperaDataTable extends DataTable
     public function query(Parte $model)
     {
         return $model->newQuery()->with(['paciente', 'especialidad','userIngresa', 'preoperatorio', 'estado','grupoBase',
-            'intervencion','parteIntervenciones.intervencionNew']);
+            'intervencion','parteIntervenciones.intervencionNew'])->orderByDesc('created_at');
     }
 
     /**

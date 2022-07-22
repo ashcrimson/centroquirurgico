@@ -60,7 +60,7 @@ class ParteDataTable extends DataTable
      */
     public function query(Parte $model)
     {
-        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado','grupoBase']);
+        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado','grupoBase'])->orderByDesc('created_at');
     }
 
     /**

@@ -95,7 +95,7 @@ class ParteAdmisionDataTable extends DataTable
      */
     public function query(Parte $model)
     {
-        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado','grupoBase', 'userIngresa']);
+        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado','grupoBase', 'userIngresa'])->orderByDesc('created_at');
     }
 
     /**
