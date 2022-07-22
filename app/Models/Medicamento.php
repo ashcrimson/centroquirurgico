@@ -11,13 +11,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @property \Illuminate\Database\Eloquent\Collection $partes
  * @property string $nombre
+ * @property integer $suspension_dias
  */
 class Medicamento extends Model
 {
     use SoftDeletes;
 
     public $table = 'medicamentos';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -27,7 +28,8 @@ class Medicamento extends Model
 
 
     public $fillable = [
-        'nombre'
+        'nombre',
+        'suspension_dias',
     ];
 
     /**
@@ -37,7 +39,8 @@ class Medicamento extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'nombre' => 'string'
+        'nombre' => 'string',
+        'suspension_dias' => 'integer',
     ];
 
     /**
@@ -47,6 +50,7 @@ class Medicamento extends Model
      */
     public static $rules = [
         'nombre' => 'required|string|max:255',
+        'suspension_dias' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'

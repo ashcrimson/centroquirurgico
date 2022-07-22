@@ -97,7 +97,8 @@ class MedicamentoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('nombre')
+            Column::make('nombre'),
+            Column::make('suspension_dias')
         ];
     }
 
