@@ -13,13 +13,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \App\Models\InsumoEspecifico $insumo
  * @property integer $parte_id
  * @property integer $insumo_id
+ * @property integer $cantidad
  */
 class ParteInsumoEspecifico extends Model
 {
     use SoftDeletes;
 
     public $table = 'parte_insumo_especificos';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -30,7 +31,8 @@ class ParteInsumoEspecifico extends Model
 
     public $fillable = [
         'parte_id',
-        'insumo_id'
+        'insumo_id',
+        'cantidad'
     ];
 
     /**

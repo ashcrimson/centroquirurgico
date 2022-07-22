@@ -18,7 +18,6 @@
 
                     <div class="form-row">
 
-
                         <div class="form-group col-sm-6">
                             <select-insumo-especifico
                                 label="Insumo Especifico"
@@ -27,7 +26,10 @@
                             </select-insumo-especifico>
                         </div>
 
-
+                        <div class="form-group col-sm-6">
+                            <label>Cantidad</label>
+                            <input class="form-control" type="number" v-model="cantidad" value="1">
+                        </div>
 
                         <div class="form-group col-sm-4">
                             <label for="peep">&nbsp;</label>
@@ -40,7 +42,6 @@
                             </div>
                         </div>
 
-
                     </div>
 
                 </div>
@@ -51,6 +52,7 @@
                     <thead v-show="!disabled">
                     <tr>
                         <th>Insumo</th>
+                        <th>Cantidad</th>
                         <th >Acciones</th>
                     </tr>
                     </thead>
@@ -60,6 +62,7 @@
                     </tr>
                     <tr v-for="det in parte_insumos" >
                         <td v-text="det.insumo.nombre"></td>
+                        <td v-text="det.cantidad"></td>
 
                         <td  class="text-nowrap" v-show="!disabled">
                             <button type="button" @click="editItem(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >
@@ -75,7 +78,6 @@
                 </table>
             </div>
         </div>
-
 
     </div>
 </template>
@@ -121,6 +123,8 @@ export default {
 
         loading: false,
 
+        cantidad: 1,
+
     }),
     methods: {
         async getItems() {
@@ -144,6 +148,7 @@ export default {
             this.loading = false;
             setTimeout(() => {
                 this.nombre = null;
+                this.cantidad = 1;
                 this.editedItem = Object.assign({}, this.defaultItem);
                 this.insumo = null;
             }, 300)
@@ -158,6 +163,7 @@ export default {
 
                 this.editedItem.insumo_id = this.getId(this.insumo)
                 this.editedItem.parte_id = this.parte_id;
+                this.editedItem.cantidad = this.cantidad;
                 const data = this.editedItem;
 
                 console.log(data);
