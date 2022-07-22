@@ -339,7 +339,7 @@
 
                 <!-- Instrumental Field -->
                 <div class="form-group col-sm-6 col-lg-6">
-                    {!! Form::label('instrumental', 'Instrumental:') !!}
+                    {!! Form::label('instrumental', 'Equipo o Instrumental:') !!}
                     {!! Form::textarea('instrumental', $parte->instrumental ?? '', ['class' => 'form-control','rows' => 2,'readonly']) !!}
                 </div>
 
