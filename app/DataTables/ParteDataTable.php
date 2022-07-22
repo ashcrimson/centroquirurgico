@@ -32,7 +32,7 @@ class ParteDataTable extends DataTable
             })
             ->editColumn('paciente.fecha_nac',function (Parte $parte){
 
-                return $parte->paciente->fecha_nac;
+                return $parte->paciente->fecha_nac->format('d/m/Y') ? $parte->paciente->fecha_nac : '';
 
             })
             ->editColumn('created_at',function (Parte $parte){
