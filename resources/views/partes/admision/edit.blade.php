@@ -15,7 +15,7 @@
                 </div>
                 <div class="col">
                     <a class="btn btn-outline-info float-right"
-                       href="{{route('partes.index')}}">
+                       href="{{ url()->previous() }}">
                         <i class="fa fa-list" aria-hidden="true"></i>&nbsp;<span class="d-none d-sm-inline">{{__('List')}}</span>
                     </a>
                 </div>
