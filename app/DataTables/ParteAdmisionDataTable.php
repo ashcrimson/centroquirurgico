@@ -63,7 +63,7 @@ class ParteAdmisionDataTable extends DataTable
                 return $parte->userIngresa->name ?? '';
             })
             ->editColumn('edad', function (Parte $parte) {
-                return $parte->paciente->edad; 
+                return $parte->paciente->edad;
             })
             ->editColumn('especialidad', function (Parte $parte) {
                 return $parte->especialidad->nombre;
@@ -95,7 +95,11 @@ class ParteAdmisionDataTable extends DataTable
      */
     public function query(Parte $model)
     {
-        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado','grupoBase', 'userIngresa'])->orderByDesc('created_at');
+        return $model->newQuery()->with(['paciente', 'especialidad', 'preoperatorio', 'estado','grupoBase', 'userIngresa'])
+            ->join('parte_estados','parte_estados.id','=','partes.estado_id')
+            ->select('partes.*','parte_estados.id as orden')
+            ->orderBy('orden','asc')
+            ->orderByDesc('partes.created_at');
     }
 
     /**
