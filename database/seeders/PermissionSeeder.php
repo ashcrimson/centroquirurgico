@@ -139,6 +139,11 @@ class PermissionSeeder extends Seeder
             Permission::firstOrCreate(['name' => 'Editar Preoperatorios']);
             Permission::firstOrCreate(['name' => 'Eliminar Preoperatorios']);
 
+            Permission::firstOrCreate(['name' => 'Ver Parentescos']);
+            Permission::firstOrCreate(['name' => 'Crear Parentescos']);
+            Permission::firstOrCreate(['name' => 'Editar Parentescos']);
+            Permission::firstOrCreate(['name' => 'Eliminar Parentescos']);
+
         }
 
     }

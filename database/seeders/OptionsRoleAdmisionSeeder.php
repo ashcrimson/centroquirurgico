@@ -39,6 +39,7 @@ class OptionsRoleAdmisionSeeder extends Seeder
             28,
 //            32,
 //            33,
+            34
         ]);
 
         $role->syncPermissions([
@@ -98,6 +99,10 @@ class OptionsRoleAdmisionSeeder extends Seeder
             'Crear especialidades',
             'Editar especialidades',
             'Eliminar especialidades',
+            'Ver Parentescos',
+            'Crear Parentescos',
+            'Editar Parentescos',
+            'Eliminar Parentescos',
         ]);
 
     }
