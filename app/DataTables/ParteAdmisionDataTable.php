@@ -63,10 +63,10 @@ class ParteAdmisionDataTable extends DataTable
                 return $parte->userIngresa->name ?? '';
             })
             ->editColumn('edad', function (Parte $parte) {
-                return $parte->paciente->edad;
+                return $parte->paciente->edad; 
             })
             ->editColumn('especialidad', function (Parte $parte) {
-                return tags($parte->userIngresa->especialidades);
+                return $parte->especialidad->nombre;
             })
             ->rawColumns(['action','id','especialidad']);
 //            ->setRowAttr([
