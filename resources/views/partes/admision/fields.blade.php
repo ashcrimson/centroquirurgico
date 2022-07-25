@@ -234,8 +234,6 @@
 
         </div>
 
-
-
         <!-- Tiempo Quirurgico Field -->
         <div class="form-group col-sm-3">
             {!! Form::label('user_ingresa', 'Cambio de Médico:') !!}
@@ -243,9 +241,6 @@
             </multiselect>
             <input type="hidden" name="user_ingresa" :value="medico ? medico.id : null">
         </div>
-
-
-
 
         <!-- Sistema Salud Field -->
         <div class="form-group col-sm-3">
@@ -265,7 +260,6 @@
             <input type="hidden" name="titular_carga" :value="titular_carga ? titular_carga : null">
 
         </div>
-
 
         <!-- Grupo Base Field -->
         <!-- <div class="form-group col-sm-3">
@@ -313,8 +307,6 @@
         <div class="form-group col-sm-12">
             <panel-examens-parte parte_id="@json($parte->id)"></panel-examens-parte>
         </div>
-
-
 
     </div>
 

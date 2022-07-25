@@ -61,15 +61,27 @@
                     <span v-show="cirugia_tipo && !esCirugiaMayor " class="text-muted">No aplica par el tipo de cirugia</span>
                     <br>
 
-                    <input type="checkbox" disabled data-toggle="toggle"
-                           data-size="normal"
-                           data-on="Si" data-off="No"
-                           data-style="ios"
-                           name="cma"
-                           id="cma"
-                           :disabled="true"
-                           value="1"
-                        {{ ($parte->cma ?? old('cma') ?? false) ? 'checked' : '' }}>
+                    @if(auth()->user()->esAdmin())
+                        <input type="checkbox" data-toggle="toggle"
+                               data-size="normal"
+                               data-on="Si" data-off="No"
+                               data-style="ios"
+                               name="cma"
+                               id="cma"
+                               :disabled="!esCirugiaMayor"
+                               value="1"
+                            {{ ($parte->cma ?? old('cma') ?? false) ? 'checked' : '' }}>
+                    @else
+                        <input type="checkbox" disabled data-toggle="toggle"
+                               data-size="normal"
+                               data-on="Si" data-off="No"
+                               data-style="ios"
+                               name="cma"
+                               id="cma"
+                               :disabled="true"
+                               value="1"
+                            {{ ($parte->cma ?? old('cma') ?? false) ? 'checked' : '' }}>
+                    @endif
                 </div>
 
 
@@ -168,9 +180,15 @@
                                     <input type="hidden" name="aislamiento" value="0">
                                     {!! Form::label('aislamiento', 'Aislamiento:') !!}<br>
 
-                                    <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="aislamiento" id="aislamiento"
-                                           value="1"
-                                        {{ ($parte->aislamiento ?? old('aislamiento') ?? false) ? 'checked' : '' }}>
+                                    @if(auth()->user()->esAdmin())
+                                        <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="aislamiento" id="aislamiento"
+                                               value="1"
+                                            {{ ($parte->aislamiento ?? old('aislamiento') ?? false) ? 'checked' : '' }}>
+                                    @else
+                                        <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="aislamiento" id="aislamiento"
+                                               value="1"
+                                            {{ ($parte->aislamiento ?? old('aislamiento') ?? false) ? 'checked' : '' }}>
+                                    @endif
 
                                 </div>
 

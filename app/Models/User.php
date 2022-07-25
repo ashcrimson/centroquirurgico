@@ -191,4 +191,13 @@ class User extends Authenticatable implements  MustVerifyEmail,HasMedia
 
         return false;
     }
+
+    public function esAdmin()
+    {
+        if ($this->hasRole(Role::ADMISION)) {
+            return true;
+        }
+
+        return false;
+    }
 }
