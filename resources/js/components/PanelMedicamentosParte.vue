@@ -51,6 +51,7 @@
                     <thead v-show="!disabled">
                     <tr>
                         <th>Medicamento</th>
+                        <th>Suspensión Días</th>
                         <th >Acciones</th>
                     </tr>
                     </thead>
@@ -59,7 +60,8 @@
                         <td colspan="10" class="text-center">Ningún Registro agregado</td>
                     </tr>
                     <tr v-for="det in parte_medicamentos" >
-                        <td v-text="det.medicamento.text_completo"></td>
+                        <td v-text="det.medicamento.nombre"></td>
+                        <td v-text="det.medicamento.suspension_dias"></td>
 
                         <td  class="text-nowrap" v-show="!disabled">
                             <button type="button" @click="editItem(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >

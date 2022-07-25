@@ -6,6 +6,6 @@
 
 <!-- suspension_dias Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('suspension_dias', 'uspension (días):') !!}
+    {!! Form::label('suspension_dias', 'Suspension (días):') !!}
     {!! Form::number('suspension_dias', null, ['class' => 'form-control']) !!}
 </div>
