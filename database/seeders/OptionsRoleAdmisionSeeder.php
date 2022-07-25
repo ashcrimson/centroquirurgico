@@ -37,6 +37,7 @@ class OptionsRoleAdmisionSeeder extends Seeder
 //            26,
             27,
             28,
+            30,
 //            32,
 //            33,
             34
