@@ -56,7 +56,7 @@
                 </div>
 
                 <!-- Cma Field -->
-                <div class="form-group col-sm-4" >
+                <div class="form-group col-sm-4" title="Cirugia Mayor Ambulatorio" >
                     {!! Form::label('cma', 'Cma:') !!}
                     <span v-show="cirugia_tipo && !esCirugiaMayor " class="text-muted">No aplica par el tipo de cirugia</span>
                     <br>
