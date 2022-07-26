@@ -40,7 +40,8 @@ class OptionsRoleAdmisionSeeder extends Seeder
             30,
 //            32,
 //            33,
-            34
+            34,
+            33
         ]);
 
         $role->syncPermissions([

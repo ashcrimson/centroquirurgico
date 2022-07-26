@@ -56,11 +56,19 @@ class EspecialidadSub extends Model
         'deleted_at' => 'nullable'
     ];
 
+//    /**
+//     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+//     **/
+//    public function especialidad()
+//    {
+//        return $this->belongsTo(\App\Models\Especialidad::class, 'especialidad_id');
+//    }
+
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      **/
     public function especialidad()
     {
-        return $this->belongsTo(\App\Models\Especialidad::class, 'especialidad_id');
+        return $this->belongsToMany(\App\Models\especialidad::class, 'especialidad_especialidad_sub');
     }
 }
