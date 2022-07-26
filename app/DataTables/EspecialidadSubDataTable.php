@@ -33,9 +33,9 @@ class EspecialidadSubDataTable extends DataTable
                  //return view('especialidad_subs.modal_detalles',compact('especialidadSub'))->render();
 
              })
-             ->editColumn('especialidad_nombre', function (EspecialidadSub $especialidadSub) {
-                 return $especialidadSub->especialidad->nombre ?? '';
-             })
+//             ->editColumn('especialidad_nombre', function (EspecialidadSub $especialidadSub) {
+//                 return $especialidadSub->especialidad->nombre ?? '';
+//             })
              ->rawColumns(['action','id']);
 
     }
@@ -101,7 +101,7 @@ class EspecialidadSubDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('especialidad_nombre')->data('especialidad.nombre')->name('especialidad.nombre'),
+//            Column::make('especialidad_nombre')->data('especialidad.nombre')->name('especialidad.nombre'),
             Column::make('nombre')
         ];
     }

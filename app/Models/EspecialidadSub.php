@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  * @version June 3, 2022, 8:38 pm -04
  *
- * @property \App\Models\Especialidad $especialidad
  * @property integer $especialidad_id
  * @property string $nombre
  */
@@ -49,7 +48,7 @@ class EspecialidadSub extends Model
      * @var array
      */
     public static $rules = [
-        'especialidad_id' => 'required',
+//        'especialidad_id' => 'required',
         'nombre' => 'required|string|max:3000',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
