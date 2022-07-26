@@ -68,6 +68,6 @@ class EspecialidadSub extends Model
      **/
     public function especialidad()
     {
-        return $this->belongsToMany(\App\Models\especialidad::class, 'especialidad_especialidad_sub');
+        return $this->belongsToMany(\App\Models\Especialidad::class, 'especialidad_especialidad_sub');
     }
 }
