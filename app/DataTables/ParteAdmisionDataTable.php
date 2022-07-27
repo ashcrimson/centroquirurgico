@@ -60,7 +60,7 @@ class ParteAdmisionDataTable extends DataTable
 
             })
             ->editColumn('medico', function (Parte $parte) {
-                return $parte->userIngresa->name ?? '';
+                return $parte->userIngresa ? $parte->userIngresa->name : '';
             })
             ->editColumn('edad', function (Parte $parte) {
                 return $parte->paciente->edad;
@@ -176,7 +176,7 @@ class ParteAdmisionDataTable extends DataTable
             Column::make('edad')->data('edad')->name('edad')->searchable(false)->orderable(false),
             Column::make('Fecha Parte')->name('created_at')->data('created_at'),
 //            Column::make('Preops')->searchable(false)->orderable(false),
-            Column::make('medico')->data('user_ingresa.name')->name('userIngresa.name'),
+            Column::make('medico')->data('medico')->name('medico')->orderable(false)->searchable(false),
 //            Column::make('estado')->data('estado.nombre')->name('estado.nombre'),
             Column::make('especialidad')->searchable(false)->orderable(false),
 

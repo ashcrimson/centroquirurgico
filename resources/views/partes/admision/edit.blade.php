@@ -54,7 +54,12 @@
 
                                 <!-- Submit Field -->
                                     <div class="form-group col-sm-12 text-right">
-                                        <a href="{!! route('partes.index') !!}" class="btn btn-outline-secondary">
+
+                                        <button type="submit" class="btn btn-outline-secondary">
+                                            {{__('Back')}}
+                                        </button>
+
+                                        <a href="{!! route('partes.index') !!}" class="btn btn-outline-secondary ml-2">
                                             Cancelar
                                         </a>
                                         &nbsp;
@@ -85,12 +90,6 @@
                     </div>
                 </div>
             </div>
-
-            <a href="{{ route('partes.index') }}" class="btn btn-default">
-                {{__('Back')}}
-            </a>
-            <br>
-            <br>
         </div>
 
     </div>

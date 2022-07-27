@@ -239,7 +239,7 @@
             {!! Form::label('user_ingresa', 'Cambio de Médico:') !!}
             <multiselect v-model="medico" :options="medicos" label="name"  placeholder="Seleccione uno...">
             </multiselect>
-            <input type="hidden" name="user_ingresa" :value="medico ? medico.id : null">
+            <input v-if="medico" type="hidden" name="user_ingresa" :value="medico ? medico.id : null">
         </div>
 
         <!-- Sistema Salud Field -->

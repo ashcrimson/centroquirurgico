@@ -106,20 +106,15 @@ class ParteAdmisionController extends Controller
     public function update(Request $request, $id)
     {
 
-
         /** @var Parte $parte */
         $parte = Parte::find($id);
 
-
-
         if (empty($parte)) {
             flash()->error('Parte no encontrado');
-
             return redirect(route('partes.index'));
         }
 
         if ($request->lista_espera){
-
             $request->merge([
                 'estado_id' => ParteEstado::LISTA_ESPERA,
                 'fecha_inscripcion' => Carbon::now()
@@ -127,13 +122,11 @@ class ParteAdmisionController extends Controller
         }
 
         $parte->fill($request->all());
-
-
         $parte->save();
 
         flash()->success('Parte actualizado con éxito.');
-
         return redirect(route('admision.partes'));
+
     }
 
     /**
@@ -146,4 +139,5 @@ class ParteAdmisionController extends Controller
     {
         //
     }
+
 }
