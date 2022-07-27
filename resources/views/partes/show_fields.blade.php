@@ -55,6 +55,13 @@
                     </select-especialidad>
                 </div>
 
+                <div class="form-group col-sm-4">
+                    {!! Form::label('especialidad_id', 'Sub-Especialidad:') !!}
+                    <multiselect v-model="subEspecialidad" :options="subEspecialidades" label="nombre" placeholder="Seleccione uno..." disabled >
+                    </multiselect>
+                    <input type="hidden" name="sub_especialidad_id" :value="getSubEspecialidaId(subEspecialidad)">
+                </div>
+
                 <!-- Cma Field -->
                 <div class="form-group col-sm-4" title="Cirugia Mayor Ambulatorio" >
                     {!! Form::label('cma', 'Cma:') !!}
@@ -567,8 +574,17 @@
                     },
                 ],
                 evaluacionEspecialidadSelect: null,
+
+                subEspecialidades: [],
+                subEspecialidad: @json($parte->subEspecialidad ?? \App\Models\EspecialidadSub::find(old('sub_especialidad_id'))),
             },
             methods: {
+                getSubEspecialidaId(item) {
+                    if(item)
+                        return item.id;
+
+                    return null
+                },
                 close () {
                     this.loading = false;
                     setTimeout(() => {

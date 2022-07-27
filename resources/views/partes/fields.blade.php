@@ -597,7 +597,7 @@
 
             insumo_especifico: @json($parte->insumoEspecifico ?? App\Models\Insumoespecifico::find(old('insumo_especifico_id')) ?? null),
 
-            especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
+            especialidad: @json($parte->especialidad ?? \App\Models\Especialidad::find(old('especialidad_id')) ?? null),
 
             grupo_base: @json(App\Models\GrupoBase::find(old('grupo_base_id')) ?? $parte->grupoBase ?? null),
             {{--grupo_bases: @json($parte->especialidad->patologias ?? []),--}}
@@ -694,7 +694,7 @@
             evaluacionEspecialidadSelect: null,
 
             subEspecialidades: [],
-            subEspecialidad: @json($parte->subEspecialidad ?? \App\Models\EspecialidadSub::find(old(''))),
+            subEspecialidad: @json($parte->subEspecialidad ?? \App\Models\EspecialidadSub::find(old('sub_especialidad_id'))),
 
         },
         methods: {
@@ -829,8 +829,15 @@
             },
             especialidad(val) {
                 if (val) {
-                    if (val.sub_especialidades) {
-                        this.subEspecialidades = val.sub_especialidades;
+                    // if (val.sub_especialidades) {
+                    //     this.subEspecialidades = val.sub_especialidades;
+                    //     this.grupo_bases = val.patologias;
+                    // } else {
+                    //     this.subEspecialidades = [];
+                    //     this.grupo_bases = [];
+                    // }
+                    if (val.especialidad_subs) {
+                        this.subEspecialidades = val.especialidad_subs;
                         this.grupo_bases = val.patologias;
                     } else {
                         this.subEspecialidades = [];
