@@ -61,5 +61,21 @@ class OptionsTable2Seeder extends Seeder
             'updated_at' => '2020-07-25 11:21:00',
             'deleted_at' => NULL,
         ]);
+
+        Option::firstOrCreate([
+            'id' => 35,
+            'option_id' => NULL,
+            'nombre' => 'Mis Partes',
+            'ruta' => 'partes.mis.partes',
+            'descripcion' => NULL,
+            'icono_l' => 'fa-list',
+            'icono_r' => NULL,
+            'orden' => 0,
+            'color' => 'bg-teal',
+            'dev' => 0,
+            'created_at' => '2020-07-27 11:36:15',
+            'updated_at' => '2020-07-27 11:36:15',
+            'deleted_at' => NULL,
+        ]);
     }
 }

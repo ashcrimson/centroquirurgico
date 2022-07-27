@@ -390,4 +390,34 @@ class ParteController extends AppBaseController
         return redirect(route('partes.validar.index'));
 
     }
+
+    public function misPartes(ParteDataTable $parteDataTable,Request $request)
+    {
+        $scope = new ScopeParteDataTable();
+
+        $idsEstadosDefecto = [
+            ParteEstado::INGRESADA,
+            ParteEstado::ENVIADA_ADMICION,
+            ParteEstado::LISTA_ESPERA,
+            ParteEstado::PROGRAMADO,
+            ParteEstado::SUSPENDIDO,
+            ParteEstado::ACTIVACION,
+            ParteEstado::ELIMINADO,
+        ];
+
+        $scope->estados = $request->estados ?? $idsEstadosDefecto;
+        $scope->users = auth()->user()->id;
+        $scope->del = $request->del ?? null;
+        $scope->al = $request->al ?? null;
+        $scope->rut_paciente = $request->rut_paciente ?? null;
+        $scope->tipo_cirugia_id = $request->tipo_cirugia_id ?? null;
+        $scope->grupo_base_id = $request->grupo_base_id ?? null;
+        $scope->prioridad_clinica = $request->prioridad ?? null;
+
+        $parteDataTable->addScope($scope);
+
+        $estados = ParteEstado::whereIn('id',$idsEstadosDefecto)->get();
+
+        return $parteDataTable->render('partes.index2',compact('estados'));
+    }
 }
