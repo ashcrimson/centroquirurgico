@@ -19,7 +19,6 @@ class ParteEstadosTable2Seeder extends Seeder
          */
         $parteEstado = ParteEstado::find(ParteEstado::INGRESADA);
 
-        $parteEstado->fill(['nombre' => 'Ingresado']);
-        $parteEstado->save();
+        $parteEstado->update(['nombre' => 'Ingresado']);
     }
 }
