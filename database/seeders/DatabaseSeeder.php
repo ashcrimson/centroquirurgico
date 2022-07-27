@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call(OptionsTableSeeder::class);
+        $this->call(OptionsTable2Seeder::class);
         $this->call(ConfigurationsTableSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(RoleSeeder::class);
@@ -38,11 +39,17 @@ class DatabaseSeeder extends Seeder
         $this->call(MedicamentosTableSeeder::class);
         $this->call(ParentescosTableSeeder::class);
         $this->call(ExamenesTableSeeder::class);
+        $this->call(OptionsRoleAdmisionSeeder::class);
+        $this->call(OptionsRoleMedicoPreopsSeeder::class);
+        $this->call(ParentescosTable2Seeder::class);
+        $this->call(ParteEstadosTable2Seeder::class);
+        $this->call(RoleSeederTable::class);
+        $this->call(UserTable2Seeder::class);
 
 
-        if (app()->environment()=='local'){
-            $this->call(PacientesTableSeeder::class);
-            $this->call(PartesTableSeeder::class);
-        }
+//        if (app()->environment()=='local'){
+//            $this->call(PacientesTableSeeder::class);
+//            $this->call(PartesTableSeeder::class);
+//        }
     }
 }

@@ -17,9 +17,9 @@ class PartesTableSeeder extends Seeder
     {
 
 
-//        \DB::table('partes')->delete();
-//
-//        factory(Parte::class,50)->create();
+        \DB::table('partes')->delete();
+
+        factory(Parte::class,50)->create();
 
 
     }
