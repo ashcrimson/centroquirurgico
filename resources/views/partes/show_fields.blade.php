@@ -489,7 +489,6 @@
 
                 especialidad: @json($parte->especialidad ?? Especialidad::find(old('especialidad_id')) ?? null),
 
-
                 grupo_base: @json($parte->grupoBase ?? App\Models\GrupoBase::find(old('grupo_base_id')) ?? null),
 
                 clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
