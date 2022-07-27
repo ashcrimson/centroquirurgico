@@ -14,11 +14,11 @@ class ParteEstadosTable2Seeder extends Seeder
      */
     public function run()
     {
-        /**
-         * @var ParteEstado $parteEstado
-         */
-        $parteEstado = ParteEstado::find(ParteEstado::INGRESADA);
-
-        $parteEstado->update(['nombre' => 'Ingresado']);
+//        /**
+//         * @var ParteEstado $parteEstado
+//         */
+//        $parteEstado = ParteEstado::find(ParteEstado::INGRESADA);
+//
+//        $parteEstado->update(['nombre' => 'Ingresado']);
     }
 }
