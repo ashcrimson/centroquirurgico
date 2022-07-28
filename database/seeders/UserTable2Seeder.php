@@ -15,14 +15,13 @@ class UserTable2Seeder extends Seeder
      */
     public function run()
     {
-        User::factory(1)->create([
-            "username" => "BANCO SANGRE",
-            "name" => "BANCO SANGRE",
-            "password" => bcrypt("123")
-        ])->each(function (User $user){
-            $user->syncRoles(Role::BANCO_SANGRE);
+//        User::factory(1)->create([
+//            "username" => "BANCO SANGRE",
+//            "name" => "BANCO SANGRE",
+//            "password" => bcrypt("123")
+//        ])->each(function (User $user){
+//            $user->syncRoles(Role::BANCO_SANGRE);
 //            $user->shortcuts()->sync([3,4,5,6]);
-
-        });
+//        });
     }
 }
