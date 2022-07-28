@@ -70,20 +70,59 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+
+        $this->middleware('guest')->except(['logout','loginPortal']);
 
         $this->username = $this->findUsername();
+        //print_r($this->guard());
+        //exit(0);
     }
 
     public function login(Request $request)
     {
+
+
 
         if (config('app.login_ldpa')){
             return $this->loginLdap($request);
         }
 
 
+
+
         return $this->baseLogin($request);
+
+    } 
+
+    public function loginPortal($email,Request $request)
+    {
+
+
+        $user = User::where('email',$email)->first();
+
+
+        if (!$user) {
+
+            $mensaje = "El usuario no esta en la base de datos";
+
+            return redirect()->back()->withInput()->withErrors(['username' => $mensaje]);
+
+        }
+
+        Auth::login($user);
+
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        if ($request->rut){
+
+            return redirect(route('solicitudes.create').'?rut='.$request->rut);
+        }else{
+
+            return redirect()->to($this->redirectPath());
+
+        }
 
     }
 
@@ -170,6 +209,7 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function redirectToProvider (string $driver) {
+
         return Socialite::driver($driver)->redirect();
     }
 
@@ -180,6 +220,7 @@ class LoginController extends Controller
      */
     public function handleProviderCallback(string $driver)
     {
+
         if( ! request()->has('code') || request()->has('denied')) {
             flash( __("Inicio de sesión cancelado"))->error()->important();
             return redirect('login');
@@ -228,7 +269,7 @@ class LoginController extends Controller
 
         auth()->loginUsingId($userLocal->id);
 
-        return redirect(route('partes.index'));
+        return redirect(route('home'));
 
 
     }
