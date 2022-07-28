@@ -57,9 +57,16 @@ class EspecialidadController extends AppBaseController
         /** @var Especialidad $especialidad */
         $especialidad = Especialidad::create($input);
 
-        $especialidad->patologias()->sync($request->patologias ?? []);
+        /** @var Especialidad $especiali */
+        $especiali = Especialidad::find($especialidad->id);
 
-        $especialidad->especialidadSubs()->sync($request->especialidadSubs ?? []);
+        if ($request->patologias) {
+            $especiali->patologias()->sync($request->patologias ?? []);
+        }
+
+        if ($request->especialidadSubs) {
+            $especiali->especialidadSubs()->sync($request->especialidadSubs ?? []);
+        }
 
         Flash::success('Especialidad guardado exitosamente.');
 
@@ -130,9 +137,16 @@ class EspecialidadController extends AppBaseController
         $especialidad->fill($request->all());
         $especialidad->save();
 
-        $especialidad->patologias()->sync($request->patologias ?? []);
+        /** @var Especialidad $especiali */
+        $especiali = Especialidad::find($especialidad->id);
 
-        $especialidad->especialidadSubs()->sync($request->especialidadSubs ?? []);
+        if ($request->patologias) {
+            $especiali->patologias()->sync($request->patologias ?? []);
+        }
+
+        if ($request->especialidadSubs) {
+            $especiali->especialidadSubs()->sync($request->especialidadSubs ?? []);
+        }
 
         Flash::success('Especialidad actualizado con éxito.');
 
