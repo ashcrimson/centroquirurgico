@@ -140,13 +140,9 @@ class EspecialidadController extends AppBaseController
         /** @var Especialidad $especiali */
         $especiali = Especialidad::find($especialidad->id);
 
-        if ($request->patologias) {
-            $especiali->patologias()->sync($request->patologias ?? []);
-        }
+        $especiali->patologias()->sync($request->patologias ?? []);
 
-        if ($request->especialidadSubs) {
-            $especiali->especialidadSubs()->sync($request->especialidadSubs ?? []);
-        }
+        $especiali->especialidadSubs()->sync($request->especialidadSubs ?? []);
 
         Flash::success('Especialidad actualizado con éxito.');
 
