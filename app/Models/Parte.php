@@ -550,6 +550,17 @@ class Parte extends Model
         return $this->hasMany(\App\Models\ParteInsumoEspecifico::class, 'parte_id');
     }
 
+    public function parteHistoricos()
+    {
+        $parteHis = ParteHistorico::where(
+            [
+                ['rut', $this->paciente->run]
+            ]
+        )->get();
+
+        return $parteHis;
+    }
+
     public function estaAdmision()
     {
         return in_array($this->estado_id,[
