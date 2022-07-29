@@ -432,15 +432,15 @@
 
                 <!-- Grupo Base Field -->
                 <div class="form-group col-sm-6">
-{{--                    {!! Form::label('biopsia', 'Grupo Base:') !!}--}}
-{{--                    <multiselect v-model="grupo_base" :options="grupo_bases" label="nombre"  placeholder="Seleccione uno..." ref="multiselectGrupoBase">--}}
-{{--                    </multiselect>--}}
-{{--                    <input type="hidden" name="grupo_base_id" :value="grupo_base ? grupo_base.id : null">--}}
-                    <select-grupo-base
-                        label="Grupo Base"
-                        v-model="grupo_base" ref="selectGrupoBase" >
+                    {!! Form::label('biopsia', 'Grupo Base:') !!}
+                    <multiselect v-model="grupo_base" :options="grupo_bases" label="nombre"  placeholder="Seleccione uno..." ref="multiselectGrupoBase">
+                    </multiselect>
+                    <input type="hidden" name="grupo_base_id" :value="grupo_base ? grupo_base.id : null">
+{{--                    <select-grupo-base--}}
+{{--                        label="Grupo Base"--}}
+{{--                        v-model="grupo_base" ref="selectGrupoBase" >--}}
 
-                    </select-grupo-base>
+{{--                    </select-grupo-base>--}}
                 </div>
 
                 <!-- Biopsia Field -->
@@ -600,7 +600,7 @@
             especialidad: @json($parte->especialidad ?? \App\Models\Especialidad::find(old('especialidad_id')) ?? null),
 
             grupo_base: @json(App\Models\GrupoBase::find(old('grupo_base_id')) ?? $parte->grupoBase ?? null),
-            {{--grupo_bases: @json($parte->especialidad->patologias ?? []),--}}
+            grupo_bases: @json($parte->especialidad->patologias ?? []),
             {{--grupo_base: @json($parte->grupoBase ?? null),--}}
 
             clasificacion: @json($parte->clasificacion ?? Clasificacion::find(old('clasificacion_id')) ?? null),
@@ -837,9 +837,13 @@
                     //     this.grupo_bases = [];
                     // }
                     if (val.especialidad_subs) {
+                        this.grupo_base = null;
+                        this.subEspecialidad = null;
                         this.subEspecialidades = val.especialidad_subs;
                         this.grupo_bases = val.patologias;
                     } else {
+                        this.grupo_base = null;
+                        this.subEspecialidad = null;
                         this.subEspecialidades = [];
                         this.grupo_bases = [];
                     }

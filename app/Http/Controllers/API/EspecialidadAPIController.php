@@ -34,7 +34,7 @@ class EspecialidadAPIController extends AppBaseController
             $query->limit($request->get('limit'));
         }
 
-        $especialidades = $query->with(['subEspecialidades','especialidadSubs'])->get();
+        $especialidades = $query->with(['subEspecialidades','especialidadSubs','patologias'])->get();
 
         return $this->sendResponse($especialidades->toArray(), 'especialidades retrieved successfully');
     }

@@ -229,7 +229,7 @@
 
             if (!$("input[name='grupo_base_id']").val()) {
 
-                let multiselectGrupoBase = fieldsPartes.$refs.selectGrupoBase.$refs.multiselect.$el;
+                let multiselectGrupoBase = fieldsPartes.$refs.multiselectGrupoBase.$el;
                 multiselectGrupoBase.classList.add('error-multi-select');
                 multiselectGrupoBase.scrollIntoView();
 
@@ -238,7 +238,7 @@
                 iziTe('El Campo Grupo Base es requerido!');
                 return false;
             } else {
-                let multiselectGrupoBase = fieldsPartes.$refs.selectGrupoBase.$refs.multiselect.$el;
+                let multiselectGrupoBase = fieldsPartes.$refs.multiselectGrupoBase.$el;
                 multiselectGrupoBase.classList.remove('error-multi-select');
             }
 
