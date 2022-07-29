@@ -100,6 +100,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property boolean $consentimiento_preop_eu
  * @property boolean $pase_preop_eu
  * @property string $indicaciones_preop_eu
+ * @property string $prioridad_admin_observacion
  * @property integer $cantidad_donantes
  * @property boolean $pase_banco_sagre
  */
@@ -188,6 +189,7 @@ class Parte extends Model
         'indique_especialidad',
         'otros_insumos',
         'sub_especialidad_id',
+        'prioridad_admin_observacion',
     ];
 
     /**

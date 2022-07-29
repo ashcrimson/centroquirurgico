@@ -178,6 +178,11 @@
 
         </div>
 
+        <div class="form-group col-sm-3" v-show="prioridad_administrativa">
+            <label>Observación:</label>
+            <textarea class="form-control" name="prioridad_admin_observacion" rows="2">{{ $parte->prioridad_admin_observacion }}</textarea>
+        </div>
+
         <!-- Prioridad clínica -->
         <!-- <div class="form-group col-sm-3">
 
