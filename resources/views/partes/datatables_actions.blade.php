@@ -232,6 +232,53 @@
     <a href="{{ route('admision.partes.edit', $id) }}" data-toggle="tooltip" title="Editar" class='btn btn-outline-info btn-sm'>
         <i class="fa fa-edit"></i>
     </a>
+
+    <a class="btn btn-outline-info btn-sm" title="Partes Histórico" data-toggle="modal" href="#modalFormPartesHistorico{{$id}}">
+        <i class="fa fa-list"></i>
+    </a>
+
+    <div class="modal fade" id="modalFormPartesHistorico{{$id}}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Partes Histórico</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row col-sm-12">
+
+{{--                    {{ $parte->parteHistoricos() }}--}}
+
+                    <table class="table table-hover text-nowrap" id="tablePartesHistorico">
+                        <thead>
+                        <tr>
+                            <th>No Parte</th>
+                            <th>Fecha</th>
+                            <th>Parte</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($parte->parteHistoricos() as $historico)
+                                <tr>
+                                    <td>{{$historico->num_parte}}</td>
+                                    <td>{{$historico->fecha ? $historico->fecha->format('d/m/Y') : ''}}</td>
+                                    <td>
+                                        <a href="https://centro-quirurgico.hospitalnaval.cl/pdf/parte_pdf.php?tipo=ver&num={{$historico->num_parte}}" data-toggle="tooltip" title="Ver"
+                                           class='btn btn-outline-info btn-sm' target="_blank">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 @endrole
 
 @can('Eliminar Partes')
