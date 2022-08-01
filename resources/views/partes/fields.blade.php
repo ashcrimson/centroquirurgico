@@ -726,6 +726,13 @@
 
                 this.loading = true;
 
+                if (!this.intervencionNew) {
+                    iziTe('El campo Intervención es requerido!');
+                    this.loading = false;
+                    this.close();
+                    return;
+                }
+
                 if (!this.editedItem.lateralidad) {
                     iziTe('El campo Lateralidad es requerido!');
                     this.loading = false;
