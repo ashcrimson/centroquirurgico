@@ -11,7 +11,6 @@ Route::get('porta/login/{email}','Auth\LoginController@loginPortal')->name('logi
 
 Route::group(['middleware' => ['auth']], function () {
 
-
     Route::group(['prefix' => 'dev','as' => 'dev.'],function (){
 
         Route::get('prueba/api','PruebaApiController@index')->name('prueba.api');
@@ -22,13 +21,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 
-
     Route::get('/', 'ParteController@index')->name('index');
     Route::get('/home', 'ParteController@index')->name('home');
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('/contact', 'HomeController@contact')->name('contact');
     Route::get('/calendar', 'HomeController@calendar')->name('calendar');
-
 
     Route::get('profile/business', 'BusinessProfileController@index')->name('profile.business');
     Route::post('profile/business', 'BusinessProfileController@store')->name('profile.business.store');
@@ -49,10 +46,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('permissions', 'PermissionController');
 
-
     Route::resource('pacientes', 'PacienteController');
     Route::get('get/data/paciente', 'PacienteController@getPacientePorApi')->name('get.datos.paciente');
-
 
     Route::resource('cirugiaTipos', 'CirugiaTipoController');
 
@@ -83,7 +78,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('diagnosticos', 'DiagnosticoController');
 
-
     Route::resource('medicamentos', 'MedicamentoController');
 
     Route::resource('contactoTipos', 'ContactoTipoController');
@@ -110,11 +104,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('especialidadSubs', 'EspecialidadSubController');
 
+    Route::resource('parteHistoricos', 'ParteHistoricoController');
+
     ///Colocar ariba de esta linea las rutas a proteger por autenticacion
 
 });
 
 //################# OOOOJJJJJJOOOOOOOOOOOOOOOOOooo ########################
 //las rutas que se coloque debajo de esta linea NOOOO estan protegidas por autenticación
-
-

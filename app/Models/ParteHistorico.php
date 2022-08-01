@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class ParteHistorico
  * @package App\Models
- * @version July 29, 2022, 6:44 pm -04
+ * @version August 1, 2022, 10:45 am -04
  *
  * @property integer $num_parte
  * @property integer $rut
@@ -18,14 +18,11 @@ class ParteHistorico extends Model
     use SoftDeletes;
 
     public $table = 'partes_historicos';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
     protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'num_parte',
@@ -59,5 +56,4 @@ class ParteHistorico extends Model
         'deleted_at' => 'nullable'
     ];
 
-    
 }
