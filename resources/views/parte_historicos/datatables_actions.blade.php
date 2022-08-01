@@ -21,3 +21,8 @@
     @csrf
 </form>
 @endcan
+
+<a href="https://centro-quirurgico.hospitalnaval.cl/pdf/parte_pdf.php?tipo=ver&num={{$parteHistorico->num_parte}}" data-toggle="tooltip" title="Ver Parte"
+   class='btn btn-outline-info btn-sm' target="_blank">
+    <i class="fa fa-eye"></i>
+</a>
