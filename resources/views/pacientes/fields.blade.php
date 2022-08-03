@@ -1,6 +1,6 @@
 <div class="form-row" id="paciente-fields">
     <div class="form-group col-md-6">
-        <strong> <label class="text-red">todos los campos con * son obligatorios</label> </strong>
+        <strong> <label class="text-red">Todos los campos con * son obligatorios</label> </strong>
     </div>
 
     <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
@@ -8,7 +8,7 @@
     <!-- Run Field -->
     <div class="form-group col-sm-4">
 
-        {!! Form::label('run', 'Run:') !!}
+        {!! Form::label('run', 'Run:') !!} <strong> <small class="text-danger">(Sin Puntos ni Dígito Verificador,Ej:1516302)</small> </strong>
 
         <div class="input-group ">
 

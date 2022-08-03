@@ -89,7 +89,10 @@
 
                 <!-- /.card-body -->
                 <div class="form-group col-sm-12">
-                    <panel-diagnosticos-parte parte_id="@json($parte->id)"></panel-diagnosticos-parte>
+                    <panel-diagnosticos-parte parte_id="@json($parte->id)"
+                                              :requerido_select="true">
+
+                    </panel-diagnosticos-parte>
                 </div>
 
 
@@ -136,14 +139,16 @@
                                                 :items="intervencionesNew"
                                                 label="Intervención"
                                                 v-model="intervencionNew"
-                                                ref="multiselectIntervencion">
+                                                ref="multiselectIntervencion"
+                                                :requerido="true">
 
                                             </select-intervencion>
                                         </div>
 
                                         <div class="form-group col-sm-4" >
 
-                                            {!! Form::label('lateralidad', 'Lateralidad:') !!}
+                                            {!! Form::label('lateralidad', 'Lateralidad:') !!} <span class="text-red">*</span>
+
 
                                             <multiselect v-model="editedItem.lateralidad" :options='["izquierda", "derecha", "bilateral", "no aplica"]'  placeholder="Seleccione uno...">
                                             </multiselect>
@@ -226,7 +231,7 @@
 
 
                 <div class="form-group col-sm-4">
-                    {!! Form::label('clasificacion', 'Clasificación ASA:') !!}
+                    {!! Form::label('clasificacion', 'Clasificación ASA:') !!} <span class="text-red">*</span>
                     <!-- Clasificacion Id Field -->
                     <multiselect v-model="clasificacion" :options="clasificaciones" label="nombre" placeholder="Seleccione uno...">
                     </multiselect>

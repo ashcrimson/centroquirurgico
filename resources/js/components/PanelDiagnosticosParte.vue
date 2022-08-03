@@ -22,7 +22,8 @@
                         <div class="form-group col-sm-6">
                             <select-diagnostico
                                 label="Diagnóstico"
-                                v-model="diagnostico" >
+                                v-model="diagnostico"
+                                :requerido="requerido_select">
 
                             </select-diagnostico>
                         </div>
@@ -101,7 +102,11 @@ export default {
         disabled:{
             type: Boolean,
             default: false
-        }
+        },
+        requerido_select:{
+            type: Boolean,
+            default: false
+        },
     },
 
     data: () => ({
