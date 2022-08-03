@@ -106,8 +106,6 @@ class ParteAdmisionController extends Controller
     public function update(Request $request, $id)
     {
 
-        return $request->toArray();
-
         /** @var Parte $parte */
         $parte = Parte::find($id);
 
