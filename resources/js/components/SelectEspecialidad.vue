@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label v-text="label+':'"></label>
+        <label v-text="label+':'"></label> <span v-show="requerido" class="text-red">*</span>
         <!-- <a href="#" v-if="item" @click.prevent="editItem(item)" v-show="!disabled">
             editar
         </a> -->
@@ -89,6 +89,10 @@ export default {
             default: 'modalSelectEspecialidad'
         },
         disabled:{
+            type: Boolean,
+            default: false
+        },
+        requerido:{
             type: Boolean,
             default: false
         }

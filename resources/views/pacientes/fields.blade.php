@@ -12,9 +12,10 @@
 
         <div class="input-group ">
 
-{{--            {!! Form::number('run', null, ['id' => 'run','class' => 'form-control','maxlength' => 9]) !!}--}}
-            <input class="form-control" type="number" id="run" name="run" maxlength="9" ondrop="return false;"
-                   onpaste="return false;" onkeypress="return event.charCode>=48 && event.charCode<=57">
+            {!! Form::number('run', null, ['id' => 'run','class' => 'form-control','maxlength' => 9,
+                             'onkeypress' => 'return event.charCode>=48 && event.charCode<=57']) !!}
+{{--            <input class="form-control" type="number" id="run" name="run" maxlength="9" ondrop="return false;"--}}
+{{--                   onpaste="return false;" onkeypress="return event.charCode>=48 && event.charCode<=57">--}}
             <div class="input-group-append">
                 <button class="btn btn-outline-success" type="button" @click="getDatosPaciente()">
                                     <span v-show="!loading">

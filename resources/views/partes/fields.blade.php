@@ -45,7 +45,8 @@
                     <select-cirugia-tipo
                         label="Tipo Cirugía"
                         v-model="cirugia_tipo"
-                        ref="selectTipoCirugia">
+                        ref="selectTipoCirugia"
+                        :requerido="true">
 
                     </select-cirugia-tipo>
                 </div>
@@ -55,7 +56,8 @@
                     <select-especialidad
                         label="Especialidad"
                         v-model="especialidad"
-                        ref="selectEspecialidad">
+                        ref="selectEspecialidad"
+                        :requerido="true">
 
                     </select-especialidad>
                 </div>
@@ -233,7 +235,7 @@
 
                 <!-- Tiempo Quirurgico Field -->
                 <div class="form-group col-sm-4">
-                    {!! Form::label('tiempo_quirurgico', 'Tiempo Quirúrgico:') !!}
+                    {!! Form::label('tiempo_quirurgico', 'Tiempo Quirúrgico:') !!} <span class="text-red">*</span>
 
                     <multiselect v-model="tiempo_quirurgico" :options="tiempos"  placeholder="Seleccione uno..." ref="multiselectTiempoQuirurgico">
                     </multiselect>
@@ -248,7 +250,7 @@
                 </div> -->
 
                 <div class="form-group col-sm-6">
-                    {!! Form::label('anestesia_sugerida', 'Anestesia Sugerida:') !!}
+                    {!! Form::label('anestesia_sugerida', 'Anestesia Sugerida:') !!} <span class="text-red">*</span>
                     <!-- Clasificacion Id Field -->
                     <multiselect v-model="anestesia_sugerida" :options="anestesia_sugeridas"  placeholder="Seleccione uno..." ref="multiselectAnestesiaSugerida">
                     </multiselect>
@@ -377,7 +379,7 @@
                             </div>
 
                             <div class="col-sm-3" id="select_tipo_cama">
-                                {!! Form::label('tipo_cama_upc', 'Tipo Cama UPC:') !!}<br>
+                                {!! Form::label('tipo_cama_upc', 'Tipo Cama UPC:') !!} <span class="text-red">*</span> <br>
 
                                 <multiselect v-model="tipo_cama_upc" :options='["UCIGEN", "UCICAR", "UCIM"]'  placeholder="Seleccione uno..."
                                              ref="multiselectTipoCamaUpc">
@@ -390,7 +392,7 @@
                             <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
 
                             <div class="col-sm-3">
-                                {!! Form::label('cancer', 'Cáncer o Sospecha de Cáncer:') !!}<br>
+                                {!! Form::label('cancer', 'Cáncer o Sospecha de Cáncer:') !!} <span class="text-red">*</span> <br>
                                 <multiselect v-model="cancerOptionSelect" :options='cancerOptions' label="nombre" placeholder="Seleccione uno..."
                                              ref="multiselectCancerSospechaCancer">
                                 </multiselect>
@@ -424,7 +426,8 @@
                 <div class="form-group col-sm-6">
                     <select-preoperatorio
                         label="Ex Preoperatorios"
-                        v-model="preoperatorio" ref="selectPreoperatorio" >
+                        v-model="preoperatorio" ref="selectPreoperatorio"
+                        :requerido="true">
 
                     </select-preoperatorio>
                 </div>
@@ -432,8 +435,9 @@
 
                 <!-- Grupo Base Field -->
                 <div class="form-group col-sm-6">
-                    {!! Form::label('biopsia', 'Grupo Base:') !!}
-                    <multiselect v-model="grupo_base" :options="grupo_bases" label="nombre"  placeholder="Seleccione uno..." ref="multiselectGrupoBase">
+                    {!! Form::label('biopsia', 'Grupo Base:') !!} <span class="text-red">*</span>
+                    <multiselect v-model="grupo_base" :options="grupo_bases" label="nombre"  placeholder="Seleccione uno..."
+                                 ref="multiselectGrupoBase">
                     </multiselect>
                     <input type="hidden" name="grupo_base_id" :value="grupo_base ? grupo_base.id : null">
 {{--                    <select-grupo-base--}}
@@ -445,7 +449,7 @@
 
                 <!-- Biopsia Field -->
                 <div class="form-group col-sm-6">
-                    {!! Form::label('biopsia', 'Biopsias:') !!}
+                    {!! Form::label('biopsia', 'Biopsias:') !!} <span class="text-red">*</span>
                     <!-- Clasificacion Id Field -->
                     <multiselect v-model="biopsia" :options="biopsias"  placeholder="Seleccione uno..." ref="multiselectBiopsias">
                     </multiselect>
@@ -468,7 +472,7 @@
                 <div class="col-sm-6">
                     <input type="hidden" name="consentimiento" value="0">
 
-                    {!! Form::label('consentimiento', 'Consentimiento informado, firmado y archivado en ficha clínica:') !!}
+                    {!! Form::label('consentimiento', 'Consentimiento informado, firmado y archivado en ficha clínica:') !!} <span class="text-red">*</span>
 
                     <a href="http://acreditacion.hospitalnaval.cl/index.php?option=com_content&view=article&id=50&Itemid=72&dir=JSROOT%2FConsentimientos/Consentimientos" target="_blank">
                         <i class="fas fa-download" style="font-size:20px;"></i></a>

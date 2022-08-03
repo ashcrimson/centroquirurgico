@@ -6,6 +6,7 @@ use App\DataTables\ParteDataTable;
 use App\DataTables\ParteValidaDataTable;
 use App\DataTables\Scopes\ScopeParteDataTable;
 use App\Http\Requests;
+use App\Http\Requests\CreatePacienteRequest;
 use App\Http\Requests\CreateParteRequest;
 use App\Http\Requests\UpdateParteRequest;
 use App\Models\Paciente;
@@ -97,7 +98,7 @@ class ParteController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateParteRequest $request)
+    public function store(CreatePacienteRequest $request)
     {
 
         if (!$request->get('run')) {

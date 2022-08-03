@@ -92,8 +92,8 @@ class Paciente extends Model
      * @var array
      */
     public static $rules = [
-        'run' => 'required|string|max:255',
-        'dv_run' => 'required|string|max:255',
+        'run' => 'required|string|max:9',
+        'dv_run' => 'required|string|max:1',
         'apellido_paterno' => 'required|string|max:255',
         'apellido_materno' => 'required|string|max:255',
         'primer_nombre' => 'required|string|max:255',
