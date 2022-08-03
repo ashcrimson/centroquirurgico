@@ -8,7 +8,7 @@
     <!-- Run Field -->
     <div class="form-group col-sm-4">
 
-        {!! Form::label('run', 'Run:') !!} <strong> <small class="text-danger">(Sin Puntos ni Dígito Verificador,Ej:1516302)</small> </strong>
+        {!! Form::label('run', 'Run:') !!} <strong> <small class="text-danger">(Sin Puntos ni Dígito Verificador,Ej:15116302)</small> </strong>
 
         <div class="input-group ">
 
