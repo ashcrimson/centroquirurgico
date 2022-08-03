@@ -12,8 +12,8 @@
 
         <div class="input-group ">
 
-            {!! Form::number('run', null, ['id' => 'run','class' => 'form-control','maxlength' => 9,
-                             'onkeypress' => 'return event.charCode>=48 && event.charCode<=57']) !!}
+            {!! Form::number('run', null, ['id' => 'run','class' => 'form-control',
+                             'onkeypress' => 'return event.charCode>=48 && event.charCode<=57 && this.value.length <= 7']) !!}
 {{--            <input class="form-control" type="number" id="run" name="run" maxlength="8" ondrop="return false;"--}}
 {{--                   onpaste="return false;" onkeypress="return event.charCode>=48 && event.charCode<=57">--}}
             <div class="input-group-append">
