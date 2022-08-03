@@ -53,7 +53,7 @@ class IntervencionesNew extends Model
      * @var array
      */
     public static $rules = [
-        'cod_prest' => 'nullable|string|max:255',
+        'cod_prest' => 'required|string|max:255',
         'corroper' => 'nullable|string|max:255',
         'descripcion' => 'nullable|string|max:3000',
         'created_at' => 'nullable',
