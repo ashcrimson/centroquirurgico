@@ -1,4 +1,10 @@
 <div class="form-row" id="paciente-fields">
+    <div class="form-group col-md-6">
+        <strong> <label class="text-red">todos los campos con * son obligatorios</label> </strong>
+    </div>
+
+    <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
+
     <!-- Run Field -->
     <div class="form-group col-sm-4">
 
@@ -6,7 +12,9 @@
 
         <div class="input-group ">
 
-            {!! Form::text('run', null, ['id' => 'run','class' => 'form-control','maxlength' => 9]) !!}
+{{--            {!! Form::number('run', null, ['id' => 'run','class' => 'form-control','maxlength' => 9]) !!}--}}
+            <input class="form-control" type="number" id="run" name="run" maxlength="9" ondrop="return false;"
+                   onpaste="return false;" onkeypress="return event.charCode>=48 && event.charCode<=57">
             <div class="input-group-append">
                 <button class="btn btn-outline-success" type="button" @click="getDatosPaciente()">
                                     <span v-show="!loading">
@@ -25,39 +33,39 @@
 
     <!-- Dv Run Field -->
     <div class="form-group col-sm-2">
-        {!! Form::label('dv_run', 'Dv Run:') !!}
-        {!! Form::text('dv_run', null, ['id' => 'dv_run','class' => 'form-control','maxlength' => 1,'readonly']) !!}
+        {!! Form::label('dv_run', 'Dv Run:') !!} <span class="text-red">*</span>
+        {!! Form::text('dv_run', null, ['id' => 'dv_run','class' => 'form-control','maxlength' => 1]) !!}
     </div>
 
     <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
 
     <!-- Primer Nombre Field -->
     <div class="form-group col-sm-3">
-        {!! Form::label('primer_nombre', 'Primer Nombre:') !!}
+        {!! Form::label('primer_nombre', 'Primer Nombre:') !!} <span class="text-red">*</span>
         {!! Form::text('primer_nombre', null, ['id' => 'primer_nombre','class' => 'form-control','maxlength' => 255]) !!}
     </div>
 
     <!-- Segundo Nombre Field -->
     <div class="form-group col-sm-3">
-        {!! Form::label('segundo_nombre', 'Segundo Nombre:') !!}
+        {!! Form::label('segundo_nombre', 'Segundo Nombre:') !!} <span class="text-red">*</span>
         {!! Form::text('segundo_nombre', null, ['id' => 'segundo_nombre','class' => 'form-control','maxlength' => 255]) !!}
     </div>
 
     <!-- Apellido Paterno Field -->
     <div class="form-group col-sm-3">
-        {!! Form::label('apellido_paterno', 'Apellido Paterno:') !!}
+        {!! Form::label('apellido_paterno', 'Apellido Paterno:') !!} <span class="text-red">*</span>
         {!! Form::text('apellido_paterno', null, ['id' => 'apellido_paterno','class' => 'form-control','maxlength' => 255]) !!}
     </div>
 
     <!-- Apellido Materno Field -->
     <div class="form-group col-sm-3">
-        {!! Form::label('apellido_materno', 'Apellido Materno:') !!}
+        {!! Form::label('apellido_materno', 'Apellido Materno:') !!} <span class="text-red">*</span>
         {!! Form::text('apellido_materno', null, ['id' => 'apellido_materno','class' => 'form-control','maxlength' => 255]) !!}
     </div>
 
     <!-- Fecha Nac Field -->
     <div class="form-group col-sm-3">
-        {!! Form::label('fecha_nac', 'Fecha Nac:') !!}
+        {!! Form::label('fecha_nac', 'Fecha Nac:') !!} <span class="text-red">*</span>
         {!! Form::date('fecha_nac', null, ['v-model' => 'fecha_nac','id' => 'fecha_nac','class' => 'form-control','id'=>'fecha_nac']) !!}
     </div>
 
@@ -68,7 +76,7 @@
     </div>
 
     <div class="form-group col-sm-3">
-        {!! Form::label('sexo', 'Sexo:') !!}<br>
+        {!! Form::label('sexo', 'Sexo:') !!} <span class="text-red">*</span> <br>
         <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="M" data-off="F" data-style="ios" name="sexo" id="sexo"
                value="1"
             {{($rema->sexo ?? null)=="M" || ($paciente->sexo ?? $parte->paciente->sexo ?? null)=="M"  ? 'checked' : '' }}>
