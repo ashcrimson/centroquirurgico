@@ -477,13 +477,13 @@
                 <div class="col-sm-6">
                     <input type="hidden" name="consentimiento" value="0">
 
-                    {!! Form::label('consentimiento', 'Consentimiento informado, firmado y archivado en ficha clínica:') !!} <span class="text-red">*</span>
+                    {!! Form::label('consentimiento', 'Consentimiento informado, firmado y archivado en ficha clínica:') !!} 
 
                     <a href="http://acreditacion.hospitalnaval.cl/index.php?option=com_content&view=article&id=50&Itemid=72&dir=JSROOT%2FConsentimientos/Consentimientos" target="_blank">
                         <i class="fas fa-download" style="font-size:20px;"></i></a>
                     <input type="checkbox" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="consentimiento" id="consentimiento"
                             value="1"
-                        {{ ($parte->consentimiento ?? old('consentimiento') ?? false) ? 'checked' : '' }}>
+                        {{ ($parte->consentimiento ?? old('consentimiento') ?? false) ? 'checked' : '' }}><span class="text-red">*</span>
                 </div>
 
                 <!-- derivacion Field -->
