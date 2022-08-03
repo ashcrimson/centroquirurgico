@@ -204,11 +204,37 @@
                                 <div class="col-sm-3">
                                     <input type="hidden" name="alergia_latex" value="0">
                                     {!! Form::label('alergia_latex', 'Alergia Latex:') !!}<br>
-                                    <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="alergia_latex" id="alergia_latex"
-                                           value="1"
-                                        {{ ($parte->alergia_latex ?? old('alergia_latex') ?? false) ? 'checked' : '' }}>
+                                    @if(auth()->user()->esAdmin())
+                                        <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="alergia_latex" id="alergia_latex"
+                                               value="1"
+                                            {{ ($parte->alergia_latex ?? old('alergia_latex') ?? false) ? 'checked' : '' }}>
+                                    @else
+                                        <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="alergia_latex" id="alergia_latex"
+                                               value="1"
+                                            {{ ($parte->alergia_latex ?? old('alergia_latex') ?? false) ? 'checked' : '' }}>
+                                    @endif
 
                                 </div>
+
+                                <div class="modal fade" id="modalValidacionCambiarAlergiaLatex" data-backdrop="static" data-keyboard="false">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Cambiar Valor Alergia Latex</h4>
+{{--                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--}}
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-row col-sm-12">
+                                                    <h3>Esta seguro de cambiar el valor?</h3>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" id="btnNoCambiarLatex" class="btn btn-warning">NO</button>
+                                                <button type="button" id="btnSiCambiarLatex" class="btn btn-danger">SI</button>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
 
 
                                 <!-- Usuario Taco Field -->
@@ -452,6 +478,32 @@
 
             // validaTodosSi();
 
+            $( "#alergia_latex" ).change(function() {
+                console.log('entro click')
+                $( "#modalValidacionCambiarAlergiaLatex" ).modal('show');
+            });
+
+            $("#btnNoCambiarLatex").click(function () {
+                if ($( "#alergia_latex" ).val() == 1) {
+                    $( "#alergia_latex" ).val(1);
+                    $("#alergia_latex").bootstrapToggle('on')
+                } else if ($( "#alergia_latex" ).val() == 0) {
+                    $( "#alergia_latex" ).val(0);
+                    $("#alergia_latex").bootstrapToggle('off')
+                }
+                $( "#modalValidacionCambiarAlergiaLatex" ).modal('hide');
+            });
+
+            $("#btnSiCambiarLatex").click(function () {
+                if ($( "#alergia_latex" ).val() == 1) {
+                    $( "#alergia_latex" ).val(0);
+                    $("#alergia_latex").bootstrapToggle('off')
+                } else if ($( "#alergia_latex" ).val() == 0) {
+                    $( "#alergia_latex" ).val(1);
+                    $("#alergia_latex").bootstrapToggle('on')
+                }
+                $( "#modalValidacionCambiarAlergiaLatex" ).modal('hide');
+            });
 
         })
 
@@ -576,6 +628,8 @@
 
                 subEspecialidades: [],
                 subEspecialidad: @json($parte->subEspecialidad ?? \App\Models\EspecialidadSub::find(old('sub_especialidad_id'))),
+
+                alergia_latex: null,
             },
             methods: {
                 getSubEspecialidaId(item) {
@@ -696,6 +750,11 @@
                         $("#indique_especialidad").prop('required', false);
                     }
                 },
+                alergia_latex(val) {
+                    if (val) {
+                        console.log(val)
+                    }
+                }
             },
             computed:{
                 esCirugiaMayor(){

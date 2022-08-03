@@ -31,6 +31,8 @@ class Medicamento extends Model
     public $fillable = [
         'nombre',
         'suspension_dias',
+        'reiniciar',
+        'consideraciones',
     ];
 
     /**
@@ -42,6 +44,8 @@ class Medicamento extends Model
         'id' => 'integer',
         'nombre' => 'string',
         'suspension_dias' => 'integer',
+        'reiniciar' => 'string',
+        'consideraciones' => 'string',
     ];
 
     /**
@@ -54,7 +58,9 @@ class Medicamento extends Model
         'suspension_dias' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
-        'deleted_at' => 'nullable'
+        'deleted_at' => 'nullable',
+        'reiniciar' => 'nullable',
+        'consideraciones' => 'nullable',
     ];
 
     /**

@@ -51,8 +51,10 @@
                     <thead v-show="!disabled">
                     <tr>
                         <th>Medicamento</th>
-                        <th>Suspensión Días</th>
-                        <th >Acciones</th>
+                        <th>Suspender días/horas</th>
+                        <th>Reiniciar</th>
+                        <th>Consideraciones</th>
+                        <th>Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -62,6 +64,8 @@
                     <tr v-for="det in parte_medicamentos" >
                         <td v-text="det.medicamento.nombre"></td>
                         <td v-text="det.medicamento.suspension_dias"></td>
+                        <td v-text="det.medicamento.reiniciar"></td>
+                        <td v-text="det.medicamento.consideraciones"></td>
 
                         <td  class="text-nowrap" v-show="!disabled">
                             <button type="button" @click="editItem(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >

@@ -47,8 +47,8 @@
                         <div class="card-body">
                             <div class="form-row">
 
-                                @include('partes.show_fields')
                                 {!! Form::model($parte, ['route' => ['admision.partes.update', $parte->id], 'method' => 'patch','class' => 'wait-on-submit']) !!}
+                                    @include('partes.show_fields')
 
                                     @include('partes.admision.fields')
 
