@@ -313,6 +313,8 @@
             <panel-examens-parte parte_id="@json($parte->id)"></panel-examens-parte>
         </div>
 
+        <input type="hidden" name="vieneDeListaEspera" value="{{ $vieneDeListaEspera }}">
+
     </div>
 
 </div>

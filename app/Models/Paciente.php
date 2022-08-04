@@ -93,7 +93,7 @@ class Paciente extends Model
      */
     public static $rules = [
         'run' => 'required|string|max:9',
-        'dv_run' => 'required|string|max:1',
+        'dv_run' => 'nullable|string|max:1',
         'apellido_paterno' => 'required|string|max:255',
         'apellido_materno' => 'required|string|max:255',
         'primer_nombre' => 'required|string|max:255',
