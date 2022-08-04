@@ -35,7 +35,7 @@
     <!-- Dv Run Field -->
     <div class="form-group col-sm-2">
         {!! Form::label('dv_run', 'Dv Run:') !!} <span class="text-red">*</span>
-        {!! Form::text('dv_run', null, ['id' => 'dv_run','class' => 'form-control','maxlength' => 1]) !!}
+        {!! Form::text('dv_run', null, ['id' => 'dv_run','class' => 'form-control','maxlength' => 1, 'readonly']) !!}
     </div>
 
     <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
@@ -163,8 +163,9 @@
 
                         if (paciente.sexo=='M'){
                             $('#sexo').bootstrapToggle('on')
-                        }else {
-
+                        } else if (!paciente.sexo) {
+                            $("#sexo").bootstrapToggle('off');
+                        } else {
                             $("#sexo").bootstrapToggle('off');
                         }
                         $("#telefono").val(paciente.telefono);

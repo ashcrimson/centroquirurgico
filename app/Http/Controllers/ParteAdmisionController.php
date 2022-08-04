@@ -87,13 +87,19 @@ class ParteAdmisionController extends Controller
     public function edit(Parte $parte)
     {
 
+        $arrayUrlAnt = explode('/', $_SERVER['HTTP_REFERER']);
+        $vieneDeListaEspera = 0;
+        if (in_array('espera', $arrayUrlAnt, true)) {
+            $vieneDeListaEspera = 1;
+        }
+
         if (empty($parte)) {
             flash()->error('Parte no encontrado');
 
             return redirect(route('partes.index'));
         }
 
-        return view('partes.admision.edit')->with('parte', $parte);
+        return view('partes.admision.edit', compact('parte','vieneDeListaEspera'));
     }
 
     /**
@@ -125,6 +131,9 @@ class ParteAdmisionController extends Controller
         $parte->save();
 
         flash()->success('Parte actualizado con éxito.');
+        if ($request->get('vieneDeListaEspera') == "1") {
+            return redirect( route('admision.partes.lista.espera') );
+        }
         return redirect(route('admision.partes'));
 
     }

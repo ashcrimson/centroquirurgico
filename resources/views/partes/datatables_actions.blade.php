@@ -44,9 +44,9 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+{{--                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>--}}
 {{--                            href="{{route('partes.validar.store',['anestesia',$id])}}"--}}
-                            <button type="submit" class="btn btn-primary">Sí</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </form>
                 </div><!-- /.modal-content -->
