@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreatePacienteRequest;
 use App\Http\Requests\CreateParteRequest;
 use App\Http\Requests\UpdateParteRequest;
+use App\Models\Especialidad;
 use App\Models\Paciente;
 use App\Models\Parte;
 use App\Models\ParteEstado;
@@ -163,6 +164,9 @@ class ParteController extends AppBaseController
      */
     public function edit($id)
     {
+
+        $especialidadUser = auth()->user()->especialidades->first();
+
         /** @var Parte $parte */
         $parte = Parte::with(['subEspecialidad','parteDiagnosticos','parteIntervenciones','parteInsumoEspecificos'])->find($id);
 
@@ -189,7 +193,7 @@ class ParteController extends AppBaseController
             return redirect(route('partes.index'));
         }
 
-        return view('partes.edit')->with('parte', $parte);
+        return view('partes.edit', compact('parte','especialidadUser'));
     }
 
     /**
