@@ -174,7 +174,7 @@ class ParteAdmisionDataTable extends DataTable
 
 //            Column::make('fecha_nac')->data('paciente.fecha_nac')->name('paciente.fecha_nac'),
             Column::make('edad')->data('edad')->name('edad')->searchable(false)->orderable(false),
-            Column::make('Fecha Parte')->name('created_at')->data('created_at'),
+            Column::make('Fecha Parte')->name('created_at')->data('created_at')->orderable(false),
 //            Column::make('Preops')->searchable(false)->orderable(false),
             Column::make('medico')->data('medico')->name('medico')->orderable(false)->searchable(false),
 //            Column::make('estado')->data('estado.nombre')->name('estado.nombre'),
