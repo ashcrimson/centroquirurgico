@@ -86,6 +86,13 @@
                         {{ ($parte->cma ?? old('cma') ?? false) ? 'checked' : '' }}>
                 </div>
 
+                <div class="form-group col-sm-4">
+                    {!! Form::label('medico_cirujano_id', 'Medico Cirujano:') !!}
+                    <multiselect v-model="medicoCirujano" :options="medicosEspecialidad" label="name" placeholder="Seleccione uno..." >
+                    </multiselect>
+                    <input type="hidden" name="medico_cirujano_id" :value="medicoCirujano ? medicoCirujano.id : null">
+                </div>
+
 
                 <!-- /.card-body -->
                 <div class="form-group col-sm-12">
@@ -477,7 +484,7 @@
                 <div class="col-sm-6">
                     <input type="hidden" name="consentimiento" value="0">
 
-                    {!! Form::label('consentimiento', 'Consentimiento informado, firmado y archivado en ficha clínica:') !!} 
+                    {!! Form::label('consentimiento', 'Consentimiento informado, firmado y archivado en ficha clínica:') !!}
 
                     <a href="http://acreditacion.hospitalnaval.cl/index.php?option=com_content&view=article&id=50&Itemid=72&dir=JSROOT%2FConsentimientos/Consentimientos" target="_blank">
                         <i class="fas fa-download" style="font-size:20px;"></i></a>
@@ -606,7 +613,7 @@
 
             insumo_especifico: @json($parte->insumoEspecifico ?? App\Models\Insumoespecifico::find(old('insumo_especifico_id')) ?? null),
 
-            especialidad: @json($parte->especialidad ?? \App\Models\Especialidad::find(old('especialidad_id')) ?? null),
+            especialidad: @json($especialidadUser ?? $parte->especialidad ?? \App\Models\Especialidad::find(old('especialidad_id')) ?? null),
 
             grupo_base: @json(App\Models\GrupoBase::find(old('grupo_base_id')) ?? $parte->grupoBase ?? null),
             grupo_bases: @json($parte->especialidad->patologias ?? []),
@@ -705,6 +712,8 @@
             subEspecialidades: [],
             subEspecialidad: @json($parte->subEspecialidad ?? \App\Models\EspecialidadSub::find(old('sub_especialidad_id'))),
 
+            medicosEspecialidad: @json($especialidadUser->medicos ?? []),
+            medicoCirujano: @json( auth()->user() ?? $parte->medicoCirujano ?? null),
         },
         methods: {
             close () {

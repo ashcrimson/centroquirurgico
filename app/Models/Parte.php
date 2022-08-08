@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \App\Models\Reparticion $reparticion
  * @property \App\Models\SistemaSalud $sistemaSalud
  * @property \App\Models\User $userIngresa
+ * @property \App\Models\User $medicoCirujano
  * @property \Illuminate\Database\Eloquent\Collection $bitacoras
  * @property \Illuminate\Database\Eloquent\Collection $parteContactos
  * @property \Illuminate\Database\Eloquent\Collection $parteDiagnosticos
@@ -37,6 +38,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $especialidad_id
  * @property integer $sub_especialidad_id
  * @property integer $diagnostico_id
+ * @property integer $medico_cirujano_id
  * @property string $otros_diagnosticos
  * @property integer $intervencion_id
  * @property string $lateralidad
@@ -190,6 +192,7 @@ class Parte extends Model
         'otros_insumos',
         'sub_especialidad_id',
         'prioridad_admin_observacion',
+        'medico_cirujano_id',
     ];
 
     /**
@@ -475,6 +478,14 @@ class Parte extends Model
     public function estado()
     {
         return $this->belongsTo(\App\Models\ParteEstado::class, 'estado_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function medicoCirujano()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'medico_cirujano_id');
     }
 
     /**
