@@ -78,6 +78,6 @@ class ParteEstado extends Model
 
     public function scopeParaAdmision($q)
     {
-        $q->whereNotIn('id',[self::TEMPORAL,self::INGRESADA,self::ENVIADA_ADMICION,self::LISTA_ESPERA]);
+        $q->whereNotIn('id',[self::TEMPORAL,self::INGRESADA,self::ENVIADA_ADMICION]);
     }
 }
