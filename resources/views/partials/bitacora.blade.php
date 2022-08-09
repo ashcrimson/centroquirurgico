@@ -19,7 +19,7 @@
         <div class="form-row ml-3">
 
 
-            <div class="form-group col-sm-3">
+            <div class="form-group col-sm-4">
                 <label for="">Condición</label>
                 <multiselect v-model="estado" :options="estados" label="nombre" placeholder="Seleccione uno...">
                 </multiselect>
