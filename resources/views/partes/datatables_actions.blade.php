@@ -247,8 +247,6 @@
             <div class="modal-body">
                 <div class="form-row col-sm-12">
 
-{{--                    {{ $parte->parteHistoricos() }}--}}
-
                     <table class="table table-hover text-nowrap" id="tablePartesHistorico">
                         <thead>
                         <tr>

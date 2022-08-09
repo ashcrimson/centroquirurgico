@@ -23,11 +23,13 @@ class ParteAdmisionController extends Controller
         $scope = new ScopeParteDataTable();
 
         $idsEstadosDefecto = [
+            ParteEstado::TEMPORAL,
+            ParteEstado::INGRESADA,
             ParteEstado::ENVIADA_ADMICION,
-            ParteEstado::PROGRAMADO,
-            ParteEstado::SUSPENDIDO,
-            ParteEstado::ACTIVACION,
-            ParteEstado::ELIMINADO,
+//            ParteEstado::PROGRAMADO,
+//            ParteEstado::SUSPENDIDO,
+//            ParteEstado::ACTIVACION,
+//            ParteEstado::ELIMINADO,
         ];
 
         $scope->estados = $request->estados ?? $idsEstadosDefecto;

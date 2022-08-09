@@ -565,7 +565,7 @@ class Parte extends Model
     {
         $parteHis = ParteHistorico::where(
             [
-                ['rut', $this->paciente->run]
+                ['rut', $this->paciente->run ?? null]
             ]
         )->get();
 

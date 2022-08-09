@@ -28,19 +28,19 @@ class ParteAdmisionDataTable extends DataTable
         })
             ->editColumn('paciente.nombre_completo',function (Parte $parte){
 
-                return $parte->paciente->nombre_completo;
+                return $parte->paciente->nombre_completo ?? null;
 
             })
             ->editColumn('rut',function (Parte $parte){
 
-                return $parte->paciente->rut_completo;
+                return $parte->paciente->rut_completo ?? null;
 
             })
-            ->editColumn('paciente.fecha_nac',function (Parte $parte){
+//            ->editColumn('paciente.fecha_nac',function (Parte $parte){
+//
+//                return $parte->paciente->fecha_nac ? $parte->paciente->fecha_nac->format('d/m/Y') : '';
 
-                return $parte->paciente->fecha_nac->format('d/m/Y');
-
-            })
+//            })
             ->editColumn('Preops',function (Parte $parte){
 
                 return view('partes.admision.columna_preops',compact('parte'));
@@ -63,10 +63,10 @@ class ParteAdmisionDataTable extends DataTable
                 return $parte->userIngresa ? $parte->userIngresa->name : '';
             })
             ->editColumn('edad', function (Parte $parte) {
-                return $parte->paciente->edad;
+                return $parte->paciente->edad ?? '';
             })
             ->editColumn('especialidad', function (Parte $parte) {
-                return $parte->especialidad->nombre;
+                return $parte->especialidad->nombre ?? '';
             })
             ->rawColumns(['action','id','especialidad']);
 //            ->setRowAttr([
