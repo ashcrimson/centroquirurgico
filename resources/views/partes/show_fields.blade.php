@@ -44,6 +44,11 @@
                     </select-cirugia-tipo>
                 </div>
 
+                <div class="form-group col-sm-4">
+                    <label>Usuario Creo</label>
+                    <input class="form-control" type="text" value="{{ $parte->userIngresa ? $parte->userIngresa->name : '' }}" disabled>
+                </div>
+
                 <!-- Especialidad Id Field -->
                 <div class="form-group col-sm-4">
                     <select-especialidad
