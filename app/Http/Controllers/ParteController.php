@@ -15,6 +15,7 @@ use App\Models\Parte;
 use App\Models\ParteEstado;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Role;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -165,7 +166,10 @@ class ParteController extends AppBaseController
     public function edit($id)
     {
 
-        $especialidadUser = auth()->user()->especialidades->first();
+        /**
+         * @var User $user
+         */
+        $user = User::with(['especialidades.subEspecialidades'])->findOrFail(auth()->user()->id);
 
         /** @var Parte $parte */
         $parte = Parte::with(['subEspecialidad','parteDiagnosticos','parteIntervenciones','parteInsumoEspecificos'])->find($id);
@@ -193,7 +197,7 @@ class ParteController extends AppBaseController
             return redirect(route('partes.index'));
         }
 
-        return view('partes.edit', compact('parte','especialidadUser'));
+        return view('partes.edit', compact('parte','user'));
     }
 
     /**

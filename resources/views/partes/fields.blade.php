@@ -607,13 +607,30 @@
                 $("#div_indique_especialidad").hide()
                 $("#indique_especialidad").prop('required', false);
             }
+
+            let userEspecialidades = @json($user->especialidades->first());
+            let userGrupoBase = @json($user->patologias);
+
+            if (userEspecialidades) {
+                if (userEspecialidades.sub_especialidades) {
+                    this.grupo_base = null;
+                    this.subEspecialidad = null;
+                    this.subEspecialidades = userEspecialidades.sub_especialidades;
+                    this.grupo_bases = userGrupoBase;
+                } else {
+                    this.grupo_base = null;
+                    this.subEspecialidad = null;
+                    this.subEspecialidades = [];
+                    this.grupo_bases = [];
+                }
+            }
         },
         data: {
             cirugia_tipo: @json($parte->cirugiaTipo ?? CirugiaTipo::find(old('cirugia_tipo_id')) ?? null),
 
             insumo_especifico: @json($parte->insumoEspecifico ?? App\Models\Insumoespecifico::find(old('insumo_especifico_id')) ?? null),
 
-            especialidad: @json($especialidadUser ?? $parte->especialidad ?? \App\Models\Especialidad::find(old('especialidad_id')) ?? null),
+            especialidad: @json($user->especialidades->first() ?? $parte->especialidad ?? \App\Models\Especialidad::find(old('especialidad_id')) ?? null),
 
             grupo_base: @json(App\Models\GrupoBase::find(old('grupo_base_id')) ?? $parte->grupoBase ?? null),
             grupo_bases: @json($parte->especialidad->patologias ?? []),
