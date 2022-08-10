@@ -180,8 +180,8 @@ class ParteListaEsperaDataTable extends DataTable
             Column::make('estado')->data('estado.nombre')->name('estado.nombre'),
             Column::make('Preops')->searchable(false)->orderable(false),
 
-//            Column::make('medico')->name('userIngresa.name')->data('user_ingresa.name')
-//                ->searchable(false)->orderable(false),
+           Column::make('medico')->name('userIngresa.name')->data('user_ingresa.name')
+               ->searchable(false)->orderable(false),
 
             Column::make('paciente.apellido_paterno')
                 ->visible(false)
