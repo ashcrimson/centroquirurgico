@@ -50,6 +50,10 @@ class ParteController extends AppBaseController
             return redirect(route('partes.validar.index'));
         }
 
+//        if (auth()->user()->hasRole(Role::SECRETARIA)) {
+//
+//        }
+
         $scope = new ScopeParteDataTable();
 
         $idsEstadosDefecto = [

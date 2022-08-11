@@ -32,6 +32,7 @@ class Role extends \Spatie\Permission\Models\Role
     const PREOP_EU =    7;
     const PREOP_MEDICO =    8;
     const BANCO_SANGRE =    41;
+    const SECRETARIA =    61;
 
 
     protected $dates = ['deleted_at'];
