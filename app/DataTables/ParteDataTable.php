@@ -32,12 +32,12 @@ class ParteDataTable extends DataTable
             })
             ->editColumn('paciente.fecha_nac',function (Parte $parte){
 
-                return $parte->paciente->fecha_nac ? $parte->paciente->fecha_nac : '';
+                return $parte->paciente->fecha_nac ? $parte->paciente->fecha_nac->format('d-m-Y') : '';
 
             })
-            ->editColumn('created_at',function (Parte $parte){
+            ->editColumn('fecha_parte',function (Parte $parte){
 
-                return $parte->created_at;
+                return $parte->created_at ? $parte->created_at->format('d-m-Y') : '';
 
             })
             ->editColumn('id',function (Parte $parte){
@@ -138,7 +138,7 @@ class ParteDataTable extends DataTable
                 ->searchable(false)->orderable(false),
 
             Column::make('fecha_nac')->data('paciente.fecha_nac')->name('paciente.fecha_nac'),
-            Column::make('Fecha Parte')->name('created_at')->data('created_at'),
+            Column::make('fecha_parte')->name('fecha_parte')->data('fecha_parte'),
 
             Column::make('estado')->data('estado.nombre')->name('estado.nombre'),
 
