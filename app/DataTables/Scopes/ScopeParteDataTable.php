@@ -163,6 +163,10 @@ class ScopeParteDataTable implements DataTableScope
             $query->where('examenes_realizados', 1);
         }
 
+        if ($this->tiene_cancer == '0') {
+            $query->where('cancer', 0);
+        }
+
         if ($this->tiene_cancer == '1') {
             $query->where('cancer', 1);
         }

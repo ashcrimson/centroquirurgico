@@ -31,11 +31,27 @@
             <input type="hidden" name="estados" :value="estado ? estado.id : null">
         </div>
 
+{{--        <div class="form-group col-sm-3">--}}
+{{--            {!! Form::label('tiene_cancer', 'Tiene Cancer:') !!}--}}
+{{--            <multiselect v-model="tiene_cancer" :options="select_tiene_cancer" label="nombre" placeholder="Seleccione uno...">--}}
+{{--            </multiselect>--}}
+{{--            <input type="hidden" name="tiene_cancer" :value="tiene_cancer ? tiene_cancer.id : null">--}}
+{{--        </div>--}}
+
         <div class="form-group col-sm-3">
-            {!! Form::label('tiene_cancer', 'Tiene Cancer:') !!}
-            <multiselect v-model="tiene_cancer" :options="select_tiene_cancer" label="nombre" placeholder="Seleccione uno...">
-            </multiselect>
-            <input type="hidden" name="tiene_cancer" :value="tiene_cancer ? tiene_cancer.id : null">
+            <label for="">Tiene Cancer:</label>
+            <div class="text-lg">
+
+                <toggle-button :sync="true"
+                               :labels="{checked: 'Sí', unchecked: 'No'}"
+                               v-model="tiene_cancer"
+                               :width="75"
+                               :height="35"
+                               :font-size="16"
+                ></toggle-button>
+
+                <input type="hidden" name="tiene_cancer" :value="tiene_cancer ? 1 : 0">
+            </div>
         </div>
 
         <div class="form-group col-sm-3">
