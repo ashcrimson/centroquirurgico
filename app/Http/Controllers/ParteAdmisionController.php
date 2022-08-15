@@ -72,6 +72,7 @@ class ParteAdmisionController extends Controller
         $scope->especialidad_id = $request->especialidad_id ?? null;
         $scope->delListEspera = $request->del ?? null;
         $scope->alListEspera = $request->al ?? null;
+//        $scope->medicos = $request->get('users') ?? [];
 
         $parteDataTable->addScope($scope);
 

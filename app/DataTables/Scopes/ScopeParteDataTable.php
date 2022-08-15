@@ -34,7 +34,7 @@ class ScopeParteDataTable implements DataTableScope
     {
         $this->estados = request()->estados ?? null;
         $this->pacientes = request()->pacientes ?? null;
-        $this->medicos = request()->users ?? null;
+        $this->medicos = request()->users;
         $this->prioridad_administrativa = request()->prioridad_administrativa ?? null;
         $this->prioridad_clinica = request()->prioridad_clinica ?? null;
 //        $this->del = request()->del ?? null;
@@ -83,10 +83,11 @@ class ScopeParteDataTable implements DataTableScope
             });
         }
 
-        if ($this->medicos){
-            if (is_array($this->medicos)){
-                $query->whereIn('user_ingresa',$this->medicos);
-            }else{
+        if ($this->medicos) {
+            if (is_array($this->medicos) && count($this->medicos) != 0) {
+                $query->whereIn('user_ingresa', $this->medicos);
+            }
+            else {
                 $query->where('user_ingresa',$this->medicos);
             }
         }

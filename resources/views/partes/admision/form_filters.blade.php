@@ -18,9 +18,10 @@
         @unlessrole('Médico')
             <div class="form-group col-sm-4">
                 {!! Form::label('del', 'Medico:') !!}
-                <multiselect v-model="user" :options="users" label="name" placeholder="Seleccione uno...">
+                <multiselect v-model="user" :options="users" :multiple="true" :close-on-select="false" :clear-on-select="false"
+                             :preserve-search="true" placeholder="Seleccione uno..." label="name" track-by="name">
                 </multiselect>
-                <input type="hidden" name="users" :value="user ? user.id : null">
+                <input type="hidden" name="users[]" :value="item.id" v-if="item" v-for="item in user">
             </div>
         @endunlessrole
 
@@ -170,6 +171,7 @@
                 this.especialidadId;
                 this.grupoBaseId;
                 this.cirugiaTipoId;
+                this.userIds;
 
             },
             data: {
@@ -179,7 +181,7 @@
                 prioridad_administrativa: false,
 
                 users : @json(\App\Models\User::role([\App\Models\Role::MEDICO])->get() ?? []),
-                user: null,
+                user: [],
 
                 examen_realizado: null,
                 tiene_cancer: null,
@@ -226,6 +228,17 @@
                         return this.cirugiaTipo.id;
                     }
                     return null;
+                },
+                userIds() {
+                    if (this.user.length != 0) {
+                        console.log('entro if')
+                        let userIdsLts = [];
+                        for (const userK of this.user) {
+                            userIdsLts.push(userK.id);
+                        }
+                        return userIdsLts;
+                    }
+                    return [];
                 },
             },
             watch: {
