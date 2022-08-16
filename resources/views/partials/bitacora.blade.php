@@ -25,8 +25,8 @@
                 </multiselect>
             </div>
 
-
-            <div class="form-group col-sm-3" v-show="estadoProgramado">
+{{--            v-show="estadoProgramado"--}}
+            <div class="form-group col-sm-3" >
                 {!! Form::label('fecha', 'Fecha:') !!}
                 {!! Form::date('fecha', null, ['v-model' => 'editedItem.fecha','class' => 'form-control','rows' => 2]) !!}
             </div>
