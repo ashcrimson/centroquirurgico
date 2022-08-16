@@ -140,7 +140,8 @@
         <div class="form-group col-sm-2">
             {!! Form::label('boton','&nbsp;') !!}
             <div>
-                <a  href="{{route('partes.index')}}" type="submit" id="boton" class="btn btn-info btn-block">
+{{--                href="{{route('partes.index')}}"--}}
+                <a onclick="window.location.reload();" id="boton" class="btn btn-info btn-block">
                     <i class="fa fa-times"></i> Limpiar Filtros
                 </a>
             </div>
