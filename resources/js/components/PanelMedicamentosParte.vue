@@ -49,34 +49,34 @@
             <div class="table-responsive mb-0">
                 <table class="table table-bordered table-sm table-striped mb-0">
                     <thead v-show="!disabled">
-                    <tr>
-                        <th>Medicamento</th>
-                        <th>Suspender días/horas</th>
-                        <th>Reiniciar</th>
-                        <th>Consideraciones</th>
-                        <th>Acciones</th>
-                    </tr>
+                        <tr>
+                            <th>Medicamento</th>
+                            <th>Suspender días/horas</th>
+                            <th>Reiniciar</th>
+                            <th>Consideraciones</th>
+                            <th>Acciones</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr v-if="parte_medicamentos.length == 0">
-                        <td colspan="10" class="text-center">Ningún Registro agregado</td>
-                    </tr>
-                    <tr v-for="det in parte_medicamentos" >
-                        <td v-text="det.medicamento.nombre"></td>
-                        <td v-text="det.medicamento.suspension_dias"></td>
-                        <td v-text="det.medicamento.reiniciar"></td>
-                        <td v-text="det.medicamento.consideraciones"></td>
+                        <tr v-show="parte_medicamentos.length == 0">
+                            <td colspan="10" class="text-center">Ningún Registro agregado</td>
+                        </tr>
+                        <tr v-for="det in parte_medicamentos" >
+                            <td v-text="det.medicamento.nombre"></td>
+                            <td v-text="det.medicamento.suspension_dias"></td>
+                            <td v-text="det.medicamento.reiniciar"></td>
+                            <td v-text="det.medicamento.consideraciones"></td>
 
-                        <td  class="text-nowrap" v-show="!disabled">
-                            <button type="button" @click="editItem(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >
-                                <i class="fa fa-edit"></i>
-                            </button>
+                            <td  class="text-nowrap" v-show="!disabled">
+                                <button type="button" @click="editItem(det)" class="btn btn-sm btn-outline-info" v-tooltip="'Editar'"  >
+                                    <i class="fa fa-edit"></i>
+                                </button>
 
-                            <button type="button" @click="deleteItem(det)"  class='btn btn-outline-danger btn-sm' v-tooltip="'Eliminar'" >
-                                <i class="fa fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
+                                <button type="button" @click="deleteItem(det)"  class='btn btn-outline-danger btn-sm' v-tooltip="'Eliminar'" >
+                                    <i class="fa fa-trash-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

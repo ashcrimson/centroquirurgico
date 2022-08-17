@@ -359,10 +359,6 @@
                     </div>
                 </div>
 
-
-
-
-
                 <!-- Preoperatorio Id Field -->
                 <div class="form-group col-sm-6">
                     <select-preoperatorio
@@ -372,7 +368,6 @@
 
                     </select-preoperatorio>
                 </div>
-
 
                 <!-- Grupo Base Field -->
                 <div class="form-group col-sm-6">
@@ -421,17 +416,99 @@
                         {{ ($parte->consentimiento ?? old('consentimiento') ?? false) ? 'checked' : '' }}>
                 </div>
 
+                @if(auth()->user()->hasRole(\App\Models\Role::ADMISION))
 
+                    <!-- Correo Electrónico -->
+                    <div class="form-group col-sm-3">
+                        {!! Form::label('email', 'Correo Electrónico:') !!}
+                        {!! Form::email('email', $parte->email, ['id' => 'email','class' => 'form-control','disabled']) !!}
 
+                    </div>
 
+                    <!-- Tiempo Quirurgico Field -->
+                    <div class="form-group col-sm-3">
+                        {!! Form::label('user_ingresa', 'Cambio de Médico:') !!}
+                        <multiselect v-model="medico" :options="medicos" label="name"  placeholder="Seleccione uno..."
+                                     disabled>
+                        </multiselect>
+                        <input v-if="medico" type="hidden" name="user_ingresa" :value="medico ? medico.id : null">
+                    </div>
+
+                    <!-- Sistema Salud Field -->
+                    <div class="form-group col-sm-3">
+                        {!! Form::label('sistemasalud_id', 'Sistema Salud:') !!}
+                        <br>
+                        <multiselect v-model="sistema" :options="sistemas" label="nombre"  placeholder="Seleccione uno..."
+                                     disabled>
+                        </multiselect>
+                        <input type="hidden" name="sistemasalud_id" :value="sistema ? sistema.id : null">
+
+                    </div>
+
+                    <div class="form-group col-sm-3" v-show="mostrarCategoria">
+                        <label for="">Categoría</label>
+                        <br>
+                        <multiselect v-model="titular_carga" :options="['Sí mismo','Carga']"  placeholder="Seleccione uno..."
+                                     disabled>
+                        </multiselect>
+                        <input type="hidden" name="titular_carga" :value="titular_carga ? titular_carga : null">
+
+                    </div>
+
+                    <!-- derivacion Field -->
+                    <div class="form-group col-sm-2">
+
+                        <label for="">derivación:</label>
+                        <div class="text-lg">
+
+                            <toggle-button :sync="true"
+                                           :labels="{checked: 'Sí', unchecked: 'No'}"
+                                           v-model="derivacion"
+                                           :width="75"
+                                           :height="35"
+                                           :font-size="16"
+                                           disabled
+                            ></toggle-button>
+
+                            <input type="hidden" name="derivacion" :value="derivacion ? 1 : 0">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group col-sm-4" v-show="derivacion">
+                        <select-reparticion
+                            label="Centro Derivador"
+                            v-model="reparticion"
+                            :disabled="true">
+
+                        </select-reparticion>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <panel-medicamentos-parte parte_id="@json($parte->id)" :disabled="true"></panel-medicamentos-parte>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <panel-examens-parte parte_id="@json($parte->id)" :disabled="true"></panel-examens-parte>
+                    </div>
+
+                @endif
 
             </div>
 
+            @if(auth()->user()->hasRole(\App\Models\Role::ADMISION))
+
+                <div class="form-group col-sm-12">
+                    @include('partes.panel_contactos_show')
+                </div>
+
+            @endif
 
         </div>
     </div>
 
 </div>
+
 
 @push('scripts')
     <script>
@@ -484,7 +561,6 @@
             // validaTodosSi();
 
             $( "#alergia_latex" ).change(function() {
-                console.log('entro click')
                 $( "#modalValidacionCambiarAlergiaLatex" ).modal('show');
             });
 
@@ -635,6 +711,18 @@
                 subEspecialidad: @json($parte->subEspecialidad ?? \App\Models\EspecialidadSub::find(old('sub_especialidad_id'))),
 
                 alergia_latex: null,
+
+                medico : @json($parte->userIngresa ?? null),
+                medicos: @json(\App\Models\User::role('medico')->get()),
+
+                sistema : @json($parte->sistemaSalud ?? null),
+                sistemas: @json(App\Models\SistemaSalud::get() ?? []),
+
+                titular_carga: @json($parte->titular_carga ?? null),
+
+                derivacion: @json($parte->derivacion ?? null),
+
+                reparticion: @json($parte->reparticion ?? null),
             },
             methods: {
                 getSubEspecialidaId(item) {
@@ -664,21 +752,15 @@
                 async getIntervenciones() {
                     const res = await  axios.get(route('api.parte_intervenciones.index',{parte_id: this.parte_id}));
                     this.parte_intervenciones = res.data.data;
-                    console.log(this.parte_intervenciones)
                 },
                 async saveIntervencion () {
 
-
                     this.loading = true;
-
-
 
                     try {
 
                         this.editedItem.intervencion_id = this.getId(this.intervencion)
                         const data = this.editedItem;
-
-                        console.log('data inter',data);
 
                         if(this.editedItem.id === 0){
 
@@ -695,7 +777,6 @@
                         iziTs(res.data.message);
                         this.getIntervenciones();
                         this.close();
-
 
                     }catch (e) {
                         notifyErrorApi(e);
@@ -730,7 +811,6 @@
 
                     }
 
-                    console.log("Confirmacion",confirm);
                 }
             },
             watch: {
@@ -757,7 +837,7 @@
                 },
                 alergia_latex(val) {
                     if (val) {
-                        console.log(val)
+
                     }
                 }
             },
@@ -796,13 +876,18 @@
                 },
                 mostrar2doOjo() {
                     if (this.especialidad) {
-                        console.log(this.especialidad.id)
                         if (this.especialidad.id == 11) {
-                            console.log('entro if')
                             return true;
                         } else {
                             return false;
                         }
+                    } else {
+                        return false;
+                    }
+                },
+                mostrarCategoria() {
+                    if (this.sistema) {
+                        return true;
                     } else {
                         return false;
                     }
