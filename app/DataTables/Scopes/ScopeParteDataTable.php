@@ -3,6 +3,7 @@
 namespace App\DataTables\Scopes;
 
 use App\Models\ParteEstado;
+use App\Models\Role;
 use Carbon\Carbon;
 use Yajra\DataTables\Contracts\DataTableScope;
 
@@ -164,16 +165,19 @@ class ScopeParteDataTable implements DataTableScope
             $query->where('examenes_realizados', 1);
         }
 
-        if ($this->tiene_cancer == '0') {
-            $query->where('cancer', 0);
-        }
+        if (auth()->user()->hasRole(Role::ADMISION,Role::PREOP_MEDICO,Role::PREOP_EU,Role::PREOP_ANESTESISTA
+            ,Role::BANCO_SANGRE)) {
+            if ($this->tiene_cancer == '0') {
+                $query->where('cancer', 0);
+            }
 
-        if ($this->tiene_cancer == '1') {
-            $query->where('cancer', 1);
-        }
+            if ($this->tiene_cancer == '1') {
+                $query->where('cancer', 1);
+            }
 
-        if ($this->tiene_cancer == '2') {
-            $query->where('cancer', 0);
+            if ($this->tiene_cancer == '2') {
+                $query->where('cancer', 0);
+            }
         }
 
         if ($this->especialidad_id) {
