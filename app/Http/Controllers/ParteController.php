@@ -16,8 +16,10 @@ use App\Models\ParteEstado;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Role;
 use App\Models\User;
+//use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Response;
 
@@ -176,7 +178,7 @@ class ParteController extends AppBaseController
         $user = User::with(['especialidades.subEspecialidades'])->findOrFail(auth()->user()->id);
 
         /** @var Parte $parte */
-        $parte = Parte::with(['subEspecialidad','parteDiagnosticos','parteIntervenciones','parteInsumoEspecificos'])->find($id);
+        $parte = Parte::with(['subEspecialidad','parteDiagnosticos','parteIntervenciones','parteInsumoEspecificos','grupoBase'])->find($id);
 
         if ($parte->estado_id == ParteEstado::TEMPORAL) {
             if ($parte->parteDiagnosticos->isNotEmpty()) {
@@ -319,7 +321,6 @@ class ParteController extends AppBaseController
         $parte->setAttribute("clave" ,$parte->paciente->clave);
         $parte->setAttribute("movil_envia" ,$parte->paciente->movil_envia);
 
-
         return $parte;
     }
 
@@ -433,4 +434,27 @@ class ParteController extends AppBaseController
 
         return $parteDataTable->render('partes.index2',compact('estados'));
     }
+
+//    public function imprimirParte($id)
+//    {
+//
+//        /** @var Parte $parte */
+//        $parte = Parte::with(['paciente'])->findOrFail($id);
+//
+//        $parte = $this->addAttributos($parte);
+//
+//        $parte->setAttribute("nombre_completo" ,$parte->paciente->nombre_completo);
+//        $parte->setAttribute("edad" ,$parte->paciente->edad);
+//
+//        /**
+//         * @var PDF $pdf
+//         */
+//        $pdf = App::make('dompdf.wrapper');
+//
+//        $vista = view('partes.partials.imprimir_parte', compact('parte'))->render();
+//
+//        return $pdf->loadHTML($vista)->setPaper('letter','portrait')
+//            ->stream("Prueba_Imprimir_Parte.pdf");
+//
+//    }
 }

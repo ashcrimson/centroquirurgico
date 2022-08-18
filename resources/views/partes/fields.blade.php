@@ -613,12 +613,12 @@
 
             if (userEspecialidades) {
                 if (userEspecialidades.sub_especialidades) {
-                    this.grupo_base = null;
+                    // this.grupo_base = null;
                     this.subEspecialidad = null;
                     this.subEspecialidades = userEspecialidades.sub_especialidades;
                     this.grupo_bases = userGrupoBase;
                 } else {
-                    this.grupo_base = null;
+                    // this.grupo_base = null;
                     this.subEspecialidad = null;
                     this.subEspecialidades = [];
                     this.grupo_bases = [];
