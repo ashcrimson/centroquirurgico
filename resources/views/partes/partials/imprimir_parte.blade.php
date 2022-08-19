@@ -20,8 +20,9 @@
         <table class="table table-bordered" style="width: 100%; margin-bottom: 0;">
             <tbody>
                 <tr>
-                    <td width="25%" rowspan="2"></td>
-                    <td width="25%" rowspan="2" style="text-align: center;">PARTE QUIRÚRGICO</td>
+                    <td width="25%" style="text-align: center;" rowspan="2"><img src="http://sistemarema.hospitalnaval.cl/dist/img/Logo%20HNV.png" alt=""
+                        style="width: 80px;"></td>
+                    <td width="25%" rowspan="2" style="text-align: center; ">PARTE QUIRÚRGICO</td>
                     <td width="25%" style="text-align: center;">PARTE Nro</td>
                 </tr>
                 <tr>
