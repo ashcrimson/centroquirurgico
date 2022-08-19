@@ -30,6 +30,11 @@ class ParteDataTable extends DataTable
                 return $parte->paciente->nombre_completo;
 
             })
+            ->editColumn('rut',function (Parte $parte){
+
+                return $parte->paciente->rut_completo ?? null;
+
+            })
             ->editColumn('paciente.fecha_nac',function (Parte $parte){
 
                 return $parte->paciente->fecha_nac ? $parte->paciente->fecha_nac->format('d-m-Y') : '';
@@ -132,7 +137,7 @@ class ParteDataTable extends DataTable
             Column::make('id')->data('id')->name('partes.id'),
 
 
-            Column::make('rut')->name('paciente.run')->data('paciente.run'),
+            Column::make('rut')->name('rut')->data('rut')->searchable(false)->orderable(false),
 
             Column::make('paciente')->name('paciente.nombre_completo')->data('paciente.nombre_completo')
                 ->searchable(false)->orderable(false),
