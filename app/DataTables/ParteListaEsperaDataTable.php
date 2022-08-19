@@ -35,11 +35,16 @@ class ParteListaEsperaDataTable extends DataTable
                 return $parte->paciente->nombre_completo;
 
             })
-            ->editColumn('fecha_inscripcion',function (Parte $parte){
+            ->editColumn('rut',function (Parte $parte){
 
-                return $parte->fecha_inscripcion->format('d/m/Y');
+                return $parte->paciente->rut_completo ?? null;
 
             })
+            // ->editColumn('fecha_inscripcion',function (Parte $parte){
+
+            //     return $parte->fecha_inscripcion->format('d/m/Y');
+
+            // })
             ->editColumn('id',function (Parte $parte){
 
                 return $parte->id;
@@ -163,7 +168,7 @@ class ParteListaEsperaDataTable extends DataTable
 
             Column::make('id')->data('id')->name('partes.id'),
 
-            Column::make('run')->name('paciente.run')->data('paciente.run'),
+            Column::make('rut')->name('rut')->data('rut')->searchable(false)->orderable(false),
 
             Column::make('paciente')->name('paciente.nombre_completo')->data('paciente.nombre_completo')
                 ->searchable(false)->orderable(false),
