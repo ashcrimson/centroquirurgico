@@ -416,7 +416,7 @@
                         {{ ($parte->consentimiento ?? old('consentimiento') ?? false) ? 'checked' : '' }}>
                 </div>
 
-                @if(auth()->user()->hasRole(\App\Models\Role::ADMISION))
+                @if(auth()->user()->hasRole(\App\Models\Role::ADMISION) && routeIs('partes.show'))
 
                     <!-- Correo Electrónico -->
                     <div class="form-group col-sm-3">
@@ -496,7 +496,7 @@
 
             </div>
 
-            @if(auth()->user()->hasRole(\App\Models\Role::ADMISION))
+            @if(auth()->user()->hasRole(\App\Models\Role::ADMISION) && routeIs('partes.show'))
 
                 <div class="form-group col-sm-12">
                     @include('partes.panel_contactos_show')
