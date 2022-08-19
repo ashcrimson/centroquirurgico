@@ -42,7 +42,7 @@ class ParteDataTable extends DataTable
             })
             ->editColumn('fecha_parte',function (Parte $parte){
 
-                return $parte->created_at ? $parte->created_at->format('d-m-Y') : '';
+                return $parte->created_at ? $parte->created_at->format('Y-m-d h:i:s') : '';
 
             })
             ->editColumn('id',function (Parte $parte){

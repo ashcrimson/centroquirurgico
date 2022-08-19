@@ -40,11 +40,11 @@ class ParteListaEsperaDataTable extends DataTable
                 return $parte->paciente->rut_completo ?? null;
 
             })
-            // ->editColumn('fecha_inscripcion',function (Parte $parte){
+             ->editColumn('fecha_inscripcion',function (Parte $parte){
 
-            //     return $parte->fecha_inscripcion->format('d/m/Y');
+                 return $parte->fecha_inscripcion->format('Y-m-d h:i:s');
 
-            // })
+             })
             ->editColumn('id',function (Parte $parte){
 
                 return $parte->id;
