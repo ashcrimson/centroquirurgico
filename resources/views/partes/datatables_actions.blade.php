@@ -292,3 +292,7 @@
         </form>
     @endif
 @endcan
+
+<a target="_blank" class="btn btn-default btn-sm" title="Imprimir" href="{{ route('partes.imprimir.parte', $id) }}">
+    <i class="fa fa-print"></i>
+</a>

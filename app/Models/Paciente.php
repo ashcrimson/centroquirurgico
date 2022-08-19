@@ -28,6 +28,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $familiar_responsable
  * @property string $telefono
  * @property string $telefono2
+ * @property string $edad
+ * @property string $edad_anios
  */
 class Paciente extends Model
 {
@@ -132,10 +134,15 @@ class Paciente extends Model
 
     public function getEdadAttribute()
     {
-//        $fecha = Carbon::parse(fechaEn($this->fecha_nac));
         $fecha = Carbon::parse($this->fecha_nac)->diff(Carbon::now())->format('%y años, %m meses and %d dias');
 
         return $fecha ?? 0;
-//        return $fecha->diffInYears(Carbon::now());
+    }
+
+    public function getEdadAniosAttribute()
+    {
+        $fecha = Carbon::parse($this->fecha_nac)->diff(Carbon::now())->format('%y');
+
+        return $fecha ?? 0;
     }
 }

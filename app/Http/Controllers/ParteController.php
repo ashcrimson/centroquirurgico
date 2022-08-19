@@ -16,10 +16,10 @@ use App\Models\ParteEstado;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Role;
 use App\Models\User;
-//use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Response;
 
@@ -435,26 +435,34 @@ class ParteController extends AppBaseController
         return $parteDataTable->render('partes.index2',compact('estados'));
     }
 
-//    public function imprimirParte($id)
-//    {
-//
-//        /** @var Parte $parte */
-//        $parte = Parte::with(['paciente'])->findOrFail($id);
-//
-//        $parte = $this->addAttributos($parte);
-//
-//        $parte->setAttribute("nombre_completo" ,$parte->paciente->nombre_completo);
-//        $parte->setAttribute("edad" ,$parte->paciente->edad);
-//
-//        /**
-//         * @var PDF $pdf
-//         */
-//        $pdf = App::make('dompdf.wrapper');
-//
-//        $vista = view('partes.partials.imprimir_parte', compact('parte'))->render();
-//
-//        return $pdf->loadHTML($vista)->setPaper('letter','portrait')
-//            ->stream("Prueba_Imprimir_Parte.pdf");
-//
-//    }
+    public function imprimirParte($id)
+    {
+
+        /** @var Parte $parte */
+        $parte = Parte::with(['paciente'])->findOrFail($id);
+
+        /**
+         * @var User $user
+         */
+        $user = User::with(['especialidades.subEspecialidades'])->findOrFail($parte->userIngresa->id);
+
+        $especialidad = $user->especialidades->first();
+
+        $parte = $this->addAttributos($parte);
+
+        $parte->setAttribute("nombre_completo" ,$parte->paciente->nombre_completo);
+        $parte->setAttribute("edad" ,$parte->paciente->edad_anios);
+        $parte->setAttribute("rut_completo" ,$parte->paciente->rut_completo);
+
+        /**
+         * @var PDF $pdf
+         */
+        $pdf = App::make('dompdf.wrapper');
+
+        $vista = view('partes.partials.imprimir_parte', compact('parte','especialidad'))->render();
+
+        return $pdf->loadHTML($vista)->setPaper('letter','portrait')
+            ->stream("Prueba_Imprimir_Parte.pdf");
+
+    }
 }

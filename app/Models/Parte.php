@@ -629,4 +629,30 @@ class Parte extends Model
         return $this->fecha_preop_eu_valida && $this->fecha_preop_anestesista_valida && $this->fecha_preop_medico_valida;
     }
 
+    public function diagnosticosNombres()
+    {
+
+        $nombreDiagnosticos = '';
+
+        foreach ($this->parteDiagnosticos as $diagnos) {
+            $nombreDiagnosticos .= $diagnos->diagnostico->nombre.' | ';
+        }
+
+        return $nombreDiagnosticos;
+
+    }
+
+    public function intervencionesNombres()
+    {
+
+        $nombresIntervenciones = '';
+
+        foreach ($this->parteIntervenciones as $parteIntervencione) {
+            $nombresIntervenciones .= $parteIntervencione->intervencionNew->descripcion.' | ';
+        }
+
+        return $nombresIntervenciones;
+
+    }
+
 }

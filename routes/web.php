@@ -65,6 +65,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('partes/validar', 'ParteController@validarPreop')->name('partes.validar.index');
     Route::resource('partes', 'ParteController');
     Route::get('partes/mis/partes', 'ParteController@misPartes')->name('partes.mis.partes');
+    Route::get('partes/imprimir/parte/{id}', 'ParteController@imprimirParte')->name('partes.imprimir.parte');
 
     Route::group(['prefix' => 'admision','as' => 'admision.'],function (){
         Route::get('partes', 'ParteAdmisionController@index')->name('partes');
