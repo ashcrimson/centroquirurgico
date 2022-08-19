@@ -655,4 +655,17 @@ class Parte extends Model
 
     }
 
+    public function insumosNombres()
+    {
+
+        $nombresInsumosNombres = '';
+
+        foreach ($this->parteInsumoEspecificos as $parteInsumoEspecifico) {
+            $nombresInsumosNombres .= $parteInsumoEspecifico->insumo->nombre.' | ';
+        }
+
+        return $nombresInsumosNombres;
+
+    }
+
 }

@@ -17,11 +17,11 @@
     </head>
     <body>
 
-        <table class="table table-bordered" style="width: 100%; margin-bottom: 0;">
+        <table class="table table-bordered table-sm table-condensed" style="width: 100%; margin-bottom: 0;font-size: 11px;height: 15px;">
             <tbody>
                 <tr>
                     <td width="25%" style="text-align: center;" rowspan="2"><img src="http://sistemarema.hospitalnaval.cl/dist/img/Logo%20HNV.png" alt=""
-                        style="width: 80px;"></td>
+                        style="width: 60px;"></td>
                     <td width="25%" rowspan="2" style="text-align: center; ">PARTE QUIRÚRGICO</td>
                     <td width="25%" style="text-align: center;">PARTE Nro</td>
                 </tr>
@@ -31,7 +31,7 @@
             </tbody>
         </table>
 
-        <table class="table table-bordered" style="width: 100%; margin-top: 1rem; margin-bottom: 0;font-size: 11px;">
+        <table class="table table-bordered table-sm table-condensed" style="width: 100%; margin-top: 1rem; margin-bottom: 0;font-size: 11px;">
             <tbody>
                 <tr>
                     <td colspan="4" style="text-align: center;">Datos Paciente</td>
@@ -67,7 +67,7 @@
             </tbody>
         </table>
 
-        <table class="table table-bordered" style="width: 100%; margin-bottom: 0;font-size: 11px;">
+        <table class="table table-bordered table-sm table-condensed" style="width: 100%; margin-bottom: 0;font-size: 11px;">
             <tbody>
                 <tr>
                     <td colspan="4" style="text-align: center;">Procedimiento</td>
@@ -103,7 +103,7 @@
             </tbody>
         </table>
 
-        <table class="table table-bordered" style="width: 100%; margin-bottom: 0;font-size: 11px;">
+        <table class="table table-bordered table-sm table-condensed" style="width: 100%; margin-bottom: 0;font-size: 11px;">
             <tbody>
                 <tr>
                     <td colspan="4" style="text-align: center;">Requisitos</td>
@@ -140,9 +140,55 @@
                 </tr>
                 <tr>
                     <td width="20%" style="text-align: left;">Biopsia:</td>
-                    <td width="25%" style="text-align: left;">{{ $parte->biopsia != 'No aplica' ? 'SI' : 'NO' }}</td>
+                    <td width="25%" style="text-align: left;">{{ $parte->biopsia ? $parte->biopsia : '' }}</td>
                     <td width="20%" style="text-align: left;">Examen Preoperatorio:</td>
-                    <td width="25%" style="text-align: left;">{{ $parte->preoperatorio_id == 11 ? 'SI' : 'NO' }}</td>
+                    <td width="25%" style="text-align: left;">{{ $parte->preoperatorio ? $parte->preoperatorio->nombre : '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-sm table-condensed" style="width: 100%; margin-bottom: 0;font-size: 11px;">
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">Instrumental</td>
+                </tr>
+                <tr>
+                    <td width="100%" style="text-align: left;">{{ $parte->instrumental }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-sm table-condensed" style="width: 100%; margin-bottom: 0;font-size: 11px;">
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">Insumos Específicos</td>
+                </tr>
+                <tr>
+                    <td width="100%" style="text-align: left;">{{ $parte->insumosNombres() }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-sm table-condensed" style="width: 100%; margin-bottom: 0;font-size: 11px;">
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">Observaciones</td>
+                </tr>
+                <tr>
+                    <td width="100%" style="text-align: left;">{{ $parte->observaciones }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-sm table-condensed" style="width: 50%; margin-bottom: 0; margin-top: 1rem;font-size: 11px;float: right;">
+            <tbody>
+                <tr>
+                    <td style="text-align: left;">Usuario Solicitante</td>
+                    <td style="text-align: left;"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">Fecha/Hora</td>
+                    <td style="text-align: left;">{{ \Carbon\Carbon::now()->format('j \d\e F Y h:i A') }}</td>
                 </tr>
             </tbody>
         </table>
