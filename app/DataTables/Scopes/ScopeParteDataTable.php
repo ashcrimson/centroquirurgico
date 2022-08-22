@@ -20,6 +20,7 @@ class ScopeParteDataTable implements DataTableScope
     public $prioridad_clinica;
     public $tipo_cirugia_id;
     public $grupo_base_id;
+    public $rut_paciente;
 
     public function __construct()
     {
@@ -41,11 +42,11 @@ class ScopeParteDataTable implements DataTableScope
             $del = Carbon::parse($this->del);
             $al = Carbon::parse($this->al)->addDay();
 
-            $query->whereBetween('created_at',[$del,$al]);
+            $query->whereBetween('partes.created_at',[$del,$al]);
 
         }
 
-        if ($this->users){
+        if ($this->users) {
             if (is_array($this->users)){
                 $query->whereIn('user_ingresa',$this->users);
             }else{
@@ -54,11 +55,7 @@ class ScopeParteDataTable implements DataTableScope
         }
 
         if ($this->estados){
-            if (is_array($this->estados)){
-                $query->whereIn('estado_id',$this->estados);
-            }else{
-                $query->where('estado_id',$this->estados);
-            }
+            $query->whereIn('estado_id',$this->estados);
         }
 
         if ($this->tiene_cancer == '0') {
@@ -95,6 +92,12 @@ class ScopeParteDataTable implements DataTableScope
 
         if ($this->grupo_base_id) {
             $query->where('grupo_base_id', $this->grupo_base_id);
+        }
+
+        if ($this->rut_paciente) {
+            $query->whereHas('paciente',function ($q){
+                $q->where('run',$this->rut_paciente);
+            });
         }
 
     }

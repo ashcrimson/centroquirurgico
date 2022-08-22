@@ -36,11 +36,6 @@ class ParteAdmisionDataTable extends DataTable
                 return $parte->paciente->rut_completo ?? null;
 
             })
-//            ->editColumn('paciente.fecha_nac',function (Parte $parte){
-//
-//                return $parte->paciente->fecha_nac ? $parte->paciente->fecha_nac->format('d/m/Y') : '';
-
-//            })
             ->editColumn('Preops',function (Parte $parte){
 
                 return view('partes.admision.columna_preops',compact('parte'));
@@ -69,21 +64,6 @@ class ParteAdmisionDataTable extends DataTable
                 return $parte->especialidad->nombre ?? '';
             })
             ->rawColumns(['action','id','especialidad']);
-//            ->setRowAttr([
-//                'style' => function(Parte $parte){
-//
-//                    $fecha_actual = Carbon::now();
-//                    $diferencia = Carbon::parse($parte->fecha_examenes)->diffInDays($fecha_actual);
-//                    $attr = null;
-//                    if ($diferencia > 180) {
-//                        $attr = 'background-color: #F30000';
-//                    }
-//                    if ($diferencia < 180) {
-//                        $attr = 'background-color: #99E066';
-//                    }
-//                    return $attr;
-//                }
-//            ]);
 
     }
 
@@ -172,12 +152,9 @@ class ParteAdmisionDataTable extends DataTable
             Column::make('paciente')->name('paciente.nombre_completo')->data('paciente.nombre_completo')
                 ->searchable(false)->orderable(false),
 
-//            Column::make('fecha_nac')->data('paciente.fecha_nac')->name('paciente.fecha_nac'),
             Column::make('edad')->data('edad')->name('edad')->searchable(false)->orderable(false),
             Column::make('Fecha Parte')->name('created_at')->data('created_at')->orderable(false),
-//            Column::make('Preops')->searchable(false)->orderable(false),
             Column::make('medico')->data('medico')->name('medico')->orderable(false)->searchable(false),
-//            Column::make('estado')->data('estado.nombre')->name('estado.nombre'),
             Column::make('especialidad')->searchable(false)->orderable(false),
 
             Column::make('paciente.apellido_paterno')

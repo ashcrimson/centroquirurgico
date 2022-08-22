@@ -66,7 +66,7 @@ class ParteController extends AppBaseController
             ParteEstado::PROGRAMADO,
             ParteEstado::SUSPENDIDO,
             ParteEstado::ACTIVACION,
-            ParteEstado::ELIMINADO,
+            ParteEstado::ELIMINADO
         ];
 
         $scope->estados = $request->estados ?? $idsEstadosDefecto;
@@ -77,6 +77,7 @@ class ParteController extends AppBaseController
         $scope->tipo_cirugia_id = $request->tipo_cirugia_id ?? null;
         $scope->grupo_base_id = $request->grupo_base_id ?? null;
         $scope->prioridad_clinica = $request->prioridad ?? null;
+        $scope->especialidad_id = $request->especialidad_id ?? null;
 
         $parteDataTable->addScope($scope);
 
@@ -471,4 +472,5 @@ class ParteController extends AppBaseController
             ->stream("Prueba_Imprimir_Parte.pdf");
 
     }
+
 }

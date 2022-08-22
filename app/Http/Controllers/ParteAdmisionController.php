@@ -29,7 +29,6 @@ class ParteAdmisionController extends Controller
 
         $scope->del = $request->get('del') ?? null;
         $scope->al = $request->get('al') ?? null;
-        $scope->al = $request->get('users') ?? null;
         $scope->estados = $request->get('estados') ?? $idsEstadosDefecto;
         $scope->tiene_cancer = $request->get('tiene_cancer');
         $scope->especialidad_id = $request->get('especialidad_id');
@@ -72,8 +71,6 @@ class ParteAdmisionController extends Controller
         $scope->prioridad_clinica = $request->get('prioridad');
 
         $parteDataTable->addScope($scope);
-
-//        $estados = ParteEstado::whereIn('id',$idsEstadosDefecto)->get();
 
         return $parteDataTable->render('partes.admision.lista_espera');
     }

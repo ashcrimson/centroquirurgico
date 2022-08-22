@@ -3,9 +3,6 @@
 
     <div class="form-row">
 
-
-
-
         <div class="form-group col-sm-2">
             {!! Form::label('del', 'Desde:') !!}
             {!! Form::date('del', null, ['class' => 'form-control']) !!}
@@ -21,22 +18,6 @@
             {!! Form::text('rut_paciente', null, ['class' => 'form-control']) !!}
         </div>
 
-{{--        @unlessrole('Medico')--}}
-{{--            <div class="form-group col-sm-4">--}}
-{{--                {!! Form::label('del', 'Medico:') !!}--}}
-{{--                <multiselect v-model="user" :options="users" label="name" placeholder="Seleccione uno...">--}}
-{{--                </multiselect>--}}
-{{--                <input type="hidden" name="users" :value="user ? user.id : null">--}}
-{{--            </div>--}}
-{{--        @endunlessrole--}}
-
-{{--        <div class="form-group col-sm-3">--}}
-{{--            {!! Form::label('del', 'Estado:') !!}--}}
-{{--            <multiselect v-model="estado" :options="estados" label="nombre" placeholder="Seleccione uno...">--}}
-{{--            </multiselect>--}}
-{{--            <input type="hidden" name="estados" :value="estado ? estado.id : null">--}}
-{{--        </div>--}}
-
         <div class="form-group col-sm-3">
             {!! Form::label('tipo_cirugia_id', 'Tipo Cirugia:') !!}
             <multiselect v-model="tipoCirugia" :options="tipoCirugias" label="nombre" placeholder="Seleccione uno...">
@@ -50,24 +31,6 @@
             </multiselect>
             <input type="hidden" name="grupo_base_id" :value="grupoBase ? grupoBase.id : null">
         </div>
-
-{{--        <div class="form-group col-sm-3">--}}
-
-{{--            <label for="">Prioridad administrativa:</label>--}}
-{{--            <div class="text-lg">--}}
-
-{{--                <toggle-button :sync="true"--}}
-{{--                               :labels="{checked: 'Sí', unchecked: 'No'}"--}}
-{{--                               v-model="prioridad_administrativa"--}}
-{{--                               :width="75"--}}
-{{--                               :height="35"--}}
-{{--                               :font-size="16"--}}
-{{--                ></toggle-button>--}}
-
-{{--                <input type="hidden" name="prioridad_administrativa" :value="prioridad_administrativa ? 1 : 0">--}}
-{{--            </div>--}}
-
-{{--        </div>--}}
 
         <div class="form-group col-sm-3">
             {!! Form::label('especialidad_id', 'Especialidades:') !!}
