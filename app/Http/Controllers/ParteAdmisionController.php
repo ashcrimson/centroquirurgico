@@ -6,6 +6,7 @@ use App\DataTables\ParteAdmisionDataTable;
 use App\DataTables\ParteDataTable;
 use App\DataTables\ParteListaEsperaDataTable;
 use App\DataTables\Scopes\ScopeParteDataTable;
+use App\DataTables\Scopes\ScopeParteListaEsperaDataTable;
 use App\Models\Parte;
 use App\Models\ParteEstado;
 use Carbon\Carbon;
@@ -48,37 +49,33 @@ class ParteAdmisionController extends Controller
 
     public function listaEspera(ParteListaEsperaDataTable $parteDataTable,Request $request)
     {
-        $scope = new ScopeParteDataTable();
+        $scope = new ScopeParteListaEsperaDataTable();
 
         $idsEstadosDefecto = [
-//            ParteEstado::TEMPORAL,
-//            ParteEstado::INGRESADA,
-//            ParteEstado::ENVIADA_ADMICION,
             ParteEstado::LISTA_ESPERA,
             ParteEstado::PROGRAMADO,
             ParteEstado::SUSPENDIDO,
             ParteEstado::ACTIVACION,
             ParteEstado::ELIMINADO,
             ParteEstado::OPERADO,
-            ParteEstado::POR_ACTIVAR,
+            ParteEstado::POR_ACTIVAR
         ];
 
+        $scope->delListEspera = $request->get('del') ?? null;
+        $scope->alListEspera = $request->get('al') ?? null;
         $scope->estados = $request->estados ?? $idsEstadosDefecto;
         $scope->lista_espera = true;
         $scope->rut_paciente = $request->rut_paciente ?? null;
         $scope->tipo_cirugia_id = $request->tipo_cirugia_id ?? null;
         $scope->grupo_base_id = $request->grupo_base_id ?? null;
-        $scope->tiene_cancer = $request->get('tiene_cancer') ?? null;
         $scope->especialidad_id = $request->especialidad_id ?? null;
-        $scope->delListEspera = $request->del ?? null;
-        $scope->alListEspera = $request->al ?? null;
-//        $scope->medicos = $request->get('users') ?? [];
+        $scope->prioridad_clinica = $request->get('prioridad');
 
         $parteDataTable->addScope($scope);
 
-        $estados = ParteEstado::whereIn('id',$idsEstadosDefecto)->get();
+//        $estados = ParteEstado::whereIn('id',$idsEstadosDefecto)->get();
 
-        return $parteDataTable->render('partes.admision.lista_espera',compact('estados'));
+        return $parteDataTable->render('partes.admision.lista_espera');
     }
 
     /**

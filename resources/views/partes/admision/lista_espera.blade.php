@@ -44,7 +44,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    @include('partes.admision.form_filters')
+                    @include('partes.admision.form_filters_lista_espera')
                 </div>
                 <!-- /.card-body -->
             </div>
