@@ -15,15 +15,13 @@
             {!! Form::date('al', null, ['class' => 'form-control']) !!}
         </div>
 
-        @unlessrole('Médico')
-            <div class="form-group col-sm-4">
-                {!! Form::label('del', 'Medico:') !!}
-                <multiselect v-model="user" :options="users" :multiple="true" :close-on-select="false" :clear-on-select="false"
-                             :preserve-search="true" placeholder="Seleccione uno..." label="name" track-by="name">
-                </multiselect>
-                <input type="hidden" name="users[]" :value="item.id" v-if="item" v-for="item in user">
-            </div>
-        @endunlessrole
+        <div class="form-group col-sm-4">
+            {!! Form::label('del', 'Medico:') !!}
+            <multiselect v-model="user" :options="users" :multiple="true" :close-on-select="false" :clear-on-select="false"
+                         :preserve-search="true" placeholder="Seleccione uno..." label="name" track-by="name">
+            </multiselect>
+            <input type="hidden" name="users[]" :value="item.id" v-if="item" v-for="item in user">
+        </div>
 
         <div class="form-group col-sm-3">
             {!! Form::label('del', 'Estado:') !!}
@@ -31,13 +29,6 @@
             </multiselect>
             <input type="hidden" name="estados" :value="estado ? estado.id : null">
         </div>
-
-{{--        <div class="form-group col-sm-3">--}}
-{{--            {!! Form::label('tiene_cancer', 'Tiene Cancer:') !!}--}}
-{{--            <multiselect v-model="tiene_cancer" :options="select_tiene_cancer" label="nombre" placeholder="Seleccione uno...">--}}
-{{--            </multiselect>--}}
-{{--            <input type="hidden" name="tiene_cancer" :value="tiene_cancer ? tiene_cancer.id : null">--}}
-{{--        </div>--}}
 
         <div class="form-group col-sm-3">
             <label for="">Tiene Cancer:</label>
@@ -51,7 +42,7 @@
                                :font-size="16"
                 ></toggle-button>
 
-                <input type="hidden" name="tiene_cancer" :value="tiene_cancer ? 1 : 0">
+                <input type="hidden" name="tiene_cancer" :value="tiene_cancer ? 1 : 2">
             </div>
         </div>
 
@@ -127,6 +118,8 @@
             </multiselect>
             <input type="hidden" name="tipo_cirugia_id" id="tipo_cirugia_id" :value="cirugiaTipoId">
         </div>
+
+        <div class="form-group col-sm-12"></div>
 
         <div class="form-group col-sm-2">
             <label for="">&nbsp;</label>

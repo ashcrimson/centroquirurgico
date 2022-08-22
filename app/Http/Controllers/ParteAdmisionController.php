@@ -24,21 +24,21 @@ class ParteAdmisionController extends Controller
         $scope = new ScopeParteDataTable();
 
         $idsEstadosDefecto = [
-            // ParteEstado::TEMPORAL,
-            // ParteEstado::INGRESADA,
-            ParteEstado::ENVIADA_ADMICION,
-//            ParteEstado::PROGRAMADO,
-//            ParteEstado::SUSPENDIDO,
-//            ParteEstado::ACTIVACION,
-//            ParteEstado::ELIMINADO,
+            ParteEstado::ENVIADA_ADMICION
         ];
 
-        $scope->estados = $request->estados ?? $idsEstadosDefecto;
+        $scope->del = $request->get('del') ?? null;
+        $scope->al = $request->get('al') ?? null;
+        $scope->al = $request->get('users') ?? null;
+        $scope->estados = $request->get('estados') ?? $idsEstadosDefecto;
+        $scope->tiene_cancer = $request->get('tiene_cancer');
+        $scope->especialidad_id = $request->get('especialidad_id');
         $scope->examen_realizado = $request->get('examen_realizado') ?? null;
+        $scope->prioridad_administrativa = $request->get('prioridad_administrativa') ?? null;
+        $scope->prioridad_clinica = $request->get('prioridad_clinica') ?? null;
         $scope->grupo_base_id = $request->get('grupo_base_id') ?? null;
         $scope->tipo_cirugia_id = $request->get('tipo_cirugia_id') ?? null;
-        $scope->del = $request->del ?? null;
-        $scope->al = $request->al ?? null;
+        $scope->users = $request->get('users');
 
         $parteDataTable->addScope($scope);
 
