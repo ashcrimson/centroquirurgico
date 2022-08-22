@@ -240,7 +240,8 @@
                 <div class="form-group col-sm-4">
                     {!! Form::label('clasificacion', 'Clasificación ASA:') !!} <span class="text-red">*</span>
                     <!-- Clasificacion Id Field -->
-                    <multiselect v-model="clasificacion" :options="clasificaciones" label="nombre" placeholder="Seleccione uno...">
+                    <multiselect v-model="clasificacion" :options="clasificaciones" label="nombre" placeholder="Seleccione uno..."
+                                 ref="multiselectClasificacionAsa">
                     </multiselect>
                     <input type="hidden" name="clasificacion_id" :value="clasificacion ? clasificacion.id : null">
                 </div>

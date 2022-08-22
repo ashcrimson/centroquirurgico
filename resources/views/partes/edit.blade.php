@@ -151,7 +151,6 @@
 
             if (!$("input[name='tiempo_quirurgico']").val()) {
 
-                // fieldsPartes.$refs.multiselectTiempoQuirurgico.$el.focus();
                 let multiselectTiempoQuirurgico = fieldsPartes.$refs.multiselectTiempoQuirurgico.$el;
                 multiselectTiempoQuirurgico.classList.add('error-multi-select');
                 multiselectTiempoQuirurgico.scrollIntoView();
@@ -163,6 +162,21 @@
             } else {
                 let multiselectTiempoQuirurgico = fieldsPartes.$refs.multiselectTiempoQuirurgico.$el;
                 multiselectTiempoQuirurgico.classList.remove('error-multi-select');
+            }
+
+            if (!$("input[name='clasificacion_id']").val()) {
+
+                let multiselectClasificacionAsa = fieldsPartes.$refs.multiselectClasificacionAsa.$el;
+                multiselectClasificacionAsa.classList.add('error-multi-select');
+                multiselectClasificacionAsa.scrollIntoView();
+
+                $('#modalForm').modal('hide');
+                Swal.close('true');
+                iziTe('El Campo Clasificación ASA es requerido!');
+                return false;
+            } else {
+                let multiselectClasificacionAsa = fieldsPartes.$refs.multiselectClasificacionAsa.$el;
+                multiselectClasificacionAsa.classList.remove('error-multi-select');
             }
 
             if (!$("input[name='anestesia_sugerida']").val()) {
