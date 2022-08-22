@@ -175,7 +175,9 @@ class ParteController extends AppBaseController
         /**
          * @var User $user
          */
-        $user = User::with(['especialidades.subEspecialidades'])->findOrFail(auth()->user()->id);
+        $user = User::with(['especialidades.subEspecialidades','especialidades.medicos'])->findOrFail(auth()->user()->id);
+
+        $especialidadUser = $user->especialidades->first();
 
         /** @var Parte $parte */
         $parte = Parte::with(['subEspecialidad','parteDiagnosticos','parteIntervenciones','parteInsumoEspecificos','grupoBase'])->find($id);
@@ -203,7 +205,7 @@ class ParteController extends AppBaseController
             return redirect(route('partes.index'));
         }
 
-        return view('partes.edit', compact('parte','user'));
+        return view('partes.edit', compact('parte','user','especialidadUser'));
     }
 
     /**

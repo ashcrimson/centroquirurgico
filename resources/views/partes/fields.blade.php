@@ -730,7 +730,7 @@
             subEspecialidad: @json($parte->subEspecialidad ?? \App\Models\EspecialidadSub::find(old('sub_especialidad_id'))),
 
             medicosEspecialidad: @json($especialidadUser->medicos ?? []),
-            medicoCirujano: @json( auth()->user() ?? $parte->medicoCirujano ?? null),
+            medicoCirujano: @json( $parte->medicoCirujano ?? auth()->user() ?? null),
         },
         methods: {
             close () {
