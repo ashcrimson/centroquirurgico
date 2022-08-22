@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\ParteDataTable;
 use App\DataTables\ParteValidaDataTable;
 use App\DataTables\Scopes\ScopeParteDataTable;
+use App\DataTables\Scopes\ScopeParteValidaDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreatePacienteRequest;
 use App\Http\Requests\CreateParteRequest;
@@ -344,7 +345,8 @@ class ParteController extends AppBaseController
 
     public function validarPreop(ParteValidaDataTable $dataTable, Request $request)
     {
-        $scope = new ScopeParteDataTable();
+
+        $scope = new ScopeParteValidaDataTable();
 
         if (auth()->user()->hasRole(Role::PREOP_ANESTESISTA)){
             $scope->preop_anestesista = 1;
@@ -359,6 +361,8 @@ class ParteController extends AppBaseController
             $scope->banco_sangre = 1;
         }
 
+        $scope->del = $request->del ?? null;
+        $scope->al = $request->al ?? null;
         $scope->rut_paciente = $request->rut_paciente ?? null;
         $scope->tipo_cirugia_id = $request->tipo_cirugia_id ?? null;
         $scope->grupo_base_id = $request->grupo_base_id ?? null;
@@ -367,7 +371,7 @@ class ParteController extends AppBaseController
 
         $dataTable->addScope($scope);
 
-        return $dataTable->render('partes.index');
+        return $dataTable->render('partes.index_preop');
     }
 
     public function validarPreopStore($tipo,Parte $parte)

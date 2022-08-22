@@ -44,21 +44,11 @@ class ParteValidaDataTable extends DataTable
                 return $parte->created_at;
 
             })
-//            ->setRowAttr([
-//                'style' => function(Parte $parte){
-//
-//                    /**
-//                     * @var User $user
-//                     */
-//                    $user = auth()->user();
-//
-//
-//                    if($user->validoParte($parte)){
-//                        return 'background-color: #99E066';
-//                    }
-//
-//                }
-//            ])
+            ->editColumn('rut',function (Parte $parte){
+
+                return $parte->paciente->rut_completo ?? null;
+
+            })
             ->editColumn('id',function (Parte $parte){
 
                 return $parte->id;
@@ -165,7 +155,7 @@ class ParteValidaDataTable extends DataTable
             Column::make('id')->data('id')->name('partes.id'),
 
 
-            Column::make('rut')->name('paciente.run')->data('paciente.run'),
+            Column::make('rut')->name('rut')->data('rut'),
 
             Column::make('paciente')->name('paciente.nombre_completo')->data('paciente.nombre_completo')
                 ->searchable(false)->orderable(false),
