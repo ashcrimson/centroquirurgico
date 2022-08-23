@@ -81,8 +81,7 @@
                 <tr>
                     <td width="10%" style="text-align: left;">Tiempo:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->tiempo_quirurgico }}</td>
-                    <td width="10%" style="text-align: left;">Sector Interv:</td>
-                    <td width="25%" style="text-align: left;"></td>
+                    
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Diagnósticos:</td>
@@ -95,6 +94,8 @@
                 <tr>
                     <td width="10%" style="text-align: left;">Intervención:</td>
                     <td width="25%" colspan="3" style="text-align: left;">{{ $parte->intervencionesNombres() }}</td>
+                    <td width="10%" style="text-align: left;">Lateralidad:</td>
+                    <td width="25%" style="text-align: left;">{{ $parte->lateralidad }}</td>
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Otras Interv:</td>
@@ -119,12 +120,14 @@
                     <td width="25%" style="text-align: left;">{{ $parte->alergia_latex ? 'SI' : 'NO' }}</td>
                     <td width="20%" style="text-align: left;">Necesidad Cama UPC:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->nececidad_cama_upc ? 'SI' : 'NO' }}</td>
+                    <td width="20%" style="text-align: left;">Tipo Cama UPC:</td>
+                    <td width="25%" style="text-align: left;">{{ $parte->tipo_cama_upc }}</td>
                 </tr>
                 <tr>
                     <td width="20%" style="text-align: left;">Usuario Taco:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->usuario_taco ? 'SI' : 'NO' }}</td>
                     <td width="20%" style="text-align: left;">Insumos Específicos:</td>
-                    <td width="25%" style="text-align: left;"></td>
+                    <td width="25%" style="text-align: left;">{{ $parte->insumosNombres() }}</td>
                 </tr>
                 <tr>
                     <td width="20%" style="text-align: left;">Equipo Rayos:</td>
