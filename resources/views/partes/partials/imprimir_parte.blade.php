@@ -95,7 +95,7 @@
                     <td width="10%" style="text-align: left;">Intervención:</td>
                     <td width="25%" colspan="3" style="text-align: left;">{{ $parte->intervencionesNombres() }}</td>
                     <td width="10%" style="text-align: left;">Lateralidad:</td>
-                    <td width="25%" style="text-align: left;">{{ $parte->lateralidad }}</td>
+                    <td width="25%" style="text-align: left;">{{ $parte->intervencionesLateralidads() }}</td>
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Otras Interv:</td>
@@ -127,7 +127,9 @@
                     <td width="20%" style="text-align: left;">Usuario Taco:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->usuario_taco ? 'SI' : 'NO' }}</td>
                     <td width="20%" style="text-align: left;">Insumos Específicos:</td>
-                    <td width="25%" style="text-align: left;">{{ $parte->insumosNombres() }}</td>
+                    <td width="25%" style="text-align: left;">{{ $parte->insumosNombres()  }}</td>
+                    <td width="20%" style="text-align: left;">Cantidad:</td>
+                    <td width="25%" style="text-align: left;">{{ $parte->insumosCantidads()  }}</td>
                 </tr>
                 <tr>
                     <td width="20%" style="text-align: left;">Equipo Rayos:</td>

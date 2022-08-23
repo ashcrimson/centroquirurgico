@@ -651,11 +651,24 @@ class Parte extends Model
             $nombresIntervenciones .= $parteIntervencione->intervencionNew->descripcion.' | ';
         }
 
-        return $nombresIntervenciones;
+        return $nombresIntervenciones; 
 
     }
 
-    public function insumosNombres()
+    public function intervencionesLateralidads()
+    {
+
+        $lateralidadsIntervenciones = '';
+
+        foreach ($this->parteIntervenciones as $parteIntervencione) {
+            $lateralidadsIntervenciones .= $parteIntervencione->lateralidad;
+        }
+
+        return $lateralidadsIntervenciones; 
+
+    }
+
+    public function insumosNombres() 
     {
 
         $nombresInsumosNombres = '';
@@ -664,7 +677,20 @@ class Parte extends Model
             $nombresInsumosNombres .= $parteInsumoEspecifico->insumo->nombre.' | ';
         }
 
-        return $nombresInsumosNombres;
+        return $nombresInsumosNombres; 
+
+    }
+
+    public function insumosCantidads() 
+    {
+
+        $cantidadsInsumosCantidads = '';
+
+        foreach ($this->parteInsumoEspecificos as $parteInsumoEspecifico) {
+            $cantidadsInsumosCantidads .= $parteInsumoEspecifico->cantidad;
+        }
+
+        return $cantidadsInsumosCantidads; 
 
     }
 
