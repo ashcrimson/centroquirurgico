@@ -75,10 +75,11 @@ class ParteAdmisionController extends Controller
         $scope->users = $request->get('users');
         $scope->intervencion_id = $request->get('intervencion_id');
 
-
         $parteDataTable->addScope($scope);
 
-        return $parteDataTable->render('partes.admision.lista_espera');
+        $estados = ParteEstado::whereIn('id',$idsEstadosDefecto)->get();
+
+        return $parteDataTable->render('partes.admision.lista_espera', compact('estados'));
     }
 
     /**
