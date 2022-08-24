@@ -195,7 +195,7 @@
             <tbody>
                 <tr>
                     <td style="text-align: left;">Usuario Solicitante</td>
-                    <td style="text-align: left;"></td>
+                    <td style="text-align: left;">{{ Auth::user()->name }}</td>
                 </tr>
                 <tr>
                     <td style="text-align: left;">Fecha/Hora</td>
