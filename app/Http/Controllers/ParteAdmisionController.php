@@ -9,6 +9,7 @@ use App\DataTables\Scopes\ScopeParteDataTable;
 use App\DataTables\Scopes\ScopeParteListaEsperaDataTable;
 use App\Models\Parte;
 use App\Models\ParteEstado;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -103,7 +104,14 @@ class ParteAdmisionController extends Controller
             return redirect(route('partes.index'));
         }
 
-        return view('partes.admision.edit', compact('parte','vieneDeListaEspera'));
+        /**
+         * @var User $user
+         */
+        $user = User::with(['especialidades.subEspecialidades','especialidades.medicos'])->findOrFail($parte->userIngresa->id);
+
+        $especialidadUser = $user->especialidades->first();
+
+        return view('partes.admision.edit', compact('parte','vieneDeListaEspera','especialidadUser'));
     }
 
     /**
