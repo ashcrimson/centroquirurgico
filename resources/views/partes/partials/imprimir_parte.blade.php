@@ -172,10 +172,10 @@
         <table class="table table-bordered table-sm table-condensed" style="width: 100%; margin-bottom: 0;font-size: 11px;">
             <tbody>
                 <tr>
-                    <td style="text-align: center;">Insumos Específicos</td>
+                    <td style="text-align: center;">Otros Insumos</td>
                 </tr>
                 <tr>
-                    <td width="100%" style="text-align: left;">{{ $parte->insumosNombres() }}</td>
+                    <td width="100%" style="text-align: left;">{{ $parte->otros_insumos }}</td>
                 </tr>
             </tbody>
         </table>
@@ -195,7 +195,7 @@
             <tbody>
                 <tr>
                     <td style="text-align: left;">Usuario Solicitante</td>
-                    <td style="text-align: left;"></td>
+                    <td style="text-align: left;">{{ Auth::user()->name }}</td>
                 </tr>
                 <tr>
                     <td style="text-align: left;">Fecha/Hora</td>

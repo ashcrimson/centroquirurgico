@@ -47,7 +47,7 @@ class ParteIntervencionController extends AppBaseController
      * Store a newly created ParteIntervencion in storage.
      *
      * @param CreateParteIntervencionRequest $request
-     *
+     * 
      * @return Response
      */
     public function store(CreateParteIntervencionRequest $request)
@@ -57,7 +57,7 @@ class ParteIntervencionController extends AppBaseController
         /** @var ParteIntervencion $parteIntervencion */
         $parteIntervencion = ParteIntervencion::create($input);
 
-        Flash::success('Parte Intervencion guardado exitosamente.');
+        Flash::success('Intervención guardada exitosamente.');
 
         return redirect(route('parteIntervencions.index'));
     }
@@ -153,7 +153,7 @@ class ParteIntervencionController extends AppBaseController
 
         $parteIntervencion->delete();
 
-        Flash::success('Parte Intervencion deleted successfully.');
+        Flash::success('Intervencion Eliminada Exitosamente.');
 
         return redirect(route('parteIntervencions.index'));
     }
