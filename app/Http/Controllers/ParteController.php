@@ -243,7 +243,11 @@ class ParteController extends AppBaseController
         $parte->fill($request->all());
         $parte->save();
 
-        flash()->success('Parte actualizado con éxito.');
+        if ($request->enviar_admin) {
+            flash()->success('Parte enviado a Admisión.');
+        } else {
+            flash()->success('Parte actualizado con éxito.');
+        }
 
         return redirect(route('partes.index'));
     }
