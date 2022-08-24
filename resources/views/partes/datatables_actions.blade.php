@@ -238,44 +238,44 @@
     </a>
 
     <div class="modal fade" id="modalFormPartesHistorico{{$id}}">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Partes Histórico</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-row col-sm-12">
-
-                    <table class="table table-hover text-nowrap" id="tablePartesHistorico">
-                        <thead>
-                        <tr>
-                            <th>No Parte</th>
-                            <th>Fecha</th>
-                            <th>Parte</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($parte->parteHistoricos() as $historico)
-                                <tr>
-                                    <td>{{$historico->num_parte}}</td>
-                                    <td>{{$historico->fecha ? $historico->fecha->format('d/m/Y') : ''}}</td>
-                                    <td>
-                                        <a href="https://centro-quirurgico.hospitalnaval.cl/pdf/parte_pdf.php?tipo=ver&num={{$historico->num_parte}}" data-toggle="tooltip" title="Ver"
-                                           class='btn btn-outline-info btn-sm' target="_blank">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Partes Histórico</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+                <div class="modal-body">
+                    <div class="form-row col-sm-12">
+
+                        <table class="table table-hover text-nowrap" id="tablePartesHistorico">
+                            <thead>
+                            <tr>
+                                <th>No Parte</th>
+                                <th>Fecha</th>
+                                <th>Parte</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($parte->parteHistoricos() as $historico)
+                                    <tr>
+                                        <td>{{$historico->num_parte}}</td>
+                                        <td>{{$historico->fecha ? $historico->fecha->format('d/m/Y') : ''}}</td>
+                                        <td>
+                                            <a href="https://centro-quirurgico.hospitalnaval.cl/pdf/parte_pdf.php?tipo=ver&num={{$historico->num_parte}}" data-toggle="tooltip" title="Ver"
+                                               class='btn btn-outline-info btn-sm' target="_blank">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 @endrole
 
@@ -293,6 +293,8 @@
     @endif
 @endcan
 
-<a target="_blank" class="btn btn-default btn-sm" title="Imprimir" href="{{ route('partes.imprimir.parte', $id) }}">
-    <i class="fa fa-print"></i>
-</a>
+@if($parte->estado_id != \App\Models\ParteEstado::INGRESADA)
+    <a target="_blank" class="btn btn-default btn-sm" title="Imprimir" href="{{ route('partes.imprimir.parte', $id) }}">
+        <i class="fa fa-print"></i>
+    </a>
+@endif
