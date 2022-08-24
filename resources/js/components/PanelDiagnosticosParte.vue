@@ -159,7 +159,7 @@ export default {
 
             let parte_diagnostico_repetido = this.parte_diagnosticos.find(obj => obj.diagnostico_id == this.diagnostico.id);
             if (parte_diagnostico_repetido) {
-                iziTe('El Diagnóstico ya se encuentra agregada!');
+                iziTe('El Diagnóstico ya se encuentra agregado!');
                 this.loading = false;
                 this.close();
                 return;
