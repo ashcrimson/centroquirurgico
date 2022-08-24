@@ -4,6 +4,9 @@ namespace App\DataTables\Scopes;
 
 use App\Models\ParteEstado;
 use App\Models\Role;
+use App\Models\ParteIntervencion;
+use App\Models\Intervencion;
+use App\Models\IntervencionesNew;
 use Carbon\Carbon;
 use Yajra\DataTables\Contracts\DataTableScope;
 
@@ -20,7 +23,8 @@ class ScopeParteDataTable implements DataTableScope
     public $prioridad_clinica;
     public $tipo_cirugia_id;
     public $grupo_base_id;
-    public $rut_paciente;
+    public $rut_paciente; 
+    public $intervencion_id; 
 
     public function __construct()
     {
@@ -92,6 +96,14 @@ class ScopeParteDataTable implements DataTableScope
 
         if ($this->grupo_base_id) {
             $query->where('grupo_base_id', $this->grupo_base_id);
+        }
+
+       
+
+        if ($this->intervencion_id) {
+            $query->whereHas('intervencion',function ($q){
+                $q->where('id',$this->intervencion_id);
+            });
         }
 
         if ($this->rut_paciente) {

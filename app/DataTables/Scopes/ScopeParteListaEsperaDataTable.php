@@ -70,5 +70,11 @@ class ScopeParteListaEsperaDataTable implements DataTableScope
             }
         }
 
+        if ($this->rut_paciente) {
+            $query->whereHas('paciente',function ($q){
+                $q->where('run',$this->rut_paciente);
+            });
+        } 
+
     }
 }
