@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ParteEstado;
 use Illuminate\Database\Seeder;
 
 class UpdateEstadoSeeder extends Seeder
@@ -13,6 +14,16 @@ class UpdateEstadoSeeder extends Seeder
      */
     public function run()
     {
-        //
+
+
+        /**
+         * @var ParteEstado $enviadoAdmision
+         */
+        $enviadoAdmision = ParteEstado::findOrFail(ParteEstado::ENVIADA_ADMICION);
+
+        $enviadoAdmision->update([
+            'nombre' => 'Enviado Admisión'
+        ]);
+
     }
 }
