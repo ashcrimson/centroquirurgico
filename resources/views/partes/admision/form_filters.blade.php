@@ -23,7 +23,7 @@
             <input type="hidden" name="users[]" :value="item.id" v-if="item" v-for="item in user">
         </div>
 
-        <div class="form-group col-sm-3">
+        <div class="form-group col-sm-4">
             {!! Form::label('del', 'Estado:') !!}
             <multiselect v-model="estado" :options="estados" :multiple="true" :close-on-select="false" :clear-on-select="false"
                          :preserve-search="true" label="nombre" placeholder="Seleccione uno..." track-by="nombre">
@@ -88,7 +88,7 @@
 
         </div>
 
-        <div class="form-group col-sm-3">
+        <div class="form-group col-sm-2">
 
             <label for="">Prioridad clínica:</label>
             <div class="text-lg">
@@ -120,9 +120,9 @@
             <input type="hidden" name="tipo_cirugia_id" id="tipo_cirugia_id" :value="cirugiaTipoId">
         </div>
 
-        <div class="form-group col-sm-3">
+        <div class="form-group col-sm-4">
             {!! Form::label('intervencion_id', 'Intervención:') !!}
-            <multiselect v-model="intervencion" :options="intervenciones" label="descripcion" placeholder="Seleccione uno...">
+            <multiselect v-model="intervencion" :options="intervenciones" label="text" placeholder="Seleccione uno...">
             </multiselect>
             <input type="hidden" name="intervencion_id" id="intervencion_id" :value="intervencion ? intervencion.id : null">
         </div>
