@@ -41,7 +41,7 @@ class ParteDiagnosticoAPIController extends AppBaseController
 
         $parteDiagnosticos = $query->get();
 
-        return $this->sendResponse($parteDiagnosticos->toArray(), 'Parte Diagnosticos retrieved successfully');
+        return $this->sendResponse($parteDiagnosticos->toArray(), 'Parte Diagnosticos recuperado con éxito');
     }
 
     /**
@@ -59,7 +59,7 @@ class ParteDiagnosticoAPIController extends AppBaseController
         /** @var ParteDiagnostico $parteDiagnostico */
         $parteDiagnostico = ParteDiagnostico::create($input);
 
-        return $this->sendResponse($parteDiagnostico->toArray(), 'Parte Diagnostico guardado exitosamente');
+        return $this->sendResponse($parteDiagnostico->toArray(), 'Diagnostico guardado exitosamente');
     }
 
     /**
@@ -79,7 +79,7 @@ class ParteDiagnosticoAPIController extends AppBaseController
             return $this->sendError('Parte Diagnostico no encontrado');
         }
 
-        return $this->sendResponse($parteDiagnostico->toArray(), 'Parte Diagnostico retrieved successfully');
+        return $this->sendResponse($parteDiagnostico->toArray(), 'Diagnostico recuperado con éxito');
     }
 
     /**
@@ -103,7 +103,7 @@ class ParteDiagnosticoAPIController extends AppBaseController
         $parteDiagnostico->fill($request->all());
         $parteDiagnostico->save();
 
-        return $this->sendResponse($parteDiagnostico->toArray(), 'ParteDiagnostico actualizado con éxito');
+        return $this->sendResponse($parteDiagnostico->toArray(), 'Diagnostico actualizado con éxito');
     }
 
     /**
@@ -127,6 +127,6 @@ class ParteDiagnosticoAPIController extends AppBaseController
 
         $parteDiagnostico->delete();
 
-        return $this->sendSuccess('Parte Diagnostico deleted successfully');
+        return $this->sendSuccess('Diagnostico eliminado con éxito');
     }
 }

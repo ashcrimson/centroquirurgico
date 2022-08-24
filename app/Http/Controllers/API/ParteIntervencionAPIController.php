@@ -58,7 +58,7 @@ class ParteIntervencionAPIController extends AppBaseController
         /** @var ParteIntervencion $parteIntervencion */
         $parteIntervencion = ParteIntervencion::create($input);
 
-        return $this->sendResponse($parteIntervencion->toArray(), 'Parte Intervencion guardado exitosamente');
+        return $this->sendResponse($parteIntervencion->toArray(), 'Intervencion guardado exitosamente');
     }
 
     /**
@@ -78,7 +78,7 @@ class ParteIntervencionAPIController extends AppBaseController
             return $this->sendError('Parte Intervencion no encontrado');
         }
 
-        return $this->sendResponse($parteIntervencion->toArray(), 'Parte Intervencion retrieved successfully');
+        return $this->sendResponse($parteIntervencion->toArray(), 'Intervencion retrieved successfully');
     }
 
     /**
@@ -102,7 +102,7 @@ class ParteIntervencionAPIController extends AppBaseController
         $parteIntervencion->fill($request->all());
         $parteIntervencion->save();
 
-        return $this->sendResponse($parteIntervencion->toArray(), 'ParteIntervencion actualizado con éxito');
+        return $this->sendResponse($parteIntervencion->toArray(), 'Intervencion actualizado con éxito');
     }
 
     /**
@@ -121,11 +121,11 @@ class ParteIntervencionAPIController extends AppBaseController
         $parteIntervencion = ParteIntervencion::find($id);
 
         if (empty($parteIntervencion)) {
-            return $this->sendError('Parte Intervencion no encontrado');
+            return $this->sendError('Intervencion no encontrado');
         }
 
         $parteIntervencion->delete();
 
-        return $this->sendSuccess('Parte Intervencion deleted successfully');
+        return $this->sendSuccess('Intervencion eliminado con éxito');
     }
 }
