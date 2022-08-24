@@ -107,7 +107,7 @@ class ParteAdmisionController extends Controller
         /**
          * @var User $user
          */
-        $user = User::with(['especialidades.subEspecialidades','especialidades.medicos'])->findOrFail($parte->userIngresa->id);
+        $user = User::with(['especialidades.subEspecialidades','especialidades.medicos'])->findOrFail($parte->medicoCirujano->id);
 
         $especialidadUser = $user->especialidades->first();
 

@@ -334,7 +334,7 @@
 
         },
         data: {
-            medico : @json($parte->userIngresa ?? null),
+            medico : @json($parte->medicoCirujano ?? null),
             medicos: @json($especialidadUser->medicos ?? []),
             sistema : @json($parte->sistemaSalud ?? null),
             sistemas: @json(App\Models\SistemaSalud::get() ?? []),
