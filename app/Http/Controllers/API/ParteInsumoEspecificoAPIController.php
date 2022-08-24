@@ -40,7 +40,7 @@ class ParteInsumoEspecificoAPIController extends AppBaseController
 
         $parteInsumoEspecificos = $query->get();
 
-        return $this->sendResponse($parteInsumoEspecificos->toArray(), 'Parte Insumo Especificos retrieved successfully');
+        return $this->sendResponse($parteInsumoEspecificos->toArray(), 'Insumo Especificos recuperado con éxito');
     }
 
     /**
@@ -58,7 +58,7 @@ class ParteInsumoEspecificoAPIController extends AppBaseController
         /** @var ParteInsumoEspecifico $parteInsumoEspecifico */
         $parteInsumoEspecifico = ParteInsumoEspecifico::create($input);
 
-        return $this->sendResponse($parteInsumoEspecifico->toArray(), 'Parte Insumo Especifico guardado exitosamente');
+        return $this->sendResponse($parteInsumoEspecifico->toArray(), 'Insumo Especifico guardado exitosamente');
     }
 
     /**
@@ -78,7 +78,7 @@ class ParteInsumoEspecificoAPIController extends AppBaseController
             return $this->sendError('Parte Insumo Especifico no encontrado');
         }
 
-        return $this->sendResponse($parteInsumoEspecifico->toArray(), 'Parte Insumo Especifico retrieved successfully');
+        return $this->sendResponse($parteInsumoEspecifico->toArray(), 'Insumo Especifico recuperado con éxito');
     }
 
     /**
@@ -102,7 +102,7 @@ class ParteInsumoEspecificoAPIController extends AppBaseController
         $parteInsumoEspecifico->fill($request->all());
         $parteInsumoEspecifico->save();
 
-        return $this->sendResponse($parteInsumoEspecifico->toArray(), 'ParteInsumoEspecifico actualizado con éxito');
+        return $this->sendResponse($parteInsumoEspecifico->toArray(), 'nsumoEspecifico actualizado con éxito');
     }
 
     /**
@@ -121,11 +121,11 @@ class ParteInsumoEspecificoAPIController extends AppBaseController
         $parteInsumoEspecifico = ParteInsumoEspecifico::find($id);
 
         if (empty($parteInsumoEspecifico)) {
-            return $this->sendError('Parte Insumo Especifico no encontrado');
+            return $this->sendError('Insumo Especifico no encontrado');
         }
 
         $parteInsumoEspecifico->delete();
 
-        return $this->sendSuccess('Parte Insumo Especifico deleted successfully');
+        return $this->sendSuccess('Insumo Especifico eliminado con éxito');
     }
 }
