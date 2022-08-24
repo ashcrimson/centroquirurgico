@@ -65,11 +65,16 @@ class ParteAdmisionController extends Controller
         $scope->alListEspera = $request->get('al') ?? null;
         $scope->estados = $request->estados ?? $idsEstadosDefecto;
         $scope->lista_espera = true;
-        $scope->rut_paciente = $request->rut_paciente ?? null;
-        $scope->tipo_cirugia_id = $request->tipo_cirugia_id ?? null;
-        $scope->grupo_base_id = $request->grupo_base_id ?? null;
-        $scope->especialidad_id = $request->especialidad_id ?? null;
-        $scope->prioridad_clinica = $request->get('prioridad');
+        $scope->tiene_cancer = $request->get('tiene_cancer');
+        $scope->especialidad_id = $request->get('especialidad_id');
+        $scope->examen_realizado = $request->get('examen_realizado') ?? null;
+        $scope->prioridad_administrativa = $request->get('prioridad_administrativa') ?? null;
+        $scope->prioridad_clinica = $request->get('prioridad_clinica') ?? null;
+        $scope->grupo_base_id = $request->get('grupo_base_id') ?? null;
+        $scope->tipo_cirugia_id = $request->get('tipo_cirugia_id') ?? null;
+        $scope->users = $request->get('users');
+        $scope->intervencion_id = $request->get('intervencion_id');
+
 
         $parteDataTable->addScope($scope);
 

@@ -11,12 +11,17 @@ class ScopeParteListaEsperaDataTable implements DataTableScope
     public $delListEspera;
     public $alListEspera;
     public $lista_espera;
+    public $estados;
     public $rut_paciente;
+    public $users;
+    public $tiene_cancer;
+    public $especialidad_id;
+    public $examen_realizado;
+    public $prioridad_administrativa;
+    public $prioridad_clinica;
     public $tipo_cirugia_id;
     public $grupo_base_id;
-    public $especialidad_id;
-    public $prioridad_clinica;
-    public $estados;
+    public $intervencion_id;
 
     /**
      * Apply a query scope.
@@ -74,7 +79,43 @@ class ScopeParteListaEsperaDataTable implements DataTableScope
             $query->whereHas('paciente',function ($q){
                 $q->where('run',$this->rut_paciente);
             });
-        } 
+        }
+
+        if ($this->intervencion_id) {
+
+            $query->whereHas('parteIntervenciones', function ($q) {
+                $q->where('intervencion_new_id', $this->intervencion_id);
+            });
+
+        }
+
+        if ($this->examen_realizado) {
+            $query->where('examenes_realizados', 1);
+        }
+
+        if ($this->prioridad_administrativa){
+            $query->where('prioridad_administrativa',1);
+        }
+
+        if ($this->tiene_cancer == '0') {
+            $query->where('cancer', 0);
+        }
+
+        if ($this->tiene_cancer == '1') {
+            $query->where('cancer', 1);
+        }
+
+        if ($this->tiene_cancer == '2') {
+            $query->where('cancer', 2);
+        }
+
+        if ($this->users) {
+            if (is_array($this->users)){
+                $query->whereIn('user_ingresa',$this->users);
+            }else{
+                $query->where('user_ingresa',$this->users);
+            }
+        }
 
     }
 }

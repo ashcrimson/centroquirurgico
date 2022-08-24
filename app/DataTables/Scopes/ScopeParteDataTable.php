@@ -14,8 +14,9 @@ class ScopeParteDataTable implements DataTableScope
 {
     public $del;
     public $al;
-    public $users;
     public $estados;
+    public $rut_paciente;
+    public $users;
     public $tiene_cancer;
     public $especialidad_id;
     public $examen_realizado;
@@ -23,7 +24,6 @@ class ScopeParteDataTable implements DataTableScope
     public $prioridad_clinica;
     public $tipo_cirugia_id;
     public $grupo_base_id;
-    public $rut_paciente;
     public $intervencion_id;
 
     public function __construct()
