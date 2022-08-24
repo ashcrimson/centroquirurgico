@@ -101,7 +101,7 @@ class ParteListaEsperaDataTable extends DataTable
             ->join('parte_estados','parte_estados.id','=','partes.estado_id')
             ->select('partes.*','parte_estados.id as orden')
             ->orderBy('orden','asc')
-            ->orderBy('partes.created_at');
+            ->orderBy('partes.fecha_inscripcion', 'desc');
     }
 
     /**
