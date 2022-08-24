@@ -2,8 +2,9 @@
 
 namespace App\DataTables\Scopes;
 
+use App\Models\ParteEstado;
 use Carbon\Carbon;
-use Yajra\DataTables\Contracts\DataTableScope;
+use Yajra\DataTables\Contracts\DataTableScope; 
 
 class ScopeParteListaEsperaDataTable implements DataTableScope
 {

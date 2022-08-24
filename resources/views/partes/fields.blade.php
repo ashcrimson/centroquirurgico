@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="form-group col-sm-4">
-                    {!! Form::label('medico_cirujano_id', 'Medico Cirujano:') !!}
+                    {!! Form::label('medico_cirujano_id', 'Médico Cirujano:') !!}
                     <multiselect v-model="medicoCirujano" :options="medicosEspecialidad" label="name" placeholder="Seleccione uno..." >
                     </multiselect>
                     <input type="hidden" name="medico_cirujano_id" :value="medicoCirujano ? medicoCirujano.id : null">

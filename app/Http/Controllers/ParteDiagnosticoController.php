@@ -57,7 +57,7 @@ class ParteDiagnosticoController extends AppBaseController
         /** @var ParteDiagnostico $parteDiagnostico */
         $parteDiagnostico = ParteDiagnostico::create($input);
 
-        Flash::success('Parte Diagnostico guardado exitosamente.');
+        Flash::success('Diagnóstico guardado exitosamente.');
 
         return redirect(route('parteDiagnosticos.index'));
     }
@@ -75,7 +75,7 @@ class ParteDiagnosticoController extends AppBaseController
         $parteDiagnostico = ParteDiagnostico::find($id);
 
         if (empty($parteDiagnostico)) {
-            Flash::error('Parte Diagnostico no encontrado');
+            Flash::error('Diagnóstico no encontrado');
 
             return redirect(route('parteDiagnosticos.index'));
         }
@@ -126,7 +126,7 @@ class ParteDiagnosticoController extends AppBaseController
         $parteDiagnostico->fill($request->all());
         $parteDiagnostico->save();
 
-        Flash::success('Parte Diagnostico actualizado con éxito.');
+        Flash::success('Diagnóstico actualizado con éxito.');
 
         return redirect(route('parteDiagnosticos.index'));
     }
@@ -153,7 +153,7 @@ class ParteDiagnosticoController extends AppBaseController
 
         $parteDiagnostico->delete();
 
-        Flash::success('Parte Diagnostico deleted successfully.');
+        Flash::success('Parte Diagnostico eliminado.');
 
         return redirect(route('parteDiagnosticos.index'));
     }
