@@ -70,26 +70,27 @@
         <table class="table table-bordered table-sm table-condensed" style="width: 100%; margin-bottom: 0;font-size: 11px;">
             <tbody>
                 <tr>
-                    <td colspan="4" style="text-align: center;">Procedimiento</td>
+                    <td colspan="6" style="text-align: center;">Procedimiento</td>
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Tipo Cirugía:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->cirugiaTipo->nombre }}</td>
                     <td width="10%" style="text-align: left;">Anestesia:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->anestesia_sugerida }}</td>
+                    <td colspan="2"></td>
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Tiempo:</td>
-                    <td width="25%" style="text-align: left;">{{ $parte->tiempo_quirurgico }}</td>
-                    
+                    <td width="25%" colspan="5" style="text-align: left;">{{ $parte->tiempo_quirurgico }}</td>
+
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Diagnósticos:</td>
-                    <td width="25%" colspan="3" style="text-align: left;">{{ $parte->diagnosticosNombres() }}</td>
+                    <td width="25%" colspan="5" style="text-align: left;">{{ $parte->diagnosticosNombres() }}</td>
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Otro Diag:</td>
-                    <td width="25%" colspan="3" style="text-align: left;">{{ $parte->otros_diagnosticos }}</td>
+                    <td width="25%" colspan="5" style="text-align: left;">{{ $parte->otros_diagnosticos }}</td>
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Intervención:</td>
@@ -99,7 +100,8 @@
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Otras Interv:</td>
-                    <td width="25%" colspan="3" style="text-align: left;">{{ $parte->otras_intervenciones }}</td>
+                    <td width="25%" colspan="5" style="text-align: left;">{{ $parte->otras_intervenciones }}</td>
+
                 </tr>
             </tbody>
         </table>
@@ -107,13 +109,14 @@
         <table class="table table-bordered table-sm table-condensed" style="width: 100%; margin-bottom: 0;font-size: 11px;">
             <tbody>
                 <tr>
-                    <td colspan="4" style="text-align: center;">Requisitos</td>
+                    <td colspan="6" style="text-align: center;">Requisitos</td>
                 </tr>
                 <tr>
                     <td width="20%" style="text-align: left;">Aislamiento:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->aislamiento ? 'SI' : 'NO' }}</td>
                     <td width="20%" style="text-align: left;">Prioridad:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->prioridad ? 'SI' : 'NO' }}</td>
+                    <td colspan="2"></td>
                 </tr>
                 <tr>
                     <td width="20%" style="text-align: left;">Alergia Latex:</td>
@@ -136,18 +139,21 @@
                     <td width="25%" style="text-align: left;">{{ $parte->equipo_rayos ? 'SI' : 'NO' }}</td>
                     <td width="20%" style="text-align: left;">Necesidad Donantes Sangre:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->necesita_donante_sangre ? 'SI' : 'NO' }}</td>
+                    <td colspan="2"></td>
                 </tr>
                 <tr>
                     <td width="20%" style="text-align: left;">Evaluación Preanestesica:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->evaluacion_preanestesica ? 'SI' : 'NO' }}</td>
                     <td width="20%" style="text-align: left;">CMA:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->cma ? 'SI' : 'NO' }}</td>
+                    <td colspan="2"></td>
                 </tr>
                 <tr>
                     <td width="20%" style="text-align: left;">Biopsia:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->biopsia ? $parte->biopsia : '' }}</td>
                     <td width="20%" style="text-align: left;">Examen Preoperatorio:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->preoperatorio ? $parte->preoperatorio->nombre : '' }}</td>
+                    <td colspan="2"></td>
                 </tr>
             </tbody>
         </table>
