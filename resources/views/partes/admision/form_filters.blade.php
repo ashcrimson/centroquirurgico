@@ -119,6 +119,13 @@
             <input type="hidden" name="tipo_cirugia_id" id="tipo_cirugia_id" :value="cirugiaTipoId">
         </div>
 
+        <div class="form-group col-sm-3">
+            {!! Form::label('intervencion_id', 'Intervención:') !!}
+            <multiselect v-model="intervencion" :options="intervenciones" label="descripcion" placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="intervencion_id" id="intervencion_id" :value="intervencion ? intervencion.id : null">
+        </div>
+
         <div class="form-group col-sm-12"></div>
 
         <div class="form-group col-sm-2">
@@ -199,6 +206,9 @@
 
                 cirugiaTipos: @json(\App\Models\CirugiaTipo::all() ?? []),
                 cirugiaTipo: null,
+
+                intervenciones: @json(\App\Models\IntervencionesNew::all() ?? []),
+                intervencion: null,
 
             },
             methods: {
