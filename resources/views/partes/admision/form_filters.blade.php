@@ -25,9 +25,10 @@
 
         <div class="form-group col-sm-3">
             {!! Form::label('del', 'Estado:') !!}
-            <multiselect v-model="estado" :options="estados" label="nombre" placeholder="Seleccione uno...">
+            <multiselect v-model="estado" :options="estados" :multiple="true" :close-on-select="false" :clear-on-select="false"
+                         :preserve-search="true" label="nombre" placeholder="Seleccione uno..." track-by="nombre">
             </multiselect>
-            <input type="hidden" name="estados" :value="estado ? estado.id : null">
+            <input type="hidden" name="estados[]" :value="item.id" v-if="item" v-for="item in estado" >
         </div>
 
         <div class="form-group col-sm-3">
