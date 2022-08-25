@@ -138,8 +138,6 @@ class ParteController extends AppBaseController
 
         DB::commit();
 
-//        flash()->success('Parte guardado exitosamente.');
-
         return redirect( route('partes.edit',$parte->id) );
     }
 
@@ -238,7 +236,6 @@ class ParteController extends AppBaseController
             'paciente_id' => $paciente->id,
             'estado_id' => $estado,
         ]);
-
 
         $parte->fill($request->all());
         $parte->save();

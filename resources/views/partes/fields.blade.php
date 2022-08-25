@@ -299,7 +299,6 @@
 
                             </div>
 
-
                             <!-- Alergia Latex Field -->
                             <div class="col-sm-3">
                                 <input type="hidden" name="alergia_latex" value="0">
@@ -310,7 +309,6 @@
 
                             </div>
 
-
                             <!-- Usuario Taco Field -->
                             <div class="col-sm-3">
                                 <input type="hidden" name="usuario_taco" value="0">
@@ -319,10 +317,6 @@
                                        value="1"
                                     {{ ($parte->usuario_taco ?? old('usuario_taco') ?? false) ? 'checked' : '' }}>
                             </div>
-
-
-
-
 
                             <!-- Prioridad Field -->
                             <div class="col-sm-3">
@@ -333,7 +327,6 @@
                                     {{ ($parte->prioridad ?? old('prioridad') ?? false) ? 'checked' : '' }}>
                             </div>
 
-
                             <!-- Necesita Donante Sangre Field -->
                             <div class="col-sm-3">
                                 <input type="hidden" name="necesita_donante_sangre" value="0">
@@ -343,7 +336,6 @@
                                     {{ ($parte->necesita_donante_sangre ?? old('necesita_donante_sangre') ?? false) ? 'checked' : '' }}>
                             </div>
 
-
                             <!-- Evaluacion Preanestesica Field -->
                             <div class="col-sm-3">
                                 <input type="hidden" name="evaluacion_preanestesica" value="0">
@@ -352,7 +344,6 @@
                                        value="1"
                                     {{ ($parte->evaluacion_preanestesica ?? old('evaluacion_preanestesica') ?? false) ? 'checked' : '' }}>
                             </div>
-
 
                             <!-- Equipo Rayos Field -->
                             <div class="col-sm-3">
@@ -371,7 +362,6 @@
                                        value="1"
                                     {{ ($parte->segundo_ojo ?? old('segundo_ojo') ?? false) ? 'checked' : '' }}>
                             </div>
-
 
                             <!-- Insumos Especificos Field -->
 {{--                            <div class="form-group col-sm-4">--}}

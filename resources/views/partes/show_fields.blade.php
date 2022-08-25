@@ -64,7 +64,7 @@
                     {!! Form::label('especialidad_id', 'Sub-Especialidad:') !!}
                     <multiselect v-model="subEspecialidad" :options="subEspecialidades" label="nombre" placeholder="Seleccione uno..." disabled >
                     </multiselect>
-                    <input type="hidden" name="sub_especialidad_id" :value="getSubEspecialidaId(subEspecialidad)">
+{{--                    <input type="hidden" name="sub_especialidad_id" :value="getSubEspecialidaId(subEspecialidad)">--}}
                 </div>
 
                 <!-- Cma Field -->
@@ -105,7 +105,7 @@
                 <!-- Otros Diagnosticos Field -->
                 <div class="form-group col-sm-12 col-lg-12">
                     {!! Form::label('otros_diagnosticos', 'Otros Diagnosticos:') !!}
-                    {!! Form::textarea('otros_diagnosticos', $parte->otros_diagnosticos ?? null, ['class' => 'form-control','rows' => 2,'readonly']) !!}
+                    {!! Form::textarea('otros_diagnosticos', $parte->otros_diagnosticos ?? null, ['class' => 'form-control','rows' => 2,'disabled']) !!}
                 </div>
 
                 <div class="form-group col-sm-12">
@@ -158,7 +158,7 @@
                 <!-- Clasificacion Id Field -->
                     <multiselect v-model="clasificacion" :options="clasificaciones" label="nombre" placeholder="Seleccione uno..." :disabled="true">
                     </multiselect>
-                    <input type="hidden" name="clasificacion_id" :value="clasificacion ? clasificacion.id : null">
+                    <input type="hidden" name="clasificacion_id" :value="clasificacion ? clasificacion.id : null" disabled>
                 </div>
                 <!-- Tiempo Quirurgico Field -->
                 <div class="form-group col-sm-4">
@@ -166,7 +166,7 @@
 
                     <multiselect v-model="tiempo_quirurgico" :disabled="true" :options="tiempos"  placeholder="Seleccione uno...">
                     </multiselect>
-                    <input type="hidden" name="tiempo_quirurgico" :value="tiempo_quirurgico">
+                    <input type="hidden" name="tiempo_quirurgico" :value="tiempo_quirurgico" disabled>
 
                 </div>
 
@@ -176,7 +176,7 @@
                     <!-- Clasificacion Id Field -->
                     <multiselect v-model="anestesia_sugerida" :options="anestesia_sugeridas"  placeholder="Seleccione uno..." :disabled="true">
                     </multiselect>
-                    <input type="hidden" name="anestesia_sugerida" :value="anestesia_sugerida">
+                    <input type="hidden" name="anestesia_sugerida" :value="anestesia_sugerida" disabled>
                 </div>
 
 
@@ -189,7 +189,7 @@
 
                                 <!-- Aislamiento Field -->
                                 <div class="col-sm-3">
-                                    <input type="hidden" name="aislamiento" value="0">
+                                    <input type="hidden" name="aislamiento" value="0" disabled>
                                     {!! Form::label('aislamiento', 'Aislamiento:') !!}<br>
 
                                     @if(auth()->user()->esAdmin())
@@ -207,7 +207,7 @@
 
                                 <!-- Alergia Latex Field -->
                                 <div class="col-sm-3">
-                                    <input type="hidden" name="alergia_latex" value="0">
+                                    <input type="hidden" name="alergia_latex" value="0" disabled>
                                     {!! Form::label('alergia_latex', 'Alergia Latex:') !!}<br>
                                     @if(auth()->user()->esAdmin())
                                         <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="alergia_latex" id="alergia_latex"
@@ -244,17 +244,16 @@
 
                                 <!-- Usuario Taco Field -->
                                 <div class="col-sm-3">
-                                    <input type="hidden" name="usuario_taco" value="0">
+                                    <input type="hidden" name="usuario_taco" value="0" disabled>
                                     {!! Form::label('usuario_taco', 'Usuario Taco:') !!}<br>
                                     <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="usuario_taco" id="usuario_taco"
                                            value="1"
                                         {{ ($parte->usuario_taco ?? old('usuario_taco') ?? false) ? 'checked' : '' }}>
                                 </div>
 
-
                                 <!-- Nececidad Cama Upc Field -->
                                 <div class="col-sm-3">
-                                    <input type="hidden" name="nececidad_cama_upc" value="0">
+                                    <input type="hidden" name="nececidad_cama_upc" value="0" disabled>
                                     {!! Form::label('nececidad_cama_upc', 'Nececidad Cama Upc:') !!}<br>
                                     <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="nececidad_cama_upc" id="nececidad_cama_upc"
                                            value="1"
@@ -267,14 +266,14 @@
                                     <multiselect :disabled="true" v-model="tipo_cama_upc" :options='["UCIGEN", "UCICAR", "UCIM"]'  placeholder="Seleccione uno...">
                                     </multiselect>
 
-                                    <input type="hidden" name="tipo_cama_upc" :value="tipo_cama_upc">
+                                    <input type="hidden" name="tipo_cama_upc" :value="tipo_cama_upc" disabled>
 
                                 </div>
 
 
                                 <!-- Prioridad Field -->
                                 <div class="col-sm-3">
-                                    <input type="hidden" name="prioridad" value="0">
+                                    <input type="hidden" name="prioridad" value="0" disabled>
                                     {!! Form::label('prioridad', 'Prioridad:') !!}<br>
                                     <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="prioridad" id="prioridad"
                                            value="1"
@@ -284,7 +283,7 @@
 
                                 <!-- Necesita Donante Sangre Field -->
                                 <div class="col-sm-3">
-                                    <input type="hidden" name="necesita_donante_sangre" value="0">
+                                    <input type="hidden" name="necesita_donante_sangre" value="0" disabled>
                                     {!! Form::label('necesita_donante_sangre', 'Necesita Donante Sangre:') !!}<br>
                                     <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="necesita_donante_sangre" id="necesita_donante_sangre"
                                            value="1"
@@ -294,7 +293,7 @@
 
                                 <!-- Evaluacion Preanestesica Field -->
                                 <div class="col-sm-3">
-                                    <input type="hidden" name="evaluacion_preanestesica" value="0">
+                                    <input type="hidden" name="evaluacion_preanestesica" value="0" disabled>
                                     {!! Form::label('evaluacion_preanestesica', 'Evaluacion Preanestesica:') !!}<br>
                                     <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="evaluacion_preanestesica" id="evaluacion_preanestesica"
                                            value="1"
@@ -304,7 +303,7 @@
 
                                 <!-- Equipo Rayos Field -->
                                 <div class="col-sm-3">
-                                    <input type="hidden" name="equipo_rayos" value="0">
+                                    <input type="hidden" name="equipo_rayos" value="0" disabled>
                                     {!! Form::label('equipo_rayos', 'Equipo Rayos:') !!}<br>
                                     <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="equipo_rayos" id="equipo_rayos"
                                            value="1"
@@ -313,7 +312,7 @@
 
                                 <!-- Segunco Ojo Field -->
                                 <div class="col-sm-3" v-show="mostrar2doOjo">
-                                    <input type="hidden" name="segundo_ojo" value="0">
+                                    <input type="hidden" name="segundo_ojo" value="0" disabled>
                                     {!! Form::label('segundo_ojo', '2do Ojo:') !!}<br>
                                     <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="segundo_ojo" id="segundo_ojo"
                                            value="1"
@@ -325,14 +324,14 @@
                                     <multiselect v-model="cancerOptionSelect" :options='cancerOptions' label="nombre" placeholder="Seleccione uno..."
                                                  ref="multiselectCancerSospechaCancer" disabled>
                                     </multiselect>
-                                    <input type="hidden" name="cancer" :value="cancerOptionSelectVal">
+                                    <input type="hidden" name="cancer" :value="cancerOptionSelectVal" disabled>
                                 </div>
 
                                 <div class="col-sm-3">
                                     {!! Form::label('evaluacion_especialidad', 'Interconsulta Pre-QX:') !!}<br>
                                     <multiselect v-model="evaluacionEspecialidadSelect" :options='evaluacionEspecialidadOptions' v-model="evaluacionEspecialidadSelect" label="nombre" placeholder="Seleccione uno..." disabled >
                                     </multiselect>
-                                    <input type="hidden" name="evaluacion_especialidad" :value="evaluacionEspecialidadSelectVal">
+                                    <input type="hidden" name="evaluacion_especialidad" :value="evaluacionEspecialidadSelectVal" disabled>
                                 </div>
 
                                 <div class="col-sm-4" id="div_indique_especialidad">
@@ -385,13 +384,13 @@
                 <!-- Clasificacion Id Field -->
                     <multiselect v-model="biopsia" :options="biopsias"  placeholder="Seleccione uno..." :disabled="true">
                     </multiselect>
-                    <input type="hidden" name="biopsia" :value="biopsia">
+                    <input type="hidden" name="biopsia" :value="biopsia" disabled>
                 </div>
 
                 <!-- Instrumental Field -->
                 <div class="form-group col-sm-6 col-lg-6">
                     {!! Form::label('instrumental', 'Equipo o Instrumental:') !!}
-                    {!! Form::textarea('instrumental', $parte->instrumental ?? '', ['class' => 'form-control','rows' => 2,'readonly']) !!}
+                    {!! Form::textarea('instrumental', $parte->instrumental ?? '', ['class' => 'form-control','rows' => 2,'disabled']) !!}
                 </div>
 
                 <!-- Instrumental Field -->
@@ -431,7 +430,7 @@
                         <multiselect v-model="medico" :options="medicos" label="name"  placeholder="Seleccione uno..."
                                      disabled>
                         </multiselect>
-                        <input v-if="medico" type="hidden" name="user_ingresa" :value="medico ? medico.id : null">
+                        <input v-if="medico" type="hidden" name="user_ingresa" :value="medico ? medico.id : null" disabled>
                     </div>
 
                     <!-- Sistema Salud Field -->
@@ -441,7 +440,7 @@
                         <multiselect v-model="sistema" :options="sistemas" label="nombre"  placeholder="Seleccione uno..."
                                      disabled>
                         </multiselect>
-                        <input type="hidden" name="sistemasalud_id" :value="sistema ? sistema.id : null">
+                        <input type="hidden" name="sistemasalud_id" :value="sistema ? sistema.id : null" disabled>
 
                     </div>
 
@@ -451,7 +450,7 @@
                         <multiselect v-model="titular_carga" :options="['Sí mismo','Carga']"  placeholder="Seleccione uno..."
                                      disabled>
                         </multiselect>
-                        <input type="hidden" name="titular_carga" :value="titular_carga ? titular_carga : null">
+                        <input type="hidden" name="titular_carga" :value="titular_carga ? titular_carga : null" disabled>
 
                     </div>
 
@@ -470,7 +469,7 @@
                                            disabled
                             ></toggle-button>
 
-                            <input type="hidden" name="derivacion" :value="derivacion ? 1 : 0">
+                            <input type="hidden" name="derivacion" :value="derivacion ? 1 : 0" disabled>
                         </div>
 
                     </div>
