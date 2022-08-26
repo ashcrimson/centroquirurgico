@@ -14,7 +14,6 @@ class AddFields3ToMedicamentosTable extends Migration
     public function up()
     {
         Schema::table('medicamentos', function (Blueprint $table) {
-            $table->string('reiniciar')->nullable();
             $table->string('consideraciones')->nullable();
         });
     }
