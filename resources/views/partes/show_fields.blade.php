@@ -74,6 +74,7 @@
                     <br>
 
                     @if(auth()->user()->esAdmin())
+                        <input type="hidden" name="cma" value="0">
                         <input type="checkbox" data-toggle="toggle"
                                data-size="normal"
                                data-on="Si" data-off="No"
@@ -193,11 +194,14 @@
                                     {!! Form::label('aislamiento', 'Aislamiento:') !!}<br>
 
                                     @if(auth()->user()->esAdmin())
-                                        <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="aislamiento" id="aislamiento"
+                                        <input type="hidden" name="aislamiento" value="0">
+                                        <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal"
+                                               data-on="Si" data-off="No" data-style="ios" name="aislamiento" id="aislamiento"
                                                value="1"
                                             {{ ($parte->aislamiento ?? old('aislamiento') ?? false) ? 'checked' : '' }}>
                                     @else
-                                        <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="aislamiento" id="aislamiento"
+                                        <input type="checkbox" disabled class="cambiar_todos" data-toggle="toggle" data-size="normal"
+                                               data-on="Si" data-off="No" data-style="ios" name="aislamiento" id="aislamiento"
                                                value="1"
                                             {{ ($parte->aislamiento ?? old('aislamiento') ?? false) ? 'checked' : '' }}>
                                     @endif
@@ -210,7 +214,9 @@
                                     <input type="hidden" name="alergia_latex" value="0" disabled>
                                     {!! Form::label('alergia_latex', 'Alergia Latex:') !!}<br>
                                     @if(auth()->user()->esAdmin())
-                                        <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal" data-on="Si" data-off="No" data-style="ios" name="alergia_latex" id="alergia_latex"
+                                        <input type="hidden" name="alergia_latex" value="0">
+                                        <input type="checkbox" class="cambiar_todos" data-toggle="toggle" data-size="normal"
+                                               data-on="Si" data-off="No" data-style="ios" name="alergia_latex" id="alergia_latex"
                                                value="1"
                                             {{ ($parte->alergia_latex ?? old('alergia_latex') ?? false) ? 'checked' : '' }}>
                                     @else
