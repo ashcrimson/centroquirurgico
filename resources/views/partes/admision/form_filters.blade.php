@@ -33,18 +33,22 @@
 
         <div class="form-group col-sm-3">
             <label for="">Tiene Cancer:</label>
-            <div class="text-lg">
+            <multiselect v-model="tiene_cancer" :options="select_tiene_cancer" label="nombre" placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="tiene_cancer" :value="tiene_cancer ? tiene_cancer.id : null">
 
-                <toggle-button :sync="true"
-                               :labels="{checked: 'Sí', unchecked: 'No'}"
-                               v-model="tiene_cancer"
-                               :width="75"
-                               :height="35"
-                               :font-size="16"
-                ></toggle-button>
+{{--            <div class="text-lg">--}}
 
-                <input type="hidden" name="tiene_cancer" :value="tiene_cancer ? 1 : 2">
-            </div>
+{{--                <toggle-button :sync="true"--}}
+{{--                               :labels="{checked: 'Sí', unchecked: 'No'}"--}}
+{{--                               v-model="tiene_cancer"--}}
+{{--                               :width="75"--}}
+{{--                               :height="35"--}}
+{{--                               :font-size="16"--}}
+{{--                ></toggle-button>--}}
+
+{{--                <input type="hidden" name="tiene_cancer" :value="tiene_cancer ? 1 : 2">--}}
+{{--            </div>--}}
         </div>
 
         <div class="form-group col-sm-3">
@@ -56,54 +60,63 @@
 
         <div class="form-group col-sm-3">
             <label for="">Exámenes Realizado:</label>
-            <div class="text-lg">
+            <multiselect v-model="examen_realizado" :options="select_examen_realizado" label="nombre" placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="examen_realizado" :value="examen_realizado ? examen_realizado.id : null">
 
-                <toggle-button :sync="true"
-                               :labels="{checked: 'Sí', unchecked: 'No'}"
-                               v-model="examen_realizado"
-                               :width="75"
-                               :height="35"
-                               :font-size="16"
-                ></toggle-button>
+{{--            <div class="text-lg">--}}
 
-                <input type="hidden" name="examen_realizado" :value="examen_realizado ? 1 : 0">
-            </div>
+{{--                <toggle-button :sync="true"--}}
+{{--                               :labels="{checked: 'Sí', unchecked: 'No'}"--}}
+{{--                               v-model="examen_realizado"--}}
+{{--                               :width="75"--}}
+{{--                               :height="35"--}}
+{{--                               :font-size="16"--}}
+{{--                ></toggle-button>--}}
+
+{{--                <input type="hidden" name="examen_realizado" :value="examen_realizado ? 1 : 0">--}}
+{{--            </div>--}}
         </div>
 
         <div class="form-group col-sm-3">
 
             <label for="">Prioridad administrativa:</label>
-            <div class="text-lg">
+            <multiselect v-model="prioridad_administrativa" :options="select_prioridad_administrativa" label="nombre"
+                         placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="prioridad_administrativa"
+                   :value="prioridad_administrativa ? prioridad_administrativa.id : null">
 
-                <toggle-button :sync="true"
-                               :labels="{checked: 'Sí', unchecked: 'No'}"
-                               v-model="prioridad_administrativa"
-                               :width="75"
-                               :height="35"
-                               :font-size="16"
-                ></toggle-button>
-
-                <input type="hidden" name="prioridad_administrativa" :value="prioridad_administrativa ? 1 : 0">
-            </div>
-
+{{--            <div class="text-lg">--}}
+{{--                <toggle-button :sync="true"--}}
+{{--                               :labels="{checked: 'Sí', unchecked: 'No'}"--}}
+{{--                               v-model="prioridad_administrativa"--}}
+{{--                               :width="75"--}}
+{{--                               :height="35"--}}
+{{--                               :font-size="16"--}}
+{{--                ></toggle-button>--}}
+{{--                <input type="hidden" name="prioridad_administrativa" :value="prioridad_administrativa ? 1 : 0">--}}
+{{--            </div>--}}
         </div>
 
         <div class="form-group col-sm-2">
-
             <label for="">Prioridad clínica:</label>
-            <div class="text-lg">
+            <multiselect v-model="prioridad" :options="select_prioridad_clinica" label="nombre"
+                         placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="prioridad_clinica"
+                   :value="prioridad ? prioridad.id : null">
 
-                <toggle-button :sync="true"
-                               :labels="{checked: 'Sí', unchecked: 'No'}"
-                               v-model="prioridad"
-                               :width="75"
-                               :height="35"
-                               :font-size="16"
-                ></toggle-button>
-
-                <input type="hidden" name="prioridad_clinica" :value="prioridad ? 1 : 0">
-            </div>
-
+{{--            <div class="text-lg">--}}
+{{--                <toggle-button :sync="true"--}}
+{{--                               :labels="{checked: 'Sí', unchecked: 'No'}"--}}
+{{--                               v-model="prioridad"--}}
+{{--                               :width="75"--}}
+{{--                               :height="35"--}}
+{{--                               :font-size="16"--}}
+{{--                ></toggle-button>--}}
+{{--                <input type="hidden" name="prioridad_clinica" :value="prioridad ? 1 : 0">--}}
+{{--            </div>--}}
         </div>
 
         <div class="form-group col-sm-3">
@@ -175,17 +188,52 @@
                 this.cirugiaTipoId;
                 this.userIds;
 
+                this.estado = @json([\App\Models\ParteEstado::where('id', \App\Models\ParteEstado::ENVIADA_ADMICION)->first()] ?? null);
+
             },
             data: {
                 estados : @json($estados ?? []),
                 estado: null,
-                prioridad: false,
-                prioridad_administrativa: false,
+
+                prioridad: null,
+                select_prioridad_clinica: [
+                    {
+                        id: 1,
+                        nombre: 'SI'
+                    },
+                    {
+                        id: 0,
+                        nombre: 'NO'
+                    },
+                ],
+
+                prioridad_administrativa: null,
+                select_prioridad_administrativa: [
+                    {
+                        id: 1,
+                        nombre: 'SI'
+                    },
+                    {
+                        id: 0,
+                        nombre: 'NO'
+                    },
+                ],
 
                 users : @json(\App\Models\User::role([\App\Models\Role::MEDICO])->get() ?? []),
                 user: [],
 
                 examen_realizado: null,
+                select_examen_realizado: [
+                    {
+                        id: 1,
+                        nombre: 'SI'
+                    },
+                    {
+                        id: 0,
+                        nombre: 'NO'
+                    },
+                ],
+
                 tiene_cancer: null,
                 select_tiene_cancer: [
                     {

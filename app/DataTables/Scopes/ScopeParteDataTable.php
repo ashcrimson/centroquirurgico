@@ -78,16 +78,40 @@ class ScopeParteDataTable implements DataTableScope
             $query->where('especialidad_id', $this->especialidad_id);
         }
 
-        if ($this->examen_realizado) {
+//        if ($this->examen_realizado) {
+//            $query->where('examenes_realizados', 1);
+//        }
+
+        if ($this->examen_realizado == '1') {
             $query->where('examenes_realizados', 1);
         }
 
-        if ($this->prioridad_administrativa){
+        if ($this->examen_realizado == '0') {
+            $query->where('examenes_realizados', 0);
+        }
+
+//        if ($this->prioridad_administrativa){
+//            $query->where('prioridad_administrativa',1);
+//        }
+
+        if ($this->prioridad_administrativa == '1'){
             $query->where('prioridad_administrativa',1);
         }
 
-        if ($this->prioridad_clinica){
+        if ($this->prioridad_administrativa == '0'){
+            $query->where('prioridad_administrativa',0);
+        }
+
+//        if ($this->prioridad_clinica){
+//            $query->where('prioridad',1);
+//        }
+
+        if ($this->prioridad_clinica == '1'){
             $query->where('prioridad',1);
+        }
+
+        if ($this->prioridad_clinica == '0'){
+            $query->where('prioridad',0);
         }
 
         if ($this->tipo_cirugia_id) {
