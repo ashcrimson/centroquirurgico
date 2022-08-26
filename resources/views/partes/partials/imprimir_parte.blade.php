@@ -20,13 +20,14 @@
         <table class="table table-bordered table-sm table-condensed" style="width: 100%; margin-bottom: 0;font-size: 11px;height: 15px;">
             <tbody>
                 <tr>
-                    <td width="25%" style="text-align: center;" rowspan="2"><img src="http://sistemarema.hospitalnaval.cl/dist/img/Logo%20HNV.png" alt=""
+                    <td width="20%" style="text-align: center;" rowspan="2"><img src="http://sistemarema.hospitalnaval.cl/dist/img/Logo%20HNV.png" alt=""
                         style="width: 60px;"></td>
-                    <td width="25%" rowspan="2" style="text-align: center; ">PARTE QUIRÚRGICO</td>
-                    <td width="25%" style="text-align: center;">PARTE Nro</td>
+                    <td width="25%"  style="text-align: center; ">PARTE QUIRÚRGICO</td>
+                    <td width="25%" style="text-align: center;">PARTE Nro {{ $parte->id ?? null }}</td>
                 </tr>
                 <tr>
-                    <td width="25%" style="text-align: center;">{{ $parte->id ?? null }}</td>
+                    <td width="25%" style="text-align: center;">Usuario Solicitante: {{ Auth::user()->name }}</td>
+                    <td width="25%" style="text-align: center;">Fecha/Hora: {{ \Carbon\Carbon::now()->format('j \d\e F Y h:i A') }}</td>
                 </tr>
             </tbody>
         </table>
@@ -191,18 +192,15 @@
             </tbody>
         </table>
 
-        <table class="table table-bordered table-sm table-condensed" style="width: 50%; margin-bottom: 0; margin-top: 1rem;font-size: 11px;float: right;">
+        <!-- <table class="table table-bordered table-sm table-condensed" style="width: 50%; margin-bottom: 0; margin-top: 1rem;font-size: 11px;float: right;">
             <tbody>
+                
                 <tr>
-                    <td style="text-align: left;">Usuario Solicitante</td>
-                    <td style="text-align: left;">{{ Auth::user()->name }}</td>
-                </tr>
-                <tr>
-                    <td style="text-align: left;">Fecha/Hora</td>
-                    <td style="text-align: left;">{{ \Carbon\Carbon::now()->format('j \d\e F Y h:i A') }}</td>
+                    
+                    <td style="text-align: left;"></td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
 
     </body>
 </html>
