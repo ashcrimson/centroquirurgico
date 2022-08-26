@@ -40,21 +40,22 @@
         </div>
 
         <div class="form-group col-sm-3">
-
             <label for="">Prioridad clínica:</label>
-            <div class="text-lg">
+            <multiselect v-model="prioridad" :options="select_prioridad_clinica" label="nombre"
+                         placeholder="Seleccione uno...">
+            </multiselect>
+            <input type="hidden" name="prioridad" :value="prioridad ? prioridad.id : null">
 
-                <toggle-button :sync="true"
-                               :labels="{checked: 'Sí', unchecked: 'No'}"
-                               v-model="prioridad"
-                               :width="75"
-                               :height="35"
-                               :font-size="16"
-                ></toggle-button>
-
-                <input type="hidden" name="prioridad" :value="prioridad ? 1 : 0">
-            </div>
-
+{{--            <div class="text-lg">--}}
+{{--                <toggle-button :sync="true"--}}
+{{--                               :labels="{checked: 'Sí', unchecked: 'No'}"--}}
+{{--                               v-model="prioridad"--}}
+{{--                               :width="75"--}}
+{{--                               :height="35"--}}
+{{--                               :font-size="16"--}}
+{{--                ></toggle-button>--}}
+{{--                <input type="hidden" name="prioridad" :value="prioridad ? 1 : 0">--}}
+{{--            </div>--}}
         </div>
 
         <div class="form-group col-sm-2">
@@ -102,7 +103,16 @@
                 estados : @json($estados ?? []),
                 estado: null,
                 prioridad: false,
-                prioridad_administrativa: false,
+                select_prioridad_clinica: [
+                    {
+                        id: 1,
+                        nombre: 'SI'
+                    },
+                    {
+                        id: 0,
+                        nombre: 'NO'
+                    },
+                ],
 
                 users : @json(\App\Models\User::role([\App\Models\Role::MEDICO])->get() ?? []),
                 user: null,
