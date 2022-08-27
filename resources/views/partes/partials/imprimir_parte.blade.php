@@ -106,7 +106,7 @@
                     <td width="25%" style="text-align: left;">
                         <ul>
                             @foreach($parte->parteIntervenciones as $intervencion)
-                                <li>{{ $parte->intervencionesLateralidads() }}</li>
+                                <li>{{ $intervencion->lateralidad }}</li>
                             @endforeach
                         </ul>
                     </td>
