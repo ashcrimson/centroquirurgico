@@ -95,7 +95,13 @@
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Intervención:</td>
-                    <td width="25%" colspan="3" style="text-align: left;">{{ $parte->intervencionesNombres() }}</td>
+                    <td width="25%" colspan="3" style="text-align: left;">
+                        <ul>
+                            @foreach($parte->parteIntervenciones as $intervencion)
+                                <li>{{ $intervencion->intervencionNew->text }}</li>
+                            @endforeach
+                        </ul>
+                    </td>
                     <td width="10%" style="text-align: left;">Lateralidad:</td>
                     <td width="25%" style="text-align: left;">{{ $parte->intervencionesLateralidads() }}</td>
                 </tr>
@@ -194,9 +200,9 @@
 
         <!-- <table class="table table-bordered table-sm table-condensed" style="width: 50%; margin-bottom: 0; margin-top: 1rem;font-size: 11px;float: right;">
             <tbody>
-                
+
                 <tr>
-                    
+
                     <td style="text-align: left;"></td>
                 </tr>
             </tbody>

@@ -528,7 +528,6 @@ class Parte extends Model
         return $this->hasMany(\App\Models\Bitacora::class, 'parte_id');
     }
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
@@ -550,7 +549,7 @@ class Parte extends Model
      **/
     public function parteIntervenciones()
     {
-        return $this->hasMany(\App\Models\ParteIntervencion::class, 'parte_id');
+        return $this->hasMany(\App\Models\ParteIntervencion::class, 'parte_id')->with('intervencionNew');
     }
 
     /**
@@ -651,7 +650,7 @@ class Parte extends Model
             $nombresIntervenciones .= $parteIntervencione->intervencionNew->descripcion.' | ';
         }
 
-        return $nombresIntervenciones; 
+        return $nombresIntervenciones;
 
     }
 
@@ -664,11 +663,11 @@ class Parte extends Model
             $lateralidadsIntervenciones .= $parteIntervencione->lateralidad;
         }
 
-        return $lateralidadsIntervenciones; 
+        return $lateralidadsIntervenciones;
 
     }
 
-    public function insumosNombres() 
+    public function insumosNombres()
     {
 
         $nombresInsumosNombres = '';
@@ -677,11 +676,11 @@ class Parte extends Model
             $nombresInsumosNombres .= $parteInsumoEspecifico->insumo->nombre.' | ';
         }
 
-        return $nombresInsumosNombres; 
+        return $nombresInsumosNombres;
 
     }
 
-    public function insumosCantidads() 
+    public function insumosCantidads()
     {
 
         $cantidadsInsumosCantidads = '';
@@ -690,7 +689,7 @@ class Parte extends Model
             $cantidadsInsumosCantidads .= $parteInsumoEspecifico->cantidad;
         }
 
-        return $cantidadsInsumosCantidads; 
+        return $cantidadsInsumosCantidads;
 
     }
 
