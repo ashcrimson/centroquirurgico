@@ -103,7 +103,13 @@
                         </ul>
                     </td>
                     <td width="10%" style="text-align: left;">Lateralidad:</td>
-                    <td width="25%" style="text-align: left;">{{ $parte->intervencionesLateralidads() }}</td>
+                    <td width="25%" style="text-align: left;">
+                        <ul>
+                            @foreach($parte->parteIntervenciones as $intervencion)
+                                <li>{{ $parte->intervencionesLateralidads() }}</li>
+                            @endforeach
+                        </ul>
+                    </td>
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Otras Interv:</td>
