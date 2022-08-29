@@ -253,7 +253,7 @@
             <br>
             <multiselect v-model="sistema" :options="sistemas" label="nombre"  placeholder="Seleccione uno...">
             </multiselect>
-            <input type="hidden" name="sistemasalud_id" :value="sistema ? sistema.id : null">
+            <input type="hidden" name="sistema_salud_id" :value="sistema ? sistema.id : null">
 
         </div>
 
