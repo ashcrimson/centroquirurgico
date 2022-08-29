@@ -87,6 +87,11 @@
                             @include('partials.bitacora',['bitacoras' => $parte->bitacoras ?? collect()])
                         </div>
                         <!-- /.card-body -->
+                        <div class="form-group col-sm-12 text-right">
+                            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary ml-2">
+                                Regresar
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
