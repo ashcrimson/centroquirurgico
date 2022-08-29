@@ -46,14 +46,14 @@
                 <tr>
                     <td width="10%" style="text-align: left;">Rut</td>
                     <td width="30%" style="text-align: left;">{{ $parte->rut_completo ?? null }}</td>
-                    <td width="10%" style="text-align: left;">Fono</td>
-                    <td width="10%" style="text-align: left;">{{ $parte->telefono ?? null }}</td>
+                    <td width="10%" style="text-align: left;">Especialidad</td>
+                    <td width="10%" style="text-align: left;">{{ $especialidad->nombre ?? null }}</td>
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Medico Tratante</td>
                     <td width="30%" style="text-align: left;">{{ $parte->userIngresa->name ?? null }}</td>
-                    <td width="10%" style="text-align: left;">Especialidad</td>
-                    <td width="10%" style="text-align: left;">{{ $especialidad->nombre ?? null }}</td>
+                    <td width="10%" style="text-align: left;">Sub-especialidad</td>
+                    <td width="10%" style="text-align: left;">{{ $parte->subEspecialidad->nombre ?? null }}</td>
                 </tr>
                 <tr>
                     <td width="10%" style="text-align: left;">Fecha Parte</td>
