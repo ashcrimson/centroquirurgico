@@ -132,12 +132,12 @@ class ParteAdmisionController extends Controller
             return redirect(route('partes.index'));
         }
 
-        if ($request->lista_espera){
-            $request->merge([
-                'estado_id' => ParteEstado::LISTA_ESPERA,
-                'fecha_inscripcion' => Carbon::now()
-            ]);
-        }
+//        if ($request->lista_espera) {
+//            $request->merge([
+//                'estado_id' => ParteEstado::LISTA_ESPERA,
+//                'fecha_inscripcion' => Carbon::now()
+//            ]);
+//        }
 
         $parte->fill($request->all());
         $parte->save();
