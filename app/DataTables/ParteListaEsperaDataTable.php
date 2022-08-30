@@ -197,6 +197,8 @@ class ParteListaEsperaDataTable extends DataTable
                 ->visible(false)->exportable(false),
             Column::make('paciente.segundo_nombre')
                 ->visible(false)->exportable(false),
+            Column::make('paciente.run')
+                ->visible(false)->exportable(false),
         ];
     }
 
