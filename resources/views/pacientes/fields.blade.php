@@ -35,7 +35,7 @@
     <!-- Dv Run Field -->
     <div class="form-group col-sm-2">
         {!! Form::label('dv_run', 'Dv Run:') !!} <span class="text-red">*</span>
-        {!! Form::text('dv_run', null, ['id' => 'dv_run','class' => 'form-control','maxlength' => 1, 'readonly']) !!}
+        {!! Form::text('dv_run', null, ['id' => 'dv_run','class' => 'form-control','maxlength' => 1]) !!}
     </div>
 
     <div class="form-group col-sm-12" style="padding: 0px; margin: 0px"></div>
@@ -73,7 +73,7 @@
 
     <div class="form-group col-sm-3">
         <label for="">Edad</label>
-        <input type="text" class="form-control" readonly v-model="edad" value="0">
+        <input type="text" class="form-control"  v-model="edad" value="0">
     </div>
 
     <div class="form-group col-sm-3">
