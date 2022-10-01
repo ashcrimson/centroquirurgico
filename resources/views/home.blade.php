@@ -30,7 +30,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
-                        <h1 class="m-0 text-dark">Bienvenido {{Auth::user()->name}}</h1>
+                        <h1 class="m-0 text-dark">Bienvenidoooo {{Auth::user()->name}}</h1>
                     </div><!-- /.col -->
                     <div class="col ">
                         <button class="btn btn-outline-primary float-right" @click="editShortcut()">
